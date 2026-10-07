@@ -1,0 +1,6 @@
+{{!-- subject: New interest registered for {{micrositeName}} --}}
+{{#> layout title="Register interest"}}
+<p>Someone registered interest on the <strong>{{micrositeName}}</strong> landing page.</p>
+<p>Name: {{name}}<br/>E-mail: {{email}}{{#if phone}}<br/>Phone: {{phone}}{{/if}}</p>
+{{#if message}}<p>{{message}}</p>{{/if}}
+{{/layout}}

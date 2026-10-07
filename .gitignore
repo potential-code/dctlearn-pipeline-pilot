@@ -1,4 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+.DS_Store
+*.log
+/storage/
 # fonts pending licence confirmation (SPEC Q4) — never commit or ship
 seed/assets/fonts/_licence-pending/
-node_modules/
-.env

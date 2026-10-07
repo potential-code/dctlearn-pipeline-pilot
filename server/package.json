@@ -1,0 +1,39 @@
+{
+  "name": "@dct/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^9.1.0",
+    "@aws-sdk/client-s3": "^3.1147.0",
+    "@aws-sdk/client-sesv2": "^3.1147.0",
+    "@scalar/express-api-reference": "^0.10.27",
+    "better-auth": "^1.7.7",
+    "cors": "^2.8.6",
+    "drizzle-orm": "^0.45",
+    "express": "^5",
+    "express-rate-limit": "^8.7.1",
+    "fflate": "^0.8.3",
+    "handlebars": "^4.7.10",
+    "helmet": "^8.3.0",
+    "ioredis": "^6.0.0",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.0.15",
+    "pdf-lib": "^1.17.1",
+    "pino": "^10.4.0",
+    "pino-http": "^11.0.0",
+    "postgres": "^3.4.9",
+    "rate-limit-redis": "^6.0.1",
+    "sanitize-html": "^2.18.0",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/sanitize-html": "^2.16.2",
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.3.1"
+  }
+}

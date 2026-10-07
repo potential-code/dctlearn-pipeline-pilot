@@ -1,0 +1,8 @@
+{{!-- subject: You are invited to {{micrositeName}} on DCT Learn --}}
+{{#> layout title="Invitation"}}
+<p>Hello,</p>
+<p>{{invitedBy}} invited you to join <strong>{{micrositeName}}</strong> on DCT Learn as {{roleLabel}}.</p>
+{{#if message}}<p>“{{message}}”</p>{{/if}}
+<a class="cta" href="{{url}}">Accept invitation</a>
+<p class="muted">This invitation expires on {{expiresAt}}. {{url}}</p>
+{{/layout}}
