@@ -8,7 +8,7 @@ import { recordAudit } from '@server/lib/audit'
 import { now } from '@server/lib/clock'
 import { conflict, notFound, validationFailed } from '@server/lib/errors'
 import { paged, pageWindow } from '@server/lib/pagination'
-import { storeUpload, urlForStored } from '@server/services/files.service'
+import { assertImageRef, storeUpload, urlForStored } from '@server/services/files.service'
 import { toUserDto } from '@server/services/identity/user-dto'
 import { toMicrositeRef } from '@server/services/microsites/lookup.service'
 import type {
@@ -134,6 +134,7 @@ export async function createResource(
   viewer: Viewer,
 ) {
   const row = await db.transaction(async (tx) => {
+    await assertImageRef(input.imageUrl, viewer.id, tx)
     const src = await source(input, file, viewer, tx)
     const [created] = await tx
       .insert(resources)
@@ -170,6 +171,7 @@ export async function updateResource(
 ) {
   const row = await db.transaction(async (tx) => {
     const current = await findInMicrosite(id, m, tx)
+    await assertImageRef(input.imageUrl, viewer.id, tx)
     const src = await source(input, file, viewer, tx, current)
     const [updated] = await tx
       .update(resources)

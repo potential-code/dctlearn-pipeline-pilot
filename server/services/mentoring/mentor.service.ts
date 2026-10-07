@@ -14,7 +14,7 @@ import { microsites } from '@server/db/schema/microsites'
 import { now } from '@server/lib/clock'
 import { conflict, locked, notFound, validationFailed } from '@server/lib/errors'
 import { sanitizeText } from '@server/lib/sanitize'
-import { urlForStored } from '@server/services/files.service'
+import { assertUsableImage, urlForStored } from '@server/services/files.service'
 import { toMicrositeRef } from '@server/services/microsites/lookup.service'
 import type {
   Availability,
@@ -221,6 +221,8 @@ export async function updateMentorProfile(
   input: z.infer<typeof MentorProfileInput>,
 ) {
   const profile = await ownProfile(viewer)
+  if (input.photo && /^[0-9a-f-]{36}$/i.test(input.photo))
+    await assertUsableImage(input.photo, viewer.id)
   await db
     .update(mentorProfiles)
     .set({

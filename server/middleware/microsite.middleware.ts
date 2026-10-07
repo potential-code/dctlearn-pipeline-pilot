@@ -54,6 +54,8 @@ const subAdminCheck: RequestHandler = async (req, res, next) => {
     if (viewer.role !== 'admin' && viewer.role !== 'sub_admin') throw forbidden()
     const microsite = await loadMicrosite(res, req.params.p as string | undefined)
     if (!isSubAdminOf(viewer, microsite)) throw forbidden()
+    // Archived microsites are read-only history: only admins may still open their admin pages.
+    if (microsite.status === 'archived' && viewer.role !== 'admin') throw notFound()
     next()
   } catch (error) {
     next(error)

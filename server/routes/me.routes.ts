@@ -2,7 +2,7 @@ import * as me from '@server/controllers/me.controller'
 import { validationFailed } from '@server/lib/errors'
 import { route } from '@server/lib/route'
 import { requireAuth } from '@server/middleware/auth.middleware'
-import { userWriteLimiter } from '@server/middleware/rate-limit.middleware'
+import { authLimiter, userWriteLimiter } from '@server/middleware/rate-limit.middleware'
 import { uploadSingle } from '@server/middleware/upload.middleware'
 import {
   LocaleUpdate,
@@ -95,8 +95,8 @@ route(meRouter, {
   path: '/me/password',
   summary: 'P15 Change password (needs current password; ends other sessions)',
   tags,
-  auth: 'signed-in · own',
-  middleware: [requireAuth],
+  auth: 'signed-in · own · rate: auth 10/min/IP',
+  middleware: [requireAuth, authLimiter],
   body: PasswordChange,
   handler: me.changePassword,
 })

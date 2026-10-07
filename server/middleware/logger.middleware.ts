@@ -9,7 +9,8 @@ export const requestLogger: RequestHandler = (req, res, next) => {
       {
         requestId: res.locals.requestId,
         method: req.method,
-        path: req.path,
+        // Path segments that look like tokens are masked (invitation / reset links).
+        path: req.originalUrl.split('?')[0]!.replace(/\/[A-Za-z0-9_-]{20,}(?=\/|$)/g, '/:token'),
         status: res.statusCode,
         ms: Math.round(performance.now() - start),
         userId: res.locals.viewer?.id,

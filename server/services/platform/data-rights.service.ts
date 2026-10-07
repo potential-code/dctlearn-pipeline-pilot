@@ -6,6 +6,7 @@ import { files } from '@server/db/schema/files'
 import { formEntries, forms } from '@server/db/schema/forms'
 import {
   accounts,
+  auditLog,
   dataRequests,
   invitations,
   loginAttempts,
@@ -14,7 +15,13 @@ import {
   users,
   verifications,
 } from '@server/db/schema/identity'
-import { memberships, microsites } from '@server/db/schema/microsites'
+import { jobRuns } from '@server/db/schema/jobs'
+import {
+  accessRequests,
+  memberships,
+  microsites,
+  registerInterest,
+} from '@server/db/schema/microsites'
 import { queueEmail } from '@server/jobs/email.job'
 import { enqueue } from '@server/jobs/runtime'
 import { recordAudit } from '@server/lib/audit'
@@ -24,7 +31,7 @@ import { logger } from '@server/lib/logger'
 import { storage } from '@server/lib/storage'
 import { gulfDate } from '@server/services/analytics/range'
 import { storeGenerated } from '@server/services/files.service'
-import { and, asc, desc, eq, inArray } from 'drizzle-orm'
+import { and, asc, desc, eq, inArray, sql } from 'drizzle-orm'
 
 /**
  * Personal data rights (contract §9.7). Export: a job builds a JSON file of the user's own data,
@@ -326,10 +333,29 @@ export async function anonymiseUser(id: string, viewer: Viewer) {
         timeAtDct: null,
       })
       .where(eq(userProfiles.userId, id))
+    // Serial kept, name dropped; the cached PDF still shows the name, so it is rebuilt.
     await tx
       .update(courseCertificates)
-      .set({ learnerName: '' })
+      .set({ learnerName: '', pdfKey: null })
       .where(eq(courseCertificates.userId, id))
+    // Free-text personal data elsewhere (security review M6).
+    await tx.update(formEntries).set({ answers: {} }).where(eq(formEntries.userId, id))
+    await tx.delete(accessRequests).where(eq(accessRequests.userId, id))
+    await tx.delete(registerInterest).where(eq(registerInterest.email, oldEmail))
+    await tx
+      .delete(jobRuns)
+      .where(and(eq(jobRuns.name, 'email.send'), sql`${jobRuns.payload}->>'to' = ${oldEmail}`))
+    // The audit trail stays (append-only) but must not link "Deleted user" back to the e-mail.
+    await tx
+      .update(auditLog)
+      .set({ targetLabel: sql`replace(${auditLog.targetLabel}, ${oldEmail}, ${newEmail})` })
+      .where(sql`${auditLog.targetLabel} like ${`%${oldEmail}%`}`)
+    // Profile photos the user uploaded.
+    const photos = await tx
+      .delete(files)
+      .where(and(eq(files.ownerId, id), eq(files.category, 'image')))
+      .returning({ key: files.key })
+    removedKeys.push(...photos.map((p) => p.key))
     await tx.delete(sessions).where(eq(sessions.userId, id))
     await tx.delete(accounts).where(eq(accounts.userId, id))
     await tx.delete(verifications).where(eq(verifications.identifier, oldEmail))

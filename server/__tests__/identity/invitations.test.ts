@@ -106,7 +106,7 @@ describe('P11 invitation lifecycle', () => {
 
   test('mentor cannot be invited as learner (role conflict)', async () => {
     const r = await inviteToElevate([E.hessa!])
-    expect(r.skipped).toEqual([{ email: E.hessa, reason: 'role_conflict' }])
+    expect(r.skipped).toEqual([{ email: E.hessa, reason: 'not_invitable' }])
   })
 
   test('resend creates a new token and kills the old one; revoke only from sent', async () => {

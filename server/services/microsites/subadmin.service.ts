@@ -173,7 +173,16 @@ export async function inviteMembers(
     message: input.message ?? null,
     inviter: { id: viewer.id, name: viewer.name, ip: viewer.ip },
   })
-  return { created: result.created.length, skipped: result.skipped }
+  // Sub admins must not learn whether an address has an account elsewhere (security review L5).
+  const generic = (r: string) =>
+    r === 'account_disabled' || r === 'role_conflict' ? 'not_invitable' : r
+  return {
+    created: result.created.length,
+    skipped: result.skipped.map((x) => ({
+      ...x,
+      reason: viewer.role === 'admin' ? x.reason : generic(x.reason),
+    })),
+  }
 }
 
 type CsvRow = { row: number; email: string; name?: string; valid: boolean; reason?: string }

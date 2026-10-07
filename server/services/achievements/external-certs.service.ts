@@ -14,7 +14,7 @@ import { fileUrl, storeUpload } from '@server/services/files.service'
 import { toUserDto } from '@server/services/identity/user-dto'
 import { completeCourse } from '@server/services/seams/course-completion.seam'
 import type { ExternalCertsQuery } from '@shared/schemas/achievements'
-import { and, count, desc, eq } from 'drizzle-orm'
+import { and, count, desc, eq, sql } from 'drizzle-orm'
 import type { z } from 'zod'
 
 /**
@@ -56,6 +56,10 @@ export async function uploadExternalCertificate(
     if (row?.course.status !== 'published') throw notFound()
     if (!row.course.externalCertificate)
       throw validationFailed({ courseId: 'This course does not take an external certificate' })
+    // Two first uploads at once would both insert: serialise per user and course (review L10).
+    await tx.execute(
+      sql`select pg_advisory_xact_lock(hashtext(${`extcert:${viewer.id}:${courseId}`}))`,
+    )
     const [existing] = await tx
       .select()
       .from(externalCertificates)

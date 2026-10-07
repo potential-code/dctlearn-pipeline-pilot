@@ -1,7 +1,7 @@
 import { env } from '@server/config/env'
 import { type DbOrTx, db } from '@server/db/connection'
 import { courses, micrositeCourses } from '@server/db/schema/catalog'
-import { users } from '@server/db/schema/identity'
+import { invitations, users } from '@server/db/schema/identity'
 import {
   landingTemplates,
   type Microsite,
@@ -20,7 +20,7 @@ import { findUserByEmail } from '@server/services/identity/accounts.service'
 import { createInvitations } from '@server/services/identity/invitation.service'
 import { toUserDto } from '@server/services/identity/user-dto'
 import type { MicrositeInput, MicrositeUpdate } from '@shared/schemas/microsites'
-import { and, count, desc, eq, inArray } from 'drizzle-orm'
+import { and, count, desc, eq, inArray, ne } from 'drizzle-orm'
 import type { z } from 'zod'
 import { findMicrositeBySlug, toMicrositeRef } from './lookup.service'
 
@@ -98,6 +98,19 @@ async function resolveSubAdmin(
   viewer: Viewer,
 ) {
   if (!email) return null
+  // One sub-admin intent at a time: any other pending sub-admin invitation for this microsite is
+  // revoked, so an old link can never take the microsite over later (security review M3).
+  await tx
+    .update(invitations)
+    .set({ status: 'revoked', revokedAt: now() })
+    .where(
+      and(
+        eq(invitations.micrositeId, micrositeId),
+        eq(invitations.role, 'sub_admin'),
+        eq(invitations.status, 'sent'),
+        ne(invitations.email, email),
+      ),
+    )
   const existing = await findUserByEmail(tx, email)
   if (existing?.role === 'sub_admin' && existing.status === 'active') return existing.id
   if (existing && existing.role !== 'learner')

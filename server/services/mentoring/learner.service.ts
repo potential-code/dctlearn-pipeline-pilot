@@ -437,9 +437,12 @@ export async function mentorSlots(
   const { row, bookableIn } = await visibleMentor(viewer, mentorId)
   if (viewer.role === 'learner' && bookableIn.length === 0) return { slots: [] }
   const from = query.from ? new Date(query.from) : now()
-  const to = query.to
+  const requested = query.to
     ? new Date(query.to)
     : new Date(from.getTime() + DEFAULT_SLOT_DAYS * 86_400_000)
+  // Always at most 31 days, whatever the query (security review M7).
+  const to = new Date(Math.min(requested.getTime(), from.getTime() + 31 * 86_400_000))
+  if (to <= from) return { slots: [] }
   const slots = await freeSlots(row.profile, from, to)
   return {
     slots: slots.map((s) => ({

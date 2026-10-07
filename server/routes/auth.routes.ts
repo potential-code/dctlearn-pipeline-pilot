@@ -21,7 +21,6 @@ const CREDENTIAL_PATHS = [
   '/forget-password',
   '/reset-password',
   '/send-verification-email',
-  '/change-password',
 ]
 
 const CODE_MAP: Record<string, string> = {
@@ -114,8 +113,34 @@ authRouter.use(
   CREDENTIAL_PATHS.map((p) => `/auth${p}`),
   authLimiter,
 )
+/**
+ * Only the Better Auth endpoints the contract uses are reachable. Everything else (update-user,
+ * change-password with `revokeOtherSessions:false`, account linking, …) answers 404, so profile,
+ * photo and password changes always go through our own validated routes.
+ */
+const ALLOWED: { method: string; path: RegExp }[] = [
+  { method: 'POST', path: /^\/sign-in\/email$/ },
+  { method: 'POST', path: /^\/sign-up\/email$/ },
+  { method: 'POST', path: /^\/sign-out$/ },
+  { method: 'GET', path: /^\/get-session$/ },
+  { method: 'POST', path: /^\/request-password-reset$/ },
+  { method: 'POST', path: /^\/forget-password$/ },
+  { method: 'POST', path: /^\/reset-password$/ },
+  { method: 'GET', path: /^\/reset-password\/[^/]+$/ },
+  { method: 'GET', path: /^\/verify-email$/ },
+  { method: 'POST', path: /^\/send-verification-email$/ },
+]
+
 authRouter.all(
   '/auth/*splat',
+  (req, res, next) => {
+    const sub = req.path.replace(/^\/auth/, '')
+    if (!ALLOWED.some((a) => a.method === req.method && a.path.test(sub))) {
+      res.status(404).json({ error: { code: 'not_found', message: 'Not found' } })
+      return
+    }
+    next()
+  },
   express.raw({ type: () => true, limit: '100kb' }),
   (req, res, next) => {
     bridge(req, res).catch(next)

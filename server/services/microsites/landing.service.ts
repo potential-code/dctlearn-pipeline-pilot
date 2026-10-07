@@ -6,7 +6,7 @@ import { now } from '@server/lib/clock'
 import { notFound, validationFailed } from '@server/lib/errors'
 import { assertIfMatch } from '@server/lib/if-match'
 import { sanitizeEmbed, sanitizeText } from '@server/lib/sanitize'
-import { urlForStored } from '@server/services/files.service'
+import { assertImageRef, urlForStored } from '@server/services/files.service'
 import type { LandingInput } from '@shared/schemas/microsites'
 import { and, eq, isNull } from 'drizzle-orm'
 import type { z } from 'zod'
@@ -99,6 +99,15 @@ export async function saveDraft(m: Microsite, input: z.infer<typeof LandingInput
   if (input.embed?.kind === 'form' && !input.embed.formId)
     throw validationFailed({ 'embed.formId': 'Choose a form' })
   const doc = sanitizeLanding(input)
+  // Image fields may only reference images the editor uploaded or public brand assets.
+  for (const ref of [
+    doc.hero.imageUrl,
+    doc.popup?.imageUrl,
+    doc.section.social?.logoUrl,
+    ...(doc.section.partners ?? []).map((p) => p.imageUrl),
+  ]) {
+    await assertImageRef(ref, actor.id)
+  }
   return db.transaction(async (tx) => {
     const [row] = await tx
       .select()

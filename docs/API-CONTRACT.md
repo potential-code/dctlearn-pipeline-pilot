@@ -47,9 +47,23 @@ All additive; nothing in v0.3 was removed.
 - Unknown certificate serial → 404.
 - Profile `PUT` with no fields is a no-op (200).
 
+**Security review fixes (2026-10-07)**
+- Only the Better Auth endpoints listed in §1 are reachable under `/api/auth/*`; others (e.g. `update-user`, `change-password`) answer 404 — profile, photo and password go through `/api/me/*`.
+- File ids sent in bodies (mentor photo, landing images, resource images) must be the caller's own upload or a public brand asset (422 otherwise).
+- Changing a microsite's sub admin revokes other pending sub-admin invitations; sub admins can only resend learner/judge invitations.
+- A course-level final assessment answers `409 locked` until every unit is complete.
+- `GET /api/mentors/{id}/slots` is always capped to 31 days.
+- Anonymisation also clears form answers, access requests, register-interest rows, queued e-mails, uploaded photos, cached certificate PDFs and e-mails in audit labels.
+- `POST /api/me/password` is rate-limited like sign-in; invitation accept for an existing account uses the sign-in lockout.
+- Sub admins see `not_invitable` instead of reasons that reveal accounts elsewhere; archived microsites' admin pages are admin-only.
+- Zoom webhooks older than 5 minutes are refused; request logs mask token-like path segments.
+
 **Known gaps (parked)**
 - Certificate / action-plan PDFs print Arabic as "?" until a licensed Arabic font is added (SPEC Q4).
-- SCORM content is served with a looser CSP (`unsafe-inline`, `unsafe-eval`, framed by our origins) so packages run — review before go-live.
+- SCORM content is served with a looser CSP (`unsafe-inline`, `unsafe-eval`, framed by our origins) so packages run; before go-live serve SCORM from a separate cookieless origin.
+- Zoom attendance is matched by display name until a signed user identity is added to the session token.
+- Mentors see raw mentee registration answers; registration forms should not ask for phone/e-mail.
+- Reset tokens are Better Auth's (stored as issued); field encryption for employee id / mobile is parked (SPEC §8).
 - Zoom, AI matching / insights, voice-hiring provider and machine translation are stubs (503 `feature_off` / rule-based) until keys are provided.
 
 ### v0.3

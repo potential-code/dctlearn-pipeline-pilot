@@ -7,6 +7,7 @@ import { now } from '@server/lib/clock'
 import { conflict, notFound } from '@server/lib/errors'
 import { assertIfMatch } from '@server/lib/if-match'
 import { paged, pageWindow } from '@server/lib/pagination'
+import { sanitizeI18nRich } from '@server/lib/sanitize'
 import { urlForStored } from '@server/services/files.service'
 import { toUserDto } from '@server/services/identity/user-dto'
 import { toMicrositeRef } from '@server/services/microsites/lookup.service'
@@ -131,7 +132,7 @@ export async function listAdminEvents(query: z.infer<typeof AdminEventsQuery>, v
 function values(input: EventInput) {
   return {
     title: input.title,
-    description: input.description,
+    description: sanitizeI18nRich(input.description),
     category: input.category,
     venue: input.venue || null,
     startsAt: new Date(input.startsAt),

@@ -62,6 +62,9 @@ export const zoomProvider: VideoProvider = {
   },
   verifyWebhook(rawBody, signature, timestamp) {
     if (!env.ZOOM_WEBHOOK_SECRET || !signature || !timestamp) return false
+    // Replay window: Zoom timestamps are seconds since epoch; older than 5 minutes is refused.
+    const ts = Number(timestamp)
+    if (!Number.isFinite(ts) || Math.abs(Date.now() / 1000 - ts) > 300) return false
     const expected = `v0=${createHmac('sha256', env.ZOOM_WEBHOOK_SECRET).update(`v0:${timestamp}:${rawBody}`).digest('hex')}`
     const a = Buffer.from(expected)
     const b = Buffer.from(signature)

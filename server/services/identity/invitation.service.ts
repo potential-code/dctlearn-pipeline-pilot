@@ -5,7 +5,15 @@ import { type Microsite, microsites } from '@server/db/schema/microsites'
 import { queueEmail } from '@server/jobs/email.job'
 import { recordAudit } from '@server/lib/audit'
 import { now } from '@server/lib/clock'
-import { conflict, invitationInvalid, locked, notFound, validationFailed } from '@server/lib/errors'
+import {
+  conflict,
+  invitationInvalid,
+  locked,
+  notFound,
+  rateLimited,
+  validationFailed,
+} from '@server/lib/errors'
+import { isLockedOut, recordLoginAttempt } from '@server/services/auth/lockout.service'
 import { findMicrositeById, toMicrositeRef } from '@server/services/microsites/lookup.service'
 import { getMembership, joinMicrosite } from '@server/services/microsites/membership.service'
 import { generateToken, hashToken } from '@server/utils/tokens'
@@ -181,6 +189,8 @@ export async function resendInvitation(
   return db.transaction(async (tx) => {
     const [old] = await tx.select().from(invitations).where(eq(invitations.id, id)).for('update')
     if (!old || (scopeMicrositeId && old.micrositeId !== scopeMicrositeId)) throw notFound()
+    // Sub admins may only (re)issue the roles they can invite: learner and judge (P40).
+    if (scopeMicrositeId && !['learner', 'judge'].includes(old.role)) throw notFound()
     if (old.status === 'accepted') throw locked('This invitation was already accepted')
     if (old.status === 'sent') {
       await tx
@@ -292,7 +302,10 @@ export async function acceptInvitation(
     const isNewUser = !user
     if (user) {
       if (user.status === 'disabled') throw invitationInvalid()
+      // Same lockout as sign-in: this is a password check too (security review L2).
+      if (await isLockedOut(user.email)) throw rateLimited(60 * 15)
       if (!(await checkPassword(tx, user.id, input.password))) {
+        await recordLoginAttempt(user.email, false, { ipAddress: ip })
         throw validationFailed({
           password: 'This e-mail already has an account: enter its current password',
         })

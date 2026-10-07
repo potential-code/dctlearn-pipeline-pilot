@@ -139,3 +139,27 @@ export async function urlForStored(
   const file = await getFile(value)
   return file ? fileUrl(file, viewerId) : ''
 }
+
+/**
+ * A file id taken from a request body may only point at an image the caller uploaded (or a
+ * public brand asset), never at someone else's private file (contract §0.3).
+ */
+export async function assertUsableImage(fileId: string, userId: string, tx: DbOrTx = db) {
+  const file = await getFile(fileId, tx)
+  const ok =
+    file?.contentType.startsWith('image/') === true &&
+    (file.visibility === 'public' || file.ownerId === userId)
+  if (!ok)
+    throw new HttpError(422, 'validation_failed', 'Upload the image first', {
+      photo: 'Upload the image first',
+    })
+}
+
+/** For optional image fields that hold either a file id or an https URL. */
+export async function assertImageRef(
+  value: string | null | undefined,
+  userId: string,
+  tx: DbOrTx = db,
+) {
+  if (value && /^[0-9a-f-]{36}$/i.test(value)) await assertUsableImage(value, userId, tx)
+}

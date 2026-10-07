@@ -47,9 +47,15 @@ async function assertOpen(
   a: CourseAssessment,
   course: { id: string; sequential: boolean; comingSoon: boolean },
 ) {
-  if (!a.unitId) return
   const structure = await loadStructure(course.id)
   const state = await learnerState(viewer.id, course.id, structure)
+  if (!a.unitId) {
+    // Course-level final assessment: open only once every unit is complete (as P16 shows it).
+    if (!structure.units.every((u) => state.completedUnits.has(u.id))) {
+      throw locked('This assessment is locked — complete every unit first')
+    }
+    return
+  }
   const status = unitStatuses(structure, state, course).get(a.unitId)
   if (status === 'locked')
     throw locked('This assessment is locked — complete the earlier units first')

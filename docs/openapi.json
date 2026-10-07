@@ -21719,7 +21719,7 @@
     "/api/me/password": {
       "post": {
         "summary": "P15 Change password (needs current password; ends other sessions)",
-        "description": "**Auth:** signed-in · own",
+        "description": "**Auth:** signed-in · own · rate: auth 10/min/IP",
         "tags": [
           "Me"
         ],
