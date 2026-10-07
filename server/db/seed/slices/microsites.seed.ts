@@ -11,6 +11,15 @@ import { MICROSITES, PEOPLE } from '../data'
 import type { SeededCourses } from './catalog.seed'
 import type { SeededUsers } from './identity.seed'
 
+const TAB_LABELS: Record<string, { en: string; ar: string }> = {
+  courses: { en: 'Courses', ar: 'الدورات' },
+  workshops: { en: 'Workshops', ar: 'ورش العمل' },
+  mentors: { en: 'Mentors', ar: 'المرشدون' },
+  ai_coaches: { en: 'AI Coaches', ar: 'مدربو الذكاء الاصطناعي' },
+  ai_tools: { en: 'AI Tools', ar: 'أدوات الذكاء الاصطناعي' },
+  resources: { en: 'Resources', ar: 'الموارد' },
+}
+
 export type SeededMicrosites = Record<string, { id: string; slug: string }>
 
 export const LANDING_TEMPLATES = [
@@ -107,10 +116,7 @@ export async function seedMicrosites(
         tabs: m.tabs.map((x) => ({
           key: x.key,
           enabled: true,
-          label: x.label ?? {
-            en: x.key.replace('_', ' ').replace(/^\w/, (s) => s.toUpperCase()),
-            ar: '',
-          },
+          label: x.label ?? TAB_LABELS[x.key]!,
         })),
         defaultFilter: m.defaultFilter ?? null,
         mentoringEnabled: m.mentoring,

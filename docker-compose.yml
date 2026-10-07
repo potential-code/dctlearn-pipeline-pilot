@@ -1,0 +1,40 @@
+# Dokploy owns routing, TLS, networks and ports. Every value is injected per environment
+# (API-CONTRACT §9.9). Hosting is not decided yet.
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: "8000"
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      DATABASE_URL: ${DATABASE_URL}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL}
+      APP_URL: ${APP_URL}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      TRUST_PROXY: ${TRUST_PROXY:-true}
+      MAIL_FROM: ${MAIL_FROM}
+      SES_REGION: ${SES_REGION:-}
+      SES_ACCESS_KEY_ID: ${SES_ACCESS_KEY_ID:-}
+      SES_SECRET_ACCESS_KEY: ${SES_SECRET_ACCESS_KEY:-}
+      STORAGE_DRIVER: ${STORAGE_DRIVER:-s3}
+      STORAGE_S3_ENDPOINT: ${STORAGE_S3_ENDPOINT:-}
+      STORAGE_S3_REGION: ${STORAGE_S3_REGION:-}
+      STORAGE_S3_BUCKET: ${STORAGE_S3_BUCKET:-}
+      STORAGE_S3_ACCESS_KEY_ID: ${STORAGE_S3_ACCESS_KEY_ID:-}
+      STORAGE_S3_SECRET_ACCESS_KEY: ${STORAGE_S3_SECRET_ACCESS_KEY:-}
+      FILE_SIGNING_SECRET: ${FILE_SIGNING_SECRET}
+      REDIS_URL: ${REDIS_URL:-}
+      ZOOM_SDK_KEY: ${ZOOM_SDK_KEY:-}
+      ZOOM_SDK_SECRET: ${ZOOM_SDK_SECRET:-}
+      ZOOM_WEBHOOK_SECRET: ${ZOOM_WEBHOOK_SECRET:-}
+      AI_PROVIDER_URL: ${AI_PROVIDER_URL:-}
+      AI_PROVIDER_KEY: ${AI_PROVIDER_KEY:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_EMBED_ALLOWED_HOSTS: ${AI_EMBED_ALLOWED_HOSTS:-}
+      TRANSLATION_API_URL: ${TRANSLATION_API_URL:-}
+      TRANSLATION_API_KEY: ${TRANSLATION_API_KEY:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+    restart: unless-stopped
