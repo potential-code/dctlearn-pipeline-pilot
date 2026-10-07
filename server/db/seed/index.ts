@@ -6,9 +6,11 @@ import { count } from 'drizzle-orm'
 import { uploadBrandPack } from './assets'
 import { COURSES } from './data'
 import { seedCourses } from './slices/catalog.seed'
+import { seedCompetition } from './slices/competition.seed'
 import { seedContent } from './slices/content.seed'
 import { seedIdentity } from './slices/identity.seed'
 import { seedMicrosites } from './slices/microsites.seed'
+import { seedPlatform } from './slices/platform.seed'
 
 /**
  * Development seed = docs/SEED.md, with the brand pack uploaded to storage. Refuses to run in
@@ -52,6 +54,8 @@ export type SeedContext = {
 /** Area slices, in dependency order (filled at merge). */
 const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = [
   (c) => seedContent(c.tx, c.people, c.microsites),
+  (c) => seedPlatform(c.tx, c.courses),
+  (c) => seedCompetition(c.tx, { users: c.people, courses: c.courses, microsites: c.microsites }),
 ]
 
 main()

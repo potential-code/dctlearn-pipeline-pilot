@@ -4,10 +4,7 @@ import { dashboardSection, onPitchSaved } from '@server/services/competition/lea
 import { onInvitationAccepted } from '@server/services/identity/invitation.service'
 import { onActionPlanSaved } from '@server/services/seams/action-plan.seam'
 import { registerDashboardSection } from '@server/services/seams/dashboard.registry'
-import {
-  registerTranslatable,
-  type TranslatableEntity,
-} from '@server/services/seams/translatable.registry'
+import { registerTranslatable } from '@server/services/seams/translatable.registry'
 
 /** Competition plugs into P14, the action-plan seam, invitations and P60 translations. */
 
@@ -26,14 +23,14 @@ onInvitationAccepted(async (tx, { invitation, userId }) => {
 
 // TranslatableEntity does not list competition entities yet (requested shared change).
 registerTranslatable({
-  entity: 'competition_round' as TranslatableEntity,
+  entity: 'competition_round',
   table: competitionRounds,
   id: competitionRounds.id,
   fields: { name: competitionRounds.name, description: competitionRounds.description },
   richFields: ['description'],
 })
 registerTranslatable({
-  entity: 'competition_criterion' as TranslatableEntity,
+  entity: 'competition_criterion',
   table: competitionCriteria,
   id: competitionCriteria.id,
   fields: { question: competitionCriteria.question },

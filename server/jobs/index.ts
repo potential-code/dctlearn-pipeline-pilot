@@ -2,3 +2,5 @@
 import './email.job'
 import './invitations.job'
 import './microsites.job'
+import './competition.job'
+import './platform.job'

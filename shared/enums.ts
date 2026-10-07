@@ -60,3 +60,22 @@ export type CardState = (typeof CARD_STATES)[number]
 export type UserStatus = (typeof USER_STATUSES)[number]
 export type Locale = (typeof LOCALES)[number]
 export type InvitationStatus = (typeof INVITATION_STATUSES)[number]
+
+/** P60: entities whose `{ en, ar }` fields are registered for translation. */
+export const TRANSLATABLE_ENTITIES = [
+  'course',
+  'module',
+  'unit',
+  'block',
+  'page',
+  'faq',
+  'microsite',
+  'event',
+  'form',
+  'ai_embed',
+  'mentor',
+  'competition_round',
+  'competition_criterion',
+  'badge',
+] as const
+export type TranslatableEntity = (typeof TRANSLATABLE_ENTITIES)[number]

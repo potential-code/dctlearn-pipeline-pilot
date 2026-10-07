@@ -1,24 +1,11 @@
+import type { TranslatableEntity } from '@shared/enums'
 import type { PgColumn, PgTable } from 'drizzle-orm/pg-core'
 
 /**
  * P60 translations: every area registers the `{ en, ar }` columns it owns; the i18n area lists
  * missing Arabic, saves reviewed translations and queues machine translation through this.
  */
-export type TranslatableEntity =
-  | 'course'
-  | 'module'
-  | 'unit'
-  | 'block'
-  | 'page'
-  | 'faq'
-  | 'microsite'
-  | 'event'
-  | 'form'
-  | 'ai_embed'
-  | 'mentor'
-  | 'round'
-  | 'rubric'
-  | 'badge'
+export type { TranslatableEntity }
 
 export type Translatable = {
   entity: TranslatableEntity

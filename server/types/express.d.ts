@@ -3,6 +3,11 @@ import type { Role } from '@shared/roles'
 
 declare global {
   namespace Express {
+    interface Request {
+      /** Raw JSON body, kept only for /api/webhooks/* signature checks. */
+      rawBody?: string
+    }
+
     interface Locals {
       requestId: string
       /** The signed-in user, read from the database on every request (null when signed out). */

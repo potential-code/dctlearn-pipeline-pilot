@@ -1,15 +1,9 @@
 import { z } from 'zod'
+import { TRANSLATABLE_ENTITIES } from '../enums'
 import { paginated } from './common'
 
 /** P60 translations (contract §6). */
-export const TRANSLATABLE_ENTITIES = [
-  'course',
-  'unit',
-  'block',
-  'page',
-  'faq',
-  'microsite',
-] as const
+export { TRANSLATABLE_ENTITIES }
 export const TRANSLATION_STATUSES = ['missing', 'machine', 'reviewed'] as const
 const entity = z.enum(TRANSLATABLE_ENTITIES)
 

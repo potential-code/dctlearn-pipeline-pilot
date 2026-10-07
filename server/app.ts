@@ -27,7 +27,17 @@ export function buildApp(extraRouters: Router[] = []) {
   app.use('/api', corsPolicy)
   app.use('/api', originCheck)
   app.use('/api', authRouter)
-  app.use(express.json({ limit: '1mb' }))
+  app.use(
+    express.json({
+      limit: '1mb',
+      // Webhooks verify an HMAC over the exact bytes received.
+      verify: (req, _res, buf) => {
+        if ((req as express.Request).originalUrl?.startsWith('/api/webhooks/')) {
+          ;(req as express.Request).rawBody = buf.toString('utf-8')
+        }
+      },
+    }),
+  )
   app.use('/api', attachViewer)
   app.use('/api', globalLimiter)
   for (const router of [...apiRouters, ...extraRouters]) app.use('/api', router)
