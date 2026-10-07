@@ -42,10 +42,23 @@ describe('P60 list', () => {
   test('every registered field with English; missing=ar filter; pagination', async () => {
     const a = await as(ADMIN, app)
     const all = TranslationsPage.parse((await a.get('/api/admin/translations?pageSize=100')).body)
-    // 9 microsites × (name, subtitle) + 6 page sections × (title, body) + 6 FAQ × 2.
-    expect(all.total).toBe(18 + 12 + 12)
-    expect(new Set(all.items.map((i) => i.entity))).toEqual(new Set(['page', 'faq', 'microsite']))
-    expect(all.items.every((i) => i.status === 'reviewed')).toBe(true)
+    // Platform fields: 9 microsites × (name, subtitle) + 6 page sections × (title, body) + 6 FAQ × 2.
+    // Other areas (courses, events, …) register their own fields too once merged.
+    const count = async (entity: string) =>
+      TranslationsPage.parse(
+        (await a.get(`/api/admin/translations?entity=${entity}&pageSize=100`)).body,
+      ).total
+    expect((await count('microsite')) + (await count('page')) + (await count('faq'))).toBe(
+      18 + 12 + 12,
+    )
+    expect(all.total).toBeGreaterThanOrEqual(42)
+    for (const e of ['page', 'faq', 'microsite'])
+      expect(all.items.some((i) => i.entity === e) || all.total > 100).toBe(true)
+    expect(
+      all.items
+        .filter((i) => ['page', 'faq', 'microsite'].includes(i.entity))
+        .every((i) => i.status === 'reviewed'),
+    ).toBe(true)
 
     const faq = TranslationsPage.parse((await a.get('/api/admin/translations?entity=faq')).body)
     expect(faq.total).toBe(12)

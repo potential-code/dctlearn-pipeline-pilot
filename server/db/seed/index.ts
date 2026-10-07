@@ -9,6 +9,7 @@ import { seedCourses } from './slices/catalog.seed'
 import { seedCompetition } from './slices/competition.seed'
 import { seedContent } from './slices/content.seed'
 import { seedIdentity } from './slices/identity.seed'
+import { seedLearning } from './slices/learning.seed'
 import { seedMentoring } from './slices/mentoring.seed'
 import { seedMicrosites } from './slices/microsites.seed'
 import { seedPlatform } from './slices/platform.seed'
@@ -54,6 +55,14 @@ export type SeedContext = {
 
 /** Area slices, in dependency order (filled at merge). */
 const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = [
+  async (c) => {
+    const learning = await seedLearning(c.tx, c.people, c.courses, c.microsites)
+    await seedCompetition(
+      c.tx,
+      { users: c.people, courses: c.courses, microsites: c.microsites },
+      { pitchBlockId: learning.content.C13?.actionPlanBlock ?? null, setProgress: false },
+    )
+  },
   (c) => seedContent(c.tx, c.people, c.microsites),
   (c) => seedPlatform(c.tx, c.courses),
   (c) =>
@@ -62,7 +71,6 @@ const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = [
       { users: c.people, microsites: c.microsites, courses: c.courses },
       c.assets,
     ),
-  (c) => seedCompetition(c.tx, { users: c.people, courses: c.courses, microsites: c.microsites }),
 ]
 
 main()

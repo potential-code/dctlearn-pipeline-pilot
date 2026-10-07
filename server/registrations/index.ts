@@ -4,5 +4,6 @@
  */
 import './competition'
 import './content'
+import './learning'
 import './mentoring'
 import './platform'

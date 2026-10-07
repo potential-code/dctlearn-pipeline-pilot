@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from 'bun:test'
+import { afterAll, beforeEach, describe, expect, test } from 'bun:test'
 import { db } from '@server/db/connection'
 import {
   competitionAssignments,
@@ -25,7 +25,15 @@ import { expectDenied } from '../helpers/denials'
 import { userByEmail } from '../helpers/fixtures'
 import { anon, as, PASSWORD } from '../helpers/http'
 import { lastMailTo, tokenFromUrl } from '../helpers/mail'
-import { app, type CompetitionFixture, competitionBase, danielAccepts } from './helpers'
+import {
+  app,
+  type CompetitionFixture,
+  competitionBase,
+  danielAccepts,
+  restoreRealReader,
+} from './helpers'
+
+afterAll(restoreRealReader)
 
 let f: CompetitionFixture
 

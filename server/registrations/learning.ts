@@ -42,9 +42,8 @@ registerTranslatable({
   fields: { title: courses.title, description: courses.description, overview: courses.overview },
   richFields: ['description', 'overview'],
 })
-// Modules have no entity of their own in the registry yet; they are listed under `unit`.
 registerTranslatable({
-  entity: 'unit',
+  entity: 'module',
   table: courseModules,
   id: courseModules.id,
   fields: { title: courseModules.title },

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from 'bun:test'
+import { afterAll, beforeEach, describe, expect, test } from 'bun:test'
 import { db } from '@server/db/connection'
 import {
   competitionAssignments,
@@ -17,8 +17,11 @@ import {
   type CompetitionFixture,
   competitionBase,
   PITCH_BLOCK_ID,
+  restoreRealReader,
   setProgress,
 } from './helpers'
+
+afterAll(restoreRealReader)
 
 let f: CompetitionFixture
 

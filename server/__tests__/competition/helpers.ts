@@ -6,7 +6,11 @@ import { DANIEL_EMAIL, seedCompetition } from '@server/db/seed/slices/competitio
 import { competitionRouter } from '@server/routes/competition.routes'
 import { competitionAdminRouter } from '@server/routes/competition-admin.routes'
 import { judgeRouter } from '@server/routes/judge.routes'
-import { type ActionPlanReader, setActionPlanReader } from '@server/services/seams/action-plan.seam'
+import {
+  type ActionPlanReader,
+  actionPlanReader,
+  setActionPlanReader,
+} from '@server/services/seams/action-plan.seam'
 import { hashToken } from '@server/utils/tokens'
 import { and, eq, sql } from 'drizzle-orm'
 import '@server/registrations/competition'
@@ -27,6 +31,12 @@ export const PITCH_QUESTIONS = [
  * In-memory ActionPlanReader (the learning area implements the real one). One pitch block for
  * the configured course; answers and unit progress per learner; `lock` records the lock.
  */
+/** The real (learning) reader, put back after each competition test file. */
+const realReader = actionPlanReader()
+export function restoreRealReader() {
+  setActionPlanReader(realReader)
+}
+
 export function installFakeReader(pitchCourseId: string) {
   const answers = new Map<
     string,
