@@ -1,0 +1,8 @@
+{{!-- subject: Update on your mentoring application --}}
+{{#> layout title="Application declined"}}
+<p>Hello {{name}},</p>
+<p>{{mentorName}} is not able to take your mentoring application at this time.</p>
+{{#if reason}}<p>“{{reason}}”</p>{{/if}}
+<p>You can choose another mentor from your suggestions.</p>
+<a class="cta" href="{{url}}">Choose a mentor</a>
+{{/layout}}

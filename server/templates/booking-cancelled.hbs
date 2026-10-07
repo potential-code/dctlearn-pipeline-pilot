@@ -1,0 +1,6 @@
+{{!-- subject: Mentoring session cancelled: {{startsAt}} --}}
+{{#> layout title="Session cancelled"}}
+<p>Hello {{name}},</p>
+<p>The mentoring session with <strong>{{withName}}</strong> on <strong>{{startsAt}}</strong> was cancelled by {{cancelledBy}}.</p>
+{{#if reason}}<p>Reason: “{{reason}}”</p>{{/if}}
+{{/layout}}
