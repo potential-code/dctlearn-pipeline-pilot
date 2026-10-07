@@ -155,10 +155,11 @@ export async function getProfile(viewer: Viewer) {
 export async function updateProfile(viewer: Viewer, input: z.infer<typeof ProfileUpdate>) {
   const { preferredLanguage, ...fields } = input
   await db.transaction(async (tx) => {
-    await tx
-      .insert(userProfiles)
-      .values({ userId: viewer.id, ...fields })
-      .onConflictDoUpdate({ target: userProfiles.userId, set: fields })
+    const insert = tx.insert(userProfiles).values({ userId: viewer.id, ...fields })
+    // An empty update (only preferredLanguage, or nothing) must not issue `SET` with no columns.
+    if (Object.keys(fields).length)
+      await insert.onConflictDoUpdate({ target: userProfiles.userId, set: fields })
+    else await insert.onConflictDoNothing()
     const [p] = await tx.select().from(userProfiles).where(eq(userProfiles.userId, viewer.id))
     const name = `${p?.firstName ?? ''} ${p?.lastName ?? ''}`.trim()
     const patch: Partial<typeof users.$inferInsert> = {}

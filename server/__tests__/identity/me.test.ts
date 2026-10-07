@@ -51,6 +51,13 @@ describe('P15 profile', () => {
     expect(res.body.readOnly.employeeId).toBeUndefined()
   })
 
+  test('empty update is a no-op, not an error', async () => {
+    const c = await as(E.mona!)
+    const res = await c.put('/api/me/profile').send({})
+    expect(res.status).toBe(200)
+    expect((await c.put('/api/me/profile').send({ preferredLanguage: 'en' })).status).toBe(200)
+  })
+
   test('invalid linkedin url → 422 with field', async () => {
     const c = await as(E.mona!)
     const res = await c.put('/api/me/profile').send({ linkedinUrl: 'http://insecure.example' })
