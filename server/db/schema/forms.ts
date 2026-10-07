@@ -47,7 +47,10 @@ export const formMicrosites = pgTable(
       .notNull()
       .references(() => microsites.id),
   },
-  (t) => [primaryKey({ columns: [t.formId, t.micrositeId] })],
+  (t) => [
+    primaryKey({ columns: [t.formId, t.micrositeId] }),
+    index('form_microsites_microsite_idx').on(t.micrositeId),
+  ],
 )
 
 export const formEntries = pgTable(
@@ -63,5 +66,9 @@ export const formEntries = pgTable(
     submittedAt: tstz('submitted_at').defaultNow().notNull(),
     ...timestamps(),
   },
-  (t) => [index('form_entries_form_idx').on(t.formId), index('form_entries_user_idx').on(t.userId)],
+  (t) => [
+    index('form_entries_form_idx').on(t.formId),
+    index('form_entries_user_idx').on(t.userId),
+    index('form_entries_microsite_idx').on(t.micrositeId),
+  ],
 )

@@ -1,0 +1,10 @@
+{{!-- subject: Resource waiting for review: {{resourceTitle}} --}}
+{{#> layout title="Resource pending"}}
+{{#if ar}}
+<p>أرسل {{submittedBy}} موردًا للمراجعة في {{microsite}}: <strong>{{resourceTitle}}</strong>.</p>
+<a class="cta" href="{{url}}">مراجعة الموارد</a>
+{{else}}
+<p>{{submittedBy}} submitted a resource for review on {{microsite}}: <strong>{{resourceTitle}}</strong>.</p>
+<a class="cta" href="{{url}}">Review resources</a>
+{{/if}}
+{{/layout}}

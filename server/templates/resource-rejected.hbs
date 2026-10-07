@@ -1,0 +1,16 @@
+{{!-- subject: Resource needs changes: {{resourceTitle}} --}}
+{{#> layout title="Resource not approved"}}
+{{#if ar}}
+<p>مرحبًا {{name}}،</p>
+<p>لم تتم الموافقة على المورد <strong>{{resourceTitle}}</strong> في {{microsite}}.</p>
+<p>ملاحظة المراجع: {{note}}</p>
+<p>يمكنك تعديله وإعادة إرساله.</p>
+<a class="cta" href="{{url}}">تعديل المورد</a>
+{{else}}
+<p>Hello {{name}},</p>
+<p>Your resource <strong>{{resourceTitle}}</strong> on {{microsite}} was not approved.</p>
+<p>Reviewer's note: {{note}}</p>
+<p>You can edit it and submit it again.</p>
+<a class="cta" href="{{url}}">Edit the resource</a>
+{{/if}}
+{{/layout}}
