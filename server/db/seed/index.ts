@@ -6,6 +6,7 @@ import { count } from 'drizzle-orm'
 import { uploadBrandPack } from './assets'
 import { COURSES } from './data'
 import { seedCourses } from './slices/catalog.seed'
+import { seedContent } from './slices/content.seed'
 import { seedIdentity } from './slices/identity.seed'
 import { seedMicrosites } from './slices/microsites.seed'
 
@@ -49,7 +50,9 @@ export type SeedContext = {
 }
 
 /** Area slices, in dependency order (filled at merge). */
-const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = []
+const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = [
+  (c) => seedContent(c.tx, c.people, c.microsites),
+]
 
 main()
   .catch((error: unknown) => {

@@ -14,10 +14,7 @@ import {
   registerMicrositeKpi,
 } from '@server/services/seams/dashboard.registry'
 import { registerHubTab } from '@server/services/seams/hub.registry'
-import {
-  registerTranslatable,
-  type TranslatableEntity,
-} from '@server/services/seams/translatable.registry'
+import { registerTranslatable } from '@server/services/seams/translatable.registry'
 import { HubAiResponse } from '@shared/schemas/ai'
 import { WorkshopsPage, WorkshopsQuery } from '@shared/schemas/events'
 import { HubResourcesPage, HubResourcesQuery } from '@shared/schemas/resources'
@@ -70,20 +67,20 @@ registerMicrositeKpi('pendingResources', pendingResourceCount)
  * change); the names are the ones the i18n area should expose.
  */
 registerTranslatable({
-  entity: 'event' as TranslatableEntity,
+  entity: 'event',
   table: events,
   id: events.id,
   fields: { title: events.title, description: events.description },
   richFields: ['description'],
 })
 registerTranslatable({
-  entity: 'form' as TranslatableEntity,
+  entity: 'form',
   table: forms,
   id: forms.id,
   fields: { title: forms.title },
 })
 registerTranslatable({
-  entity: 'ai_embed' as TranslatableEntity,
+  entity: 'ai_embed',
   table: aiEmbeds,
   id: aiEmbeds.id,
   fields: { name: aiEmbeds.name, description: aiEmbeds.description },

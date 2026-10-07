@@ -52,7 +52,7 @@ export const courses = pgTable(
     uniqueIndex('courses_slug_uq').on(t.slug),
     index('courses_title_search_idx').using(
       'gin',
-      sql`to_tsvector('simple', ${t.title}->>'en' || ' ' || ${t.title}->>'ar')`,
+      sql`to_tsvector('simple', (${t.title}->>'en') || ' ' || (${t.title}->>'ar'))`,
     ),
   ],
 )

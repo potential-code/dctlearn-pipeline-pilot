@@ -59,7 +59,7 @@ route(micrositesRouter, {
   auth: 'member(p) · tab must be enabled (404) · resources approved only · mentors linked to p only',
   middleware: requireMember,
   params: HubParams,
-  raw: false,
+  status: 200,
   handler: ctl.hub,
 })
 
