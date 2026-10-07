@@ -1,9 +1,59 @@
 # DCT Learn — API Contract
 
-**Status:** Draft v0.3 · **As of:** 2026-10-07 · Pairs with [`SPEC.md`](SPEC.md) v0.3 and [`SEED.md`](SEED.md).
+**Status:** Draft v0.4 · **As of:** 2026-10-07 · Pairs with [`SPEC.md`](SPEC.md) v0.3 and [`SEED.md`](SEED.md).
+Implemented by the backend on branch `backend`; the live, generated reference is `docs/openapi.json`
+(Scalar UI at `/api/docs`).
 
 The frontend shows nothing that is not in this file; the backend returns nothing that is not in this
 file. To change a field, change this file first, then both sides.
+
+## Changelog
+
+### v0.4 (2026-10-07) — from the backend build
+All additive; nothing in v0.3 was removed.
+
+**Auth and sessions**
+- Password reset path is Better Auth's `POST /api/auth/request-password-reset { email, redirectTo }`; `/forget-password` stays as an alias.
+- Sign-in accepts `rememberMe: true` (opt-in; 30-day sessions; never for admin / sub admin).
+- `/api/auth/*` errors carry both Better Auth's `{ code, message }` and the contract `{ error: { code, message } }`. Extra code: `invalid_credentials` (401). Lockout answers `429 rate_limited`.
+- `POST /api/public/invitations/{token}/accept` → `201 { userId, defaultRoute }` + session cookie. An existing account must give its current password (422 otherwise). A learner may be upgraded to judge / mentor / sub_admin by accepting (audited); any other role change → 409.
+- `POST /api/microsites/{p}/access-request` → `201 { id, status: "open"|"approved" }` (open microsite with matching e-mail rule joins at once).
+- P12 `registerInterest` is `{ formId: "register-interest" }` (the form is the register-interest endpoint).
+
+**Concurrency**
+- Every ifMatch resource returns `updatedAt` (microsites P50, landing P35 dashboard, users P47, courses, rubrics).
+
+**Data model decisions**
+- `learning_points_ledger.course_id`: the microsite leaderboard and KPIs count only points earned in that microsite's courses.
+- Content `{ en, ar }` stored as one jsonb column per field.
+
+**New endpoints**
+- Admin users: `POST /api/admin/users/{id}/anonymise` (§9.7, only after a delete request; audited).
+- Data rights: `GET /api/me/export` → `202 { id, kind, status, requestedAt }`; `GET /api/me/exports/{id}` (own only); `POST /api/me/delete-request` → `202 { id, kind, status, requestedAt }`.
+- Jobs screen (§9.3): `GET /api/admin/jobs?status=&name=` (no payloads), `GET /api/admin/jobs/schedules`, `POST /api/admin/jobs/{id}/retry` (dead/failed only, audited).
+- Exports: `GET /api/admin/exports`, `GET /api/admin/exports/{id}` (nightly progress CSV, kept 30 days).
+- `POST /api/admin/translations/machine` → `202 { queued }`.
+- Competition: `POST .../admin/rounds/{id}/judging` and `.../close` (the §9.1 moves); rubric GET returns `updatedAt` and `locked`.
+- Forms: `DELETE /api/admin/forms/{id}` (soft delete); admin events list accepts `?status=&q=`.
+- Mentoring: admin mentor rows add `kind`, `courseIds`; `availabilitySummary = { timezone, rules[] }`; match suggestions capped at 5 and carry `source`.
+- `POST /api/admin/uploads` → `200 { fileId, url }`; for a SCORM zip `fileId` is the package id used by `scorm` blocks.
+
+**Behaviour clarified**
+- Choosing a mentor sends an application; the match (and lock) exists only when the mentor accepts. Learners book only their matched mentor. Bookings from availability are confirmed at once (per-mentor `autoConfirm`).
+- Join window for sessions: 10 min before start until the end; events: live from 15 min before start to 15 min after end. Learners see `zoomUrl`/`joinUrl` only while live and `recordingUrl` once published.
+- Judges see submitted entries only; pending (invited) judges count as assigned, so a submission is `scored` when every assigned judge — including pending ones — has scored.
+- Sub admins get 403 on learner-only actions (mentoring booking, competition submit) per the matrix; they may view hub and dashboard as learners.
+- Unit completion repeated → `pointsAwarded: 0`; blocked completion → `409 locked`.
+- Unknown certificate serial → 404.
+- Profile `PUT` with no fields is a no-op (200).
+
+**Known gaps (parked)**
+- Certificate / action-plan PDFs print Arabic as "?" until a licensed Arabic font is added (SPEC Q4).
+- SCORM content is served with a looser CSP (`unsafe-inline`, `unsafe-eval`, framed by our origins) so packages run — review before go-live.
+- Zoom, AI matching / insights, voice-hiring provider and machine translation are stubs (503 `feature_off` / rule-based) until keys are provided.
+
+### v0.3
+First complete draft (spec v1).
 
 ---
 

@@ -83,8 +83,11 @@ export const AdminForm = z.strictObject({
   title: I18n,
   kind: z.enum(FORM_KINDS),
   microsites: z.array(z.string()),
-  fields: z.array(FieldDto),
+  fields: z.array(FieldDto.extend({ maxLength: z.number().optional() }).strict()),
   status: z.enum(FORM_STATUSES),
+  showOnDashboard: z.boolean(),
+  oneEntryPerUser: z.boolean(),
+  dueAt: z.string().optional(),
 })
 export const AdminFormsQuery = pagination.extend({
   kind: z.enum(FORM_KINDS).optional(),

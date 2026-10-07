@@ -1,6 +1,6 @@
 # DCT Learn — Seed dataset
 
-**Status:** Draft v0.1 · **As of:** 2026-10-06 · Pairs with [`SPEC.md`](SPEC.md) and [`API-CONTRACT.md`](API-CONTRACT.md).
+**Status:** Draft v0.1.1 (scores and event time corrected to match the fixed clock) · **As of:** 2026-10-06 · Pairs with [`SPEC.md`](SPEC.md) and [`API-CONTRACT.md`](API-CONTRACT.md).
 
 The same dataset is loaded by the backend seed script and used by the frontend mockup, so screens match
 when the two are merged. **Fixed "today" = 2026-10-06 09:00 UTC.** All people are fictional; e-mails use
@@ -153,7 +153,7 @@ Points ledger entries dated between 2026-08-01 and 2026-10-05. Leaderboard (empl
 
 - **Round R1** "24-Hour Challenge 2026" — status `judging`, opened 2026-09-15, closes 2026-10-20, course C13, eligibility ≥ 80 % progress.
 - **Rubric** (Σ = 100): Name/tagline captures the essence — 15 · Short description communicates the key message — 25 · Creativity and originality — 20 · Will it grab attention and drive participation — 40.
-- **Submissions:** L5 submitted 2026-09-30 (scored by Noura: 7, 8, 7, 7 → 72.0); L6 in progress.
+- **Submissions:** L5 submitted 2026-09-30 (scored by Noura: 7, 7, 8, 7 → 72.0 with weights 15/25/20/40); L6 in progress.
 - **Assignments:** L5 → Noura, Daniel (pending); L6 → Noura.
 
 ---
@@ -163,7 +163,7 @@ Points ledger entries dated between 2026-08-01 and 2026-10-05. Leaderboard (empl
 | Title | Microsites | Category | Starts (UTC) | Venue / link | Status |
 |---|---|---|---|---|---|
 | Mentoring Kick-off Session | elevate | Sessions | 2026-10-08 06:00–07:00 | Zoom `https://zoom.example/kickoff` | upcoming |
-| Museum Safety Briefing | znm | Assessments | 2026-10-06 05:00–06:00 | Zayed National Museum, Saadiyat | live (today) |
+| Museum Safety Briefing | znm | Assessments | 2026-10-06 08:30–09:30 | Zayed National Museum, Saadiyat | live (today, at the fixed 09:00) |
 | Creative Economy Masterclass | employees | Workshops | 2026-09-10 07:00–09:00 | recording `https://video.example/masterclass` | past |
 
 ---

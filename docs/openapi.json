@@ -16592,6 +16592,9 @@
                                     ],
                                     "additionalProperties": false
                                   }
+                                },
+                                "maxLength": {
+                                  "type": "number"
                                 }
                               },
                               "required": [
@@ -16610,6 +16613,15 @@
                               "published",
                               "closed"
                             ]
+                          },
+                          "showOnDashboard": {
+                            "type": "boolean"
+                          },
+                          "oneEntryPerUser": {
+                            "type": "boolean"
+                          },
+                          "dueAt": {
+                            "type": "string"
                           }
                         },
                         "required": [
@@ -16618,7 +16630,9 @@
                           "kind",
                           "microsites",
                           "fields",
-                          "status"
+                          "status",
+                          "showOnDashboard",
+                          "oneEntryPerUser"
                         ],
                         "additionalProperties": false
                       }
@@ -16936,6 +16950,9 @@
                               ],
                               "additionalProperties": false
                             }
+                          },
+                          "maxLength": {
+                            "type": "number"
                           }
                         },
                         "required": [
@@ -16954,6 +16971,15 @@
                         "published",
                         "closed"
                       ]
+                    },
+                    "showOnDashboard": {
+                      "type": "boolean"
+                    },
+                    "oneEntryPerUser": {
+                      "type": "boolean"
+                    },
+                    "dueAt": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -16962,7 +16988,9 @@
                     "kind",
                     "microsites",
                     "fields",
-                    "status"
+                    "status",
+                    "showOnDashboard",
+                    "oneEntryPerUser"
                   ],
                   "additionalProperties": false
                 }
@@ -17274,6 +17302,9 @@
                               ],
                               "additionalProperties": false
                             }
+                          },
+                          "maxLength": {
+                            "type": "number"
                           }
                         },
                         "required": [
@@ -17292,6 +17323,15 @@
                         "published",
                         "closed"
                       ]
+                    },
+                    "showOnDashboard": {
+                      "type": "boolean"
+                    },
+                    "oneEntryPerUser": {
+                      "type": "boolean"
+                    },
+                    "dueAt": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -17300,7 +17340,9 @@
                     "kind",
                     "microsites",
                     "fields",
-                    "status"
+                    "status",
+                    "showOnDashboard",
+                    "oneEntryPerUser"
                   ],
                   "additionalProperties": false
                 }

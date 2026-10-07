@@ -62,8 +62,14 @@ function adminDto(f: Form, slugs: string[]) {
     title: f.title,
     kind: f.kind as 'survey' | 'application' | 'registration',
     microsites: slugs,
-    fields: f.fields.map(fieldDto),
+    fields: f.fields.map((x) => ({
+      ...fieldDto(x),
+      ...(x.maxLength ? { maxLength: x.maxLength } : {}),
+    })),
     status: f.status as 'draft' | 'published' | 'closed',
+    showOnDashboard: f.showOnDashboard,
+    oneEntryPerUser: f.oneEntryPerUser,
+    ...(f.dueAt ? { dueAt: f.dueAt.toISOString() } : {}),
   }
 }
 
