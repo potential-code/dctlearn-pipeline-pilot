@@ -2,6 +2,7 @@ import { courses } from '@server/db/schema/catalog'
 import { courseBlocks, courseModules, courseUnits } from '@server/db/schema/learning'
 import { externalCertificatesOf } from '@server/services/achievements/external-certs.service'
 import { actionPlanReaderImpl } from '@server/services/learning/action-plan.service'
+import { BLOCK_I18N_PATHS, BLOCK_RICH_PATHS } from '@server/services/learning/block-payloads'
 import { coursesTab } from '@server/services/learning/hub-courses.service'
 import { completeCourseInTx } from '@server/services/learning/progress.service'
 import { setActionPlanReader } from '@server/services/seams/action-plan.seam'
@@ -58,8 +59,14 @@ registerTranslatable({
   entity: 'block',
   table: courseBlocks,
   id: courseBlocks.id,
-  fields: { payload: courseBlocks.payload },
-  richFields: ['payload'],
+  fields: {},
+  jsonPaths: {
+    column: courseBlocks.payload,
+    typeColumn: courseBlocks.type,
+    patterns: (type) => BLOCK_I18N_PATHS[type as keyof typeof BLOCK_I18N_PATHS] ?? [],
+    rich: BLOCK_RICH_PATHS,
+  },
+  deletedAt: courseBlocks.deletedAt,
 })
 
 registerUserDetailSection((userId) => externalCertificatesOf(userId))

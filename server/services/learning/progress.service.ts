@@ -304,7 +304,9 @@ export async function completeUnit(viewer: Viewer, unitId: string) {
       }
     }
     await recalcEnrolment(tx, viewer.id, course.id, { activity: true })
-    if (courseCompletable(structure, state)) {
+    // External-certificate courses (Nibras) complete only when an admin approves the upload
+    // (contract §0 Completion, §9.1) — never by finishing units.
+    if (!course.externalCertificate && courseCompletable(structure, state)) {
       const done = await completeCourseInTx(tx, { userId: viewer.id, courseId: course.id })
       pointsAwarded += done.pointsAwarded
       certificate = done.certificate

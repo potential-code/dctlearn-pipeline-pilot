@@ -14,6 +14,9 @@ import express, { type Request, type Response, Router } from 'express'
  * next to Better Auth's own `{ code, message }` (so its client keeps working).
  */
 
+/** App page that opens a password-reset link (P09). */
+export const RESET_PASSWORD_PAGE = '/reset-password'
+
 const CREDENTIAL_PATHS = [
   '/sign-in/email',
   '/sign-up/email',
@@ -68,11 +71,26 @@ async function bridge(req: Request, res: Response) {
       // Better Auth answers the malformed body itself.
     }
   }
+  let body = hasBody ? new Uint8Array(req.body as Buffer) : undefined
+  // P09: the reset e-mail must open the app's reset page even when the client sends only
+  // `{ email }` (contract body); without `redirectTo` Better Auth's link leads to an error.
+  if (body && url.pathname.endsWith('/request-password-reset')) {
+    try {
+      const raw = JSON.parse(Buffer.from(body).toString('utf-8')) as Record<string, unknown>
+      if (raw && typeof raw === 'object' && !raw.redirectTo) {
+        raw.redirectTo = `${env.APP_URL}${RESET_PASSWORD_PAGE}`
+        body = new TextEncoder().encode(JSON.stringify(raw))
+        headers.delete('content-length')
+      }
+    } catch {
+      // Better Auth answers the malformed body itself.
+    }
+  }
   const response = await auth.handler(
     new Request(url, {
       method: req.method,
       headers,
-      body: hasBody ? new Uint8Array(req.body as Buffer) : undefined,
+      body,
     }),
   )
 

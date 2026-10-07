@@ -53,6 +53,14 @@ export const CertificateRef = z.strictObject({
   pdfUrl: z.string(),
 })
 
+/** A quiz or survey attached to a unit (v0.4: units expose their assessments so they can be taken). */
+export const UnitAssessmentRef = z.strictObject({
+  id: z.string(),
+  title: I18n,
+  type: z.enum(['survey', 'quiz_blocking', 'quiz_non_blocking']),
+  status: z.enum(['locked', 'available', 'passed', 'failed']),
+})
+
 export const CourseView = z.strictObject({
   course: z.strictObject({
     id: z.string(),
@@ -82,6 +90,7 @@ export const CourseView = z.strictObject({
           order: z.number().int(),
           status: z.enum(UNIT_STATUSES),
           hasAssessment: z.boolean(),
+          assessments: z.array(UnitAssessmentRef),
           durationMin: z.number().int().optional(),
         }),
       ),
@@ -200,6 +209,7 @@ export const UnitView = z.strictObject({
     nextUnitId: z.string().optional(),
   }),
   blocks: z.array(BlockView),
+  assessments: z.array(UnitAssessmentRef),
   completion: z.strictObject({
     canComplete: z.boolean(),
     reason: z.enum(['blocks_incomplete', 'assessment_required']).optional(),

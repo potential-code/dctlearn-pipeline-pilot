@@ -29,7 +29,10 @@ export const corsPolicy = cors({
 })
 
 const SAFE = new Set(['GET', 'HEAD', 'OPTIONS'])
-/** Server-to-server callers authenticate otherwise (HMAC), so they are exempt. */
+/**
+ * Server-to-server callers authenticate otherwise (HMAC), so they are exempt. Matched on
+ * `originalUrl`: this middleware is mounted under /api, where `req.path` drops the prefix.
+ */
 const EXEMPT = [/^\/api\/webhooks\//]
 
 /**
@@ -37,7 +40,7 @@ const EXEMPT = [/^\/api\/webhooks\//]
  * SameSite=Lax + this check together replace the Hono `csrf()` the skeleton used.
  */
 export const originCheck: RequestHandler = (req, _res, next) => {
-  if (SAFE.has(req.method) || EXEMPT.some((re) => re.test(req.path))) return next()
+  if (SAFE.has(req.method) || EXEMPT.some((re) => re.test(req.originalUrl))) return next()
   const origin =
     req.headers.origin ?? (req.headers.referer ? new URL(req.headers.referer).origin : undefined)
   if (!origin || !env.CORS_ORIGINS.includes(origin))

@@ -18654,6 +18654,57 @@
                                 "hasAssessment": {
                                   "type": "boolean"
                                 },
+                                "assessments": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "title": {
+                                        "type": "object",
+                                        "properties": {
+                                          "en": {
+                                            "type": "string"
+                                          },
+                                          "ar": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "en",
+                                          "ar"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "survey",
+                                          "quiz_blocking",
+                                          "quiz_non_blocking"
+                                        ]
+                                      },
+                                      "status": {
+                                        "type": "string",
+                                        "enum": [
+                                          "locked",
+                                          "available",
+                                          "passed",
+                                          "failed"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "title",
+                                      "type",
+                                      "status"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
                                 "durationMin": {
                                   "type": "integer"
                                 }
@@ -18663,7 +18714,8 @@
                                 "title",
                                 "order",
                                 "status",
-                                "hasAssessment"
+                                "hasAssessment",
+                                "assessments"
                               ],
                               "additionalProperties": false
                             }
@@ -19880,6 +19932,57 @@
                         ]
                       }
                     },
+                    "assessments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "object",
+                            "properties": {
+                              "en": {
+                                "type": "string"
+                              },
+                              "ar": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "en",
+                              "ar"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "survey",
+                              "quiz_blocking",
+                              "quiz_non_blocking"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "locked",
+                              "available",
+                              "passed",
+                              "failed"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "type",
+                          "status"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
                     "completion": {
                       "type": "object",
                       "properties": {
@@ -19903,6 +20006,7 @@
                   "required": [
                     "unit",
                     "blocks",
+                    "assessments",
                     "completion"
                   ],
                   "additionalProperties": false
@@ -28150,8 +28254,7 @@
                     "properties": {
                       "logo": {
                         "type": "string",
-                        "maxLength": 2048,
-                        "default": ""
+                        "maxLength": 2048
                       },
                       "accentColor": {
                         "type": "string",
@@ -28159,13 +28262,9 @@
                       },
                       "hero": {
                         "type": "string",
-                        "maxLength": 2048,
-                        "default": ""
+                        "maxLength": 2048
                       }
-                    },
-                    "required": [
-                      "accentColor"
-                    ]
+                    }
                   },
                   "subAdminEmail": {
                     "type": "string",
@@ -28193,8 +28292,7 @@
                       "type": "string",
                       "format": "uuid"
                     },
-                    "maxItems": 500,
-                    "default": []
+                    "maxItems": 500
                   },
                   "mandatoryCourseIds": {
                     "type": "array",
@@ -28202,8 +28300,7 @@
                       "type": "string",
                       "format": "uuid"
                     },
-                    "maxItems": 500,
-                    "default": []
+                    "maxItems": 500
                   },
                   "tabs": {
                     "type": "array",
@@ -28248,29 +28345,19 @@
                         "label"
                       ]
                     },
-                    "maxItems": 6,
-                    "default": []
+                    "maxItems": 6
                   },
                   "mentoringEnabled": {
-                    "type": "boolean",
-                    "default": false
+                    "type": "boolean"
                   },
                   "competitionEnabled": {
-                    "type": "boolean",
-                    "default": false
+                    "type": "boolean"
                   },
                   "ifMatch": {
                     "type": "string",
                     "format": "date-time"
                   }
-                },
-                "required": [
-                  "name",
-                  "templateId",
-                  "branding",
-                  "signInMode",
-                  "landingOnly"
-                ]
+                }
               }
             }
           }

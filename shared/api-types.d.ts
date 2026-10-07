@@ -8591,6 +8591,17 @@ export interface paths {
                                     /** @enum {string} */
                                     status: "locked" | "available" | "completed";
                                     hasAssessment: boolean;
+                                    assessments: {
+                                        id: string;
+                                        title: {
+                                            en: string;
+                                            ar: string;
+                                        };
+                                        /** @enum {string} */
+                                        type: "survey" | "quiz_blocking" | "quiz_non_blocking";
+                                        /** @enum {string} */
+                                        status: "locked" | "available" | "passed" | "failed";
+                                    }[];
                                     durationMin?: number;
                                 }[];
                             }[];
@@ -8909,6 +8920,17 @@ export interface paths {
                                     }[];
                                 };
                             })[];
+                            assessments: {
+                                id: string;
+                                title: {
+                                    en: string;
+                                    ar: string;
+                                };
+                                /** @enum {string} */
+                                type: "survey" | "quiz_blocking" | "quiz_non_blocking";
+                                /** @enum {string} */
+                                status: "locked" | "available" | "passed" | "failed";
+                            }[];
                             completion: {
                                 canComplete: boolean;
                                 /** @enum {string} */
@@ -13219,7 +13241,7 @@ export interface paths {
             requestBody?: {
                 content: {
                     "application/json": {
-                        name: {
+                        name?: {
                             en: string;
                             ar: string;
                         };
@@ -13227,24 +13249,19 @@ export interface paths {
                             en: string;
                             ar: string;
                         };
-                        templateId: string;
-                        branding: {
-                            /** @default  */
+                        templateId?: string;
+                        branding?: {
                             logo?: string;
-                            accentColor: string;
-                            /** @default  */
+                            accentColor?: string;
                             hero?: string;
                         };
                         subAdminEmail?: string;
                         /** @enum {string} */
-                        signInMode: "open" | "invite_only" | "landing_only";
+                        signInMode?: "open" | "invite_only" | "landing_only";
                         emailDomainRule?: string;
-                        landingOnly: boolean;
-                        /** @default [] */
+                        landingOnly?: boolean;
                         courseIds?: string[];
-                        /** @default [] */
                         mandatoryCourseIds?: string[];
-                        /** @default [] */
                         tabs?: {
                             /** @enum {string} */
                             key: "courses" | "workshops" | "mentors" | "ai_coaches" | "ai_tools" | "resources";
@@ -13254,9 +13271,7 @@ export interface paths {
                                 ar: string;
                             };
                         }[];
-                        /** @default false */
                         mentoringEnabled?: boolean;
-                        /** @default false */
                         competitionEnabled?: boolean;
                         /** Format: date-time */
                         ifMatch?: string;

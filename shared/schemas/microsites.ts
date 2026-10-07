@@ -325,7 +325,39 @@ export const MicrositeInput = z.object({
   competitionEnabled: z.boolean().default(false),
   ifMatch: isoDateTime.optional(),
 })
-export const MicrositeUpdate = MicrositeInput.omit({ id: true })
+/**
+ * P50 edit: every field optional and **without defaults** — a field left out keeps its current
+ * value (a partial PUT must never wipe courses, tabs or feature flags).
+ */
+export const MicrositeUpdate = z.object({
+  name: i18nTitle.optional(),
+  subtitle: i18nShort.optional(),
+  templateId: z.string().min(1).max(40).optional(),
+  branding: z
+    .object({
+      logo: url.optional(),
+      accentColor: z
+        .string()
+        .regex(/^#[0-9A-Fa-f]{6}$/)
+        .optional(),
+      hero: url.optional(),
+    })
+    .optional(),
+  subAdminEmail: email.optional(),
+  signInMode: z.enum(SIGN_IN_MODES).optional(),
+  emailDomainRule: z
+    .string()
+    .max(200)
+    .regex(/^[a-z0-9.,\s-]*$/i)
+    .optional(),
+  landingOnly: z.boolean().optional(),
+  courseIds: z.array(z.uuid()).max(500).optional(),
+  mandatoryCourseIds: z.array(z.uuid()).max(500).optional(),
+  tabs: z.array(TabInput).max(6).optional(),
+  mentoringEnabled: z.boolean().optional(),
+  competitionEnabled: z.boolean().optional(),
+  ifMatch: isoDateTime.optional(),
+})
 
 export const AdminMicrositeRow = MicrositeRef.extend({
   status: z.enum(MICROSITE_STATUSES),

@@ -47,6 +47,14 @@ All additive; nothing in v0.3 was removed.
 - Unknown certificate serial → 404.
 - Profile `PUT` with no fields is a no-op (200).
 
+**QA fixes (2026-10-07, high findings)**
+- P16: each unit in the course view and the unit view now has `assessments: [ { id, title, type, status: locked|available|passed|failed } ]` so unit quizzes (e.g. C08) can be opened.
+- External-certificate courses never complete by finishing units; only an approved upload completes them (unit points still count).
+- `PUT /api/admin/microsites/{p}` is a partial update: fields left out keep their value; a live microsite can't drop its last enabled tab (409).
+- Password reset (`/forget-password` or `/request-password-reset` with only `{ email }`) links to `APP_URL/reset-password?token=…`.
+- `POST /api/webhooks/*` is exempt from the browser Origin check (HMAC instead).
+- P60 lists block text per path (`html`, `items.0.text`, `questions.1.options.0.text`, …) as entity `block`; `PUT` writes that path's Arabic.
+
 **Security review fixes (2026-10-07)**
 - Only the Better Auth endpoints listed in §1 are reachable under `/api/auth/*`; others (e.g. `update-user`, `change-password`) answer 404 — profile, photo and password go through `/api/me/*`.
 - File ids sent in bodies (mentor photo, landing images, resource images) must be the caller's own upload or a public brand asset (422 otherwise).

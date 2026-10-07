@@ -42,32 +42,76 @@ function idValue(reg: Translatable, id: string) {
   return isUuidColumn(reg.id) ? sql`${id}::uuid` : sql`${id}`
 }
 
+/** Expands `items[].text` against a value into concrete paths (`items.0.text`, …). */
+export function expandPaths(value: unknown, pattern: string): string[] {
+  const walk = (node: unknown, parts: string[], prefix: string[]): string[] => {
+    if (parts.length === 0) return [prefix.join('.')]
+    const [head, ...rest] = parts as [string, ...string[]]
+    const isArray = head.endsWith('[]')
+    const key = isArray ? head.slice(0, -2) : head
+    const child = (node as Record<string, unknown> | null)?.[key]
+    if (child === undefined || child === null) return []
+    if (!isArray) return walk(child, rest, [...prefix, key])
+    if (!Array.isArray(child)) return []
+    return child.flatMap((item, i) => walk(item, rest, [...prefix, key, String(i)]))
+  }
+  return walk(value, pattern.split('.'), [])
+}
+
+function getPath(value: unknown, path: string): unknown {
+  return path
+    .split('.')
+    .reduce<unknown>((node, key) => (node as Record<string, unknown> | null)?.[key], value)
+}
+
+const PATH_RE = /^[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*$/
+
 async function readRecords(reg: Translatable, ids?: string[], tx: DbOrTx = db) {
   const fields = Object.entries(reg.fields)
   const valid = ids?.filter((id) => !isUuidColumn(reg.id) || UUID_RE.test(id))
   if (valid && valid.length === 0) return []
-  const cols = sql.join(
-    fields.map(([, col]) => sql`${sql.identifier(col.name)}`),
-    sql`, `,
-  )
-  const where = valid
-    ? sql` where ${sql.identifier(reg.id.name)} in (${sql.join(
-        valid.map((id) => idValue(reg, id)),
-        sql`, `,
-      )})`
-    : sql``
+  const jp = reg.jsonPaths
+  const selected = [
+    ...fields.map(([, col]) => sql`${sql.identifier(col.name)}`),
+    ...(jp ? [sql`${sql.identifier(jp.column.name)} as "__json"`] : []),
+    ...(jp?.typeColumn ? [sql`${sql.identifier(jp.typeColumn.name)}::text as "__type"`] : []),
+  ]
+  const cols = selected.length ? sql`, ${sql.join(selected, sql`, `)}` : sql``
+  const conditions = [
+    ...(valid
+      ? [
+          sql`${sql.identifier(reg.id.name)} in (${sql.join(
+            valid.map((id) => idValue(reg, id)),
+            sql`, `,
+          )})`,
+        ]
+      : []),
+    ...(reg.deletedAt ? [sql`${sql.identifier(reg.deletedAt.name)} is null`] : []),
+  ]
+  const where = conditions.length ? sql` where ${sql.join(conditions, sql` and `)}` : sql``
   const result = await tx.execute<Record<string, unknown>>(
-    sql`select ${sql.identifier(reg.id.name)}::text as "__id", ${cols} from ${reg.table}${where}`,
+    sql`select ${sql.identifier(reg.id.name)}::text as "__id"${cols} from ${reg.table}${where}`,
   )
-  return [...result].map((r) => ({
-    id: String(r.__id),
-    values: Object.fromEntries(
+  return [...result].map((r) => {
+    const values: Record<string, I18n> = Object.fromEntries(
       fields.map(([field, col]) => {
         const v = r[col.name] as Partial<I18n> | null
         return [field, { en: v?.en ?? '', ar: v?.ar ?? '' }]
       }),
-    ) as Record<string, I18n>,
-  }))
+    )
+    if (jp) {
+      const json = r.__json
+      const type = (r.__type as string | undefined) ?? null
+      for (const pattern of jp.patterns(type)) {
+        for (const path of expandPaths(json, pattern)) {
+          const v = getPath(json, path) as Partial<I18n> | null
+          if (v && typeof v === 'object' && ('en' in v || 'ar' in v))
+            values[path] = { en: String(v.en ?? ''), ar: String(v.ar ?? '') }
+        }
+      }
+    }
+    return { id: String(r.__id), values }
+  })
 }
 
 async function statusMap(entity: TranslatableEntity, tx: DbOrTx = db) {
@@ -115,15 +159,29 @@ export async function listTranslations(q: {
 }
 
 function registrationFor(entity: TranslatableEntity, field: string) {
-  return translatables(entity).find((r) => Object.hasOwn(r.fields, field)) ?? null
+  return (
+    translatables(entity).find((r) => Object.hasOwn(r.fields, field)) ??
+    (PATH_RE.test(field) ? (translatables(entity).find((r) => r.jsonPaths) ?? null) : null)
+  )
 }
 
 async function writeArabic(tx: DbOrTx, reg: Translatable, field: string, id: string, ar: string) {
-  const col = reg.fields[field]!
-  const c = sql.identifier(col.name)
   const touch = getTableConfig(reg.table).columns.some((x) => x.name === 'updated_at')
     ? sql`, "updated_at" = now()`
     : sql``
+  const direct = reg.fields[field]
+  if (!direct && reg.jsonPaths) {
+    // Nested value: set `<path>.ar` inside the jsonb column (path validated: [A-Za-z0-9_.] only).
+    if (!PATH_RE.test(field)) throw validationFailed({ field: 'This field cannot be translated' })
+    const c = sql.identifier(reg.jsonPaths.column.name)
+    const path = `{${[...field.split('.'), 'ar'].join(',')}}`
+    await tx.execute(
+      sql`update ${reg.table} set ${c} = jsonb_set(${c}, ${path}::text[], to_jsonb(${ar}::text))${touch} where ${sql.identifier(reg.id.name)} = ${idValue(reg, id)}`,
+    )
+    return
+  }
+  const col = direct!
+  const c = sql.identifier(col.name)
   await tx.execute(
     sql`update ${reg.table} set ${c} = jsonb_set(coalesce(${c}, '{"en":"","ar":""}'::jsonb), '{ar}', to_jsonb(${ar}::text))${touch} where ${sql.identifier(reg.id.name)} = ${idValue(reg, id)}`,
   )
@@ -144,7 +202,11 @@ async function setStatus(
 }
 
 function clean(reg: Translatable, field: string, text: string) {
-  return reg.richFields?.includes(field) ? sanitizeRich(text) : sanitizeText(text)
+  const last = field.split('.').at(-1) ?? field
+  const rich =
+    reg.richFields?.includes(field) ||
+    (!reg.fields[field] && Boolean(reg.jsonPaths?.rich?.includes(last)))
+  return rich ? sanitizeRich(text) : sanitizeText(text)
 }
 
 /** PUT: save a reviewed Arabic value (rich fields sanitised, plain fields stripped of markup). */
@@ -159,6 +221,8 @@ export async function updateTranslation(
   return db.transaction(async (tx) => {
     const [rec] = await readRecords(reg, [body.id], tx)
     if (!rec) throw notFound()
+    if (!Object.hasOwn(rec.values, body.field))
+      throw validationFailed({ field: 'This field cannot be translated' })
     await writeArabic(tx, reg, body.field, rec.id, ar)
     await setStatus(
       tx,

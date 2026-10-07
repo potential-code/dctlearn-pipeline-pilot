@@ -160,7 +160,7 @@ async function syncCourses(
     await enqueue('microsites.enrol_members', { micrositeId, courseIds: added }, { tx })
 }
 
-function tabsFrom(input: Input | Update) {
+function tabsFrom(input: { tabs: Input['tabs'] }) {
   return input.tabs.map((t) => ({ key: t.key, enabled: t.enabled, label: t.label }))
 }
 
@@ -209,36 +209,55 @@ export async function createMicrosite(input: Input, viewer: Viewer) {
 
 /** P50 edit sheet (ifMatch on updatedAt). */
 export async function updateMicrosite(m: Microsite, input: Update, viewer: Viewer) {
-  if (input.mandatoryCourseIds.some((id) => !input.courseIds.includes(id)))
-    throw validationFailed({ mandatoryCourseIds: 'Must be in the course list' })
   await db.transaction(async (tx) => {
     const [row] = await tx.select().from(microsites).where(eq(microsites.id, m.id)).for('update')
     if (!row) throw notFound()
     assertIfMatch(row.updatedAt, input.ifMatch)
-    await assertTemplate(tx, input.templateId)
-    await assertCoursesExist(tx, input.courseIds)
+
+    // Course list: only touched when sent. Mandatory ids must be in the (new or current) list.
+    const current = await tx
+      .select({ courseId: micrositeCourses.courseId, isMandatory: micrositeCourses.isMandatory })
+      .from(micrositeCourses)
+      .where(eq(micrositeCourses.micrositeId, m.id))
+      .orderBy(micrositeCourses.sortOrder)
+    const courseIds = input.courseIds ?? current.map((c) => c.courseId)
+    const mandatoryIds =
+      input.mandatoryCourseIds ?? current.filter((c) => c.isMandatory).map((c) => c.courseId)
+    if (mandatoryIds.some((id) => !courseIds.includes(id)))
+      throw validationFailed({ mandatoryCourseIds: 'Must be in the course list' })
+
+    const landingOnly = input.landingOnly ?? row.landingOnly
+    const tabs = input.tabs ? tabsFrom({ tabs: input.tabs }) : row.tabs
+    // §9.1: a live microsite keeps at least one enabled tab (unless it is landing only).
+    if (row.status === 'live' && !landingOnly && !tabs.some((t) => t.enabled))
+      throw conflict('A live microsite needs at least one enabled tab')
+
+    if (input.templateId) await assertTemplate(tx, input.templateId)
+    if (input.courseIds) await assertCoursesExist(tx, input.courseIds)
     const subAdminId = input.subAdminEmail
       ? await resolveSubAdmin(tx, m.id, input.subAdminEmail, viewer)
       : row.subAdminId
     await tx
       .update(microsites)
       .set({
-        name: input.name,
+        name: input.name ?? row.name,
         subtitle: input.subtitle ?? row.subtitle,
-        templateId: input.templateId,
-        logoUrl: input.branding.logo,
-        accentColor: input.branding.accentColor,
-        heroUrl: input.branding.hero,
-        signInMode: input.landingOnly ? 'landing_only' : input.signInMode,
-        emailDomainRule: input.emailDomainRule || null,
-        landingOnly: input.landingOnly,
-        tabs: tabsFrom(input),
-        mentoringEnabled: input.mentoringEnabled,
-        competitionEnabled: input.competitionEnabled,
+        templateId: input.templateId ?? row.templateId,
+        logoUrl: input.branding?.logo ?? row.logoUrl,
+        accentColor: input.branding?.accentColor ?? row.accentColor,
+        heroUrl: input.branding?.hero ?? row.heroUrl,
+        signInMode: landingOnly ? 'landing_only' : (input.signInMode ?? row.signInMode),
+        emailDomainRule:
+          input.emailDomainRule === undefined ? row.emailDomainRule : input.emailDomainRule || null,
+        landingOnly,
+        tabs,
+        mentoringEnabled: input.mentoringEnabled ?? row.mentoringEnabled,
+        competitionEnabled: input.competitionEnabled ?? row.competitionEnabled,
         subAdminId: subAdminId ?? row.subAdminId,
       })
       .where(eq(microsites.id, m.id))
-    await syncCourses(tx, m.id, input.courseIds, input.mandatoryCourseIds)
+    if (input.courseIds || input.mandatoryCourseIds)
+      await syncCourses(tx, m.id, courseIds, mandatoryIds)
     await recordAudit(tx, {
       actorId: viewer.id,
       action: 'microsite.update',

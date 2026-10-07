@@ -36,7 +36,8 @@ export const auth = betterAuth({
   baseURL: env.BETTER_AUTH_URL,
   basePath: '/api/auth',
   secret: env.BETTER_AUTH_SECRET,
-  trustedOrigins: env.CORS_ORIGINS,
+  // The app origin must be trusted so reset/verify links may redirect to it.
+  trustedOrigins: [...new Set([...env.CORS_ORIGINS, new URL(env.APP_URL).origin])],
   database: drizzleAdapter(db, {
     provider: 'pg',
     usePlural: true,

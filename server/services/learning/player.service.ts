@@ -110,6 +110,7 @@ export async function courseView(
           order: u.order,
           status: statuses.get(u.id) ?? 'locked',
           hasAssessment: structure.assessments.some((a) => a.unitId === u.id),
+          assessments: unitAssessments(structure, state, u.id, statuses.get(u.id) ?? 'locked'),
           ...(u.durationMin != null ? { durationMin: u.durationMin } : {}),
         })),
       }
@@ -117,6 +118,36 @@ export async function courseView(
     ...(finalOut ? { finalAssessment: finalOut } : {}),
     ...(cert ? { certificate: await certificateRef(cert, viewer.id) } : {}),
   }
+}
+
+/**
+ * The assessments attached to a unit, with the viewer's status: passed · failed (attempts used
+ * up) · locked (unit locked) · available. Without these the client could not reach a unit quiz.
+ */
+function unitAssessments(
+  structure: Awaited<ReturnType<typeof loadStructure>>,
+  state: Awaited<ReturnType<typeof learnerState>>,
+  unitId: string,
+  unitStatus: string,
+) {
+  return structure.assessments
+    .filter((a) => a.unitId === unitId)
+    .map((a) => {
+      const attempt = state.attempts.get(a.id)
+      const usedUp = a.attemptsAllowed > 0 && (attempt?.used ?? 0) >= a.attemptsAllowed
+      return {
+        id: a.id,
+        title: a.title,
+        type: a.type as 'survey' | 'quiz_blocking' | 'quiz_non_blocking',
+        status: attempt?.passed
+          ? ('passed' as const)
+          : usedUp
+            ? ('failed' as const)
+            : unitStatus === 'locked'
+              ? ('locked' as const)
+              : ('available' as const),
+      }
+    })
 }
 
 /** GET /api/units/{unitId} — locked units answer 409 `locked`. */
@@ -160,6 +191,7 @@ export async function unitView(viewer: Viewer, unitId: string): Promise<UnitView
         payload: await renderPayload(b, ctx, progress.get(b.id)?.positionSec ?? null),
       })),
     )) as UnitViewT['blocks'],
+    assessments: unitAssessments(structure, state, unitId, status),
     completion:
       status === 'completed'
         ? { canComplete: true }

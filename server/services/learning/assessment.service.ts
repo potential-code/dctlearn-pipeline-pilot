@@ -191,7 +191,7 @@ export async function submitAttempt(
     if (passed && a.isFinal && !a.unitId) {
       const structure = await loadStructure(course.id, tx)
       const state = await learnerState(viewer.id, course.id, structure, tx)
-      if (courseCompletable(structure, state))
+      if (!course.externalCertificate && courseCompletable(structure, state))
         await completeCourseInTx(tx, { userId: viewer.id, courseId: course.id })
     }
     await evaluateBadges(tx, viewer.id)
