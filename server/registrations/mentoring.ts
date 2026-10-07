@@ -7,10 +7,7 @@ import {
 import { dashboardSection, mentorsTab } from '@server/services/mentoring/learner.service'
 import { registerDashboardSection } from '@server/services/seams/dashboard.registry'
 import { registerHubTab } from '@server/services/seams/hub.registry'
-import {
-  registerTranslatable,
-  type TranslatableEntity,
-} from '@server/services/seams/translatable.registry'
+import { registerTranslatable } from '@server/services/seams/translatable.registry'
 import { registerUserDetailSection } from '@server/services/seams/user-detail.registry'
 import { MentorsTabQuery, MentorsTabResponse } from '@shared/schemas/mentoring'
 
@@ -37,7 +34,7 @@ onInvitationAccepted((tx, input) => onMentorInvitationAccepted(tx, input))
 
 // P60: mentor bio is `{ en, ar }`. 'mentor' is not yet in TranslatableEntity (requested change).
 registerTranslatable({
-  entity: 'mentor' as TranslatableEntity,
+  entity: 'mentor',
   table: mentorProfiles,
   id: mentorProfiles.id,
   fields: { bio: mentorProfiles.bio },

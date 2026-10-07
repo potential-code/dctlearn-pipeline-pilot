@@ -9,6 +9,7 @@ import { seedCourses } from './slices/catalog.seed'
 import { seedCompetition } from './slices/competition.seed'
 import { seedContent } from './slices/content.seed'
 import { seedIdentity } from './slices/identity.seed'
+import { seedMentoring } from './slices/mentoring.seed'
 import { seedMicrosites } from './slices/microsites.seed'
 import { seedPlatform } from './slices/platform.seed'
 
@@ -55,6 +56,12 @@ export type SeedContext = {
 const AREA_SLICES: ((ctx: SeedContext) => Promise<unknown>)[] = [
   (c) => seedContent(c.tx, c.people, c.microsites),
   (c) => seedPlatform(c.tx, c.courses),
+  (c) =>
+    seedMentoring(
+      c.tx,
+      { users: c.people, microsites: c.microsites, courses: c.courses },
+      c.assets,
+    ),
   (c) => seedCompetition(c.tx, { users: c.people, courses: c.courses, microsites: c.microsites }),
 ]
 

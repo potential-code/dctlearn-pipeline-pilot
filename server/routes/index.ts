@@ -1,4 +1,5 @@
 import type { Router } from 'express'
+import { adminMentorsRouter } from './admin-mentors.routes'
 import { adminUsersRouter } from './admin-users.routes'
 import { aiRouter } from './ai.routes'
 import { analyticsRouter } from './analytics.routes'
@@ -12,12 +13,15 @@ import { formsRouter } from './forms.routes'
 import { healthRouter } from './health.routes'
 import { judgeRouter } from './judge.routes'
 import { meRouter } from './me.routes'
+import { mentorRouter } from './mentor.routes'
+import { mentoringRouter } from './mentoring.routes'
 import { micrositesRouter } from './microsites.routes'
 import { platformRouter } from './platform.routes'
 import { publicRouter } from './public.routes'
 import { publicAuthRouter } from './public-auth.routes'
 import { resourcesRouter } from './resources.routes'
 import { translationsRouter } from './translations.routes'
+import { webhooksRouter } from './webhooks.routes'
 
 /** Every API router, mounted under /api in this order. */
 export const apiRouters: Router[] = [
@@ -40,4 +44,8 @@ export const apiRouters: Router[] = [
   translationsRouter,
   platformRouter,
   dataRightsRouter,
+  mentoringRouter,
+  mentorRouter,
+  adminMentorsRouter,
+  webhooksRouter,
 ]
