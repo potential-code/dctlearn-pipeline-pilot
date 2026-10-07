@@ -1,0 +1,12 @@
+{{!-- subject: Resource approved: {{resourceTitle}} --}}
+{{#> layout title="Resource approved"}}
+{{#if ar}}
+<p>مرحبًا {{name}}،</p>
+<p>تمت الموافقة على المورد <strong>{{resourceTitle}}</strong> وهو الآن متاح للمتعلمين في {{microsite}}.</p>
+<a class="cta" href="{{url}}">عرض الموارد</a>
+{{else}}
+<p>Hello {{name}},</p>
+<p>Your resource <strong>{{resourceTitle}}</strong> was approved and is now visible to learners on {{microsite}}.</p>
+<a class="cta" href="{{url}}">View resources</a>
+{{/if}}
+{{/layout}}
