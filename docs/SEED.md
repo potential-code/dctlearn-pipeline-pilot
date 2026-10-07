@@ -13,7 +13,7 @@ when the two are merged. **Fixed "today" = 2026-10-06 09:00 UTC.** All people ar
 
 | id | Name (EN / AR) | Accent | Hero image | Sign-in | Landing only | Tabs on | Courses | Mandatory | Mentoring | Competition | Sub admin |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `employees` | DCT Employees / موظفو الدائرة | `#EE3E43` | `heroes/employees.jpg` | invite_only (domain `dctabudhabi.ae` may self-register) | no | courses, workshops, mentors, ai_coaches, ai_tools | C01–C08 | C01, C03 | no | no | Omar Al Mansoori |
+| `employees` | DCT Employees / موظفو الدائرة | `#EE3E43` | `heroes/employees.png` | invite_only (domain `dctabudhabi.ae` may self-register) | no | courses, workshops, mentors, ai_coaches, ai_tools | C01–C08 | C01, C03 | no | no | Omar Al Mansoori |
 | `elevate` | Elevate 2026 Mentorship Programme / برنامج إرتقاء | `#CD3151` | `heroes/elevate.jpg` | invite_only | no | mentors (label "Mentors"), workshops (label "Sessions") | — | — | **yes** | no | Layla Haddad |
 | `znm` | Zayed National Museum / متحف زايد الوطني | `#3B2F92` | `heroes/znm.jpg` | invite_only | no | courses ("ZNM Courses"), resources, workshops ("Assessments") | C09–C12, C02, C01 | all | no | no | Khalid Al Dhaheri |
 | `zu` | Zayed University 24-Hour Challenge / تحدي جامعة زايد | `#F7C337` | `heroes/zu.jpg` | invite_only | no | courses | C13 | — | no | **yes** | — (admin covers) |
@@ -204,7 +204,7 @@ Points ledger entries dated between 2026-08-01 and 2026-10-05. Leaderboard (empl
 ```
 seed/assets/
   logos/dct-learn.png  logos/dct-brandmark.jpg
-  heroes/{employees,elevate,znm,zu,museopro,nibras,forum,ruwaad,csmd}.{jpg|png}
+  heroes/{employees,elevate,znm,zu,museopro,nibras,ruwaad,csmd}.{jpg|png}   (forum: reuse csmd or add)
   cards/C01.jpg … C23.jpg
   people/mentor-1..4.jpg  people/learner-1..8.jpg  (stock, royalty-free)
   partners/{dct,fm,rmn,inp}.png

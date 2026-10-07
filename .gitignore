@@ -1,0 +1,4 @@
+# fonts pending licence confirmation (SPEC Q4) — never commit or ship
+seed/assets/fonts/_licence-pending/
+node_modules/
+.env
