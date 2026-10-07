@@ -69,7 +69,7 @@ Each microsite is configured, not coded:
 | Id (URL slug) and name | e.g. `elevate`, "Elevate Mentorship Programme" (EN + AR) |
 | Branding | logo, accent colour, hero image |
 | Landing template | chosen from the landing templates |
-| Sign-in mode | **open** (anyone may sign up on the microsite sign-in page), **invite-only** (access via invitation), **landing-only** (only the landing page exists; every other microsite route redirects to it) |
+| Sign-in mode | **open** (anyone may sign up on P06 or the microsite login P07), **invite-only** (access via invitation), **landing-only** (only the landing page exists; every other microsite route redirects to it) |
 | Optional e-mail domain rule | e.g. only `@dctabudhabi.ae` may self-register |
 | Learner tabs | each on/off with its own label: Courses, Workshops, Mentors, AI Coaches, AI Tools, Resources |
 | Courses | ordered list; each may be marked **mandatory** |
@@ -84,12 +84,23 @@ copyright line), call-to-action for signed-out and signed-in visitors, optional 
 text, button), lower section (partner logos, social links, or custom content), optional embedded form,
 register-interest form for landing-only microsites.
 
+**One login for the whole platform.** There is a single set of accounts. `/login` (P06) and every
+microsite login `/{p}/login` (P07) are the **same login** with the same credentials; P07 only carries the
+microsite's branding and decides where the person lands afterwards:
+
+| Where the person signs in | Where they land after login |
+|---|---|
+| `/login` (P06) | member of one microsite → that microsite's dashboard (P14); several → hub picker (P13); mentor / judge / admin → their own home |
+| `/{p}/login` (P07) | member of `{p}` → `{p}`'s dashboard directly, skipping the picker; not a member → "You don't have access to this programme" with *Request an invitation* (or *Join* if the microsite is open); the account is still signed in and can go to P13 |
+
+Switching between microsites afterwards never asks for a login again.
+
 **What sign-in mode changes in the UI**
 
-| Mode | Landing CTA (signed out) | Microsite sign-in page | Sign-up form | Invitation page |
+| Mode | Landing CTA (signed out) | `/{p}/login` (P07) | Sign-up form | Invitation page |
 |---|---|---|---|---|
-| open | Sign in / Join | shown | shown | optional |
-| invite-only | Sign in | shown | hidden ("access by invitation") | required for new members |
+| open | Sign in / Join | same login, branded | shown (on P07 and P06) | optional |
+| invite-only | Sign in | same login, branded | hidden ("access by invitation") | required for new members |
 | landing-only | Register interest | redirects to landing | — | — |
 
 ### 2.3 Launch microsites
@@ -120,7 +131,7 @@ Page codes (P01…P59) are defined in §5.
 1. **P01 Main home** (`/`): hero, microsite cards, affiliate links (VX Academy, Abu Dhabi Tourist Guide — new tab).
 2. **P02 Employees** (`/professionals`), **P03 Students** (`/students`), **P04 FAQ** (`/faq`).
 3. **P12 Microsite landing** (`/{p}/`): branded landing per microsite.
-4. **P06 Login / Register** (`/login`) or **P07 Microsite sign-in** (`/{p}/sign-in`) from a landing.
+4. **P06 Login / Register** (`/login`) or **P07 Microsite login** (`/{p}/login`) from a landing — the same login with the microsite's branding; it drops the person straight into that microsite's dashboard (see §2.2).
 5. **P08 Employee registration** (`/employee-registration`): full name, work e-mail (allowed domain), password, level, time in DCT (< 6 months, 1–2 years, > 2 years). E-mail must be verified before first sign-in.
 6. **P11 Accept invitation** (`/{p}/invite`) for invite-only microsites: set name and password.
 7. **P09 Reset password** (`/reset-password`) → **P10 Set password** (`/set-password`) → sign in.
@@ -129,7 +140,7 @@ Page codes (P01…P59) are defined in §5.
 ```mermaid
 flowchart LR
   P01[P01 Home] --> P02[P02 Employees] & P03[P03 Students] & P04[P04 FAQ]
-  P01 --> P12[P12 Microsite landing] --> P07[P07 Microsite sign-in]
+  P01 --> P12[P12 Microsite landing] --> P07[P07 Microsite login]
   P12 --> P11[P11 Accept invitation]
   P01 --> P06[P06 Login]
   P02 --> P08[P08 Employee registration]
@@ -138,8 +149,9 @@ flowchart LR
 
 ### 3.2 Learner
 **Purpose:** learn in one or more microsites.
-**Entry:** P06 → P13 if member of several microsites, otherwise P14. From a microsite's P07 → that
-microsite's P14.
+**Entry:** P06 → P13 if member of several microsites, otherwise P14. From a microsite's P07 (`/{p}/login`,
+same account) → that microsite's P14 directly, skipping P13. Moving between microsites later never
+asks for a login again.
 
 1. **P13 Choose your learning hub** (`/platforms`): one card per microsite (image, name, subtitle, feature chips, progress); entering needs no second sign-in.
 2. **P14 Dashboard** (`/{p}/dashboard`): welcome banner; KPIs (courses in progress, completed, certificates, points); *Continue learning*; mandatory courses not yet done; mentoring card (match, next session); competition card (round, status, deadline); resources; upcoming events; open surveys; first-visit guided tour.
@@ -334,7 +346,7 @@ reference; write a screen spec (`_spec-templates/screen-spec.md`) before buildin
 | P04 | `/faq` | FAQ | S: questions and answers |
 | P05 | `/404` | Not found | — |
 | P06 | `/login` | Sign in | C: e-mail, password |
-| P07 | `/{p}/sign-in` | Microsite sign-in (sign-up when open) | C: credentials; S: microsite branding |
+| P07 | `/{p}/login` | Same login as P06, branded for the microsite; lands on `{p}`'s dashboard (sign-up when open; "no access" notice for non-members) | C: credentials; S: microsite branding, sign-in mode |
 | P08 | `/employee-registration` | Employee registration | C: name, work e-mail, password, level, time in DCT |
 | P09 | `/reset-password` | Request reset | C: e-mail |
 | P10 | `/set-password` | Set new password | C: password ×2 |

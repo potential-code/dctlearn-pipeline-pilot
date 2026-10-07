@@ -210,21 +210,30 @@ registerInterest?  { formId }                                     // landing_onl
 `POST /api/auth/sign-in/email { email, password }` → session · `POST /api/auth/sign-out` ·
 `POST /api/auth/forget-password { email }` → always 200 (no account enumeration) ·
 `POST /api/auth/reset-password { token, newPassword }`.
-After sign-in the client calls `GET /api/me`:
+After sign-in the client calls `GET /api/me?from={p}` (`from` = the microsite whose login page was used, if any):
 ```
 user        User
 microsites  [ MicrositeRef & { role: "learner"|"sub_admin" } ]
 mustSetPassword  bool                 // legacy accounts after migration
-defaultRoute     string               // "/platforms" | "/{p}/dashboard" | "/mentor" | "/judge" | "/admin"
+defaultRoute     string               // see the landing rule below
+accessDenied?    { microsite: MicrositeRef, canJoin: bool }   // only when `from` is set and the user is not a member
 ```
+**Landing rule for `defaultRoute`** (one set of accounts; a microsite login is the same login):
+1. `role` is `mentor` / `judge` / `admin` → `/mentor` · `/judge` · `/admin` (sub admin → `/{their p}/admin`).
+2. `from={p}` and the user is a member of `p` → `/{p}/dashboard` (the picker is skipped).
+3. `from={p}` and not a member → `/{p}/login?denied=1` with `accessDenied` filled; the session stays valid.
+4. no `from`: one membership → `/{p}/dashboard`; several → `/platforms`; none → `/platforms` (empty state).
 
-### P07 Microsite sign-in — `GET /api/public/microsites/{p}/sign-in-config`
-**Auth:** public · sign-up only when `signInMode = open` and the e-mail matches `emailDomainRule`; membership granted server-side, never from the body
+### P07 Microsite login — `GET /api/public/microsites/{p}/login-config`
+**Auth:** public · same Better Auth routes as P06 (same accounts, same rate limits and lockout) · sign-up only when `signInMode = open` and the e-mail matches `emailDomainRule`; membership granted server-side, never from the body
 
 ```
-microsite MicrositeRef · signInMode · allowSignUp: bool (signInMode == open) · emailDomainRule?: string
+microsite  MicrositeRef · signInMode · allowSignUp: bool (signInMode == open) · emailDomainRule?: string
+→ 404 for landing_only or non-live microsites (client redirects to /{p}/)
 ```
-Sign-up when open: `POST /api/auth/sign-up/email { name, email, password, microsite: p }` → membership added server-side by rule.
+Sign-in on P07 = `POST /api/auth/sign-in/email` followed by `GET /api/me?from={p}`.
+Sign-up when open: `POST /api/auth/sign-up/email { name, email, password, microsite: p }` → membership added server-side by rule, then the same landing rule.
+`POST /api/microsites/{p}/access-request` → 201 (signed-in non-member asks for an invitation; notifies the sub admin; one open request per user and microsite, else 409).
 
 ### P08 Employee registration — `POST /api/public/register/employee`
 **Auth:** public · rate: auth · domain checked server-side · role forced to `learner`, membership forced to `employees`
@@ -705,6 +714,7 @@ Sub admins can request a new microsite from P35 (`POST /api/microsite-requests`)
 | Mentee application received / accepted / declined | mentor / mentee | `mentee-application-*` |
 | External certificate approved / rejected | learner | `external-cert-*` |
 | Register interest received | microsite sub admin (or admin) | `register-interest` |
+| Access request from a signed-in non-member | microsite sub admin (or admin) | `access-request` |
 | Microsite request approved / rejected | requester | `microsite-request-*` |
 
 Sender: configurable (`MAIL_FROM`, default `DCTLEARN@dctabudhabi.ae`). Recipients lists configurable per microsite.
