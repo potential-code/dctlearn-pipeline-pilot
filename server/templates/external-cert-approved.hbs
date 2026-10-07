@@ -1,0 +1,12 @@
+{{!-- subject: Your certificate for {{courseTitle}} was approved --}}
+{{#> layout title="Certificate approved"}}
+{{#if ar}}
+<p>مرحباً {{name}}،</p>
+<p>تمت الموافقة على شهادتك لدورة <strong>{{courseTitle}}</strong> واكتملت الدورة.</p>
+<a class="cta" href="{{url}}">إنجازاتي</a>
+{{else}}
+<p>Hi {{name}},</p>
+<p>Your certificate for <strong>{{courseTitle}}</strong> was approved and the course is now complete.</p>
+<a class="cta" href="{{url}}">View achievements</a>
+{{/if}}
+{{/layout}}

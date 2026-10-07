@@ -1,0 +1,14 @@
+{{!-- subject: Your certificate for {{courseTitle}} needs another look --}}
+{{#> layout title="Certificate not approved"}}
+{{#if ar}}
+<p>مرحباً {{name}}،</p>
+<p>لم تتم الموافقة على الشهادة التي رفعتها لدورة <strong>{{courseTitle}}</strong>.</p>
+<p>{{note}}</p>
+<a class="cta" href="{{url}}">رفع ملف جديد</a>
+{{else}}
+<p>Hi {{name}},</p>
+<p>The certificate you uploaded for <strong>{{courseTitle}}</strong> was not approved.</p>
+<p>{{note}}</p>
+<a class="cta" href="{{url}}">Upload a new file</a>
+{{/if}}
+{{/layout}}
