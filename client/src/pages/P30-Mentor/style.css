@@ -1,3 +1,4 @@
+/* client: hand-edited (round avatars). */
 /* Page CSS from the Claude Design artboard P30-Mentor, scoped under .pgs-P30-Mentor. */
 .pgs-P30-Mentor{margin:0;background:#F7F5F2}
 :where(.pgs-P30-Mentor) .col{display:flex;flex-direction:column;gap:24px;min-width:0}
@@ -146,3 +147,6 @@
 :where(.pgs-P30-Mentor) .dlg .f2[style] > .field:first-child{grid-column:1 / -1}
 }
 
+/* client: initials avatars are circles, not quarter shapes */
+:where(.pgs-P30-Mentor) .ph-sh{border-radius:50%!important}
+@media (min-width:561px){:where(.pgs-P30-Mentor) .kpi .lb{min-height:2.9em;min-height:2lh}}

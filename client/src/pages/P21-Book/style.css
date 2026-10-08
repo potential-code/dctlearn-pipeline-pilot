@@ -1,3 +1,4 @@
+/* client: hand-edited (locked free slots look disabled) */
 /* Page CSS from the Claude Design artboard P21-Book, scoped under .pgs-P21-Book. */
 .pgs-P21-Book{margin:0;background:#F7F5F2}
 :where(.pgs-P21-Book) .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -77,6 +78,7 @@
 :where(.pgs-P21-Book) .slot > b{font-family:var(--font);font-size:.875rem}
 :where(.pgs-P21-Book) .slot.free{border:1.5px solid #D6CFC6;background:#fff;color:#1D1650}
 :where(.pgs-P21-Book) .slot.free:hover{border-color:#1D1650;background:#F7F5F2}
+:where(.pgs-P21-Book) .slot.free[aria-disabled=true],:where(.pgs-P21-Book) .slot.free[aria-disabled=true]:hover{cursor:not-allowed;border-style:dashed;border-color:#E3DCD3;background:#FBFAF8;color:#8A8F96}
 :where(.pgs-P21-Book) .slot.sel{background:#D63539;border:1.5px solid #D63539;color:#fff;box-shadow:0 10px 18px -10px rgba(214,53,57,.9)}
 :where(.pgs-P21-Book) .slot.mine{background:#1D1650;color:#fff;cursor:default}
 :where(.pgs-P21-Book) .slot.req{background:#FFF4D6;color:#7A5A00;border:1.5px dashed #E0B44A;cursor:default}

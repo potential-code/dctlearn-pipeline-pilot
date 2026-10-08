@@ -1,10 +1,25 @@
+// client: hand-edited (step synced to ?step= for Back/Forward, error summary scrolled into view and
+// focused, future stepper steps disabled).
 // Ported verbatim from the Claude Design artboard P36-CreateMicrosite (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
 import { shellHelper } from '@/components/shell/shellHelper'
+import { lenis } from '@/lib/motion/SmoothScroll'
+
+// client: the wizard step lives in the URL (?step=N), so browser Back/Forward move between steps.
+// The page remounts on every URL change, so the answers so far ride along in `draft`.
+let draft = null;
 
 export default class Component extends DCLogic {
-  constructor(p){ super(p); this.state = {"locale": null, "step": null, "f": null, "errs": null, "busy": false, "upNote": false, "toastMsg": ""}; }
+  constructor(p){ super(p);
+    const q = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+    if (q && !q.has('step')) {
+      // A fresh visit: start over, and give this history entry an explicit step so Back returns to it.
+      draft = null;
+      q.set('step', '1');
+      window.history.replaceState(window.history.state, '', window.location.pathname + '?' + q + window.location.hash);
+    }
+    this.state = {"locale": draft ? draft.locale : null, "step": null, "f": draft ? draft.f : null, "errs": null, "busy": false, "upNote": false, "toastMsg": ""}; }
 
   /* ===== SHELL HELPER (copy verbatim into every signed-in page) =====
      role: learner | mentor | judge | sub_admin | admin
@@ -117,14 +132,26 @@ export default class Component extends DCLogic {
     const LBL = { nameEn:t.nameEn, nameAr:t.nameAr, slug:t.slug, hex:t.accent, dom:t.domain, tabs:t.tabsH, saName:t.saName, saEmail:t.saEmail };
     const bad = v[step] ? Object.keys(v[step]).filter(k => v[step][k]) : [];
     const hasErrs = !!errsOn[step] && bad.length > 0;
-    const go = (n) => S({ step:String(n), errs:null });
+    const go = (n) => {
+      draft = { f, locale: this.state.locale };
+      const q = new URLSearchParams(window.location.search); q.set('step', String(n));
+      window.dispatchEvent(new CustomEvent('dct-nav', { detail: window.location.pathname + '?' + q }));
+    };
+    const showErrs = () => setTimeout(() => {
+      const el = document.querySelector('.pgs-P36-CreateMicrosite .errsum');
+      if (!el) return;
+      el.setAttribute('tabindex', '-1');
+      const l = lenis();
+      if (l) l.scrollTo(el, { offset: -140, immediate: true }); else el.scrollIntoView({ block:'center' });
+      el.focus({ preventScroll:true });
+    }, 30);
     const next = () => {
       if (this.state.busy) return;
-      if (bad.length) { S({ errs: Object.assign({}, errsOn, { [step]:true }), step:String(step) }); return; }
-      if (step < 5) { S({ step:String(step + 1), errs:null }); return; }
+      if (bad.length) { S({ errs: Object.assign({}, errsOn, { [step]:true }), step:String(step) }); showErrs(); return; }
+      if (step < 5) { go(step + 1); return; }
       S({ busy:true }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ busy:false, step:'done' }), 900);
     };
-    const steps = STEPN.map((l, i) => { const n = i + 1; const dn = n < step; return { l, no: dn ? '✓' : fmt(n), cls: n === step ? 'on' : dn ? 'dn' : '', cur: n === step ? 'step' : 'false', go: () => { if (n < step) go(n); else if (n === step + 1) next(); }, hasLn: n < 5, lnCls: dn ? 'dn' : '' }; });
+    const steps = STEPN.map((l, i) => { const n = i + 1; const dn = n < step; return { l, no: dn ? '✓' : fmt(n), cls: n === step ? 'on' : dn ? 'dn' : '', cur: n === step ? 'step' : 'false', go: () => { if (n < step) go(n); else if (n === step + 1) next(); }, dis: n > step + 1, hasLn: n < 5, lnCls: dn ? 'dn' : '' }; });
     const lo = f.mode === 'landing_only';
     const ACC = [['#EE3E43','Red'],['#CD3151','Raspberry'],['#3B2F92','Indigo'],['#1D1650','Deep indigo'],['#F7C337','Yellow'],['#E35E3C','Orange'],['#F77860','Coral'],['#2FC4DB','Turquoise'],['#6D7782','Slate']];
     const HER = [['9842ff4b5522772462642e07bfb6d8c1','Elevate'],['eb80e68b5f407df8f3c317956007a5a2','Team'],['6a330c17598da2f1e81b82711e1c5e9a','Zayed National Museum'],['2ff5095865986643708258995c8a0113','MuseoPro'],['7430eed874cd248e04160ae211dc6b79','Nibras'],['880a72d5794fad0ac73793c03f37c852','Al Ayyala'],['264f666208d2eea0e4d02dbad77c468f','Students'],['3e5eadfa4450ed50cc8f8900fdc8e3e3','Ruwaad']];
@@ -168,7 +195,7 @@ export default class Component extends DCLogic {
       review, pv,
       doneH: L((f.nameEn || 'Microsite') + ' is ready as a draft','«' + (f.nameAr || f.nameEn) + '» جاهز كمسودة'), doneP: L('Created by Aisha Al Marzouqi on 6 Oct 2026 · recorded in the audit log.','أنشأته عائشة المرزوقي في 6 أكتوبر 2026 · سُجّل في سجل التدقيق.'),
       n1s: f.saMode === 'invite' ? L('/' + f.slug + ' · invitation sent to ' + f.saEmail + ' (expires 20 Oct 2026)','/' + f.slug + ' · أُرسلت الدعوة إلى ' + f.saEmail + ' (تنتهي في 20 أكتوبر 2026)') : '/' + f.slug,
-      again: () => S({ step:'1', f:null, errs:null }),
+      again: () => { draft = null; window.dispatchEvent(new CustomEvent('dct-nav', { detail: window.location.pathname })); },
       specSegs: [ seg('Step','step',[['1','1 Template'],['2','2 Branding'],['3','3 Features'],['4','4 Sub admin'],['5','5 Review'],['done','Success'],['errors','Errors']], { f:null, errs:null, busy:false }) ]
     });
   }

@@ -1,7 +1,9 @@
+// client: hand-edited (signed-in user instead of the seed's Ahmed/Sara; round status follows the screen)
 // Ported verbatim from the Claude Design artboard P29-CompetitionDashboard (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
 import { shellHelper } from '@/components/shell/shellHelper'
+import { readSession } from '@/session/SessionProvider'
 
 export default class Component extends DCLogic {
   constructor(p){ super(p); this.state = { locale:null, screen:null, left:1249140 }; }
@@ -30,9 +32,10 @@ export default class Component extends DCLogic {
     /* ---- seed: competition (SEED §6) ---- */
     const RUBRIC = [ { k:'name', w:15, t:['Name / tagline captures the essence','الاسم والشعار يعبّران عن الجوهر'] }, { k:'desc', w:25, t:['Short description communicates the key message','الوصف المختصر يوصل الرسالة الأساسية'] },
                      { k:'crea', w:20, t:['Creativity and originality','الإبداع والأصالة'] }, { k:'grab', w:40, t:['Will it grab attention and drive participation','قدرته على جذب الانتباه وتحفيز المشاركة'] } ];
-    const ZU_USER = (who) => who === 'sara'
-      ? { userName: L('Sara Haddad','سارة حداد'), initials:'SH', userSub: L('ZU student','طالبة في جامعة زايد'), roleLabel: L('Learner','متعلّمة') }
-      : { userName: L('Ahmed Khan','أحمد خان'), initials:'AK', userSub: L('ZU student','طالب في جامعة زايد'), roleLabel: L('Learner','متعلّم') };
+    /* the signed-in learner (name + initials); the rest of the user card comes from the shell */
+    const acct = readSession();
+    const ZU_USER = () => acct ? { userName: L(acct.name.en, acct.name.ar), initials: acct.initials } : {};
+    const firstName = acct ? acct.name.en.replace(/^Dr\.\s+/, '').split(' ')[0] : 'Learner';
     const scr = this.state.screen || this.props.screen || 'judging';
     const closed = scr === 'closed';
     const t = {
@@ -48,7 +51,7 @@ export default class Component extends DCLogic {
       tl: L('Round timeline','مراحل الجولة')
     };
     const sh = this.shell(ar, 'learner', 'competition', 'zu', [ { label: L('ZU 24-Hour Challenge','تحدي جامعة زايد'), href:'/zu/dashboard' }, { label: L('Competition','المسابقة'), href:'/zu/competition' }, { label: L('Dashboard','اللوحة') } ]);
-    Object.assign(sh, ZU_USER('ahmed'));
+    Object.assign(sh, ZU_USER());
     const sec = this.state.left; const pad = (n) => (n < 10 ? '0' : '') + n;
     const cd = { d: String(Math.floor(sec / 86400)), h: pad(Math.floor(sec / 3600) % 24), m: pad(Math.floor(sec / 60) % 60), s: pad(sec % 60) };
     const SC = [8, 8, 6, 7]; const COL = ['#1D1650','#3B2F92','#CD3151','#D63539'];
@@ -60,7 +63,7 @@ export default class Component extends DCLogic {
       [L('Results published','نشر النتائج'), closed ? L('Score 72 / 100 · rank #1','الدرجة 72 / 100 · الترتيب الأول') : L('Score and rank appear here','تظهر الدرجة والترتيب هنا'), closed ? 'on' : ''] ]
       .map(x => ({ h:x[0], d:x[1], cls:x[2], cur: x[2] === 'on' ? 'step' : 'false' }));
     return { ...base, t, sh, cd, crit, steps,
-      specName: t.spec + ' · Ahmed', route: '/zu/competition/dashboard',
+      specName: t.spec + ' · ' + firstName, route: '/zu/competition/dashboard',
       sub: closed ? L('Round R1 is closed — here’s how your entry scored.','أُغلقت الجولة R1، وإليك نتيجة مشاركتك.') : L('Your entry is in. Track the round until results are published.','تم استلام مشاركتك. تابع الجولة حتى نشر النتائج.'),
       open: !closed, closed, cdLbl: closed ? L('Round','الجولة') : L('Closes in','تُغلق خلال'),
       cdAria: L(cd.d + ' days ' + cd.h + ' hours ' + cd.m + ' minutes left', 'متبقٍ ' + cd.d + ' يوم و' + cd.h + ' ساعة و' + cd.m + ' دقيقة'),

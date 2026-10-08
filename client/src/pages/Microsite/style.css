@@ -1,3 +1,4 @@
+/* client: hand-edited (collapsed FAQ answers hidden from keyboard/AT). */
 /* Page CSS from the Claude Design artboard Microsite, scoped under .pgs-Microsite. */
 .pgs-Microsite{margin:0;background:#1D1650}
 :where(.pgs-Microsite) .hm{--ink:#1D1650;--ink2:#2D2470;overflow:hidden}
@@ -126,8 +127,8 @@
 :where(.pgs-Microsite) .pm::after{transform:rotate(90deg)}
 :where(.pgs-Microsite) .fi.on .pm::after{transform:rotate(0)}
 :where(.pgs-Microsite) .fi.on .pm::before,:where(.pgs-Microsite) .fi.on .pm::after{background:#D63539}
-:where(.pgs-Microsite) .fi .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-:where(.pgs-Microsite) .fi.on .ans{grid-template-rows:1fr}
+:where(.pgs-Microsite) .fi .ans{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .45s var(--ease),visibility 0s linear .45s}
+:where(.pgs-Microsite) .fi.on .ans{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .45s var(--ease),visibility 0s}
 :where(.pgs-Microsite) .fi .ans > div{overflow:hidden}
 :where(.pgs-Microsite) .fi .ans p{margin:0 36px 28px 76px;color:#4A525B;font-size:1rem;max-width:62ch}
 :where(.pgs-Microsite) [dir=rtl] .fi .ans p{margin:0 76px 28px 36px}

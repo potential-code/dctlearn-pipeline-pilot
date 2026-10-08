@@ -1,3 +1,4 @@
+// client: hand-edited (sidebar badges derived from page data)
 // Ported verbatim from the Claude Design artboard P30-Mentor (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -148,6 +149,10 @@ export default class Component extends DCLogic {
     const pendingIds = completed.filter(k => !hasLogFor(k));
     const nUp = Object.keys(bk).filter(k => bk[k].st === 'confirmed').length;
     const nReq = Object.keys(bk).filter(k => bk[k].st === 'requested').length;
+    // client: sidebar badges show what is waiting for the mentor, from the same data as the page.
+    const nApps = Object.values(S.apps).filter(s => s === 'pending').length;
+    const navCnt = { mentees: nApps, sessions: nReq, grow: pendingIds.length };
+    sh.nav = sh.nav.map(n => n.key in navCnt ? { ...n, cnt: navCnt[n.key] ? String(navCnt[n.key]) : false } : n);
 
     /* ---------- header ---------- */
     const HD = {

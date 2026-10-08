@@ -1,3 +1,4 @@
+/* client: hand-edited (collapsed FAQ answers hidden from keyboard/AT). */
 /* Page CSS from the Claude Design artboard P02-Employees, scoped under .pgs-P02-Employees. */
 .pgs-P02-Employees{margin:0;background:#1D1650}
 :where(.pgs-P02-Employees) .hm{--ink:#1D1650;--ink2:#2D2470;overflow:hidden}
@@ -126,8 +127,8 @@
 :where(.pgs-P02-Employees) .pm::after{transform:rotate(90deg)}
 :where(.pgs-P02-Employees) .fi.on .pm::after{transform:rotate(0)}
 :where(.pgs-P02-Employees) .fi.on .pm::before,:where(.pgs-P02-Employees) .fi.on .pm::after{background:#D63539}
-:where(.pgs-P02-Employees) .fi .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-:where(.pgs-P02-Employees) .fi.on .ans{grid-template-rows:1fr}
+:where(.pgs-P02-Employees) .fi .ans{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .45s var(--ease),visibility 0s linear .45s}
+:where(.pgs-P02-Employees) .fi.on .ans{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .45s var(--ease),visibility 0s}
 :where(.pgs-P02-Employees) .fi .ans > div{overflow:hidden}
 :where(.pgs-P02-Employees) .fi .ans p{margin:0 36px 28px 76px;color:#4A525B;font-size:1rem;max-width:62ch}
 :where(.pgs-P02-Employees) [dir=rtl] .fi .ans p{margin:0 76px 28px 36px}

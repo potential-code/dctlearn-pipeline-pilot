@@ -741,7 +741,7 @@ export default function View({ v }: { v: V }) {
               <div
                 className="dlg"
                 style={{ width: 'min(520px,100%)' }}
-                role="alertdialog"
+                role="dialog"
                 aria-modal="true"
                 aria-labelledby="dlg-rm"
                 aria-describedby="dlg-rm-d"
@@ -805,7 +805,7 @@ export default function View({ v }: { v: V }) {
               <div
                 className="dlg"
                 style={{ width: 'min(520px,100%)' }}
-                role="alertdialog"
+                role="dialog"
                 aria-modal="true"
                 aria-labelledby="dlg-rv"
                 onClick={v.stop}

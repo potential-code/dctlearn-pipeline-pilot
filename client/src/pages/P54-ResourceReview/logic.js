@@ -1,3 +1,4 @@
+// client: hand-edited (Resources badge follows the review queue)
 // Ported verbatim from the Claude Design artboard P54-ResourceReview (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -91,6 +92,7 @@ export default class Component extends DCLogic {
     const KI = { wait:'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2', ok:'M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14l-3-3', no:'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM15 9l-6 6M9 9l6 6', old:'M5 22h14M5 2h14M17 22v-4.2a2 2 0 0 0-.6-1.4L12 12l-4.4 4.4a2 2 0 0 0-.6 1.4V22M7 2v4.2a2 2 0 0 0 .6 1.4L12 12l4.4-4.4a2 2 0 0 0 .6-1.4V2' };
     const kpis = [ [pend.length,'k-yel',KI.wait,''], [nAppr,'k-ink',KI.ok,''], [nRej,'k-rasp',KI.no,''], [pend.length ? 1 : '—','k-red',KI.old,pend.length ? t.day : ''] ].map((x, i) => ({ l:t.kp[i], v: x[0] === '—' ? '—' : fmt(x[0]), u:x[3], n:t.kn[i], cls:x[1], d:x[2] }));
     const sh = this.shell(ar, 'admin', 'resources', null, [ { label: L('Admin','الإدارة'), href:'/admin' }, { label: L('Resources','الموارد') } ]);
+    sh.nav = sh.nav.map(n => n.key === 'resources' ? { ...n, cnt: pend.length ? String(pend.length) : false } : n); // client: badge follows the queue
     sh.nav = sh.nav.map(n => n.key === 'resources' ? Object.assign({}, n, { cnt: pend.length ? fmt(pend.length) : false }) : n);
     const isQ = tab === 'queue';
     return Object.assign(base, {

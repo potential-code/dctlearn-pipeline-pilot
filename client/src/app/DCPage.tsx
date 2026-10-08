@@ -12,7 +12,8 @@ const APP_PARAMS = new Set(['lang', 'next'])
  * starts from the artboard's initial state, like the prototype.
  */
 export function DCPage({ C, props }: { C: ComponentType<PageProps>; props?: PageProps }) {
-  const href = useRouterState({ select: (s) => s.location.href })
+  // Remount per path + query, not per #hash (in-page anchors must not reset the page state).
+  const href = useRouterState({ select: (s) => s.location.pathname + s.location.searchStr })
   const search = useRouterState({ select: (s) => s.location.search }) as PageProps
   const variants: PageProps = {}
   for (const [k, v] of Object.entries(search)) {

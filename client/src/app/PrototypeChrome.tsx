@@ -2,6 +2,9 @@ import { useRouterState } from '@tanstack/react-router'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { useLocale } from '@/i18n/useLocale'
 import { countUp } from '@/lib/countUp'
+import { scrollTopNow } from '@/lib/motion/SmoothScroll'
+import { DialogManager } from './DialogManager'
+import { usePageChrome } from './pageChrome'
 
 /** Which part of the app a path belongs to; same rule as Prototype.dc.html's go(). */
 function area(path: string): string {
@@ -65,7 +68,7 @@ export function PrototypeChrome({ children }: { children: ReactNode }) {
     const a = area(pathname)
     setInner(a === area(prev.current) && a !== 'public')
     prev.current = pathname
-    window.scrollTo(0, 0)
+    scrollTopNow()
     const t = setTimeout(countUp, reduced() ? 0 : 350)
     return () => clearTimeout(t)
   }, [pathname])
@@ -75,10 +78,12 @@ export function PrototypeChrome({ children }: { children: ReactNode }) {
     return () => clearTimeout(t)
   }, [])
 
+  usePageChrome(pathname, lang)
   const ar = lang === 'ar'
   const showSw = pathname !== '/' && pathname !== '/login'
   return (
-    <div className={`proto-root ${inner ? 'inner' : ''}`}>
+    <div className={`proto-root ${inner ? 'inner' : ''} ${showSw ? 'has-sw' : ''}`}>
+      <DialogManager />
       {children}
       <div className={`ptx ${tx}`} aria-hidden="true">
         <div className="pn" />

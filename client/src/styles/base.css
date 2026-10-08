@@ -10,3 +10,25 @@ body {
 [class^='pgs-'] {
   min-height: 100vh;
 }
+
+/* No rubber-band gap above/below pages when over-scrolling (showed the body colour). */
+html {
+  overscroll-behavior: none;
+}
+body {
+  overscroll-behavior: none;
+}
+
+/* RevealText: each word sits in a mask so it can rise into place. */
+.rt-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-block: 0.06em;
+  margin-block: -0.06em;
+}
+.rt-w > i {
+  display: inline-block;
+  font-style: normal;
+  will-change: transform;
+}

@@ -1,6 +1,8 @@
+/* client: hand-edited (RTL selectors target .pt[dir=rtl], since dir is set on the .pt element; dialogs fit below the 72px offset) */
 /* Page CSS from the Claude Design artboard P40-Members, scoped under .pgs-P40-Members. */
 .pgs-P40-Members{margin:0;background:#F7F5F2}
 :where(.pgs-P40-Members) .ovl{place-items:start center;padding-top:72px}
+@media (min-width:561px){:where(.pgs-P40-Members) .dlg{max-height:calc(100dvh - 96px)}}
 :where(.pgs-P40-Members) .dlg .dh .cap{margin-top:4px}
 :where(.pgs-P40-Members) .dlg .dh h2{display:flex;align-items:center;gap:10px}
 :where(.pgs-P40-Members) .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:70;background:#1D1650;color:#fff;display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;border-radius:8px;box-shadow:0 24px 48px -20px rgba(29,22,80,.8);max-width:min(620px,calc(100% - 32px));border-inline-start:4px solid #F7C337;animation:dlgin .35s var(--ease)}
@@ -20,7 +22,7 @@
 :where(.pgs-P40-Members) .pt .inp{border-radius:8px;height:44px}
 :where(.pgs-P40-Members) .pt textarea.inp{height:auto;min-height:88px;padding:10px 14px;resize:vertical}
 :where(.pgs-P40-Members) .pt select.inp{appearance:none;cursor:pointer;padding-inline-end:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235B636C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-:where(.pgs-P40-Members) [dir=rtl] .pt select.inp{background-position:left 14px center}
+:where(.pgs-P40-Members) .pt[dir=rtl] select.inp{background-position:left 14px center}
 :where(.pgs-P40-Members) .pt .err{color:#B42318}
 :where(.pgs-P40-Members) .pt .inp.is-error{border-color:#D63539;background:#FFFBFB}
 :where(.pgs-P40-Members) .swt{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.9375rem;color:#1D1650}
@@ -122,3 +124,4 @@
 :where(.pgs-P40-Members) .rolepick{flex-direction:column}
 }
 
+@media (max-width:560px){:where(.pgs-P40-Members) .pv .tbl th,:where(.pgs-P40-Members) .pv .tbl td{white-space:nowrap;vertical-align:top}}

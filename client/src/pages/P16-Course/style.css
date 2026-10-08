@@ -1,3 +1,4 @@
+/* client: hand-edited (stacked player shows the unit before the outline) */
 /* Page CSS from the Claude Design artboard P16-Course, scoped under .pgs-P16-Course. */
 .pgs-P16-Course{margin:0;background:#F7F5F2}
 :where(.pgs-P16-Course) .ds.pt{position:relative}
@@ -170,6 +171,7 @@
 :where(.pgs-P16-Course) .specbar .seg button{padding:7px 11px}
 @media (max-width:1100px){:where(.pgs-P16-Course) .player,:where(.pgs-P16-Course) .qwrap{grid-template-columns:1fr}
 :where(.pgs-P16-Course) .olist{position:static}
+:where(.pgs-P16-Course) .player > .olist{order:2}
 :where(.pgs-P16-Course) .chero,:where(.pgs-P16-Course) .done-band{grid-template-columns:1fr}
 :where(.pgs-P16-Course) .chero .im{display:none}
 :where(.pgs-P16-Course) .quotes{grid-template-columns:1fr}

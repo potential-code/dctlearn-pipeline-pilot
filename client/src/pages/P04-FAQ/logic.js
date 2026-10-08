@@ -1,3 +1,4 @@
+// client: hand-edited (topic pick scrolls to the question list on mobile)
 // Ported verbatim from the Claude Design artboard P04-FAQ (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -96,7 +97,7 @@ export default class Component extends DCLogic {
       const items = hit.filter((x) => x.c === k).map((x) => { n++; const v = voted[x.i]; return { n:String(n).padStart(2,'0'), q:x.q, a:x.a, aid:'fa-' + x.i, cls: open[x.i] ? 'on' : '', exp: open[x.i] ? 'true' : 'false', pick: () => setOpen(x.i), hasLink: !!x.link, link:x.link, href:x.href, ask: !v, voted: !!v, thx: v === 'y' ? t.thxY : t.thxN, yes: () => this.setState({ voted:{ ...this.state.voted, [x.i]:'y' } }), no: () => this.setState({ voted:{ ...this.state.voted, [x.i]:'n' } }) }; });
       return { l:t.cn[gi+1], n:items.length, items };
     }).filter((g) => g.items.length);
-    const cats = K.map((k, i) => ({ l:t.cn[i], n: k === 'all' ? FQ.length : FQ.filter((x) => x[0] === k).length, cls: k === cat ? 'on' : '', on: k === cat ? 'true' : 'false', pick: () => this.setState({ cat:k, view:'custom' }) }));
+    const cats = K.map((k, i) => ({ l:t.cn[i], n: k === 'all' ? FQ.length : FQ.filter((x) => x[0] === k).length, cls: k === cat ? 'on' : '', on: k === cat ? 'true' : 'false', pick: () => { this.setState({ cat:k, view:'custom' }); /* client: on stacked layouts, bring the question list into view */ if (window.matchMedia && window.matchMedia('(max-width: 980px)').matches) requestAnimationFrame(() => { const el = document.getElementById('faq-list'); if (!el) return; const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches; el.scrollIntoView({ behavior: rm ? 'auto' : 'smooth', block:'start' }); }); } }));
     const VW = [['default', ar?'افتراضي':'Default'],['filtered', ar?'مصفّى':'Filtered'],['search', ar?'بحث':'Search'],['empty', ar?'بلا نتائج':'No results']];
     const views = VW.map((v) => ({ l:v[1], cls: this.state.view === v[0] ? 'is-on' : '', pick: () => this.setState(Object.assign({ view:v[0], voted:{} }, this.viewState(v[0], ar))) }));
     const pops = t.pops.map((p) => ({ l:p, pick: () => this.setState({ fq:p, cat:'all', view:'custom', open:{} }) }));

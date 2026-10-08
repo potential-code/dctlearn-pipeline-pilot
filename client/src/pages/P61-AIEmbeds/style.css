@@ -1,3 +1,4 @@
+/* client: hand-edited (RTL selectors target .pt[dir=rtl], since dir is set on the .pt element) */
 /* Page CSS from the Claude Design artboard P61-AIEmbeds, scoped under .pgs-P61-AIEmbeds. */
 .pgs-P61-AIEmbeds{margin:0;background:#F7F5F2}
 :where(.pgs-P61-AIEmbeds) .ds.pt{position:relative}
@@ -100,7 +101,7 @@
 :where(.pgs-P61-AIEmbeds) .secl::after{flex:1 1 40px}
 :where(.pgs-P61-AIEmbeds) .mchips .chipf{height:auto;min-height:34px;padding-block:6px;text-align:start;line-height:1.3}
 :where(.pgs-P61-AIEmbeds) .fbar .iw.sel{min-width:0;flex:1 1 150px}
-:where(.pgs-P61-AIEmbeds) [dir=rtl] .pt .fsel::after{transform:rotate(-45deg)}
+:where(.pgs-P61-AIEmbeds) .pt[dir=rtl] .fsel::after{transform:rotate(-45deg)}
 
 }
 

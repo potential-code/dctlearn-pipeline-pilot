@@ -1,3 +1,4 @@
+/* client: hand-edited (mentor cards share row tracks so their rows line up) */
 /* Page CSS from the Claude Design artboard P17-Mentors, scoped under .pgs-P17-Mentors. */
 .pgs-P17-Mentors{margin:0;background:#F7F5F2}
 :where(.pgs-P17-Mentors) .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -92,6 +93,16 @@
 :where(.pgs-P17-Mentors) .mcard .nx{display:flex;align-items:center;gap:8px;font-size:.875rem;color:#333}
 :where(.pgs-P17-Mentors) .mcard .nx svg{color:#D63539;flex:none}
 :where(.pgs-P17-Mentors) .mcard .ft{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:4px}
+@supports (grid-template-rows:subgrid){
+:where(.pgs-P17-Mentors) .mcard{display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:0}
+:where(.pgs-P17-Mentors) .mcard .bx{display:contents}
+:where(.pgs-P17-Mentors) .mcard .bx > *{margin-inline:22px}
+:where(.pgs-P17-Mentors) .mcard .cats{margin-top:16px;align-self:start}
+:where(.pgs-P17-Mentors) .mcard .facts,:where(.pgs-P17-Mentors) .mcard .nx{margin-top:14px}
+:where(.pgs-P17-Mentors) .mcard .facts{align-self:stretch}
+:where(.pgs-P17-Mentors) .mcard .nx{align-self:start}
+:where(.pgs-P17-Mentors) .mcard .ft{margin-top:14px;margin-bottom:20px;align-self:end}
+}
 :where(.pgs-P17-Mentors) .how{counter-reset:h;display:flex;flex-direction:column}
 :where(.pgs-P17-Mentors) .how li{list-style:none;display:grid;grid-template-columns:36px 1fr;gap:12px;padding:14px 22px;border-bottom:1px solid #F0ECE6;align-items:start}
 :where(.pgs-P17-Mentors) .how li:last-child{border-bottom:0}

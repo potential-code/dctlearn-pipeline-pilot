@@ -1,3 +1,4 @@
+/* client: hand-edited (hero copy no longer fades while in view; footer reveals complete at page bottom). */
 /* DCT Learn — motion layer (shared by every page and the prototype).
    Rules: one easing, short timings, nothing loops forever, never blocks input, mirrors in RTL.
    Load animations use fill-mode "backwards" so no transform/clip-path is left behind
@@ -87,8 +88,9 @@
 .pt .kpis > .kpi{animation:m-card .8s var(--m-ease) backwards}
 .pt .kpis > .kpi:nth-child(1){animation-delay:.45s}.pt .kpis > .kpi:nth-child(2){animation-delay:.55s}.pt .kpis > .kpi:nth-child(3){animation-delay:.65s}.pt .kpis > .kpi:nth-child(4){animation-delay:.75s}.pt .kpis > .kpi:nth-child(n+5){animation-delay:.85s}
 .pt .kpi .ki path,.pt .kpi .ki polyline,.pt .kpi .ki line,.pt .kpi .ki circle,.pt .kpi .ki rect{stroke-dasharray:220;animation:m-draw 1.6s .8s var(--m-ease2) backwards}
-.pt .kpi{background-image:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);background-size:250% 100%;background-position:-150% 0;background-repeat:no-repeat}
-.pt .kpi:hover{animation:m-shine 1s var(--m-ease2) 1}
+.pt .kpi{position:relative;isolation:isolate}
+.pt .kpi::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%) no-repeat;background-size:250% 100%;background-position:-150% 0;opacity:0;transition:opacity .25s}
+.pt .kpi:hover::after{opacity:1;animation:m-shine 1s var(--m-ease2) 1}
 
 /* progress + bars */
 .pt .pbar i,.pt .bar6 i{transform-origin:left;animation:m-grow 1.3s .7s var(--m-ease2) backwards}
@@ -168,10 +170,10 @@
 .hm .ac:hover li:nth-child(2){transition-delay:.05s}.hm .ac:hover li:nth-child(3){transition-delay:.1s}
 .hm .mpc{transition:transform .5s var(--m-ease)}
 .hm .mpc:hover{transform:translateY(-6px)}
-.hm .ptab .pc img{filter:grayscale(1);opacity:.72;transition:filter .45s,opacity .45s,transform .5s var(--m-ease)}
+.hm:not(.gs) .ptab .pc img{filter:grayscale(1);opacity:.72;transition:filter .45s,opacity .45s,transform .5s var(--m-ease)}
 .hm .ptab .pc:hover img{filter:none;opacity:1}
-.hm .ptab .pc span{transition:color .3s,transform .35s var(--m-ease)}
-.hm .ptab .pc:hover span{color:#BF2E32;transform:translateY(-2px)}
+.hm:not(.gs) .ptab .pc span{transition:color .3s,transform .35s var(--m-ease)}
+.hm:not(.gs) .ptab .pc:hover span{color:#BF2E32;transform:translateY(-2px)}
 .hm .arrb{transition:background-color .2s,color .2s,border-color .2s,transform .2s var(--m-ease)}
 .hm .arrb:active,.hm .tp:active,.hm .tb:active{transform:scale(.92)}
 .hm .tp{transition:background-color .2s,color .2s,border-color .2s,transform .2s var(--m-ease)}
@@ -197,60 +199,60 @@
   @keyframes m-word-r{from{translate:-18% 0}to{translate:6% 0}}
   @keyframes m-unzoom{from{scale:1.18}to{scale:1}}
   @keyframes m-hbg{to{translate:0 160px;scale:1.08}}
-  @keyframes m-hcopy{to{translate:0 -70px;opacity:.15}}
+  @keyframes m-hcopy{to{translate:0 -70px}}
   @keyframes m-hmos{to{translate:0 -150px}}
   @keyframes m-patshift{from{background-position:0 0}to{background-position:0 -96px}}
 /* --- landing: section heads, staggered --- */
-  :where(.hm) section:not(.hx) :is(.sh .l,.sh,.head > div,.head,.fq-side) > :not(.l):not(div:has(> .eyebrow)){animation:m-sv linear both;animation-timeline:view();animation-range:entry 0% cover 24%}
-  :where(.hm) section:not(.hx) :is(.sh .l,.head > div,.fq-side) > :nth-child(2){animation-range:entry 6% cover 30%}
-  :where(.hm) section:not(.hx) :is(.sh .l,.head > div,.fq-side) > :nth-child(n+3){animation-range:entry 12% cover 36%}
-  :where(.hm) section:not(.hx) :is(.sh,.head) h2{animation-name:m-h2!important}
-  :where(.hm) section:not(.hx) .eyebrow::before{animation:m-grow linear both;animation-timeline:view();animation-range:entry 20% cover 40%;transform-origin:left}
-  [dir=rtl] :where(.hm) section:not(.hx) .eyebrow::before{transform-origin:right}
+  :where(.hm:not(.gs)) section:not(.hx) :is(.sh .l,.sh,.head > div,.head,.fq-side) > :not(.l):not(div:has(> .eyebrow)){animation:m-sv linear both;animation-timeline:view();animation-range:entry 0% cover 24%}
+  :where(.hm:not(.gs)) section:not(.hx) :is(.sh .l,.head > div,.fq-side) > :nth-child(2){animation-range:entry 6% cover 30%}
+  :where(.hm:not(.gs)) section:not(.hx) :is(.sh .l,.head > div,.fq-side) > :nth-child(n+3){animation-range:entry 12% cover 36%}
+  :where(.hm:not(.gs)) section:not(.hx) :is(.sh,.head) h2{animation-name:m-h2!important}
+  :where(.hm:not(.gs)) section:not(.hx) .eyebrow::before{animation:m-grow linear both;animation-timeline:view();animation-range:entry 20% cover 40%;transform-origin:left}
+  [dir=rtl] :where(.hm:not(.gs)) section:not(.hx) .eyebrow::before{transform-origin:right}
   /* --- landing: cards and blocks, staggered --- */
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.fql,.ftr .cols) > *,:where(.hm) :is(.acc,.tabs4,.stagew){animation:m-sv linear both;animation-timeline:view();animation-range:entry 0px entry 360px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(1){animation-range:entry 0px entry 320px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(2){animation-range:entry 50px entry 370px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(3){animation-range:entry 100px entry 420px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(4){animation-range:entry 150px entry 470px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(5){animation-range:entry 200px entry 520px}
-  :where(.hm) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(n+6){animation-range:entry 250px entry 570px}
-  :where(.hm) .fql > *{animation-range:entry 0px entry 260px}
-  :where(.hm) footer.ftr .cols > :nth-child(1){animation-range:entry 0px entry 180px}
-  :where(.hm) footer.ftr .cols > :nth-child(2){animation-range:entry 30px entry 210px}
-  :where(.hm) footer.ftr .cols > :nth-child(3){animation-range:entry 60px entry 240px}
-  :where(.hm) footer.ftr .cols > :nth-child(4){animation-range:entry 90px entry 270px}
-  :where(.hm) footer.ftr .cols > :nth-child(5){animation-range:entry 120px entry 300px}
-  :where(.hm) .cgrid > *{animation:m-sv linear both;animation-timeline:view();animation-range:entry 0px entry 340px}
-  :where(.hm) .cgrid > :nth-child(2),:where(.hm) .cgrid > :nth-child(4){animation-range:entry 60px entry 400px}
-  :where(.hm) .cgrid > :nth-child(3),:where(.hm) .cgrid > :nth-child(5){animation-range:entry 120px entry 460px}
-  :where(.hm) .cgrid .cim img{animation:m-unzoom linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
-  :where(.hm) .fcta{animation:m-cta linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
-  :where(.hm) .fcta .word{animation:m-word linear both;animation-timeline:view()}
-  [dir=rtl] :where(.hm) .fcta .word{animation-name:m-word-r}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.fql,.ftr .cols) > *,:where(.hm:not(.gs)) :is(.acc,.tabs4,.stagew){animation:m-sv linear both;animation-timeline:view();animation-range:entry 0px entry 360px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(1){animation-range:entry 0px entry 320px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(2){animation-range:entry 50px entry 370px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(3){animation-range:entry 100px entry 420px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(4){animation-range:entry 150px entry 470px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(5){animation-range:entry 200px entry 520px}
+  :where(.hm:not(.gs)) :is(.ev-grid,.aud2,.mp,.ptab,.ftr .cols) > *:nth-child(n+6){animation-range:entry 250px entry 570px}
+  :where(.hm:not(.gs)) .fql > *{animation-range:entry 0px entry 260px}
+  :where(.hm:not(.gs)) footer.ftr .cols > :nth-child(1){animation-range:entry 0% entry 50%}
+  :where(.hm:not(.gs)) footer.ftr .cols > :nth-child(2){animation-range:entry 5% entry 55%}
+  :where(.hm:not(.gs)) footer.ftr .cols > :nth-child(3){animation-range:entry 10% entry 60%}
+  :where(.hm:not(.gs)) footer.ftr .cols > :nth-child(4){animation-range:entry 15% entry 65%}
+  :where(.hm:not(.gs)) footer.ftr .cols > :nth-child(5){animation-range:entry 20% entry 70%}
+  :where(.hm:not(.gs)) .cgrid > *{animation:m-sv linear both;animation-timeline:view();animation-range:entry 0px entry 340px}
+  :where(.hm:not(.gs)) .cgrid > :nth-child(2),:where(.hm:not(.gs)) .cgrid > :nth-child(4){animation-range:entry 60px entry 400px}
+  :where(.hm:not(.gs)) .cgrid > :nth-child(3),:where(.hm:not(.gs)) .cgrid > :nth-child(5){animation-range:entry 120px entry 460px}
+  :where(.hm:not(.gs)) .cgrid .cim img{animation:m-unzoom linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+  :where(.hm:not(.gs)) .fcta{animation:m-cta linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+  :where(.hm:not(.gs)) .fcta .word{animation:m-word linear both;animation-timeline:view()}
+  [dir=rtl] :where(.hm:not(.gs)) .fcta .word{animation-name:m-word-r}
   /* --- landing: stats + bento now play when scrolled into view (were firing off-screen at load) --- */
-  :where(.hm) .srow{view-timeline:--srow}
-  :where(.hm) .bento{view-timeline:--bento}
-  :where(.hm) .sc::before,:where(.hm) .sc .ph,:where(.hm) .ph.p-prog img{animation-timeline:--srow!important;animation-delay:0s!important;animation-fill-mode:both!important}
-  :where(.hm) .sc:nth-child(1) :is(.ph,.ph img),:where(.hm) .sc:nth-child(1)::before{animation-range:entry 30px entry 380px}
-  :where(.hm) .sc:nth-child(2) :is(.ph,.ph img),:where(.hm) .sc:nth-child(2)::before{animation-range:entry 90px entry 440px}
-  :where(.hm) .sc:nth-child(3) :is(.ph,.ph img),:where(.hm) .sc:nth-child(3)::before{animation-range:entry 150px entry 500px}
-  :where(.hm) .sc:nth-child(4) :is(.ph,.ph img),:where(.hm) .sc:nth-child(4)::before{animation-range:entry 210px entry 560px}
-  :where(.hm) .sc :is(.ix,.v,.lb){animation:m-sv linear both;animation-timeline:--srow;animation-range:entry 40px entry 380px}
-  :where(.hm) .bc{animation-timeline:--bento!important;animation-delay:0s!important;animation-fill-mode:both!important;animation-range:entry 0px entry 420px}
-  :where(.hm) .bc:nth-child(2){animation-range:entry 70px entry 490px}
-  :where(.hm) .bc:nth-child(3){animation-range:entry 140px entry 560px}
-  :where(.hm) .bc:nth-child(4){animation-range:entry 210px entry 630px}
-  :where(.hm) .bc:nth-child(n+5){animation-range:entry 280px entry 700px}
-  :where(.hm) .bc img{transform:none!important;animation:m-unzoom linear both!important;animation-timeline:--bento!important;animation-range:entry 0px entry 750px!important}
-  :where(.hm) .bc:hover img{transform:scale(1.07)!important}
+  :where(.hm:not(.gs)) .srow{view-timeline:--srow}
+  :where(.hm:not(.gs)) .bento{view-timeline:--bento}
+  :where(.hm:not(.gs)) .sc::before,:where(.hm:not(.gs)) .sc .ph,:where(.hm:not(.gs)) .ph.p-prog img{animation-timeline:--srow!important;animation-delay:0s!important;animation-fill-mode:both!important}
+  :where(.hm:not(.gs)) .sc:nth-child(1) :is(.ph,.ph img),:where(.hm:not(.gs)) .sc:nth-child(1)::before{animation-range:entry 30px entry 380px}
+  :where(.hm:not(.gs)) .sc:nth-child(2) :is(.ph,.ph img),:where(.hm:not(.gs)) .sc:nth-child(2)::before{animation-range:entry 90px entry 440px}
+  :where(.hm:not(.gs)) .sc:nth-child(3) :is(.ph,.ph img),:where(.hm:not(.gs)) .sc:nth-child(3)::before{animation-range:entry 150px entry 500px}
+  :where(.hm:not(.gs)) .sc:nth-child(4) :is(.ph,.ph img),:where(.hm:not(.gs)) .sc:nth-child(4)::before{animation-range:entry 210px entry 560px}
+  :where(.hm:not(.gs)) .sc :is(.ix,.v,.lb){animation:m-sv linear both;animation-timeline:--srow;animation-range:entry 40px entry 380px}
+  :where(.hm:not(.gs)) .bc{animation-timeline:--bento!important;animation-delay:0s!important;animation-fill-mode:both!important;animation-range:entry 0px entry 420px}
+  :where(.hm:not(.gs)) .bc:nth-child(2){animation-range:entry 70px entry 490px}
+  :where(.hm:not(.gs)) .bc:nth-child(3){animation-range:entry 140px entry 560px}
+  :where(.hm:not(.gs)) .bc:nth-child(4){animation-range:entry 210px entry 630px}
+  :where(.hm:not(.gs)) .bc:nth-child(n+5){animation-range:entry 280px entry 700px}
+  :where(.hm:not(.gs)) .bc img{transform:none!important;animation:m-unzoom linear both!important;animation-timeline:--bento!important;animation-range:entry 0px entry 750px!important}
+  :where(.hm:not(.gs)) .bc:hover img{transform:scale(1.07)!important}
   /* --- landing: hero depth while scrolling away --- */
-  :where(.hm) .hx .hbg img{animation:m-hbg linear both;animation-timeline:scroll(nearest);animation-range:0px 900px}
-  :where(.hm) .hx .inner .copy{animation:m-hcopy linear both;animation-timeline:scroll(nearest);animation-range:0px 800px}
-  :where(.hm) .hx .mosaic{animation:m-hmos linear both;animation-timeline:scroll(nearest);animation-range:0px 900px}
-  :where(.hm) section:not(.hx) :is(.ac,.mpc,.evc .im) img{animation:m-sv-img linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+  :where(.hm:not(.gs)) .hx .hbg img{animation:m-hbg linear both;animation-timeline:scroll(nearest);animation-range:0px 900px}
+  :where(.hm:not(.gs)) .hx .inner .copy{animation:m-hcopy linear both;animation-timeline:scroll(nearest);animation-range:0px 800px}
+  :where(.hm:not(.gs)) .hx .mosaic{animation:m-hmos linear both;animation-timeline:scroll(nearest);animation-range:0px 900px}
+  :where(.hm:not(.gs)) section:not(.hx) :is(.ac,.mpc,.evc .im) img{animation:m-sv-img linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
   :where(.hm,.pt,.auth) .motif{animation:m-par linear both;animation-timeline:view()}
-  :where(.hm) .pat::before,:where(.hm) .pat::after{animation:m-patshift linear both;animation-timeline:view()}
+  :where(.hm:not(.gs)) .pat::before,:where(.hm:not(.gs)) .pat::after{animation:m-patshift linear both;animation-timeline:view()}
 }
 }
 

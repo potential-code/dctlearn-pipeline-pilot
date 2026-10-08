@@ -1,3 +1,4 @@
+/* client: hand-edited (collapsed FAQ answers hidden from keyboard/AT; rubric weight column fits "/100"). */
 /* Page CSS from the Claude Design artboard P03-Students, scoped under .pgs-P03-Students. */
 .pgs-P03-Students{margin:0;background:#1D1650}
 :where(.pgs-P03-Students) .hm{--ink:#1D1650;--ink2:#2D2470;overflow:hidden}
@@ -126,8 +127,8 @@
 :where(.pgs-P03-Students) .pm::after{transform:rotate(90deg)}
 :where(.pgs-P03-Students) .fi.on .pm::after{transform:rotate(0)}
 :where(.pgs-P03-Students) .fi.on .pm::before,:where(.pgs-P03-Students) .fi.on .pm::after{background:#D63539}
-:where(.pgs-P03-Students) .fi .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-:where(.pgs-P03-Students) .fi.on .ans{grid-template-rows:1fr}
+:where(.pgs-P03-Students) .fi .ans{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .45s var(--ease),visibility 0s linear .45s}
+:where(.pgs-P03-Students) .fi.on .ans{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .45s var(--ease),visibility 0s}
 :where(.pgs-P03-Students) .fi .ans > div{overflow:hidden}
 :where(.pgs-P03-Students) .fi .ans p{margin:0 36px 28px 76px;color:#4A525B;font-size:1rem;max-width:62ch}
 :where(.pgs-P03-Students) [dir=rtl] .fi .ans p{margin:0 76px 28px 36px}
@@ -314,10 +315,10 @@
 :where(.pgs-P03-Students) .sbx{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.65);font-weight:700;margin-bottom:28px}
 :where(.pgs-P03-Students) .crit{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.2)}
 :where(.pgs-P03-Students) .crit li{border-bottom:1px solid rgba(255,255,255,.2)}
-:where(.pgs-P03-Students) .crit button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:76px 1fr auto;gap:16px;align-items:center;padding:20px 8px;transition:background .3s}
+:where(.pgs-P03-Students) .crit button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:108px minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 8px;transition:background .3s}
 :where(.pgs-P03-Students) .crit button:hover,:where(.pgs-P03-Students) .crit button.on{background:rgba(255,255,255,.06)}
 :where(.pgs-P03-Students) .crit button:focus-visible{outline:3px solid #FFB4AC;outline-offset:-3px}
-:where(.pgs-P03-Students) .crit .w{font-family:var(--font);font-weight:900;font-size:2.25rem;line-height:1;color:var(--c)}
+:where(.pgs-P03-Students) .crit .w{font-family:var(--font);font-weight:900;font-size:2.25rem;line-height:1;color:var(--c);white-space:nowrap}
 :where(.pgs-P03-Students) .crit .w small{font-size:.9375rem;margin-inline-start:2px;color:rgba(255,255,255,.7)}
 :where(.pgs-P03-Students) .crit b{display:block;color:#fff;font-size:1.0625rem}
 :where(.pgs-P03-Students) .crit .m{display:block;color:rgba(255,255,255,.72);font-size:.875rem;margin-top:2px}

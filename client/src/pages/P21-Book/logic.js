@@ -1,3 +1,4 @@
+// client: hand-edited (free slots disabled with a reason while a booking is requested/confirmed; requested step stays visible longer)
 // Ported verbatim from the Claude Design artboard P21-Book (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -78,7 +79,9 @@ export default class Component extends DCLogic {
       if (st.nb && st.nb.day === n && st.nb.h === h && st.nb.status !== 'cancelled') return { ...base2, info:true, cls: st.nb.status === 'requested' ? 'req' : 'mine', sub: st.nb.status === 'requested' ? L('Requested','مطلوبة') : L('Session 3','الجلسة 3'), aria: L('Your session 3, ','جلستك 3، ') + dateLbl(n, h, true) };
       if (TAKEN[key]) return { ...base2, info:true, cls:'taken', sub: L('Booked','محجوز'), aria: L('Booked, ','محجوز، ') + dateLbl(n, h, true) };
       const on = picking && st.sel && st.sel.day === n && st.sel.h === h;
-      return { ...base2, btn:true, cls: on ? 'sel' : 'free', on: on ? 'true' : 'false', sub: on ? L('Selected','محدد') : L('Free','متاح'), aria: dateLbl(n, h, true),
+      const lockMsg = picking ? '' : st.phase === 'requested' ? L('Wait for this request to be confirmed before picking another time','انتظر تأكيد هذا الطلب قبل اختيار موعد آخر') : L('Choose “Book another” to pick a new time','اختر «احجز جلسة أخرى» لاختيار موعد جديد');
+      return { ...base2, btn:true, cls: on ? 'sel' : 'free', on: on ? 'true' : 'false', sub: on ? L('Selected','محدد') : L('Free','متاح'), aria: dateLbl(n, h, true) + (lockMsg ? ' · ' + lockMsg : ''),
+        dis: picking ? 'false' : 'true', title: lockMsg || undefined,
         pick: () => { if (picking) this.setState({ sel: on ? null : { day:n, h }, err:false }); } };
     }) }));
     const weekLabel = L((4 + 7 * w) + '–' + (10 + 7 * w) + ' October 2026', (4 + 7 * w) + '–' + (10 + 7 * w) + ' أكتوبر 2026');
@@ -87,7 +90,7 @@ export default class Component extends DCLogic {
       if (!st.sel) { this.setState({ err:true }); return; }
       const nb = { day: st.sel.day, h: st.sel.h, status:'requested' };
       this.setState({ phase:'requested', nb, err:false });
-      clearTimeout(this.t1); this.t1 = setTimeout(() => { this.setState({ phase:'confirmed', nb: { ...nb, status:'confirmed' }, toast: L('Session 3 confirmed','تم تأكيد الجلسة 3') }); clearTimeout(this.t2); this.t2 = setTimeout(() => this.setState({ toast:'' }), 2600); }, 1600);
+      clearTimeout(this.t1); this.t1 = setTimeout(() => { this.setState({ phase:'confirmed', nb: { ...nb, status:'confirmed' }, toast: L('Session 3 confirmed','تم تأكيد الجلسة 3') }); clearTimeout(this.t2); this.t2 = setTimeout(() => this.setState({ toast:'' }), 2600); }, 2600);
     };
     const flash = (msg) => { this.setState({ toast: msg }); clearTimeout(this.t2); this.t2 = setTimeout(() => this.setState({ toast:'' }), 2400); };
     const stars = [1,2,3,4,5].map(() => ({}));

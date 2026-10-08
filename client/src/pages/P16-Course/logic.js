@@ -1,3 +1,4 @@
+// client: hand-edited (unit deep links u2/final-check; validation focus)
 // Ported verbatim from the Claude Design artboard P16-Course (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -22,12 +23,22 @@ export default class Component extends DCLogic {
 
   flash(msg){ this.setState({ toast: msg }); clearTimeout(this._tt); this._tt = setTimeout(() => this.setState({ toast:'' }), 3200); }
 
+  /* after a failed submit: bring the error summary into view and move focus to it */
+  focusErr(id){
+    clearTimeout(this.tf);
+    this.tf = setTimeout(() => { const el = document.getElementById(id); if (!el) return; el.scrollIntoView({ block:'center' }); el.focus({ preventScroll:true }); }, 0);
+  }
   // apply a specbar / prop screen preset
   preset(name, course){
     const st = this.fresh();
     const nU = course === 'museum-101' ? 5 : 4;
     const all = Array.from({ length:nU }, (_, i) => i + 1);
     const ok = { q1:'a', q2:'a', q3:'a', q4:'t', q5:'I welcome visitors at Qasr Al Hosn and help them plan their next cultural visit.' };
+    /* URL slugs from the route (/learn/:course/u2, /learn/:course/final-check) */
+    name = String(name || 'outline');
+    if (/^u\d+$/.test(name)) name = 'unit' + name.slice(1);
+    else if (name === 'final-check') name = 'quiz';
+    if (/^unit\d+$/.test(name) && +name.slice(4) > nU) name = 'outline';
     if (name === 'outline') { st.screen = 'outline'; }
     else if (/^unit/.test(name)) { const u = +name.slice(4); st.screen = 'unit'; st.unit = u; st.done = all.filter(x => x < u); }
     else if (name === 'quiz') { st.screen = 'quiz'; st.done = all; }
@@ -229,7 +240,7 @@ export default class Component extends DCLogic {
     const answered = QZ.filter(q => q.open ? (qa[q.k] || '').trim().length >= 10 : qa[q.k]).length;
     const attempts = st.attempts;
     const submitQuiz = () => {
-      if (answered < 5) { set({ qErr:true }); return; }
+      if (answered < 5) { set({ qErr:true }); this.focusErr('qz-err'); return; }
       set({ busy:true });
       setTimeout(() => {
         const correct = QZ.filter(q => q.open ? (qa[q.k] || '').trim().length >= 10 : qa[q.k] === q.ok).length;

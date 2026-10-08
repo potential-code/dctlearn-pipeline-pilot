@@ -1,3 +1,4 @@
+/* client: hand-edited (round avatars). */
 /* Page CSS from the Claude Design artboard P14-Dashboard, scoped under .pgs-P14-Dashboard. */
 .pgs-P14-Dashboard{margin:0;background:#F7F5F2}
 :where(.pgs-P14-Dashboard) .ds.pt{position:relative}
@@ -92,6 +93,7 @@
 :where(.pgs-P14-Dashboard) .tour3 .topb{z-index:70}
 :where(.pgs-P14-Dashboard) .tour3 .topb .tools{outline:3px solid #F7C337;outline-offset:6px;border-radius:10px}
 :where(.pgs-P14-Dashboard) .tpop{position:absolute;z-index:75;width:360px;background:#fff;border-radius:8px;border-start-end-radius:36px;padding:22px 24px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);animation:pop .35s var(--ease)}
+:where(.pgs-P14-Dashboard) .tpop .xbtn.tx{position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px}
 :where(.pgs-P14-Dashboard) .tpop h3{font-size:1.25rem;color:#1D1650}
 :where(.pgs-P14-Dashboard) .tpop p{color:#4A525B;font-size:.9375rem}
 :where(.pgs-P14-Dashboard) .tpop .ar{position:absolute;width:16px;height:16px;background:#fff;transform:rotate(45deg)}
@@ -135,3 +137,5 @@
 }
 
 
+/* client: initials avatars are circles, not quarter shapes */
+:where(.pgs-P14-Dashboard) .ment .ph{border-radius:50%!important}

@@ -24,6 +24,24 @@ export function AppShell({ sh, children }: { sh: ShellVals | undefined; children
     setMenuOpen(false)
   }, [pathname])
 
+  // Mobile nav sheet: Escape closes it, focus moves into it, and the page behind doesn't scroll.
+  useEffect(() => {
+    if (!navOpen) return
+    const sheet = document.getElementById('dct-sb')
+    sheet?.querySelector<HTMLElement>('nav a')?.focus({ preventScroll: true })
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setNavOpen(false)
+      document.querySelector<HTMLElement>('.topb .navbtn')?.focus()
+    }
+    document.documentElement.classList.add('nav-open')
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.documentElement.classList.remove('nav-open')
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [navOpen])
+
   useEffect(() => {
     if (!menuOpen) return
     const onDown = (e: MouseEvent) => {
@@ -51,11 +69,12 @@ export function AppShell({ sh, children }: { sh: ShellVals | undefined; children
         type="checkbox"
         id="dct-nav-cb"
         className="nav-cb"
-        aria-label={sh.menuAria}
+        aria-hidden="true"
+        tabIndex={-1}
         checked={navOpen}
         onChange={(e) => setNavOpen(e.currentTarget.checked)}
       />
-      <aside className="sb" aria-label={sh.navLabel}>
+      <aside className="sb" id="dct-sb" aria-label={sh.navLabel}>
         <div className="patD fade-b" aria-hidden="true" />
         <div className="brand">
           <a href="/" className="logo" aria-label="DCT Learn">
@@ -131,7 +150,15 @@ export function AppShell({ sh, children }: { sh: ShellVals | undefined; children
       <label htmlFor="dct-nav-cb" className="sb-scrim" aria-hidden="true" />
       <div className="mainc">
         <header className="topb">
-          <label htmlFor="dct-nav-cb" className="navbtn" title={sh.menuAria}>
+          <button
+            type="button"
+            className="navbtn"
+            title={sh.menuAria}
+            aria-label={sh.menuAria}
+            aria-expanded={navOpen}
+            aria-controls="dct-sb"
+            onClick={() => setNavOpen((o) => !o)}
+          >
             <svg
               width="20"
               height="20"
@@ -146,7 +173,7 @@ export function AppShell({ sh, children }: { sh: ShellVals | undefined; children
               <line x1="4" y1="12" x2="20" y2="12" />
               <line x1="4" y1="17" x2="20" y2="17" />
             </svg>
-          </label>
+          </button>
           <nav className="crumbs" aria-label="Breadcrumb">
             {sh.crumbs.map((c) => (
               <Fragment key={`${c.label}-${c.last}`}>

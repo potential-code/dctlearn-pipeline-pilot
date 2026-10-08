@@ -1,22 +1,20 @@
-// Ported verbatim from the Claude Design artboard Home (DCLogic class).
+// client: hand-edited (landing rebuild: hub reset, how-it-works restart, nav/footer, motion). Do not regenerate.
+// Ported from the Claude Design artboard Home (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
 
 export default class Component extends DCLogic {
-  constructor(p){ super(p); this.state = { locale:null, panel:0, step:0, k:0, tick:0, paused:false, fq:'', fcat:'all', open:0 }; }
+  constructor(p){ super(p); this.state = { locale:null, panel:0, step:0, tick:0, paused:false, howOff:true, howRun:0, fq:'', fcat:'all', open:0 }; }
   componentDidMount(){
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { this.setState({ k:1 }); return; }
-    const t0 = performance.now(); const dur = 1800;
-    const run = (now) => { const p = Math.min(1, (now - t0 - 500) / dur); this.setState({ k: p < 0 ? 0 : 1 - Math.pow(1 - p, 3) }); if (p < 1) this.raf = requestAnimationFrame(run); };
-    this.raf = requestAnimationFrame(run);
+    if (reduce) return;
     this.timer = setInterval(() => this.setState({ tick: this.state.tick + 1 }), 3600);
   }
-  componentWillUnmount(){ cancelAnimationFrame(this.raf); clearInterval(this.timer); }
+  componentWillUnmount(){ clearInterval(this.timer); }
   renderVals(){
     const lang = this.state.locale || this.props.locale || 'en';
     const ar = lang === 'ar';
-    const EN = { spec:'Main home', skip:'Skip to content', navProg:'Programmes', navHow:'How it works', navCourses:'Courses', navFaq:'FAQ', navEmp:'Employees', navStu:'Students', signIn:'Sign in', register:'DCT employee? Register', forgot:'Reset password',
+    const EN = { spec:'Main home', skip:'Skip to content', navProg:'Programmes', navHow:'How it works', navCourses:'Courses', navFaq:'FAQ', navAud:'Who it’s for', navEv:'Events', navPart:'Partners', ftrPage:'On this page', menu:'Menu', close:'Close menu', hoverHint:'Hover a programme to preview it', tapHint:'Tap a programme to preview it', startC:'Start course', upNext:'Up next', allEv:'See every session after sign-in', navEmp:'Employees', navStu:'Students', signIn:'Sign in', register:'DCT employee? Register', forgot:'Reset password',
       kNew:'New', kicker:'Elevate 2026 mentee registration is open',
       h1:'Learn the culture you help create', hlWords:[3,4,5],
       sub:'DCT Learn is the Department of Culture and Tourism – Abu Dhabi’s home for courses, mentoring and programmes — for colleagues, museum teams, partners and students, in Arabic and English.',
@@ -40,7 +38,7 @@ export default class Component extends DCLogic {
       helpT:'Still stuck?', helpB:'The DCT Learn team replies within one working day.',
       fEy:'Ready when you are', fTitle:'Your next course is one sign-in away', fSub:'Pick up where you left off on any device, in Arabic or English.', word:'Learn',
       ftrBlurb:'DCT Learn is the learning platform of the Department of Culture and Tourism – Abu Dhabi for employees, partners and the wider cultural community.', ftrExplore:'Explore', ftrAccount:'Account', ftrContact:'Contact', privacy:'Privacy', access:'Accessibility', copyright:'Department of Culture and Tourism – Abu Dhabi. All rights reserved.', powered:'Powered by' };
-    const AR = { spec:'الصفحة الرئيسية', skip:'انتقل إلى المحتوى', navProg:'البرامج', navHow:'كيف تعمل', navCourses:'الدورات', navFaq:'الأسئلة الشائعة', navEmp:'الموظفون', navStu:'الطلاب', signIn:'تسجيل الدخول', register:'موظف في الدائرة؟ سجّل', forgot:'إعادة تعيين كلمة المرور',
+    const AR = { spec:'الصفحة الرئيسية', skip:'انتقل إلى المحتوى', navProg:'البرامج', navHow:'كيف تعمل', navCourses:'الدورات', navFaq:'الأسئلة الشائعة', navAud:'لمن المنصة', navEv:'الفعاليات', navPart:'الشركاء', ftrPage:'في هذه الصفحة', menu:'القائمة', close:'إغلاق القائمة', hoverHint:'مرّر فوق أي برنامج لمعاينته', tapHint:'اضغط على أي برنامج لمعاينته', startC:'ابدأ الدورة', upNext:'التالي', allEv:'شاهد كل الجلسات بعد تسجيل الدخول', navEmp:'الموظفون', navStu:'الطلاب', signIn:'تسجيل الدخول', register:'موظف في الدائرة؟ سجّل', forgot:'إعادة تعيين كلمة المرور',
       kNew:'جديد', kicker:'التسجيل للمتدربين في إرتقاء 2026 مفتوح',
       h1:'تعلّم الثقافة التي تساهم في صنعها', hlWords:[1,2],
       sub:'DCT Learn هي منصة دائرة الثقافة والسياحة – أبوظبي للدورات والإرشاد والبرامج — للزملاء وفرق المتاحف والشركاء والطلاب، بالعربية والإنجليزية.',
@@ -70,9 +68,7 @@ export default class Component extends DCLogic {
     const tk = this.state.tick;
     const set = (arr, off) => arr.map((src, i) => ({ src, cls: ((tk + off) % arr.length) === i ? 'on' : '' }));
     const words = t.h1.split(' ').map((w, i) => ({ t:w, cls: t.hlWords.indexOf(i) >= 0 ? 'hl' : '', d:(0.25 + i*0.09)+'s' }));
-    const k = this.state.k;
-    const fmt = (n) => Math.round(n).toLocaleString(ar ? 'ar-AE' : 'en-US');
-    const stats = [9,23,3,1284].map((x, i) => ({ v: fmt(x*k), plus: i === 3 ? '+' : '', l:t.s[i], tag:t.sTag[i], ix:'0'+(i+1), dl:(0.15 + i*0.15)+'s' }));
+    const stats = [9,23,3,1284].map((x, i) => ({ n: x, loc: ar ? 'ar-AE' : 'en-US', plus: i === 3 ? '+' : '', l:t.s[i], tag:t.sTag[i], ix:'0'+(i+1), dl:(0.15 + i*0.15)+'s' }));
     const progImgs = [IM.emp, IM.elev, IM.znm, IM.zu, IM.museo, IM.nibras, B('d87a92b0c7b42fcdfdc06b70145ff332'), IM.ruwaad, IM.csmd].map((src, i) => ({ src, i }));
     const courseImgs = [IM.C01, IM.C07, IM.C14, B('17f39841203c4958a320c0442a073383'), IM.C18].map((src, i) => ({ src, i, r: [-9,-4,1,5,9][i] + 'deg' }));
     const P = [
@@ -87,6 +83,7 @@ export default class Component extends DCLogic {
     const pi = this.state.panel;
     const panels = P.map((x, i) => ({ n: String(i+1).padStart(2,'0'), name:x[1], sub:x[2], desc:x[3], img:x[4], accent:x[5], mode: x[6] === 'interest' ? t.interest : t.invite, tags:x[7], cls: i === pi ? 'on' : '', exp: i === pi ? 'true' : 'false', cta: x[6] === 'interest' ? t.regInt : t.enter, pick: () => { if (this.state.panel !== i) this.setState({ panel:i }); } }));
     const st = this.state.step;
+    const hubColor = { 'DCT Employees':'#EE3E43', 'موظفو الدائرة':'#EE3E43', 'Zayed National Museum':'#F7C337', 'متحف زايد الوطني':'#F7C337', MuseoPro:'#F77860', 'Nibras':'#2FC4DB', 'نبراس':'#2FC4DB' };
     const steps = t.st.map((x, i) => ({ n: '0'+(i+1), t:x[0], cls: i === st ? 'on' : '', on: i === st ? 'true' : 'false', active: i === st, pick: () => this.setState({ step:i }) }));
     const cur = t.st[st];
     const curStep = [{ k: t.stepK + ' 0' + (st+1), t:cur[0], b:cur[1], l:cur[2] }];
@@ -98,7 +95,7 @@ export default class Component extends DCLogic {
       { title: ar?'مدخل إلى المتاحف':'Museum 101', cat: ar?'المتاحف':'Museums', level: ar?'مبتدئ':'Beginner', min: ar?'35 د':'35 min', units: ar?'3 دروس':'3 units', img:IM.C02, desc: ar?'كيف تعمل المتاحف من المجموعات إلى تجربة الزائر.':'How museums work, from collections to the visitor experience.', where: ar?'متحف زايد الوطني':'Zayed National Museum', mand:true, cls:'' },
       { title: ar?'توثيق التراث الثقافي':'Documentation of Cultural Heritage', cat: ar?'التوثيق':'Documentation', level: ar?'متوسط':'Intermediate', min: ar?'50 د':'50 min', units: ar?'3 دروس':'3 units', img:IM.C14, desc: ar?'أساسيات توثيق حالة القطع الأثرية.':'The fundamentals of documenting an artefact’s condition.', where:'MuseoPro', mand:false, cls:'' },
       { title: ar?'مقدمة في الذكاء الاصطناعي التوليدي':'Introduction to Generative AI', cat: ar?'وعي':'AI Aware', level: ar?'مبتدئ':'Beginner', min: ar?'120 د':'120 min', units: ar?'شهادة خارجية':'External cert', img:IM.C18, desc: ar?'المسار الأول في نبراس.':'The first track in Nibras.', where: ar?'نبراس':'Nibras', mand:false, cls:'' }
-    ].map((c, i) => ({ ...c, dl:(i*0.12)+'s' }));
+    ].map((c, i) => ({ ...c, dl:(i*0.12)+'s', hc: hubColor[c.where] || '#EE3E43' }));
     const events = (ar ? [
       { mon:'أكتوبر', day:'06', cat:'التقييمات', title:'إحاطة السلامة في المتحف', desc:'جولة ميدانية على المخارج ونقاط التجمع والإبلاغ عن الحوادث.', time:'اليوم · 09:00–10:00 بتوقيت الخليج', where:'متحف زايد الوطني، السعديات', cta:'لأعضاء متحف زايد', live:true },
       { mon:'أكتوبر', day:'08', cat:'الجلسات', title:'جلسة انطلاق الإرشاد', desc:'تعرّف على دفعتك واتفقوا على طريقة الجلسات وحدّد هدف GROW الأول.', time:'الأربعاء · 10:00–11:00 بتوقيت الخليج', where:'Zoom · إرتقاء 2026', cta:'سجّل في إرتقاء', live:false },
@@ -144,7 +141,11 @@ export default class Component extends DCLogic {
       tA: set([IM.csmd, IM.C13, IM.C05], 0), tB: set([IM.elev, IM.ruwaad, IM.C06], 1), tC: set([IM.C02, IM.C14, IM.C13], 2), tD: set([IM.nibras, IM.znm, IM.zu], 0),
       pIdx: String(pi+1).padStart(2,'0'), pTot: String(P.length).padStart(2,'0'),
       url: t.urls[st], bv0: st === 0 ? 'on' : '', bv1: st === 1 ? 'on' : '', bv2: st === 2 ? 'on' : '', bv3: st === 3 ? 'on' : '',
-      howCls: this.state.paused ? 'paused' : '',
+      howCls: (this.state.paused || this.state.howOff) ? 'paused' : '', howRun: this.state.howRun,
+      nav: [['programmes',t.navProg],['how',t.navHow],['courses',t.navCourses],['audience',t.navAud],['events',t.navEv],['faq',t.navFaq]].map(([id, l]) => ({ id, l, href:'#'+id })),
+      panelReset: () => { if (this.state.panel !== 0) this.setState({ panel:0 }); },
+      howEnter: () => this.setState({ step:0, howRun: this.state.howRun + 1, howOff:false }),
+      howLeave: () => this.setState({ howOff:true }),
       enCls: ar?'':'is-on', arCls: ar?'is-on':'',
       setEn: () => this.setState({ locale:'en' }), setAr: () => this.setState({ locale:'ar' }),
       toggleLang: () => this.setState({ locale: ar ? 'en' : 'ar' }), langLabel: ar ? 'EN' : 'عربي',

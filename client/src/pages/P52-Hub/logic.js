@@ -1,10 +1,11 @@
+// client: hand-edited (workshops default to Past when nothing is upcoming)
 // Ported verbatim from the Claude Design artboard P52-Hub (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
 import { shellHelper } from '@/components/shell/shellHelper'
 
 export default class Component extends DCLogic {
-  constructor(p){ super(p); this.state = { locale:null, site:null, tab:null, q:'', cat:'all', st:'all', sort:'mand', mand:null, when:'upcoming', mcat:'all', type:'all', notified:{}, toast:'' }; }
+  constructor(p){ super(p); this.state = { locale:null, site:null, tab:null, q:'', cat:'all', st:'all', sort:'mand', mand:null, when:null, mcat:'all', type:'all', notified:{}, toast:'' }; }
 
   /* ===== SHELL HELPER (copy verbatim into every signed-in page) =====
      role: learner | mentor | judge | sub_admin | admin
@@ -16,7 +17,7 @@ export default class Component extends DCLogic {
   /* ===== END SHELL HELPER ===== */
 
   flash(msg){ this.setState({ toast: msg }); clearTimeout(this._tt); this._tt = setTimeout(() => this.setState({ toast:'' }), 2600); }
-  reset(){ return { q:'', cat:'all', st:'all', sort:'mand', mand:null, when:'upcoming', mcat:'all', type:'all' }; }
+  reset(){ return { q:'', cat:'all', st:'all', sort:'mand', mand:null, when:null, mcat:'all', type:'all' }; }
 
   renderVals(){
     const lang = this.state.locale || this.props.locale || 'en';
@@ -141,7 +142,8 @@ export default class Component extends DCLogic {
       elevate:[ { when:'upcoming', day:'08', mon:L('Oct','أكتوبر'), title:L('Mentoring Kick-off Session','جلسة انطلاق الإرشاد'), cat:L('Sessions','الجلسات'), time:L('Thu 8 Oct 2026 · 10:00–11:00 Gulf','الخميس 8 أكتوبر 2026 · 10:00–11:00 بتوقيت الخليج'), venue:'Zoom', vIcon:'M23 7l-7 5 7 5zM3 5h11a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z', desc:L('Meet the 2026 cohort, your mentors and the programme team. We’ll walk through the GROW model and the six-session journey.','تعرّف على دفعة 2026 ومرشديك وفريق البرنامج، ونستعرض نموذج GROW ورحلة الجلسات الست.'), tag:L('Upcoming','قادمة'), tagCls:'info', cta:L('Join on Zoom','انضم عبر Zoom'), href:'https://zoom.example/kickoff', target:'_blank', btn:'btn-primary', cal:true, hint:L('Link opens 15 minutes before','يفتح الرابط قبل 15 دقيقة'), cls:'' } ],
       znm:[ { when:'upcoming', day:'06', mon:L('Oct','أكتوبر'), title:L('Museum Safety Briefing','إحاطة السلامة في المتحف'), cat:L('Assessments','التقييمات'), time:L('Today · 09:00–10:00 Gulf','اليوم · 09:00–10:00 بتوقيت الخليج'), venue:L('Zayed National Museum, Saadiyat','متحف زايد الوطني، السعديات'), vIcon:'M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z', desc:L('Mandatory on-site briefing for all front-of-house staff: evacuation routes, incident reporting and visitor safety.','إحاطة حضورية إلزامية لجميع موظفي الواجهة: مسارات الإخلاء والإبلاغ عن الحوادث وسلامة الزوار.'), tag:L('Live now','مباشر الآن'), tagCls:'red', live:true, cta:L('Get directions','الاتجاهات'), href:'https://maps.example/zayed-national-museum', target:'_blank', btn:'btn-primary', hint:L('Started at 09:00 · on site','بدأت 09:00 · حضورياً'), cls:'live' } ]
     }[site] || [];
-    const when = this.state.when;
+    /* default filter: Upcoming, or Past when nothing is upcoming (so the tab count never opens on an empty list) */
+    const when = this.state.when || (EV.some(e => e.when === 'upcoming') ? 'upcoming' : 'past');
     const events = EV.filter(e => e.when === when).map(e => Object.assign({ cal:false, live:false }, e, { when:e.time }));
     const whenBtns = [['upcoming',L('Upcoming','القادمة')],['past',L('Past','السابقة')]].map(x => ({ label:x[1], cls: when === x[0] ? 'is-on' : '', on: when === x[0] ? 'true' : 'false', pick: () => this.setState({ when:x[0] }) }));
 

@@ -1,7 +1,9 @@
+// client: hand-edited (signed-in user instead of the seed's Ahmed/Sara; round status follows the screen)
 // Ported verbatim from the Claude Design artboard P28-Competition (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
 import { shellHelper } from '@/components/shell/shellHelper'
+import { readSession } from '@/session/SessionProvider'
 
 export default class Component extends DCLogic {
   constructor(p){ super(p); this.state = { locale:null, screen:null, sub:null, dlg:null, ack:false, ackErr:false, elErr:false, busy:false }; }
@@ -29,9 +31,10 @@ export default class Component extends DCLogic {
     /* ---- seed: competition (SEED §6) ---- */
     const RUBRIC = [ { k:'name', w:15, t:['Name / tagline captures the essence','الاسم والشعار يعبّران عن الجوهر'] }, { k:'desc', w:25, t:['Short description communicates the key message','الوصف المختصر يوصل الرسالة الأساسية'] },
                      { k:'crea', w:20, t:['Creativity and originality','الإبداع والأصالة'] }, { k:'grab', w:40, t:['Will it grab attention and drive participation','قدرته على جذب الانتباه وتحفيز المشاركة'] } ];
-    const ZU_USER = (who) => who === 'sara'
-      ? { userName: L('Sara Haddad','سارة حداد'), initials:'SH', userSub: L('ZU student','طالبة في جامعة زايد'), roleLabel: L('Learner','متعلّمة') }
-      : { userName: L('Ahmed Khan','أحمد خان'), initials:'AK', userSub: L('ZU student','طالب في جامعة زايد'), roleLabel: L('Learner','متعلّم') };
+    /* the signed-in learner (name + initials); the rest of the user card comes from the shell */
+    const acct = readSession();
+    const ZU_USER = () => acct ? { userName: L(acct.name.en, acct.name.ar), initials: acct.initials } : {};
+    const firstName = acct ? acct.name.en.replace(/^Dr\.\s+/, '').split(' ')[0] : 'Learner';
     const scr = this.state.screen || this.props.screen || 'draft';
     const sara = scr === 'noteligible';
     const submitted = this.state.sub !== null ? this.state.sub : scr === 'submitted';
@@ -52,9 +55,12 @@ export default class Component extends DCLogic {
       notYet: L('Not yet','ليس الآن'), submitFinal: L('Submit final entry','تقديم المشاركة النهائية'), close: L('Close','إغلاق')
     };
     const sh = this.shell(ar, 'learner', 'competition', 'zu', [ { label: L('ZU 24-Hour Challenge','تحدي جامعة زايد'), href:'/zu/dashboard' }, { label: t.spec } ]);
-    Object.assign(sh, ZU_USER(sara ? 'sara' : 'ahmed'));
+    Object.assign(sh, ZU_USER());
     const pctN = sara ? 75 : 100;
     const KI = { book:'M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5M9 7h7M9 11h5', clip:'M9 2h6v4H9zM16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 12h6M9 16h6', star:'M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z' };
+    /* round status chip: the round is open while the entry is a draft; once submitted the entry is with the judges */
+    const roundStatus = submitted ? L('Submitted · judging','مقدّمة · قيد التحكيم') : sara ? L('Open · not eligible yet','مفتوحة · غير مؤهل بعد') : L('Open · draft','مفتوحة · مسودة');
+    const roundStatusCls = submitted ? 'ok' : sara ? 'warn' : 'yel';
     const apStatus = submitted ? L('Submitted','مقدّمة') : L('Draft','مسودة');
     const kpis = [ { l:L('C13 progress','تقدّم C13'), v: pctN + '', u:'%', n: sara ? L('3 of 4 units','3 من 4 وحدات') : L('4 of 4 units','4 من 4 وحدات'), cls:'k-ink', d:KI.book },
                    { l:L('Action plan','خطة العمل'), v: apStatus, u:'', n: this.state.sub ? L('6 Oct 2026 · locked','6 أكتوبر 2026 · مقفلة') : submitted ? L('30 Sep 2026 · locked','30 سبتمبر 2026 · مقفلة') : L('Saved as you type','تُحفظ أثناء الكتابة'), cls: submitted ? 'k-rasp' : 'k-yel', d:KI.clip },
@@ -68,8 +74,8 @@ export default class Component extends DCLogic {
       this.setState({ busy:true }); clearTimeout(this.tb); this.tb = setTimeout(() => this.setState({ busy:false, dlg:false, sub:true, ack:false }), 900);
     };
     const go = (v) => { clearTimeout(this.tb); this.setState({ screen:v, sub:null, dlg:null, ack:false, ackErr:false, elErr:false, busy:false }); };
-    return { ...base, t, sh, kpis, answers,
-      specName: t.spec + ' · ' + (sara ? 'Sara' : 'Ahmed'), route: '/zu/competition',
+    return { ...base, t, sh, kpis, answers, roundStatus, roundStatusCls,
+      specName: t.spec + ' · ' + firstName, route: '/zu/competition',
       pctN: String(pctN), pct: pctN + '%', units: sara ? L('3 of 4 units','3 من 4 وحدات') : L('4 of 4 units','4 من 4 وحدات'), barC: sara ? '#E0A800' : '#15801A',
       courseCta: sara ? L('Continue course','تابع الدورة') : L('Review course','راجع الدورة'),
       elCls: sara ? 'no' : 'ok', elIcon: sara ? 'M12 8v4M12 16h.01M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z' : 'M20 6 9 17l-5-5',
@@ -82,7 +88,7 @@ export default class Component extends DCLogic {
       how: [ L('Two judges score each entry against the rubric.','يقيّم محكّمان كل مشاركة وفق المعايير.'), L('Entries are judged while the round is open.','تُحكَّم المشاركات أثناء فتح الجولة.'), L('Your score and rank appear when the round closes.','تظهر درجتك وترتيبك عند إغلاق الجولة.') ],
       dlg, closeDlg: () => this.setState({ dlg:false }), stop: (e) => e.stopPropagation(), ack: this.state.ack, togAck: () => this.setState({ ack: !this.state.ack, ackErr:false }),
       ackErr: this.state.ackErr, ackErrA: this.state.ackErr ? 'true' : 'false', doSubmit, busyCls: this.state.busy ? 'is-loading' : '',
-      segs: [ this.seg('State', scr, [['noteligible','Not eligible (Sara)'],['draft','Draft (Ahmed)'],['confirm','Confirm dialog'],['submitted','Submitted (Ahmed)']], go) ]
+      segs: [ this.seg('State', scr, [['noteligible','Not eligible'],['draft','Draft'],['confirm','Confirm dialog'],['submitted','Submitted']], go) ]
     };
   }
 }

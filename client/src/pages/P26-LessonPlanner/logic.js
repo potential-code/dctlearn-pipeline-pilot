@@ -1,3 +1,4 @@
+// client: hand-edited (failed Generate focuses the first invalid field)
 // Ported verbatim from the Claude Design artboard P26-LessonPlanner (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -13,7 +14,7 @@ export default class Component extends DCLogic {
     s.out = scr === 'result' ? { ...FILLED } : null;
     return s;
   }
-  componentWillUnmount(){ clearInterval(this.iv); clearTimeout(this.tt); }
+  componentWillUnmount(){ clearInterval(this.iv); clearTimeout(this.tt); clearTimeout(this.tf); }
   gen(f){
     clearInterval(this.iv); this.setState({ phase:'generating', step:0 });
     let n = 0; this.iv = setInterval(() => { n++; if (n >= 3) { clearInterval(this.iv); this.setState({ phase:'result', out: { ...f }, step:3, ver: (this.state.ver || 1) + 1 }); } else this.setState({ step:n }); }, 700);
@@ -56,7 +57,12 @@ export default class Component extends DCLogic {
     const AUD = [['', 'Choose an audience…','اختر الفئة…'], ['new','New joiners','الموظفون الجدد'], ['hosts','Gallery hosts and guides','مضيفو المعارض والمرشدون'], ['students','University students','طلاب الجامعات'], ['leads','Team leads','قادة الفرق']];
     const tLen = (f.topic || '').trim().length;
     const tBad = st.tried && tLen < 5; const aBad = st.tried && !f.aud;
-    const submit = (e) => { if (e && e.preventDefault) e.preventDefault(); if (tLen < 5 || !f.aud) { this.setState({ tried:true }); return; } this.setState({ tried:false }); this.gen(f); };
+    const submit = (e) => { if (e && e.preventDefault) e.preventDefault(); if (tLen < 5 || !f.aud) {
+        this.setState({ tried:true });
+        const id = tLen < 5 ? 'lp-t' : 'lp-a';
+        clearTimeout(this.tf); this.tf = setTimeout(() => { const el = document.getElementById(id); if (!el) return; el.scrollIntoView({ block:'center' }); el.focus({ preventScroll:true }); }, 0);
+        return;
+      } this.setState({ tried:false }); this.gen(f); };
     const flash = (m) => { this.setState({ toast:m }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast:'' }), 2400); };
     const steps = [L('Setting learning objectives','تحديد أهداف التعلّم'), L('Timing the activities','توقيت الأنشطة'), L('Writing a check for understanding','كتابة أسئلة التحقق من الفهم')].map((l, i) => ({ l, ok: i < st.step, on: i === st.step, wait: i > st.step, cls: i < st.step ? 'ok' : (i === st.step ? 'on' : '') }));
     /* ---- plan generator (output language independent of UI language) ---- */

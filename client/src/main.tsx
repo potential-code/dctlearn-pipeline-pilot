@@ -8,6 +8,7 @@ import './styles/fixes.css'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { createRoot } from 'react-dom/client'
 import { LocaleProvider } from '@/i18n/LocaleProvider'
+import { SmoothScroll } from '@/lib/motion/SmoothScroll'
 import { SessionProvider } from '@/session/SessionProvider'
 import { routeTree } from './routeTree.gen'
 
@@ -24,7 +25,9 @@ if (!root) throw new Error('#root missing')
 createRoot(root).render(
   <LocaleProvider>
     <SessionProvider>
-      <RouterProvider router={router} />
+      <SmoothScroll>
+        <RouterProvider router={router} />
+      </SmoothScroll>
     </SessionProvider>
   </LocaleProvider>,
 )

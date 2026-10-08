@@ -1,3 +1,4 @@
+// client: hand-edited (shell identity from the session, not a hard-coded ZU override)
 // Ported verbatim from the Claude Design artboard P44-Scores (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -26,9 +27,8 @@ export default class Component extends DCLogic {
       ? [ { label: L(SN[0], SN[1]), href:'/platforms' }, { label: L(crumbEn, crumbAr) } ]
       : [ { label: L(SN[0], SN[1]), href:'/'+site+'/admin' }, { label: L(crumbEn, crumbAr) } ];
     const sh = this.shell(ar, 'sub_admin', active, site, crumbs);
-    if (site === 'zu') { /* SEED §1/§4.1: ZU has no sub admin — platform admin Aisha covers it */
-      sh.userSub = L('Platform admin · covering ZU','مسؤولة المنصة · تغطي جامعة زايد'); sh.roleLabel = L('Admin','مسؤولة'); sh.profileHref = '/admin';
-    }
+    /* client: the shell identity comes from the signed-in session in shellHelper (a platform admin
+       viewing a microsite admin, e.g. ZU which has no sub admin, shows as "Platform admin · covering …"). */
     const fmt = (n, d) => Number(n).toLocaleString('en-US', d == null ? {} : { minimumFractionDigits:d, maximumFractionDigits:d });
     return { lang, ar, site, L, sh, fmt, siteName: L(SN[0], SN[1]) };
   }

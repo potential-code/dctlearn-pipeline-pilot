@@ -8,3 +8,30 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* client: platform-wide UX fixes (audit, Oct 2026) */
+/* Short portal pages: the shell fills the viewport instead of a fixed 900px band. */
+.app{min-height:100vh;min-height:100dvh;align-items:stretch}
+.app > .mainc{min-height:100vh;min-height:100dvh}
+/* Open dialog or mobile nav sheet: the page behind stays put, the prototype pill steps aside. */
+html.dlg-open,html.dlg-open body,html.nav-open,html.nav-open body{overflow:hidden}
+html.dlg-open .proto-sw,html.nav-open .proto-sw{display:none}
+/* Leave room for the floating prototype pill so it never covers the last controls. */
+.proto-root.has-sw .mainc{padding-bottom:84px}
+.proto-root.has-sw .ftr .base{padding-bottom:72px}
+.proto-root.has-sw .auth .main{padding-bottom:84px}
+/* Mobile nav trigger is now a real button. */
+button.navbtn{padding:0;font:inherit}
+button.navbtn:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+/* KPI cards: text never runs under the icon; icons keep their meaning in Arabic (no mirroring). */
+.kpi:has(.ki){padding-inline-end:100px}
+.kpi:has(.ki) :is(.lb,.n){max-width:none}
+[dir=rtl] .kpi .ki{transform:translateY(-50%) rotate(6deg)}
+[dir=rtl] .kpi:hover .ki{transform:translateY(-50%) rotate(0) scale(1.06)}
+/* Search boxes: a visible focus ring. */
+.srch:focus-within{outline:3px solid rgba(214,53,57,.35);outline-offset:2px;border-color:var(--ink,#1D1650)}
+/* Tab strips that overflow (marked by the app) fade at the edge at every width. */
+.ptabs.ovf{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+[dir=rtl] .ptabs.ovf,.ptabs.ovf:where([dir=rtl] *){-webkit-mask-image:linear-gradient(270deg,#000 88%,transparent);mask-image:linear-gradient(270deg,#000 88%,transparent)}
+/* The full-screen meeting view has its own controls; the pill would cover Leave. */
+.proto-root:has(.mtg) .proto-sw{display:none}

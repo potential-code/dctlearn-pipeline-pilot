@@ -1,3 +1,4 @@
+// client: hand-edited (session number/date follow the bookingId route param)
 // Ported verbatim from the Claude Design artboard P22-SessionRoom (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -39,10 +40,15 @@ export default class Component extends DCLogic {
     const scr = scr0 === 'feedback' ? 'closed' : scr0;
     const st = this.state;
     const P = { saeed:{ ini:'SA', c:'#3B2F92', name:L('Saeed Al Hammadi','سعيد الحمادي'), short:L('Saeed','سعيد') }, hessa:{ ini:'HN', c:'#CD3151', name:L('Dr. Hessa Al Nuaimi','د. حصة النعيمي'), short:L('Dr. Hessa','د. حصة') } };
+    /* booking from the route param (/mentoring/session/:bookingId); unknown ids fall back to B2 */
+    const BK = { B1:{ n:1, dd:['Monday 28 Sep 2026','الإثنين 28 سبتمبر 2026'], ds:['Mon 28 Sep','الإثنين 28 سبتمبر'] }, B2:{ n:2, dd:['Monday 12 Oct 2026','الإثنين 12 أكتوبر 2026'], ds:['Mon 12 Oct','الإثنين 12 أكتوبر'] }, B3:{ n:3, dd:['Wednesday 14 Oct 2026','الأربعاء 14 أكتوبر 2026'], ds:['Wed 14 Oct','الأربعاء 14 أكتوبر'] } };
+    const pathId = typeof window !== 'undefined' ? (window.location.pathname.match(/\/session\/([^/?#]+)/) || [])[1] : '';
+    const bid0 = String(this.props.bookingId || pathId || 'B2').toUpperCase();
+    const bid = BK[bid0] ? bid0 : 'B2'; const bk = BK[bid]; const sn = String(bk.n);
     const me = mentor ? P.hessa : P.saeed; const other = mentor ? P.saeed : P.hessa;
     const t = {
-      spec: L('Session room','غرفة الجلسة'), ey: L('Session room · B2','غرفة الجلسة · B2'), when: L('Monday 12 Oct 2026 · 11:00–12:00 Gulf · 60 minutes · Session 2 of 6','الإثنين 12 أكتوبر 2026 · 11:00–12:00 بتوقيت الخليج · 60 دقيقة · الجلسة 2 من 6'),
-      whenShort: L('Mon 12 Oct · 11:00–12:00 Gulf','الإثنين 12 أكتوبر · 11:00–12:00 بتوقيت الخليج'),
+      spec: L('Session room','غرفة الجلسة'), ey: L('Session room · ' + bid,'غرفة الجلسة · ' + bid), when: L(bk.dd[0] + ' · 11:00–12:00 Gulf · 60 minutes · Session ' + sn + ' of 6', bk.dd[1] + ' · 11:00–12:00 بتوقيت الخليج · 60 دقيقة · الجلسة ' + sn + ' من 6'),
+      whenShort: L(bk.ds[0] + ' · 11:00–12:00 Gulf', bk.ds[1] + ' · 11:00–12:00 بتوقيت الخليج'),
       pvTitle: L('Camera and microphone check','فحص الكاميرا والميكروفون'), you: L('You','أنت'), camOff: L('Camera off','الكاميرا مغلقة'), level: L('Mic level','مستوى الصوت'),
       camera: L('Camera','الكاميرا'), microphone: L('Microphone','الميكروفون'), speaker: L('Speaker','السماعة'), micDev: L('MacBook Pro Microphone','ميكروفون MacBook Pro'), spkDev: L('MacBook Pro Speakers','سماعات MacBook Pro'),
       earlyP: L('The room opens 10 minutes before the start, at 10:50 Gulf time. You can test your camera and microphone now.','تفتح الغرفة قبل البدء بعشر دقائق، أي الساعة 10:50 بتوقيت الخليج. يمكنك اختبار الكاميرا والميكروفون الآن.'),
@@ -60,13 +66,13 @@ export default class Component extends DCLogic {
       docA: L('Goals and audience','الأهداف والجمهور'), docB: L('Budget and partners','الميزانية والشركاء'),
       chat: L('Chat','المحادثة'), closeChat: L('Close chat','إغلاق المحادثة'), msg: L('Message','الرسالة'), msgPh: L('Message Dr. Hessa…','اكتب رسالة…'), send: L('Send','إرسال'),
       controls: L('Meeting controls','أدوات الاجتماع'), people: L('2 people','شخصان'), leave: L('Leave','مغادرة'),
-      leaveH: L('Leave the session?','مغادرة الجلسة؟'), stay: L('Stay','البقاء'),
-      fbEy: L('Session 2 · feedback','الجلسة 2 · التقييم'), attQ: L('Attendance','الحضور'), optional: L('(optional)','(اختياري)'),
+      leaveH: L('Leave the session?','مغادرة الجلسة؟'), stay: L('Stay','البقاء'), stayClose: L('Stay — close dialog','البقاء — إغلاق النافذة'),
+      fbEy: L('Session ' + sn + ' · feedback','الجلسة ' + sn + ' · التقييم'), attQ: L('Attendance','الحضور'), optional: L('(optional)','(اختياري)'),
       rErr: L('Choose a rating from 1 to 5.','اختر تقييماً من 1 إلى 5.'), aErr: L('Tell us who attended.','أخبرنا بمن حضر.'), later: L('Later','لاحقاً'), sendFb: L('Send feedback','إرسال التقييم'),
       thanks: L('Thank you — feedback sent','شكراً، تم إرسال التقييم'), close: L('Close','إغلاق'),
-      growEy: L('Next step','الخطوة التالية'), growH: L('Write the GROW log for session 2','اكتب سجل GROW للجلسة 2'), gG: L('Goal','الهدف'), gR: L('Reality','الواقع'), gO: L('Options','الخيارات'), gW: L('Way forward','الخطوة التالية')
+      growEy: L('Next step','الخطوة التالية'), growH: L('Write the GROW log for session ' + sn,'اكتب سجل GROW للجلسة ' + sn), gG: L('Goal','الهدف'), gR: L('Reality','الواقع'), gO: L('Options','الخيارات'), gW: L('Way forward','الخطوة التالية')
     };
-    const title = mentor ? L('Session 2 with Saeed Al Hammadi','الجلسة 2 مع سعيد الحمادي') : L('Session 2 with Dr. Hessa','الجلسة 2 مع د. حصة');
+    const title = mentor ? L('Session ' + sn + ' with Saeed Al Hammadi','الجلسة ' + sn + ' مع سعيد الحمادي') : L('Session ' + sn + ' with Dr. Hessa','الجلسة ' + sn + ' مع د. حصة');
     const sh = mentor
       ? this.shell(ar, 'mentor', 'sessions', null, [ { label: L('Sessions','الجلسات'), href:'/mentor/sessions' }, { label: L('Session room','غرفة الجلسة') } ])
       : this.shell(ar, 'learner', 'mentoring', 'elevate', [ { label: L('Elevate 2026','إرتقاء 2026'), href:'/elevate/dashboard' }, { label: L('Mentoring','الإرشاد'), href:'/elevate/mentoring' }, { label: L('Session room','غرفة الجلسة') } ]);
@@ -99,7 +105,7 @@ export default class Component extends DCLogic {
     const inMeeting = scr === 'meeting';
     const isEnd = scr === 'closed' || scr === 'cancelled';
     return { ...base, t, sh, me, other, title, checks, msgs, elapsed, starBtns,
-      specName: t.spec + ' · ' + (mentor ? L('mentor','مرشد') : L('learner','متعلّم')), route: '/mentoring/session/B2',
+      specName: t.spec + ' · ' + (mentor ? L('mentor','مرشد') : L('learner','متعلّم')), route: '/mentoring/session/' + bid,
       inLobby: !inMeeting, inMeeting, hasPrev: !isEnd, isEnd,
       stTag: (TAG[scr] || TAG.ready)[0], stTagCls: (TAG[scr] || TAG.ready)[1], stTitle: STT[scr] || '',
       isEarly: scr === 'early', isReady: scr === 'ready', isWaiting: scr === 'waiting', isLearner: !mentor, isMentor: mentor,
@@ -124,16 +130,16 @@ export default class Component extends DCLogic {
       doLeave: () => this.setState({ leave:false, screen:'closed', fb:true, fbClosed:false, share:false, chat:false }),
       endTitle: scr === 'cancelled' ? L('This session was cancelled','تم إلغاء هذه الجلسة') : L('This session has ended','انتهت هذه الجلسة'),
       endP: scr === 'cancelled' ? (mentor ? L('You cancelled it on 10 Oct · reason: travel. Saeed was notified by e-mail and the slot is free again.','ألغيتِها في 10 أكتوبر · السبب: سفر. أُبلغ سعيد بالبريد الإلكتروني وأصبح الموعد متاحاً.') : L('Dr. Hessa cancelled it on 10 Oct · reason: travel. Pick another time from her calendar.','ألغت د. حصة الجلسة في 10 أكتوبر · السبب: سفر. اختر موعداً آخر من تقويمها.'))
-            : L('Mon 12 Oct · 11:00–11:58 Gulf · 58 minutes. ', 'الإثنين 12 أكتوبر · 11:00–11:58 بتوقيت الخليج · 58 دقيقة. ') + (mentor ? L('Rate the session, then capture the GROW log while it’s fresh.','قيّمي الجلسة ثم دوّني سجل GROW وهي حاضرة في ذهنك.') : L('Your feedback helps the Elevate team and Dr. Hessa.','تقييمك يساعد فريق إرتقاء ود. حصة.')),
+            : L(bk.ds[0] + ' · 11:00–11:58 Gulf · 58 minutes. ', bk.ds[1] + ' · 11:00–11:58 بتوقيت الخليج · 58 دقيقة. ') + (mentor ? L('Rate the session, then capture the GROW log while it’s fresh.','قيّمي الجلسة ثم دوّني سجل GROW وهي حاضرة في ذهنك.') : L('Your feedback helps the Elevate team and Dr. Hessa.','تقييمك يساعد فريق إرتقاء ود. حصة.')),
       fbThanks: scr === 'closed' && st.fbDone, showFbBtn: scr === 'closed' && !st.fbDone, isClosedMentor: scr === 'closed' && mentor,
       openFb: () => this.setState({ fb:true, fbClosed:false }), nextHref: mentor ? '/mentor/sessions' : '/elevate/mentoring/book', nextLbl: mentor ? L('Back to sessions','العودة إلى الجلسات') : (scr === 'cancelled' ? L('Book another time','احجز موعداً آخر') : L('Book next session','احجز الجلسة التالية')),
       fb: fbOpen && scr === 'closed', fbForm: !st.fbDone, fbDone: st.fbDone, closeFb: () => this.setState({ fb:false, fbClosed:true }),
-      fbTitle: mentor ? L('How did session 2 with Saeed go?','كيف كانت الجلسة 2 مع سعيد؟') : L('How was session 2 with Dr. Hessa?','كيف كانت الجلسة 2 مع د. حصة؟'),
+      fbTitle: mentor ? L('How did session ' + sn + ' with Saeed go?','كيف كانت الجلسة ' + sn + ' مع سعيد؟') : L('How was session ' + sn + ' with Dr. Hessa?','كيف كانت الجلسة ' + sn + ' مع د. حصة؟'),
       rateQ: L('Your rating','تقييمك'), rateLbl: st.rating ? RL[st.rating - 1] : L('Not rated yet','لم يتم التقييم'), rBad, aBad,
       attGrid: mentor ? 'l2' : 'l3', attOpts: ATT.map(a => ({ l:a[1], d:a[2], on: st.att === a[0], pick: () => this.setState({ att:a[0] }) })),
       cmtLbl: mentor ? L('Private note for the programme team','ملاحظة خاصة لفريق البرنامج') : L('Comment','تعليق'), cmtPh: mentor ? L('Not shown to Saeed','لا تظهر لسعيد') : L('What was most useful?','ما الأكثر فائدة؟'),
       cmt: st.cmt, onCmt: (e) => this.setState({ cmt: e.target.value }), cmtCount: (st.cmt || '').length + ' / 500', sendFb,
-      thanksP: mentor ? L('Session 2 is marked as completed.','تم تسجيل الجلسة 2 كمكتملة.') : L('Dr. Hessa sees your rating; comments go to the Elevate team.','ترى د. حصة تقييمك، وتصل التعليقات إلى فريق إرتقاء.'),
+      thanksP: mentor ? L('Session ' + sn + ' is marked as completed.','تم تسجيل الجلسة ' + sn + ' كمكتملة.') : L('Dr. Hessa sees your rating; comments go to the Elevate team.','ترى د. حصة تقييمك، وتصل التعليقات إلى فريق إرتقاء.'),
       doneHref: mentor ? '/mentor' : '/elevate/mentoring/book', doneLbl: mentor ? L('Open GROW log','افتح سجل GROW') : L('Book next session','احجز الجلسة التالية'),
       hasToast: !!st.toast, toast: st.toast,
       segs: [ this.seg('Role', role, [['learner','Learner'],['mentor','Mentor']], v => this.setState({ role:v })),

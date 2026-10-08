@@ -1,3 +1,4 @@
+/* client: hand-edited (RTL selectors target .pt[dir=rtl], since dir is set on the .pt element) */
 /* Page CSS from the Claude Design artboard P50-Microsites, scoped under .pgs-P50-Microsites. */
 .pgs-P50-Microsites{margin:0;background:#F7F5F2}
 :where(.pgs-P50-Microsites) .pt .cap{color:#5B636C}
@@ -18,12 +19,12 @@
 :where(.pgs-P50-Microsites) .pt .ini.yel{color:#1D1650}
 :where(.pgs-P50-Microsites) .pt .grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 :where(.pgs-P50-Microsites) .pt .grp > .gl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5B636C;margin-inline-end:4px}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .grp > .gl{letter-spacing:0}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .grp > .gl{letter-spacing:0}
 :where(.pgs-P50-Microsites) .pt .fsel{position:relative;display:inline-flex}
 :where(.pgs-P50-Microsites) .pt .fsel select{appearance:none;font:inherit;font-weight:600;font-size:.875rem;height:44px;padding:0 38px 0 14px;border:1.5px solid var(--bd);border-radius:8px;background:#fff;color:#333;cursor:pointer}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .fsel select{padding:0 14px 0 38px}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .fsel select{padding:0 14px 0 38px}
 :where(.pgs-P50-Microsites) .pt .fsel select:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-:where(.pgs-P50-Microsites) .pt .fsel::after{content:"";position:absolute;inset-inline-end:16px;top:17px;width:7px;height:7px;border-inline-end:2px solid #5B636C;border-bottom:2px solid #5B636C;transform:rotate(45deg);pointer-events:none}
+:where(.pgs-P50-Microsites) .pt .fsel::after{content:"";position:absolute;inset-inline-end:16px;top:17px;width:7px;height:7px;border-right:2px solid #5B636C;border-bottom:2px solid #5B636C;transform:rotate(45deg);pointer-events:none}
 :where(.pgs-P50-Microsites) .pt .swt{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-size:.9375rem;font-weight:600;color:#333}
 :where(.pgs-P50-Microsites) .pt .swt .tr{width:42px;height:24px;border-radius:3px;background:#D5CEC5;position:relative;flex:none;transition:background .2s}
 :where(.pgs-P50-Microsites) .pt .swt .tr::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:inset-inline-start .2s var(--ease)}
@@ -59,7 +60,7 @@
 :where(.pgs-P50-Microsites) .pt .chart{position:relative}
 :where(.pgs-P50-Microsites) .pt .plot{position:relative;height:220px;margin-inline-start:44px}
 :where(.pgs-P50-Microsites) .pt .plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .plot svg{transform:scaleX(-1)}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .plot svg{transform:scaleX(-1)}
 :where(.pgs-P50-Microsites) .pt .gl-y{position:absolute;inset-inline:0;height:0;border-top:1px dashed #E4DED6}
 :where(.pgs-P50-Microsites) .pt .gl-y > i{position:absolute;inset-inline-end:calc(100% + 10px);top:-9px;font-style:normal;font-size:.75rem;color:#5B636C;font-family:var(--font);white-space:nowrap}
 :where(.pgs-P50-Microsites) .pt .gl-y.base{border-top:1.5px solid #CFC7BC}
@@ -67,16 +68,16 @@
 :where(.pgs-P50-Microsites) .pt .hcol{position:absolute;top:0;bottom:0;cursor:crosshair}
 :where(.pgs-P50-Microsites) .pt .hline{position:absolute;top:0;bottom:0;width:0;border-inline-start:1px solid #1D1650;opacity:.35;pointer-events:none}
 :where(.pgs-P50-Microsites) .pt .hdot{position:absolute;width:12px;height:12px;border-radius:50%;background:#D63539;border:2px solid #fff;box-shadow:0 0 0 1px #D63539;transform:translate(-50%,-50%);pointer-events:none}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .hdot{transform:translate(50%,-50%)}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .hdot{transform:translate(50%,-50%)}
 :where(.pgs-P50-Microsites) .pt .tip{position:absolute;top:-6px;background:#1D1650;color:#fff;font-size:.8125rem;padding:8px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:3;box-shadow:0 10px 20px -10px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:2px}
 :where(.pgs-P50-Microsites) .pt .tip b{font-family:var(--font);font-size:1rem}
 :where(.pgs-P50-Microsites) .pt .hbar{display:grid;grid-template-columns:150px minmax(0,1fr) 64px;gap:12px;align-items:center;padding:7px 0;border-radius:4px}
 :where(.pgs-P50-Microsites) .pt .hbar .nm{display:flex;align-items:center;gap:8px;font-size:.875rem;font-weight:600;color:#333;min-width:0}
 :where(.pgs-P50-Microsites) .pt .hbar .nm > span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 :where(.pgs-P50-Microsites) .pt .hbar .tk{height:14px;background:#F1EDE8;border-radius:0 3px 3px 0;position:relative}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .hbar .tk{border-radius:3px 0 0 3px}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .hbar .tk{border-radius:3px 0 0 3px}
 :where(.pgs-P50-Microsites) .pt .hbar .tk > i{display:block;height:100%;background:#2D2470;border-radius:0 4px 4px 0;transition:width .6s var(--ease)}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt .hbar .tk > i{border-radius:4px 0 0 4px}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] .hbar .tk > i{border-radius:4px 0 0 4px}
 :where(.pgs-P50-Microsites) .pt .hbar .vl{font-family:var(--font);font-weight:800;color:#1D1650;text-align:end;font-size:.9375rem}
 :where(.pgs-P50-Microsites) .pt .hbar:hover .tk > i{background:#D63539}
 :where(.pgs-P50-Microsites) .pt .lnk-tbl{all:unset;cursor:pointer;font-size:.8125rem;font-weight:700;color:#BF2E32;text-decoration:underline;text-underline-offset:3px}
@@ -98,7 +99,7 @@
 :where(.pgs-P50-Microsites) .pt .kpi .ki{width:58px;height:58px}
 :where(.pgs-P50-Microsites) .pt .kpi .v{font-size:2.5rem}
 :where(.pgs-P50-Microsites) .pt .kpi .lb,:where(.pgs-P50-Microsites) .pt .kpi .n{max-width:72%}
-:where(.pgs-P50-Microsites) [dir=rtl] .pt input[dir=ltr],:where(.pgs-P50-Microsites) [dir=rtl] .pt .mono,:where(.pgs-P50-Microsites) [dir=rtl] .pt .num{font-family:var(--font)}
+:where(.pgs-P50-Microsites) .pt[dir=rtl] input[dir=ltr],:where(.pgs-P50-Microsites) .pt[dir=rtl] .mono,:where(.pgs-P50-Microsites) .pt[dir=rtl] .num{font-family:var(--font)}
 :where(.pgs-P50-Microsites) .mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 :where(.pgs-P50-Microsites) .mcard{display:flex;flex-direction:column}
 :where(.pgs-P50-Microsites) .mcard .im{height:118px;position:relative;overflow:hidden;background:#1D1650}

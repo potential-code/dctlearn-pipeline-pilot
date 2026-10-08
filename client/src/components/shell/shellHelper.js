@@ -1,3 +1,6 @@
+// client: hand-edited (sidebar badges follow the page data; sub admin identity comes from the session).
+import { readSession } from '@/session/SessionProvider'
+
 // Shared app-shell helper, ported verbatim from the Claude Design artboards ("SHELL HELPER, copy
 // verbatim into every signed-in page"). Every signed-in page's logic calls it through this.shell().
 // role: learner | mentor | judge | sub_admin | admin; active: current nav key; site: microsite id;
@@ -44,7 +47,7 @@ export function shellHelper(ar, role, active, site, crumbs) {
     const L = (en, a) => ar ? a : en;
     const s = SITES[site] || SITES.employees;
     const p = site || 'employees';
-    let nav = [], user = {}, hasSite = false, siteLabel = '';
+    let nav = [], user = {}, hasSite = false, siteLabel = '', adminCover = false;
     const it = (key, en, a, icon, href, cnt) => ({ link:true, group:false, key, label:L(en,a), d:I[icon], href, cnt: cnt || false });
     const grp = (en, a) => ({ link:false, group:true, label:L(en,a), href:'', d:'', cnt:false, key:'' });
     if (role === 'learner') {
@@ -60,7 +63,7 @@ export function shellHelper(ar, role, active, site, crumbs) {
       nav.push(it('profile','Profile','الملف الشخصي','user','/'+p+'/profile'));
     } else if (role === 'mentor') {
       user = { name: L('Dr. Hessa Al Nuaimi','د. حصة النعيمي'), ini:'HN', sub: L('Director, Museums Strategy','مديرة استراتيجية المتاحف'), role: L('Mentor','مرشدة') };
-      nav = [ it('dashboard','Dashboard','لوحة التحكم','home','/mentor'), it('mentees','Mentees','المتدربون','users','/mentor/mentees', '1'), it('sessions','Sessions','الجلسات','video','/mentor/sessions', '2'), it('grow','GROW logs','سجلات GROW','clip','/mentor/grow', '1'), it('availability','Availability','أوقات التوفر','clock','/mentor/availability'), it('profile','Profile','الملف الشخصي','user','/mentor/profile') ];
+      nav = [ it('dashboard','Dashboard','لوحة التحكم','home','/mentor'), it('mentees','Mentees','المتدربون','users','/mentor/mentees', '2'), it('sessions','Sessions','الجلسات','video','/mentor/sessions', '1'), it('grow','GROW logs','سجلات GROW','clip','/mentor/grow'), it('availability','Availability','أوقات التوفر','clock','/mentor/availability'), it('profile','Profile','الملف الشخصي','user','/mentor/profile') ];
     } else if (role === 'judge') {
       user = { name: L('Noura Al Kaabi','نورة الكعبي'), ini:'NK', sub: L('Judge · ZU 24-Hour Challenge','محكّمة · تحدي جامعة زايد'), role: L('Judge','محكّمة') };
       nav = [ it('dashboard','Dashboard','لوحة التحكم','home','/judge'), it('applicants','Applicants','المتقدمون','clip','/judge/applicants', '1') ];
@@ -68,6 +71,15 @@ export function shellHelper(ar, role, active, site, crumbs) {
       hasSite = true; siteLabel = L('Managing','تدير');
       const SA = { employees:['Omar Al Mansoori','عمر المنصوري','OM'], elevate:['Layla Haddad','ليلى حداد','LH'], znm:['Khalid Al Dhaheri','خالد الظاهري','KD'], museopro:['Camille Rousseau','كاميل روسو','CR'], nibras:['Fatima Al Suwaidi','فاطمة السويدي','FS'], zu:['Aisha Al Marzouqi','عائشة المرزوقي','AM'] }[p] || ['Layla Haddad','ليلى حداد','LH'];
       user = { name: L(SA[0],SA[1]), ini:SA[2], sub: L('Sub admin','مشرف فرعي'), role: L('Sub admin','مشرف فرعي') };
+      // client: show who is actually signed in. A platform admin opening a microsite's admin (e.g. ZU,
+      // which has no sub admin) is shown as the admin covering it; a sub admin as themselves.
+      const acct = readSession();
+      if (acct && acct.role === 'admin') {
+        user = { name: L(acct.name.en, acct.name.ar), ini: acct.initials, sub: L('Platform admin · covering ' + s.en, 'مسؤولة المنصة · تغطي ' + s.ar), role: L('Admin','مسؤولة') };
+        adminCover = true;
+      } else if (acct && acct.role === 'sub_admin') {
+        user = { ...user, name: L(acct.name.en, acct.name.ar), ini: acct.initials };
+      }
       const b = '/'+p+'/admin';
       nav.push(it('dashboard','Dashboard','لوحة التحكم','home',b));
       nav.push(it('members','Members','الأعضاء','users',b+'/members'));
@@ -83,7 +95,7 @@ export function shellHelper(ar, role, active, site, crumbs) {
     }
     nav = nav.map(n => ({ ...n, cls: n.key === active ? 'on' : '', cur: n.key === active ? 'page' : 'false' }));
     const cr = (crumbs || []).map((c, i, a) => ({ label:c.label, href: i < a.length - 1 ? (c.href || '#') : '', last: i === a.length - 1 }));
-    const profileHref = role === 'learner' ? '/'+p+'/profile' : role === 'mentor' ? '/mentor/profile' : role === 'judge' ? '/judge' : role === 'sub_admin' ? '/'+p+'/admin' : '/admin';
+    const profileHref = role === 'learner' ? '/'+p+'/profile' : role === 'mentor' ? '/mentor/profile' : role === 'judge' ? '/judge' : role === 'sub_admin' && !adminCover ? '/'+p+'/admin' : '/admin';
     return { nav, crumbs: cr, hasSite, siteLabel, siteName: L(s.en, s.ar), siteColor: s.c, userName: user.name, initials: user.ini, userSub: user.sub, roleLabel: user.role,
       navLabel: L('Main navigation','التنقل الرئيسي'), langLabel: ar ? 'EN' : 'عربي', langAria: L('Switch to Arabic','التبديل إلى الإنجليزية'), notifAria: L('Notifications','الإشعارات'), meProfile: L('My profile','ملفي الشخصي'), meOut: L('Sign out','تسجيل الخروج'), meAria: L('Account menu','قائمة الحساب'), menuAria: L('Menu','القائمة'), notifHref:'/notifications', profileHref };
 }

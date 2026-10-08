@@ -1,3 +1,4 @@
+/* client: hand-edited (round avatars). */
 /* Page CSS from the Claude Design artboard P31-Availability, scoped under .pgs-P31-Availability. */
 .pgs-P31-Availability{margin:0;background:#F7F5F2}
 :where(.pgs-P31-Availability) .col{display:flex;flex-direction:column;gap:24px;min-width:0}
@@ -105,3 +106,5 @@
 :where(.pgs-P31-Availability) .f2{grid-template-columns:1fr}
 }
 
+/* client: initials avatars are circles, not quarter shapes */
+:where(.pgs-P31-Availability) .ph-sh{border-radius:50%!important}

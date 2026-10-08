@@ -1,3 +1,4 @@
+/* client: hand-edited (round avatars). */
 /* Page CSS from the Claude Design artboard P34-Applicants, scoped under .pgs-P34-Applicants. */
 .pgs-P34-Applicants{margin:0;background:#F7F5F2}
 :where(.pgs-P34-Applicants) .ltr,:where(.pgs-P34-Applicants) .crit .val,:where(.pgs-P34-Applicants) .crit .pts,:where(.pgs-P34-Applicants) .total .v,:where(.pgs-P34-Applicants) .big,:where(.pgs-P34-Applicants) .asel .sc,:where(.pgs-P34-Applicants) .mb .m b,:where(.pgs-P34-Applicants) .pdf .bar .pg,:where(.pgs-P34-Applicants) .qa .cc,:where(.pgs-P34-Applicants) .mb .m .pp{direction:ltr;unicode-bidi:isolate}
@@ -148,3 +149,5 @@
 :where(.pgs-P34-Applicants) .toast2{inset-inline:16px;bottom:16px;max-width:none}
 }
 
+/* client: initials avatars are circles, not quarter shapes */
+:where(.pgs-P34-Applicants) .ph-sh{border-radius:50%!important}
