@@ -1,0 +1,91 @@
+{
+ "source": "P20-Match",
+ "props": {
+  "site": "elevate",
+  "screen": "loading"
+ },
+ "en": {
+  "text": [
+   "Elevate 2026 · Mentor match",
+   "Your mentor match",
+   "Suggested from your registration answers of 20 Sep 2026. Choose one — you’re allocated at once.",
+   "Edit answers",
+   "Re-run matching",
+   "Matching…",
+   "Comparing your answers with 3 Elevate mentors. This takes a few seconds.",
+   "Reading your registration answers",
+   "Comparing areas, language and availability",
+   "Ranking mentors and writing reasons"
+  ],
+  "classes": {
+   "pgs-P20-Match": 1,
+   "ds": 1,
+   "pt": 1,
+   "proto": 1,
+   "pgh": 1,
+   "patL": 1,
+   "fade-tr": 1,
+   "row": 1,
+   "l": 1,
+   "eyebrow": 1,
+   "acts": 1,
+   "btn": 2,
+   "btn-line": 1,
+   "btn-ink": 1,
+   "pc": 1,
+   "pcard": 1,
+   "q": 1,
+   "ldg": 1,
+   "mot3": 1,
+   "muted": 1,
+   "on": 1,
+   "ck": 3,
+   "spin": 1,
+   "dia": 2,
+   "skel": 1,
+   "a": 3
+  }
+ },
+ "ar": {
+  "text": [
+   "إرتقاء 2026 · مطابقة المرشد",
+   "نتائج مطابقة المرشد",
+   "مقترحة بناءً على إجابات تسجيلك في 20 سبتمبر 2026. اختر مرشداً، ويتم التخصيص فوراً.",
+   "تعديل الإجابات",
+   "إعادة المطابقة",
+   "جارٍ البحث عن المطابقة…",
+   "نقارن إجاباتك مع 3 مرشدين في إرتقاء، ويستغرق ذلك ثوانيَ معدودة.",
+   "قراءة إجابات التسجيل",
+   "مقارنة المجالات واللغة والتوفر",
+   "ترتيب المرشدين وكتابة الأسباب"
+  ],
+  "classes": {
+   "pgs-P20-Match": 1,
+   "ds": 1,
+   "pt": 1,
+   "proto": 1,
+   "pgh": 1,
+   "patL": 1,
+   "fade-tr": 1,
+   "row": 1,
+   "l": 1,
+   "eyebrow": 1,
+   "acts": 1,
+   "btn": 2,
+   "btn-line": 1,
+   "btn-ink": 1,
+   "pc": 1,
+   "pcard": 1,
+   "q": 1,
+   "ldg": 1,
+   "mot3": 1,
+   "muted": 1,
+   "on": 1,
+   "ck": 3,
+   "spin": 1,
+   "dia": 2,
+   "skel": 1,
+   "a": 3
+  }
+ }
+}
