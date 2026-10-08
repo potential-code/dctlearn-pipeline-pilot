@@ -11,3 +11,10 @@ seed/assets/fonts/_licence-pending/
 
 # Claude Code agent worktrees
 .claude/
+
+# client (generated test output)
+client/e2e/.out/
+client/test-results/
+client/playwright-report/
+client/e2e/.probe.mjs
+client/e2e/.shot.mjs

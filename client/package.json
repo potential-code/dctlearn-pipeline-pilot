@@ -1,0 +1,31 @@
+{
+  "name": "@dct/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5173",
+    "test:e2e": "playwright test",
+    "codemod": "bun run tools/dc2jsx.ts",
+    "parity": "bun run tools/parity.ts",
+    "fonts:sync": "bun run tools/fonts-sync.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.41",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.0",
+    "@tanstack/router-plugin": "^1.168.42",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "htmlparser2": "^12.0.0",
+    "vite": "^8.3.3"
+  }
+}

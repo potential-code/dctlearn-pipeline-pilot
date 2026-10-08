@@ -3,6 +3,7 @@ FROM oven/bun:1.3-alpine AS deps
 WORKDIR /app
 COPY package.json bun.lock bunfig.toml ./
 COPY server/package.json ./server/
+COPY client/package.json ./client/
 RUN bun install --frozen-lockfile
 
 FROM oven/bun:1.3-alpine AS build

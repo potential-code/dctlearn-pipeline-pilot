@@ -1,25 +1,88 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
   "files": {
     "includes": [
       "**",
       "!**/dist",
-            "!server/db/migrations",
+      "!server/db/migrations",
       "!shared/api-types.d.ts",
-      "!seed"
+      "!seed",
+      "!client/src/routeTree.gen.ts",
+      "!client/e2e/.out",
+      "!client/e2e/fixtures",
+      "!client/public",
+      "!client/src/pages/**/logic.js",
+      "!client/src/pages/**/*.css",
+      "!client/src/styles",
+      "!client/src/components/shell/shellHelper.js",
+      "!client/test-results"
     ]
   },
-  "formatter": { "indentStyle": "space", "indentWidth": 2, "lineWidth": 100 },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
   "javascript": {
-    "formatter": { "quoteStyle": "single", "semicolons": "asNeeded", "trailingCommas": "all" }
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "all"
+    }
   },
   "linter": {
     "rules": {
       "preset": "recommended",
-      "style": { "useImportType": "error", "noNonNullAssertion": "off" },
-      "correctness": { "noUnusedImports": "error", "noUnusedVariables": "error" }
+      "style": {
+        "useImportType": "error",
+        "noNonNullAssertion": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      }
     }
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } }
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "client/src/pages/**"
+      ],
+      "linter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": [
+        "client/**"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useUniqueElementIds": "off"
+          },
+          "a11y": {
+            "useSemanticElements": "off",
+            "noStaticElementInteractions": "warn",
+            "useKeyWithClickEvents": "warn"
+          },
+          "suspicious": {
+            "noArrayIndexKey": "warn"
+          }
+        }
+      }
+    }
+  ]
 }

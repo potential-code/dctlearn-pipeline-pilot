@@ -1,0 +1,12 @@
+/* App-level base. The design CSS (dct-ds.css, portal.css, motion.css) is ported verbatim. */
+html,
+body {
+  margin: 0;
+}
+body {
+  background: #f2eee8;
+}
+/* Page wrappers stand in for the artboards' <body>; their page CSS moved body{} rules here. */
+[class^='pgs-'] {
+  min-height: 100vh;
+}
