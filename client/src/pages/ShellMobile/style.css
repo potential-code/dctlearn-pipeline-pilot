@@ -60,3 +60,6 @@
 @media (prefers-reduced-motion:reduce){:where(.pgs-ShellMobile) .ds *,:where(.pgs-ShellMobile) .ds *::before,:where(.pgs-ShellMobile) .ds *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 
+
+/* client: the global modal .scrim (dct-ds.css) has z-index 60; keep this board's sheet above its scrim. */
+:where(.pgs-ShellMobile) .sheet{z-index:61}

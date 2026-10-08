@@ -1,13 +1,15 @@
-import { createRouter, RouterProvider } from '@tanstack/react-router'
-import { createRoot } from 'react-dom/client'
-import { LocaleProvider } from '@/i18n/LocaleProvider'
-import { SessionProvider } from '@/session/SessionProvider'
-import { routeTree } from './routeTree.gen'
+// Global design CSS first, so page CSS (scoped, loaded with each route) wins ties, as in the artboards.
 import './styles/dct-ds.css'
 import './styles/portal.css'
 import './styles/motion.css'
 import './styles/prototype.css'
 import './styles/base.css'
+import './styles/fixes.css'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { createRoot } from 'react-dom/client'
+import { LocaleProvider } from '@/i18n/LocaleProvider'
+import { SessionProvider } from '@/session/SessionProvider'
+import { routeTree } from './routeTree.gen'
 
 const router = createRouter({ routeTree, defaultPreload: 'intent', scrollRestoration: false })
 

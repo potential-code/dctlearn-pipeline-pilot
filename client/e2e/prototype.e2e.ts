@@ -78,6 +78,18 @@ test.describe('clickable prototype', () => {
   })
 })
 
+test.describe('intro transition (full motion)', () => {
+  test.use({ contextOptions: { reducedMotion: 'no-preference' } })
+  test('intro overlay clears and the page stays clickable', async ({ page }, info) => {
+    test.skip(info.project.name === 'mobile', 'desktop flow')
+    await prepare(page, {})
+    await page.goto('/')
+    await expect(page.locator('.ptx')).toHaveClass('ptx ', { timeout: 5_000 })
+    await page.locator('a[href="/login"]').first().click()
+    await expect(page).toHaveURL(/\/login$/)
+  })
+})
+
 test.describe('guards and redirects', () => {
   test('signed-out visit to a portal goes to sign in', async ({ page }) => {
     await prepare(page, {})

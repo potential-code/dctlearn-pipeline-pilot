@@ -1,0 +1,10 @@
+/*
+ * client: mobile fixes for artboards that were only drawn at 1280 px. Pages that force a
+ * three-column KPI row (.kpis.k3 / .k6) follow the portal kit's own one-column rule at 560 px.
+ */
+@media (max-width: 560px) {
+  .ds.pt .kpis.k3,
+  .ds.pt .kpis.k6 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -12,7 +12,7 @@ import Main from '@/pages/Main'
 import Shell from '@/pages/Shell'
 import ShellMobile from '@/pages/ShellMobile'
 
-/** The canvas's design-system boards, as dev-only reference pages (/_design/<board>). */
+/** The canvas's design-system boards, as dev-only reference pages (/design/<board>). */
 const BOARDS: Record<string, ComponentType<Record<string, unknown>>> = {
   foundations: Main,
   buttons: Buttons,
@@ -26,7 +26,7 @@ const BOARDS: Record<string, ComponentType<Record<string, unknown>>> = {
   learning: Learning,
 }
 
-export const Route = createFileRoute('/_design/$board')({
+export const Route = createFileRoute('/design/$board')({
   beforeLoad: ({ params }) => {
     if (!import.meta.env.DEV || !BOARDS[params.board]) throw notFound()
   },

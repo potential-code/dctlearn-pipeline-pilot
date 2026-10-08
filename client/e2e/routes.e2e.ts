@@ -11,7 +11,7 @@ for (const entry of PAGES) {
       await prepare(page, { account: entry.account, lang })
       await page.goto(entry.path)
       await page.waitForLoadState('networkidle')
-      await expect(page.locator('.ds').first()).toBeVisible()
+      await expect(page.locator(`.pgs-${entry.source ?? entry.artboard}`)).toBeVisible()
       await expect(page.locator('html')).toHaveAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr')
       const suffix = `${lang === 'ar' ? '-AR' : ''}${info.project.name === 'mobile' ? '-m' : ''}`
       await page.screenshot({

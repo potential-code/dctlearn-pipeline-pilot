@@ -48,18 +48,17 @@ export function PrototypeChrome({ children }: { children: ReactNode }) {
   const [inner, setInner] = useState(false)
   const [tx, setTx] = useState(() => (reduced() ? '' : 'intro'))
 
-  // The intro transition runs once, on first load.
-  const introRan = useRef(false)
+  // The intro transition runs once, on first load: intro → out (1.1 s) → gone (1.8 s).
+  // biome-ignore lint/correctness/useExhaustiveDependencies: timers are set once on mount
   useEffect(() => {
-    if (introRan.current || !tx) return
-    introRan.current = true
+    if (!tx) return
     const t1 = setTimeout(() => setTx('out'), 1100)
     const t2 = setTimeout(() => setTx(''), 1800)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
     }
-  }, [tx])
+  }, [])
 
   useEffect(() => {
     if (prev.current === pathname) return

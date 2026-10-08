@@ -30,7 +30,6 @@ import { Route as PAdminRouteRouteImport } from './routes/$p/admin/route'
 import { Route as PInviteRouteImport } from './routes/$p/invite'
 import { Route as PLoginRouteImport } from './routes/$p/login'
 import { Route as PSignInRouteImport } from './routes/$p/sign-in'
-import { Route as DesignBoardRouteImport } from './routes/_design/$board'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminAchievementsRouteImport } from './routes/admin/achievements'
 import { Route as AdminAiEmbedsRouteImport } from './routes/admin/ai-embeds'
@@ -43,6 +42,7 @@ import { Route as AdminTemplatesRouteImport } from './routes/admin/templates'
 import { Route as AdminTranslationsRouteImport } from './routes/admin/translations'
 import { Route as AdminUsersRouteImport } from './routes/admin/users'
 import { Route as AiVoiceHiringRouteImport } from './routes/ai.voice-hiring'
+import { Route as DesignBoardRouteImport } from './routes/design.$board'
 import { Route as JudgeIndexRouteImport } from './routes/judge/index'
 import { Route as JudgeApplicantsRouteImport } from './routes/judge/applicants'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
@@ -187,11 +187,6 @@ const PSignInRoute = PSignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => PRouteRoute,
 } as any)
-const DesignBoardRoute = DesignBoardRouteImport.update({
-  id: '/_design/$board',
-  path: '/$board',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -250,6 +245,11 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
 const AiVoiceHiringRoute = AiVoiceHiringRouteImport.update({
   id: '/ai/voice-hiring',
   path: '/ai/voice-hiring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignBoardRoute = DesignBoardRouteImport.update({
+  id: '/design/$board',
+  path: '/design/$board',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JudgeIndexRoute = JudgeIndexRouteImport.update({
@@ -472,7 +472,6 @@ export interface FileRoutesByFullPath {
   '/$p/invite': typeof PInviteRoute
   '/$p/login': typeof PLoginRoute
   '/$p/sign-in': typeof PSignInRoute
-  '/$board': typeof DesignBoardRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai-embeds': typeof AdminAiEmbedsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -484,6 +483,7 @@ export interface FileRoutesByFullPath {
   '/admin/translations': typeof AdminTranslationsRoute
   '/admin/users': typeof AdminUsersRoute
   '/ai/voice-hiring': typeof AiVoiceHiringRoute
+  '/design/$board': typeof DesignBoardRoute
   '/judge/applicants': typeof JudgeApplicantsRoute
   '/mentor/availability': typeof MentorAvailabilityRoute
   '/mentor/grow': typeof MentorGrowRoute
@@ -542,7 +542,6 @@ export interface FileRoutesByTo {
   '/$p/invite': typeof PInviteRoute
   '/$p/login': typeof PLoginRoute
   '/$p/sign-in': typeof PSignInRoute
-  '/$board': typeof DesignBoardRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai-embeds': typeof AdminAiEmbedsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -554,6 +553,7 @@ export interface FileRoutesByTo {
   '/admin/translations': typeof AdminTranslationsRoute
   '/admin/users': typeof AdminUsersRoute
   '/ai/voice-hiring': typeof AiVoiceHiringRoute
+  '/design/$board': typeof DesignBoardRoute
   '/judge/applicants': typeof JudgeApplicantsRoute
   '/mentor/availability': typeof MentorAvailabilityRoute
   '/mentor/grow': typeof MentorGrowRoute
@@ -617,7 +617,6 @@ export interface FileRoutesById {
   '/$p/invite': typeof PInviteRoute
   '/$p/login': typeof PLoginRoute
   '/$p/sign-in': typeof PSignInRoute
-  '/_design/$board': typeof DesignBoardRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/ai-embeds': typeof AdminAiEmbedsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -629,6 +628,7 @@ export interface FileRoutesById {
   '/admin/translations': typeof AdminTranslationsRoute
   '/admin/users': typeof AdminUsersRoute
   '/ai/voice-hiring': typeof AiVoiceHiringRoute
+  '/design/$board': typeof DesignBoardRoute
   '/judge/applicants': typeof JudgeApplicantsRoute
   '/mentor/availability': typeof MentorAvailabilityRoute
   '/mentor/grow': typeof MentorGrowRoute
@@ -693,7 +693,6 @@ export interface FileRouteTypes {
     | '/$p/invite'
     | '/$p/login'
     | '/$p/sign-in'
-    | '/$board'
     | '/admin/achievements'
     | '/admin/ai-embeds'
     | '/admin/events'
@@ -705,6 +704,7 @@ export interface FileRouteTypes {
     | '/admin/translations'
     | '/admin/users'
     | '/ai/voice-hiring'
+    | '/design/$board'
     | '/judge/applicants'
     | '/mentor/availability'
     | '/mentor/grow'
@@ -763,7 +763,6 @@ export interface FileRouteTypes {
     | '/$p/invite'
     | '/$p/login'
     | '/$p/sign-in'
-    | '/$board'
     | '/admin/achievements'
     | '/admin/ai-embeds'
     | '/admin/events'
@@ -775,6 +774,7 @@ export interface FileRouteTypes {
     | '/admin/translations'
     | '/admin/users'
     | '/ai/voice-hiring'
+    | '/design/$board'
     | '/judge/applicants'
     | '/mentor/availability'
     | '/mentor/grow'
@@ -837,7 +837,6 @@ export interface FileRouteTypes {
     | '/$p/invite'
     | '/$p/login'
     | '/$p/sign-in'
-    | '/_design/$board'
     | '/admin/achievements'
     | '/admin/ai-embeds'
     | '/admin/events'
@@ -849,6 +848,7 @@ export interface FileRouteTypes {
     | '/admin/translations'
     | '/admin/users'
     | '/ai/voice-hiring'
+    | '/design/$board'
     | '/judge/applicants'
     | '/mentor/availability'
     | '/mentor/grow'
@@ -908,8 +908,8 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   SetPasswordRoute: typeof SetPasswordRoute
   StudentsRoute: typeof StudentsRoute
-  DesignBoardRoute: typeof DesignBoardRoute
   AiVoiceHiringRoute: typeof AiVoiceHiringRoute
+  DesignBoardRoute: typeof DesignBoardRoute
   MentoringSessionBookingIdRoute: typeof MentoringSessionBookingIdRoute
 }
 
@@ -1062,13 +1062,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PSignInRouteImport
       parentRoute: typeof PRouteRoute
     }
-    '/_design/$board': {
-      id: '/_design/$board'
-      path: '/$board'
-      fullPath: '/$board'
-      preLoaderRoute: typeof DesignBoardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/': {
       id: '/admin/'
       path: '/'
@@ -1151,6 +1144,13 @@ declare module '@tanstack/react-router' {
       path: '/ai/voice-hiring'
       fullPath: '/ai/voice-hiring'
       preLoaderRoute: typeof AiVoiceHiringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design/$board': {
+      id: '/design/$board'
+      path: '/design/$board'
+      fullPath: '/design/$board'
+      preLoaderRoute: typeof DesignBoardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/judge/': {
@@ -1613,8 +1613,8 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   SetPasswordRoute: SetPasswordRoute,
   StudentsRoute: StudentsRoute,
-  DesignBoardRoute: DesignBoardRoute,
   AiVoiceHiringRoute: AiVoiceHiringRoute,
+  DesignBoardRoute: DesignBoardRoute,
   MentoringSessionBookingIdRoute: MentoringSessionBookingIdRoute,
 }
 export const routeTree = rootRouteImport
