@@ -1,0 +1,106 @@
+/* Page CSS from the Claude Design artboard P18-MentorProfile, scoped under .pgs-P18-MentorProfile. */
+.pgs-P18-MentorProfile{margin:0;background:#F7F5F2}
+:where(.pgs-P18-MentorProfile) .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(.pgs-P18-MentorProfile) .avq{--c:#CD3151;width:56px;height:56px;background:var(--c);color:#fff;display:grid;place-items:center;font-family:var(--font);font-weight:800;font-size:1.0625rem;border-start-start-radius:100%;flex:none;position:relative}
+:where(.pgs-P18-MentorProfile) .avq.lg{width:96px;height:96px;font-size:1.75rem}
+:where(.pgs-P18-MentorProfile) .avq.xl{width:128px;height:128px;font-size:2.25rem}
+:where(.pgs-P18-MentorProfile) .avq.sm{width:40px;height:40px;font-size:.8125rem}
+:where(.pgs-P18-MentorProfile) .avq > i{position:absolute;width:14px;height:14px;background:#F7C337;transform:rotate(45deg);inset-inline-end:-5px;bottom:-5px;border:2px solid #fff}
+:where(.pgs-P18-MentorProfile) .stars{display:inline-flex;gap:2px;align-items:center;color:#E0A800}
+:where(.pgs-P18-MentorProfile) .stars svg{display:block}
+:where(.pgs-P18-MentorProfile) .mk{display:flex;flex-direction:column;gap:3px;min-width:0}
+:where(.pgs-P18-MentorProfile) .mk > small{font-size:.6875rem;font-weight:800;color:#5B636C;text-transform:uppercase;letter-spacing:.08em}
+:where(.pgs-P18-MentorProfile) [dir=rtl] .mk > small{letter-spacing:0}
+:where(.pgs-P18-MentorProfile) .mk > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P18-MentorProfile) .brow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P18-MentorProfile) .muted{color:#5B636C}
+:where(.pgs-P18-MentorProfile) .req{color:#BF2E32;margin-inline-start:2px}
+:where(.pgs-P18-MentorProfile) .cnt-ch{font-size:.75rem;color:#5B636C;margin-inline-start:auto;font-family:var(--font)}
+:where(.pgs-P18-MentorProfile) .toast{position:fixed;bottom:24px;inset-inline-end:24px;background:#1D1650;color:#fff;padding:14px 18px;border-radius:8px;box-shadow:0 24px 40px -18px rgba(0,0,0,.55);z-index:70;display:flex;gap:12px;align-items:center;font-weight:600;font-size:.9375rem;animation:pop .35s var(--ease) both;max-width:420px}
+:where(.pgs-P18-MentorProfile) .toast svg{color:#7EE08A;flex:none}
+:where(.pgs-P18-MentorProfile) .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(29,22,80,.18);border-top-color:#D63539;animation:spin .8s linear infinite;flex:none;display:inline-block}
+:where(.pgs-P18-MentorProfile) .spin.w{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+:where(.pgs-P18-MentorProfile) .optchips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P18-MentorProfile) .optc{position:relative;display:inline-flex}
+:where(.pgs-P18-MentorProfile) .optc input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P18-MentorProfile) .optc > span{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:6px;font-size:.875rem;font-weight:600;color:#333;cursor:pointer;transition:all .2s;line-height:1.3}
+:where(.pgs-P18-MentorProfile) .optc > span::before{content:"";width:8px;height:8px;transform:rotate(45deg);border:1.5px solid #9A9188;flex:none;transition:all .2s}
+:where(.pgs-P18-MentorProfile) .optc:hover > span{border-color:#1D1650}
+:where(.pgs-P18-MentorProfile) .optc input:checked + span{background:#1D1650;border-color:#1D1650;color:#fff}
+:where(.pgs-P18-MentorProfile) .optc input:checked + span::before{background:#F7C337;border-color:#F7C337}
+:where(.pgs-P18-MentorProfile) .optc input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P18-MentorProfile) .optchips.bad .optc > span{border-color:#E7A3A5}
+:where(.pgs-P18-MentorProfile) .rcard{position:relative;display:flex}
+:where(.pgs-P18-MentorProfile) .rcard input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P18-MentorProfile) .rcard > span{flex:1;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.875rem}
+:where(.pgs-P18-MentorProfile) .rcard > span > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P18-MentorProfile) .rcard:hover > span{border-color:#1D1650}
+:where(.pgs-P18-MentorProfile) .rcard input:checked + span{border-color:#D63539;background:#FFF7F5;box-shadow:inset 3px 0 0 #D63539}
+:where(.pgs-P18-MentorProfile) [dir=rtl] .rcard input:checked + span{box-shadow:inset -3px 0 0 #D63539}
+:where(.pgs-P18-MentorProfile) .rcard input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P18-MentorProfile) .rgrid{display:grid;gap:10px}
+:where(.pgs-P18-MentorProfile) .sel-w{position:relative}
+:where(.pgs-P18-MentorProfile) .sel-w select{appearance:none;padding-inline-end:42px;cursor:pointer}
+:where(.pgs-P18-MentorProfile) .sel-w > svg{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:#5B636C}
+:where(.pgs-P18-MentorProfile) .pt .inp:focus-visible{outline:0}
+:where(.pgs-P18-MentorProfile) .dlg .dh .ey{font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#BF2E32;display:block;margin-bottom:6px}
+:where(.pgs-P18-MentorProfile) [dir=rtl] .dlg .dh .ey{letter-spacing:0}
+:where(.pgs-P18-MentorProfile) .dlg .db p{color:#4A525B}
+:where(.pgs-P18-MentorProfile) .okband{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:#EAF7EA;border:1px solid #CDEBCF;border-radius:8px;color:#15801A}
+:where(.pgs-P18-MentorProfile) .okband b{color:#0F5E13;font-size:1.0625rem;display:block}
+:where(.pgs-P18-MentorProfile) .okband p{color:#2F4A31}
+:where(.pgs-P18-MentorProfile) .empty .mot{display:flex;gap:6px;margin-bottom:6px}
+:where(.pgs-P18-MentorProfile) .empty .mot i{width:18px;height:18px;display:block}
+:where(.pgs-P18-MentorProfile) .empty .mot i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P18-MentorProfile) .empty .mot i:nth-child(2){background:#F7C337;transform:rotate(45deg) scale(.7)}
+:where(.pgs-P18-MentorProfile) .empty .mot i:nth-child(3){background:#E3DCD3;border-radius:50%}
+:where(.pgs-P18-MentorProfile) .empty b{color:#1D1650;font-size:1.0625rem}
+:where(.pgs-P18-MentorProfile) .phero{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+:where(.pgs-P18-MentorProfile) .phero .nm{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+:where(.pgs-P18-MentorProfile) .phero .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+:where(.pgs-P18-MentorProfile) .bio{font-size:1.0625rem;line-height:1.75;color:#333;margin:0;padding-inline-start:18px;border-inline-start:3px solid #E3DCD3}
+:where(.pgs-P18-MentorProfile) .pt .bd .bio2{font-size:.9375rem;color:#4A525B;margin:18px 0 0;padding-top:16px;border-top:1px dashed #E3DCD3}
+:where(.pgs-P18-MentorProfile) .areas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+:where(.pgs-P18-MentorProfile) .area{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:#F7F5F2;border-radius:6px}
+:where(.pgs-P18-MentorProfile) .area .dia{color:#D63539;margin-top:7px}
+:where(.pgs-P18-MentorProfile) .area b{color:#1D1650;display:block}
+:where(.pgs-P18-MentorProfile) .cg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+:where(.pgs-P18-MentorProfile) .cg .ccard .im{height:130px}
+:where(.pgs-P18-MentorProfile) .wk{display:flex;flex-direction:column;gap:7px}
+:where(.pgs-P18-MentorProfile) .wk .r{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;font-size:.8125rem}
+:where(.pgs-P18-MentorProfile) .wk .r > span:first-child{font-weight:700;color:#1D1650}
+:where(.pgs-P18-MentorProfile) .wk .tr{position:relative;height:14px;background:#F2EEE8;border-radius:2px}
+:where(.pgs-P18-MentorProfile) .wk .tr i{position:absolute;top:0;bottom:0;background:var(--c,#CD3151);border-radius:2px}
+:where(.pgs-P18-MentorProfile) .wk .r.off > span:first-child{color:#8A8F96;font-weight:600}
+:where(.pgs-P18-MentorProfile) .wk .ax{display:flex;justify-content:space-between;font-size:.6875rem;color:#5B636C;margin-inline-start:54px;font-family:var(--font)}
+:where(.pgs-P18-MentorProfile) .facts2{display:flex;flex-direction:column}
+:where(.pgs-P18-MentorProfile) .facts2 > div{display:flex;justify-content:space-between;gap:12px;padding:12px 22px;border-bottom:1px solid #F0ECE6;font-size:.9375rem}
+:where(.pgs-P18-MentorProfile) .facts2 > div:last-child{border-bottom:0}
+:where(.pgs-P18-MentorProfile) .facts2 > div > span{color:#5B636C}
+:where(.pgs-P18-MentorProfile) .facts2 > div > b{color:#1D1650;text-align:end}
+:where(.pgs-P18-MentorProfile) .lk-in{display:flex;align-items:center;gap:12px;padding:14px 22px;text-decoration:none;color:#1D1650;font-weight:700;border-top:1px solid #F0ECE6}
+:where(.pgs-P18-MentorProfile) .lk-in:hover{background:#FBFAF8}
+:where(.pgs-P18-MentorProfile) .lk-in:focus-visible{outline:3px solid #D63539;outline-offset:-3px}
+:where(.pgs-P18-MentorProfile) .lk-in .li{width:28px;height:28px;background:#0A66C2;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.8125rem;border-radius:3px;font-family:var(--font)}
+:where(.pgs-P18-MentorProfile) .priv{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;background:#F1EDE8;border-radius:6px;font-size:.875rem;color:#4A525B}
+:where(.pgs-P18-MentorProfile) .priv svg{flex:none;color:#3B2F92;margin-top:2px}
+@media (max-width:1100px){:where(.pgs-P18-MentorProfile) .areas,:where(.pgs-P18-MentorProfile) .cg{grid-template-columns:1fr}
+}
+@media (max-width:560px){:where(.pgs-P18-MentorProfile) .ovl{padding:16px}
+:where(.pgs-P18-MentorProfile) .dlg .df{flex-wrap:wrap}
+:where(.pgs-P18-MentorProfile) .dlg .dh{padding:20px 20px 16px}
+:where(.pgs-P18-MentorProfile) .dlg .db{padding:18px 20px}
+:where(.pgs-P18-MentorProfile) .dlg .df{padding:14px 20px}
+}
+@media (max-width:560px){:where(.pgs-P18-MentorProfile) .pcard .hd:has(> .cap){flex-wrap:wrap;row-gap:4px}
+}
+@media (max-width:900px){:where(.pgs-P18-MentorProfile) .phero .tags .tag{white-space:normal;text-align:start}
+}
+@media (max-width:560px){:where(.pgs-P18-MentorProfile) .phero{flex-direction:column;align-items:flex-start;gap:18px}
+:where(.pgs-P18-MentorProfile) .phero .nm{width:100%}
+:where(.pgs-P18-MentorProfile) .phero .avq.xl{width:88px;height:88px;font-size:1.625rem}
+:where(.pgs-P18-MentorProfile) .phero h1{font-size:clamp(1.75rem,8vw,2.25rem)}
+
+}
+
+

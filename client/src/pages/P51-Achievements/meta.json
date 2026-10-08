@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["employees", "elevate", "znm", "zu", "museopro", "nibras"],
+    "default": "employees",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["points", "badges", "certificates", "leaderboard"],
+    "default": "points",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1900
+  }
+}

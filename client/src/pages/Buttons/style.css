@@ -1,0 +1,89 @@
+/* Page CSS from the Claude Design artboard Buttons, scoped under .pgs-Buttons. */
+@font-face{font-family:'Corporate S CT';src:url(/_blob/d5cb7d2240203d6314d81acae84a104a) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Corporate S CT';src:url(/_blob/bd0cd7a77174c7a4eab07e65f1ac94b5) format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Corporate S CT';src:url(/_blob/bdf6137685b0fc8fa81b534d05b3cd9b) format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Corporate S CT';src:url(/_blob/7b637698d49b560684377b5016dfc091) format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'GE SS Text';src:url(/_blob/1cef0af30058d7a7d2b4e3db3e7f77bd) format('opentype');font-weight:300;font-display:swap}
+@font-face{font-family:'GE SS Text';src:url(/_blob/9c3b4998d337b724ba9abccf9997313a) format('opentype');font-weight:400 500;font-display:swap}
+@font-face{font-family:'GE SS Text';src:url(/_blob/926404f59d5de01fec339c7d4225c19a) format('opentype');font-weight:600 700;font-display:swap}
+.pgs-Buttons{margin:0;background:#F8F9FA}
+.pgs-Buttons{--primary:#EE3E43;--primary-ink:#D63539;--primary-deep:#BF2E32;--primary-soft:#FFF5F5;--sand:#E3DCD3;--sand-soft:#F1EDE8;--sand-deep:#D5CBBF;--indigo:#3B2F92;--indigo-hover:#2D2470;--indigo-soft:#EEEBF8;--success:#1A9F1F;--success-ink:#15801A;--success-soft:#EAF7EA;--text:#333333;--muted:#6D7782;--bg:#F8F9FA;--surface:#FFFFFF;--line:#E4E7EB;--r-ctl:8px;--r-panel:12px;--r-card:16px;--shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lift:0 14px 30px rgba(51,51,51,.13);--ease:cubic-bezier(.2,.7,.2,1);--font:Inter,system-ui,sans-serif;--font-ar:'GE SS Text','Noto Sans Arabic',Inter,system-ui,sans-serif;--font-display:'Corporate S CT',Inter,system-ui,sans-serif}
+:where(.pgs-Buttons) .ds{font-family:var(--font);color:var(--text);background:var(--bg);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100%}
+:where(.pgs-Buttons) .ds[dir=rtl]{font-family:var(--font-ar);line-height:1.75}
+:where(.pgs-Buttons) .ds *{box-sizing:border-box}
+:where(.pgs-Buttons) .ds h1,:where(.pgs-Buttons) .ds h2,:where(.pgs-Buttons) .ds h3,:where(.pgs-Buttons) .ds h4{margin:0;font-family:var(--font-display);font-weight:700;line-height:1.18;letter-spacing:-.015em;text-wrap:pretty}
+:where(.pgs-Buttons) .ds[dir=rtl] h1,:where(.pgs-Buttons) .ds[dir=rtl] h2,:where(.pgs-Buttons) .ds[dir=rtl] h3,:where(.pgs-Buttons) .ds[dir=rtl] h4{font-family:var(--font-ar);letter-spacing:0;line-height:1.45}
+:where(.pgs-Buttons) .ds h1{font-size:2.5rem}
+:where(.pgs-Buttons) .ds h2{font-size:2rem}
+:where(.pgs-Buttons) .ds h3{font-size:1.75rem}
+:where(.pgs-Buttons) .ds h4{font-size:1.5rem}
+:where(.pgs-Buttons) .ds p{margin:0}
+:where(.pgs-Buttons) .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary-ink)}
+:where(.pgs-Buttons) .ds[dir=rtl] .eyebrow{letter-spacing:0}
+:where(.pgs-Buttons) .cap{font-size:.8125rem;color:var(--muted)}
+:where(.pgs-Buttons) .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8125rem}
+:where(.pgs-Buttons) .rv{opacity:1}
+:where(.pgs-Buttons) .rv{animation:rvin .8s var(--ease) both}
+@keyframes rvin{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+:where(.pgs-Buttons) .d1{animation-delay:.07s}
+:where(.pgs-Buttons) .d2{animation-delay:.14s}
+:where(.pgs-Buttons) .d3{animation-delay:.21s}
+:where(.pgs-Buttons) .d4{animation-delay:.28s}
+:where(.pgs-Buttons) .d5{animation-delay:.35s}
+:where(.pgs-Buttons) .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:.9375rem;line-height:1;border-radius:10px;padding:0 20px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;position:relative;text-decoration:none;transition:transform .22s var(--ease),box-shadow .22s var(--ease),background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+:where(.pgs-Buttons) .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+:where(.pgs-Buttons) .btn:active{transform:translateY(0) scale(.985);box-shadow:none;transition-duration:.08s}
+:where(.pgs-Buttons) .btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+:where(.pgs-Buttons) .btn-primary{background:var(--primary-ink);color:#fff}
+:where(.pgs-Buttons) .btn-primary:hover{background:var(--primary-deep)}
+:where(.pgs-Buttons) .btn-event{background:var(--indigo);color:#fff}
+:where(.pgs-Buttons) .btn-event:hover{background:var(--indigo-hover)}
+:where(.pgs-Buttons) .btn-secondary{background:var(--sand);color:var(--text)}
+:where(.pgs-Buttons) .btn-secondary:hover{background:var(--sand-deep)}
+:where(.pgs-Buttons) .btn-outline{background:transparent;color:var(--primary-ink);border:2px solid var(--primary-ink)}
+:where(.pgs-Buttons) .btn-outline:hover{background:var(--primary-soft)}
+:where(.pgs-Buttons) .btn-ghost{background:transparent;color:var(--text)}
+:where(.pgs-Buttons) .btn-ghost:hover{background:#EEF0F2;box-shadow:none;transform:none}
+:where(.pgs-Buttons) .btn-sm{height:36px;padding:0 14px;font-size:.875rem;border-radius:8px}
+:where(.pgs-Buttons) .btn-lg{height:52px;padding:0 28px;font-size:1.0625rem;border-radius:12px}
+:where(.pgs-Buttons) .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+:where(.pgs-Buttons) .btn.is-loading{color:transparent!important;pointer-events:none}
+:where(.pgs-Buttons) .btn.is-loading::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:spin .8s linear infinite}
+:where(.pgs-Buttons) .btn-secondary.is-loading::after,:where(.pgs-Buttons) .btn-outline.is-loading::after,:where(.pgs-Buttons) .btn-ghost.is-loading::after{border-color:rgba(51,51,51,.2);border-top-color:var(--text)}
+:where(.pgs-Buttons) .btn.is-hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+:where(.pgs-Buttons) .btn-primary.is-hover{background:var(--primary-deep)}
+:where(.pgs-Buttons) .btn-event.is-hover{background:var(--indigo-hover)}
+:where(.pgs-Buttons) .btn-secondary.is-hover{background:var(--sand-deep)}
+:where(.pgs-Buttons) .btn-outline.is-hover{background:var(--primary-soft)}
+:where(.pgs-Buttons) .btn-ghost.is-hover{background:#EEF0F2;box-shadow:none;transform:none}
+:where(.pgs-Buttons) .btn.is-focus{outline:3px solid var(--primary);outline-offset:2px}
+:where(.pgs-Buttons) .btn-icon{width:44px;padding:0}
+:where(.pgs-Buttons) .btn-sm.btn-icon{width:36px}
+:where(.pgs-Buttons) .btn svg{flex:none}
+:where(.pgs-Buttons) [dir=rtl] .flip{transform:scaleX(-1)}
+@keyframes spin{to{transform:rotate(360deg)}}
+:where(.pgs-Buttons) .chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font-size:.8125rem;font-weight:600;line-height:1;white-space:nowrap}
+:where(.pgs-Buttons) .chip-success{background:var(--success-soft);color:var(--success-ink)}
+:where(.pgs-Buttons) .chip-primary{background:var(--primary-soft);color:var(--primary-deep)}
+:where(.pgs-Buttons) .chip-indigo{background:var(--indigo-soft);color:var(--indigo)}
+:where(.pgs-Buttons) .chip-muted{background:#EEF0F2;color:var(--text)}
+:where(.pgs-Buttons) .chip-sand{background:var(--sand);color:var(--text)}
+:where(.pgs-Buttons) .card{background:#fff;border-radius:var(--r-card);box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.04);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+:where(.pgs-Buttons) .seg{display:inline-flex;background:#EEF0F2;border-radius:999px;padding:3px;gap:2px}
+:where(.pgs-Buttons) .seg button{border:0;background:transparent;font:inherit;font-weight:600;font-size:.8125rem;padding:7px 14px;border-radius:999px;cursor:pointer;color:var(--muted);transition:background .25s var(--ease),color .25s,box-shadow .25s}
+:where(.pgs-Buttons) .seg button.is-on{background:#fff;color:var(--text);box-shadow:var(--shadow)}
+:where(.pgs-Buttons) .seg button:focus-visible{outline:3px solid var(--primary);outline-offset:1px}
+:where(.pgs-Buttons) .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 48px;background:#fff;border-bottom:1px solid var(--line);gap:16px;flex-wrap:wrap}
+:where(.pgs-Buttons) .sec{padding:48px;border-bottom:1px solid var(--line)}
+:where(.pgs-Buttons) .sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+:where(.pgs-Buttons) .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+:where(.pgs-Buttons) .lab{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+:where(.pgs-Buttons) .lab .cap{font-weight:500}
+:where(.pgs-Buttons) .pop{animation:pop .45s var(--ease) both}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(4px)}}
+@media (prefers-reduced-motion:reduce){:where(.pgs-Buttons) .rv{animation:none}
+:where(.pgs-Buttons) .ds *,:where(.pgs-Buttons) .ds *::before,:where(.pgs-Buttons) .ds *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media (max-width:720px){:where(.pgs-Buttons) .sec,:where(.pgs-Buttons) .topbar{padding-inline:16px}
+}
+

@@ -1,0 +1,18 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "role": {
+    "editor": "enum",
+    "options": ["learner", "mentor", "judge", "subadmin", "admin"],
+    "default": "learner",
+    "section": "Shell"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 900
+  }
+}

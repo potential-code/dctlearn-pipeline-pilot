@@ -1,0 +1,18 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "accent": {
+    "editor": "color",
+    "options": ["#CD3151", "#EE3E43", "#3B2F92", "#E35E3C"],
+    "default": "#CD3151",
+    "section": "Microsite"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 3340
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["employees", "elevate"],
+    "default": "employees",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["details", "security", "notifications", "data"],
+    "default": "details",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1370
+  }
+}

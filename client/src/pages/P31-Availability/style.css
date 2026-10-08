@@ -1,0 +1,107 @@
+/* Page CSS from the Claude Design artboard P31-Availability, scoped under .pgs-P31-Availability. */
+.pgs-P31-Availability{margin:0;background:#F7F5F2}
+:where(.pgs-P31-Availability) .col{display:flex;flex-direction:column;gap:24px;min-width:0}
+:where(.pgs-P31-Availability) .av-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+:where(.pgs-P31-Availability) .ltr{direction:ltr;unicode-bidi:isolate}
+:where(.pgs-P31-Availability) .day{display:grid;grid-template-columns:136px minmax(0,1fr);gap:16px;padding:16px 22px;border-bottom:1px solid #F0ECE6;align-items:start}
+:where(.pgs-P31-Availability) .day:last-child{border-bottom:0}
+:where(.pgs-P31-Availability) .day.err{background:#FFF7F6}
+:where(.pgs-P31-Availability) .day .dn{display:flex;align-items:center;gap:10px;padding-top:10px}
+:where(.pgs-P31-Availability) .day .dn b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P31-Availability) .sw{all:unset;cursor:pointer;width:38px;height:22px;border-radius:999px;background:#D6D0C8;position:relative;flex:none;transition:background .2s}
+:where(.pgs-P31-Availability) .sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:inset-inline-start .2s var(--ease)}
+:where(.pgs-P31-Availability) .sw.on{background:#15801A}
+:where(.pgs-P31-Availability) .sw.on::after{inset-inline-start:19px}
+:where(.pgs-P31-Availability) .sw:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P31-Availability) .rgs{display:flex;flex-direction:column;gap:8px}
+:where(.pgs-P31-Availability) .rg{display:flex;align-items:center;gap:6px}
+:where(.pgs-P31-Availability) .rg .iw.sel{width:104px}
+:where(.pgs-P31-Availability) .rg .iw.sel .chev{inset-inline-end:10px;width:auto;height:auto;background:none;border-radius:0;transform:none}
+:where(.pgs-P31-Availability) .rg .iw.sel .inp{padding-inline-end:30px}
+:where(.pgs-P31-Availability) .rg .inp{height:42px;font-family:var(--font);font-variant-numeric:tabular-nums;padding-inline-start:12px}
+:where(.pgs-P31-Availability) .rg .to{color:#6B6259;font-size:.875rem}
+:where(.pgs-P31-Availability) .rg .dur{font-size:.75rem;color:#5B636C;margin-inline-start:2px;white-space:nowrap;flex:1;min-width:0}
+:where(.pgs-P31-Availability) .ib{all:unset;cursor:pointer;width:38px;height:38px;border-radius:8px;display:grid;place-items:center;color:#6B6259}
+:where(.pgs-P31-Availability) .ib:hover{background:#F2EFEA;color:#B42318}
+:where(.pgs-P31-Availability) .ib:focus-visible{outline:3px solid #D63539}
+:where(.pgs-P31-Availability) .addr{all:unset;cursor:pointer;font-size:.875rem;font-weight:700;color:#BF2E32;display:inline-flex;gap:6px;align-items:center;padding:6px 0;align-self:flex-start}
+:where(.pgs-P31-Availability) .addr:hover{text-decoration:underline}
+:where(.pgs-P31-Availability) .addr:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P31-Availability) .unav{padding-top:10px;color:#8A8178;font-size:.9375rem}
+:where(.pgs-P31-Availability) .tz{display:flex;flex-direction:column;gap:12px}
+:where(.pgs-P31-Availability) .req{padding:16px 22px;border-bottom:1px solid #F0ECE6;display:flex;flex-direction:column;gap:10px}
+:where(.pgs-P31-Availability) .req:last-child{border-bottom:0}
+:where(.pgs-P31-Availability) .req .top{display:flex;gap:12px;align-items:center}
+:where(.pgs-P31-Availability) .req .top .t{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+:where(.pgs-P31-Availability) .req .top .t > strong{color:#1D1650}
+:where(.pgs-P31-Availability) .ph-sh{width:42px;height:42px;flex:none;border-start-start-radius:100%;display:grid;place-items:center;color:#fff;font-family:var(--font);font-weight:800;font-size:.8125rem;background:var(--c,#CD3151)}
+:where(.pgs-P31-Availability) .acts2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P31-Availability) .toff{display:flex;gap:12px;align-items:center;padding:14px 22px;border-bottom:1px solid #F0ECE6}
+:where(.pgs-P31-Availability) .toff:last-child{border-bottom:0}
+:where(.pgs-P31-Availability) .toff .hatch{width:34px;height:34px;flex:none;border-end-end-radius:100%;background:repeating-linear-gradient(45deg,#F77860 0 4px,#FBD3C9 4px 8px)}
+:where(.pgs-P31-Availability) .toff .t{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+:where(.pgs-P31-Availability) .toff .t > strong{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P31-Availability) .wk{display:grid;grid-template-columns:64px repeat(7,minmax(0,1fr));gap:6px;padding:20px 22px 22px}
+:where(.pgs-P31-Availability) .wk .hc{text-align:center;padding:6px 0 10px;display:flex;flex-direction:column;gap:2px;align-items:center}
+:where(.pgs-P31-Availability) .wk .hc b{font-family:var(--font);font-size:1.375rem;font-weight:800;color:#1D1650;line-height:1}
+:where(.pgs-P31-Availability) .wk .hc small{font-size:.6875rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6B6259}
+:where(.pgs-P31-Availability) [dir=rtl] .wk .hc small{letter-spacing:0}
+:where(.pgs-P31-Availability) .wk .hc.today b{color:#D63539}
+:where(.pgs-P31-Availability) .wk .tm{font-family:var(--font);font-size:.75rem;color:#6B6259;text-align:end;padding-inline-end:6px;align-self:center;font-variant-numeric:tabular-nums}
+:where(.pgs-P31-Availability) .cell{height:44px;border-radius:4px;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:5px;text-align:center;padding:0 4px;overflow:hidden;white-space:nowrap}
+:where(.pgs-P31-Availability) .cell.none{background:transparent;border:1px dashed #EAE5DE}
+:where(.pgs-P31-Availability) .cell.free{background:#EAF6EB;color:#15801A;border:1px solid #CDE8CF}
+:where(.pgs-P31-Availability) .cell.booked{background:#CD3151;color:#fff;border-start-start-radius:16px}
+:where(.pgs-P31-Availability) .cell.req{background:#FFF4D6;color:#8A5A00;border:1.5px dashed #E0A800}
+:where(.pgs-P31-Availability) .cell.off{background:repeating-linear-gradient(45deg,#FDE7E1 0 6px,#FFF4F1 6px 12px);color:#A33A22}
+:where(.pgs-P31-Availability) .cell.past{background:#F2EFEA;color:#8A8178}
+:where(.pgs-P31-Availability) .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8125rem;color:#4A525B;padding:0 22px 20px}
+:where(.pgs-P31-Availability) .legend > span{display:inline-flex;align-items:center;gap:8px}
+:where(.pgs-P31-Availability) .legend i{width:16px;height:12px;border-radius:2px;display:inline-block}
+:where(.pgs-P31-Availability) .wnav{display:flex;align-items:center;gap:8px}
+:where(.pgs-P31-Availability) .wnav b{font-family:var(--font);color:#1D1650;min-width:150px;text-align:center;font-size:.9375rem}
+:where(.pgs-P31-Availability) .note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:#EEEBF8;border-radius:6px;color:#2D2470;font-size:.875rem}
+:where(.pgs-P31-Availability) .note svg{flex:none;margin-top:2px}
+:where(.pgs-P31-Availability) .dirty{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:700;color:#8A5A00;align-self:center}
+:where(.pgs-P31-Availability) .dirty::before{content:"";width:8px;height:8px;border-radius:50%;background:#E0A800}
+:where(.pgs-P31-Availability) .cnt2{font-size:.75rem;color:#5B636C;font-family:var(--font);margin-inline-start:auto}
+:where(.pgs-P31-Availability) .lblrow{display:flex;align-items:baseline;gap:10px}
+:where(.pgs-P31-Availability) .f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+:where(.pgs-P31-Availability) .toast2{position:fixed;inset-inline-end:28px;bottom:28px;z-index:60;display:flex;gap:12px;align-items:flex-start;max-width:420px;padding:16px 18px;background:#1D1650;color:#fff;border-radius:8px;border-end-end-radius:28px;box-shadow:0 24px 50px -20px rgba(0,0,0,.6);animation:tin .4s var(--ease) both}
+:where(.pgs-P31-Availability) [dir=rtl] .toast2{border-radius:8px;border-end-start-radius:28px}
+:where(.pgs-P31-Availability) .toast2 svg{flex:none;color:#7BD88F;margin-top:2px}
+:where(.pgs-P31-Availability) .toast2 .t{display:flex;flex-direction:column;gap:2px;flex:1}
+:where(.pgs-P31-Availability) .toast2 .t > span{font-size:.875rem;color:rgba(255,255,255,.8)}
+:where(.pgs-P31-Availability) .toast2 .x{all:unset;cursor:pointer;color:rgba(255,255,255,.75);padding:2px;border-radius:4px;display:flex}
+:where(.pgs-P31-Availability) .toast2 .x:focus-visible{outline:2px solid #fff}
+@keyframes tin{from{opacity:0;transform:translateY(12px)}}
+:where(.pgs-P31-Availability) .dlg .dh .sub{font-size:.875rem;color:#5B636C;margin-top:4px}
+:where(.pgs-P31-Availability) .empty .mo{display:flex;gap:6px}
+:where(.pgs-P31-Availability) .empty .mo i{width:18px;height:18px;display:block}
+:where(.pgs-P31-Availability) .empty .mo i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P31-Availability) .empty .mo i:nth-child(2){background:#F7C337;transform:rotate(45deg) scale(.7)}
+:where(.pgs-P31-Availability) .empty .mo i:nth-child(3){background:#E3DCD3;border-radius:50%}
+@media (max-width:1100px){:where(.pgs-P31-Availability) .av-grid{grid-template-columns:1fr}
+:where(.pgs-P31-Availability) .day{grid-template-columns:1fr}
+:where(.pgs-P31-Availability) .wk{grid-template-columns:48px repeat(7,minmax(0,1fr))}
+}
+:where(.pgs-P31-Availability) .wk .cell{text-overflow:ellipsis}
+@media (max-width:560px){:where(.pgs-P31-Availability) .pcard .hd{flex-wrap:wrap;row-gap:6px}
+:where(.pgs-P31-Availability) .pcard .hd > :first-child{flex:1 1 auto;min-width:0}
+:where(.pgs-P31-Availability) .ovl{padding:16px}
+:where(.pgs-P31-Availability) .dlg{max-height:calc(100dvh - 32px);border-start-end-radius:32px}
+:where(.pgs-P31-Availability) .dlg .dh{padding:18px 18px 14px}
+:where(.pgs-P31-Availability) .dlg .dh h2{font-size:1.1875rem}
+:where(.pgs-P31-Availability) .dlg .db{padding:18px}
+:where(.pgs-P31-Availability) .dlg .df{padding:14px 18px;flex-wrap:wrap}
+:where(.pgs-P31-Availability) .dlg .df > .btn{flex:1 1 auto}
+:where(.pgs-P31-Availability) .ibtn{width:44px;height:44px}
+:where(.pgs-P31-Availability) .wk{grid-template-columns:52px repeat(7,minmax(84px,1fr));overflow-x:auto;padding:16px 0 18px;padding-inline-end:16px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+:where(.pgs-P31-Availability) .wk > span:first-child,:where(.pgs-P31-Availability) .wk .tm{position:sticky;inset-inline-start:0;z-index:2;background:#fff;align-self:stretch;display:flex;align-items:center;justify-content:flex-end;padding-inline:4px 8px}
+:where(.pgs-P31-Availability) .wk .cell{text-overflow:ellipsis}
+:where(.pgs-P31-Availability) .wnav{width:100%;justify-content:space-between}
+:where(.pgs-P31-Availability) .wnav b{min-width:0}
+:where(.pgs-P31-Availability) .legend{padding-inline:16px}
+:where(.pgs-P31-Availability) .f2{grid-template-columns:1fr}
+}
+

@@ -1,0 +1,28 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["elevate", "znm", "ruwaad"],
+    "default": "elevate",
+    "section": "Microsite"
+  },
+  "popup": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Microsite"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Microsite"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 4840
+  }
+}

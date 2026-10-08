@@ -1,0 +1,23 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["courses", "workshops", "mentors", "ai_coaches", "ai_tools"],
+    "default": "courses",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 5760
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "view": {
+    "editor": "enum",
+    "options": ["default", "filtered", "search", "empty"],
+    "default": "default",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 3680
+  }
+}

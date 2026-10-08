@@ -1,0 +1,33 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": [
+      "employees",
+      "elevate",
+      "znm",
+      "zu",
+      "museopro",
+      "nibras",
+      "chkforum",
+      "ruwaad",
+      "csmd"
+    ],
+    "default": "employees",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 2490
+  }
+}

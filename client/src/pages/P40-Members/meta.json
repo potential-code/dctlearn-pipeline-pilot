@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["elevate", "employees", "znm"],
+    "default": "elevate",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["list", "invite", "invited", "csv", "csvPreview", "csvDone", "remove"],
+    "default": "list",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1130
+  }
+}

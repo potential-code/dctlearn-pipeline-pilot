@@ -1,0 +1,35 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "applicant": {
+    "editor": "enum",
+    "options": ["sara", "ahmed"],
+    "default": "sara",
+    "section": "Page"
+  },
+  "dialog": {
+    "editor": "enum",
+    "options": ["none", "grade"],
+    "default": "none",
+    "section": "Page"
+  },
+  "round": {
+    "editor": "enum",
+    "options": ["judging", "open", "closed"],
+    "default": "judging",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1910
+  }
+}

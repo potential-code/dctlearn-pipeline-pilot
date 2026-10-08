@@ -1,0 +1,35 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["employees", "znm", "zu", "museopro", "nibras"],
+    "default": "employees",
+    "section": "Page"
+  },
+  "course": {
+    "editor": "enum",
+    "options": ["dct-world", "museum-101"],
+    "default": "dct-world",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["outline", "unit1", "unit2", "unit3", "unit4", "quiz", "pass", "fail", "complete"],
+    "default": "outline",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1500
+  }
+}

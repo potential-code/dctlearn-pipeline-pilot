@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["overview", "mentees", "sessions", "grow", "profile"],
+    "default": "overview",
+    "section": "Page"
+  },
+  "dialog": {
+    "editor": "enum",
+    "options": ["none", "decline", "feedback", "cancel", "grow"],
+    "default": "none",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 2200
+  }
+}

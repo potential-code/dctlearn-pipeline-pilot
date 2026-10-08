@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["badges", "points", "certs"],
+    "default": "badges",
+    "section": "Page"
+  },
+  "dlg": {
+    "editor": "enum",
+    "options": ["none", "badge", "adjust", "reject"],
+    "default": "none",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1450
+  }
+}

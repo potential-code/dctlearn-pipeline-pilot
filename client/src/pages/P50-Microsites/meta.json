@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["live", "requested", "archived"],
+    "default": "live",
+    "section": "Page"
+  },
+  "ovl": {
+    "editor": "enum",
+    "options": ["none", "edit", "approve", "reject"],
+    "default": "none",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 2040
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "mentor": {
+    "editor": "enum",
+    "options": ["hessa", "rashid", "mariam"],
+    "default": "hessa",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1480
+  }
+}

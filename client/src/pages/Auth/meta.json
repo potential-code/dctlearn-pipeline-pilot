@@ -1,0 +1,23 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Screen"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["login", "msignin", "register", "reset", "setpw", "invite"],
+    "default": "login",
+    "section": "Screen"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1120
+  }
+}

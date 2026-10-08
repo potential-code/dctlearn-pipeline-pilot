@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "coach": {
+    "editor": "enum",
+    "options": ["culture-bot", "career-coach"],
+    "default": "career-coach",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["conversation", "empty", "typing"],
+    "default": "conversation",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1140
+  }
+}

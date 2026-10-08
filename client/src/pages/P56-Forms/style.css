@@ -1,0 +1,131 @@
+/* Page CSS from the Claude Design artboard P56-Forms, scoped under .pgs-P56-Forms. */
+.pgs-P56-Forms{margin:0;background:#F7F5F2}
+:where(.pgs-P56-Forms) .ds.pt{position:relative}
+:where(.pgs-P56-Forms) .toast{position:fixed;bottom:28px;inset-inline-start:50%;transform:translateX(-50%);z-index:80;background:#1D1650;color:#fff;padding:14px 20px;display:flex;gap:12px;align-items:center;border-radius:8px;border-inline-start:4px solid #F7C337;box-shadow:0 24px 50px -20px rgba(0,0,0,.6);font-weight:600;font-size:.9375rem;max-width:min(620px,calc(100% - 32px));animation:tin .35s var(--ease)}
+:where(.pgs-P56-Forms) [dir=rtl] .toast{transform:translateX(50%)}
+:where(.pgs-P56-Forms) .toast svg{color:#F7C337;flex:none}
+@keyframes tin{from{opacity:0;margin-bottom:-12px}}
+:where(.pgs-P56-Forms) .tgl{all:unset;cursor:pointer;width:42px;height:24px;border-radius:999px;background:#B9B0A5;position:relative;flex:none;transition:background .2s}
+:where(.pgs-P56-Forms) .tgl::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:inset-inline-start .2s var(--ease)}
+:where(.pgs-P56-Forms) .tgl.on{background:#15801A}
+:where(.pgs-P56-Forms) .tgl.on::after{inset-inline-start:21px}
+:where(.pgs-P56-Forms) .tgl:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+:where(.pgs-P56-Forms) .tgr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #F0ECE6}
+:where(.pgs-P56-Forms) .tgr:last-child{border-bottom:0}
+:where(.pgs-P56-Forms) .tgr .tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+:where(.pgs-P56-Forms) .tgr .tx > b{color:var(--ink);font-size:.9375rem}
+:where(.pgs-P56-Forms) .fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+:where(.pgs-P56-Forms) .fg .full{grid-column:1/-1}
+:where(.pgs-P56-Forms) textarea.inp{height:auto;min-height:92px;padding:12px 14px;resize:vertical;line-height:1.55}
+:where(.pgs-P56-Forms) .pt .inp{border-radius:8px}
+:where(.pgs-P56-Forms) .pt select.inp{padding-inline-start:14px}
+:where(.pgs-P56-Forms) .lblrow{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+:where(.pgs-P56-Forms) .ctr{font-size:.75rem;color:#5B636C;font-family:var(--font);font-variant-numeric:tabular-nums}
+:where(.pgs-P56-Forms) .ctr.over{color:#B42318;font-weight:700}
+:where(.pgs-P56-Forms) .msd{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;white-space:nowrap;color:#3F464D}
+:where(.pgs-P56-Forms) .msd > i{width:10px;height:10px;border-start-start-radius:100%;background:var(--c);flex:none}
+:where(.pgs-P56-Forms) .msl{display:flex;flex-wrap:wrap;gap:6px 12px}
+:where(.pgs-P56-Forms) .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8125rem;direction:ltr;unicode-bidi:isolate}
+:where(.pgs-P56-Forms) .tw{overflow-x:auto}
+:where(.pgs-P56-Forms) .cnum{font-family:var(--font);font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+:where(.pgs-P56-Forms) .ra{display:flex;gap:8px;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+:where(.pgs-P56-Forms) .dlg.wide{width:min(860px,100%)}
+:where(.pgs-P56-Forms) .dlg .db .alert{margin:0}
+:where(.pgs-P56-Forms) .chipf[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+:where(.pgs-P56-Forms) .chipf .sw{width:10px;height:10px;border-start-start-radius:100%;background:var(--c)}
+:where(.pgs-P56-Forms) .mchips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P56-Forms) .mchips .chipf{height:34px;font-size:.8125rem}
+:where(.pgs-P56-Forms) .secl{font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#5B636C;display:flex;align-items:center;gap:10px}
+:where(.pgs-P56-Forms) [dir=rtl] .secl{letter-spacing:0}
+:where(.pgs-P56-Forms) .secl::after{content:"";flex:1;height:1px;background:var(--bd)}
+:where(.pgs-P56-Forms) .pgh .tag{align-self:flex-start}
+:where(.pgs-P56-Forms) .dg{font-size:.8125rem;color:#5B636C}
+:where(.pgs-P56-Forms) .rcount{font-size:.875rem;color:#5B636C;margin-inline-start:auto}
+:where(.pgs-P56-Forms) .fbar .iw.sel{min-width:190px}
+:where(.pgs-P56-Forms) .fbar .iw.sel .inp{height:44px;border-width:1.5px;font-size:.875rem;background:#fff}
+:where(.pgs-P56-Forms) .btn-danger{background:#B42318;color:#fff}
+:where(.pgs-P56-Forms) .btn-danger:hover{background:#951c13}
+:where(.pgs-P56-Forms) .btn-ok{background:#15801A;color:#fff}
+:where(.pgs-P56-Forms) .btn-ok:hover{background:#106415}
+:where(.pgs-P56-Forms) .audit{display:flex;flex-direction:column}
+:where(.pgs-P56-Forms) .audit .ar{display:flex;gap:12px;padding:12px 22px;border-bottom:1px solid #F0ECE6;font-size:.875rem;align-items:flex-start}
+:where(.pgs-P56-Forms) .audit .ar:last-child{border-bottom:0}
+:where(.pgs-P56-Forms) .audit .ar .dia{color:var(--red);margin-top:7px}
+:where(.pgs-P56-Forms) .audit .ar time{margin-inline-start:auto;color:#5B636C;font-size:.8125rem;white-space:nowrap}
+:where(.pgs-P56-Forms) .seg.lite{background:#EFEBE5}
+:where(.pgs-P56-Forms) .seg.lite button{color:#4A525B}
+:where(.pgs-P56-Forms) .fttl{display:flex;flex-direction:column;gap:2px;min-width:0}
+:where(.pgs-P56-Forms) .fttl > b{color:var(--ink);font-size:.9375rem}
+:where(.pgs-P56-Forms) .fttl .alt{font-size:.8125rem;color:#5B636C;align-self:flex-start}
+:where(.pgs-P56-Forms) .bld{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+:where(.pgs-P56-Forms) .fld{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 18px;border:1.5px solid var(--bd);border-radius:8px;background:#fff;width:100%;transition:border-color .2s,box-shadow .2s}
+:where(.pgs-P56-Forms) .fld:hover{border-color:#C9C2B8}
+:where(.pgs-P56-Forms) .fld.on{border-color:var(--ink);box-shadow:0 0 0 3px rgba(59,47,146,.14)}
+:where(.pgs-P56-Forms) .fld:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+:where(.pgs-P56-Forms) .fld .ic{width:38px;height:38px;flex:none;display:grid;place-items:center;color:#fff;background:var(--c);border-start-start-radius:100%}
+:where(.pgs-P56-Forms) .fld .ic svg{margin-top:6px;margin-inline-start:6px}
+:where(.pgs-P56-Forms) .fld .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+:where(.pgs-P56-Forms) .fld .tx b{color:var(--ink);font-size:.9375rem}
+:where(.pgs-P56-Forms) .fld .ty{font-size:.75rem;color:#5B636C}
+:where(.pgs-P56-Forms) .flist{display:flex;flex-direction:column;gap:10px}
+:where(.pgs-P56-Forms) .optrow{display:flex;gap:8px;align-items:center}
+:where(.pgs-P56-Forms) .optrow .inp{height:40px;border-width:1.5px}
+:where(.pgs-P56-Forms) .back{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#4A525B;text-decoration:none;font-size:.875rem;background:none;border:0;cursor:pointer;padding:0;font-family:inherit}
+:where(.pgs-P56-Forms) .back:hover{color:var(--red)}
+:where(.pgs-P56-Forms) .back:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+:where(.pgs-P56-Forms) .ans{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 20px;padding:16px 22px;background:#FBFAF8;font-size:.875rem}
+:where(.pgs-P56-Forms) .ans dt{font-weight:700;color:#4A525B}
+:where(.pgs-P56-Forms) .ans dd{margin:0;color:#333}
+:where(.pgs-P56-Forms) .xrow td{padding:0}
+:where(.pgs-P56-Forms) .rbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#1D1650;font-size:.875rem}
+:where(.pgs-P56-Forms) .rbtn:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+:where(.pgs-P56-Forms) .rbtn svg{transition:transform .2s}
+:where(.pgs-P56-Forms) .rbtn[aria-expanded=true] svg{transform:rotate(90deg)}
+:where(.pgs-P56-Forms) [dir=rtl] .rbtn[aria-expanded=false] svg{transform:scaleX(-1)}
+:where(.pgs-P56-Forms) .tbl .ra{flex-wrap:nowrap}
+:where(.pgs-P56-Forms) .tbl td .cap{white-space:nowrap}
+@media (max-width:1100px){:where(.pgs-P56-Forms) .bld{grid-template-columns:minmax(0,1fr)}
+
+}
+@media (max-width:560px){:where(.pgs-P56-Forms) .fbar .iw.sel{min-width:0;flex:1 1 150px}
+:where(.pgs-P56-Forms) .ans{grid-template-columns:minmax(0,1fr);gap:2px;padding:14px 16px}
+:where(.pgs-P56-Forms) .ans dd{margin-bottom:8px}
+:where(.pgs-P56-Forms) .pcard > .hd:has(.iw){flex-wrap:wrap;gap:10px}
+:where(.pgs-P56-Forms) .pcard > .hd .iw.sel{min-width:0!important;flex:1 1 100%}
+:where(.pgs-P56-Forms) .fld{padding:12px 14px}
+
+}
+@media (max-width:900px){:where(.pgs-P56-Forms) .tw{overflow:visible}
+:where(.pgs-P56-Forms) .tw .tbl,:where(.pgs-P56-Forms) .tw .tbl tbody{display:block;width:100%}
+:where(.pgs-P56-Forms) .tw .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+:where(.pgs-P56-Forms) .tw .tbl tr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:14px 16px;border-bottom:1px solid #F0ECE6}
+:where(.pgs-P56-Forms) .tw .tbl tbody tr:last-child{border-bottom:0}
+:where(.pgs-P56-Forms) .tw .tbl td{display:block;padding:0;border:0;min-width:0}
+:where(.pgs-P56-Forms) .tw .tbl td:first-child{flex:1 1 100%}
+:where(.pgs-P56-Forms) .tw .tbl td:last-child{flex:1 1 100%;text-align:start!important}
+:where(.pgs-P56-Forms) .tw .tbl td[style*=max-width]{max-width:none!important}
+:where(.pgs-P56-Forms) .tw .tbl td .cap{white-space:normal}
+:where(.pgs-P56-Forms) .tw .tbl tbody tr > td:nth-child(4).cnum{display:none}
+:where(.pgs-P56-Forms) .tw .tbl .ra{flex-wrap:wrap;justify-content:flex-start}
+:where(.pgs-P56-Forms) .tw .tbl .ra .btn{flex:1 1 auto}
+:where(.pgs-P56-Forms) .tw .tbl tr.xrow{padding:0}
+
+}
+@media (max-width:560px){:where(.pgs-P56-Forms) .ovl{padding:16px}
+:where(.pgs-P56-Forms) .dlg{max-height:calc(100dvh - 32px);border-start-end-radius:32px}
+:where(.pgs-P56-Forms) .dlg .dh{padding:18px 18px 14px}
+:where(.pgs-P56-Forms) .dlg .db{padding:18px}
+:where(.pgs-P56-Forms) .dlg .df{padding:14px 18px;flex-wrap:wrap}
+:where(.pgs-P56-Forms) .dlg .df > .btn{flex:1 1 auto}
+:where(.pgs-P56-Forms) .pt .sheet .sh{padding:18px 18px 14px}
+:where(.pgs-P56-Forms) .pt .sheet .sb2{padding:6px 18px 20px}
+:where(.pgs-P56-Forms) .pt .sheet .sf{padding:14px 18px;flex-wrap:wrap}
+:where(.pgs-P56-Forms) .secl{flex-wrap:wrap;gap:4px 6px}
+:where(.pgs-P56-Forms) .secl::after{flex:1 1 40px}
+:where(.pgs-P56-Forms) .mchips .chipf{height:auto;min-height:34px;padding-block:6px;text-align:start;line-height:1.3}
+:where(.pgs-P56-Forms) .fbar .iw.sel{min-width:0;flex:1 1 150px}
+:where(.pgs-P56-Forms) [dir=rtl] .pt .fsel::after{transform:rotate(-45deg)}
+
+}
+
+

@@ -1,0 +1,34 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "course": {
+    "editor": "string",
+    "default": "C01",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": ["content", "quiz", "card", "certificate", "settings"],
+    "default": "content",
+    "section": "Page"
+  },
+  "status": {
+    "editor": "enum",
+    "options": ["published", "draft"],
+    "default": "published",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1970
+  }
+}

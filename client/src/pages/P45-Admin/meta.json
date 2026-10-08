@@ -1,0 +1,40 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tab": {
+    "editor": "enum",
+    "options": [
+      "general",
+      "employees",
+      "elevate",
+      "znm",
+      "zu",
+      "museopro",
+      "nibras",
+      "chkforum",
+      "ruwaad",
+      "csmd"
+    ],
+    "default": "general",
+    "section": "Page"
+  },
+  "ai": {
+    "editor": "enum",
+    "options": ["answer", "empty", "off"],
+    "default": "answer",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 3150
+  }
+}

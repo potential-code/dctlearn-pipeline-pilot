@@ -1,0 +1,12 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1780
+  }
+}

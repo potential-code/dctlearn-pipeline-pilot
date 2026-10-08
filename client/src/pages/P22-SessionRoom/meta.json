@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "role": {
+    "editor": "enum",
+    "options": ["learner", "mentor"],
+    "default": "learner",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["early", "ready", "waiting", "meeting", "closed", "cancelled", "feedback"],
+    "default": "ready",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1010
+  }
+}

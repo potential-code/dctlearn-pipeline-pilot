@@ -1,0 +1,93 @@
+/* Page CSS from the Claude Design artboard P13-Hubs, scoped under .pgs-P13-Hubs. */
+.pgs-P13-Hubs{margin:0;background:#F2EEE8}
+:where(.pgs-P13-Hubs) .hp{background:#F2EEE8;min-height:900px;display:flex;flex-direction:column}
+:where(.pgs-P13-Hubs) .hp .topb{padding:0 40px}
+:where(.pgs-P13-Hubs) .hp .brand{display:flex;align-items:center;gap:16px;text-decoration:none}
+:where(.pgs-P13-Hubs) .hp .brand img{height:30px;width:auto;display:block}
+:where(.pgs-P13-Hubs) .hp .brand .div{width:1px;height:28px;background:#E7E2DB}
+:where(.pgs-P13-Hubs) .hp .brand .cap{font-weight:600}
+:where(.pgs-P13-Hubs) .hhero{position:relative;overflow:hidden;background:#1D1650;color:#fff;padding:48px 40px 120px;isolation:isolate}
+:where(.pgs-P13-Hubs) .hhero > .patD{inset:0;width:100%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.25));mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.25))}
+:where(.pgs-P13-Hubs) .hhero .in{position:relative;z-index:1;max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+:where(.pgs-P13-Hubs) .hhero h1{color:#fff;font-size:2.75rem}
+:where(.pgs-P13-Hubs) .hhero p{color:rgba(255,255,255,.84);font-size:1.0625rem;max-width:60ch}
+:where(.pgs-P13-Hubs) .hhero .eyebrow{color:#FFB4AC}
+:where(.pgs-P13-Hubs) .shapes{position:absolute;inset-inline-end:40px;top:36px;display:grid;grid-template-columns:repeat(3,44px);gap:6px;z-index:1}
+:where(.pgs-P13-Hubs) .shapes i{width:44px;height:44px;display:block}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(2){display:grid;place-items:center}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(2)::before{content:"";width:56%;height:56%;background:#F7C337;transform:rotate(45deg)}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(3){background:#CD3151;border-start-end-radius:100%}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(4){background:#E3DCD3;border-radius:50%}
+:where(.pgs-P13-Hubs) .shapes i:nth-child(5){background:#F77860;border-end-end-radius:100%}
+:where(.pgs-P13-Hubs) [dir=rtl] .shapes{transform:scaleX(-1)}
+:where(.pgs-P13-Hubs) .wrapc{max-width:1120px;margin:-84px auto 0;padding:0 40px 64px;position:relative;z-index:2;width:100%;box-sizing:content-box}
+:where(.pgs-P13-Hubs) .hubs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+:where(.pgs-P13-Hubs) .hub{background:#fff;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(29,22,80,.06),0 24px 48px -24px rgba(29,22,80,.45);transition:transform .35s var(--ease),box-shadow .35s;position:relative;--ac:#EE3E43}
+:where(.pgs-P13-Hubs) .hub:hover{transform:translateY(-6px);box-shadow:0 30px 60px -26px rgba(29,22,80,.55)}
+:where(.pgs-P13-Hubs) .hub:nth-child(2){border-start-end-radius:64px}
+:where(.pgs-P13-Hubs) .hub .im{height:230px;position:relative;overflow:hidden;background:#1D1650}
+:where(.pgs-P13-Hubs) .hub .im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
+:where(.pgs-P13-Hubs) .hub:hover .im img{transform:scale(1.05)}
+:where(.pgs-P13-Hubs) .hub .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,22,80,0) 40%,rgba(29,22,80,.82))}
+:where(.pgs-P13-Hubs) .hub .im .qc{position:absolute;bottom:0;inset-inline-start:0;width:74px;height:74px;background:var(--ac);border-start-end-radius:100%;z-index:1}
+:where(.pgs-P13-Hubs) .hub .im .nm{position:absolute;bottom:18px;inset-inline-start:96px;inset-inline-end:22px;z-index:1;color:#fff;display:flex;flex-direction:column;gap:2px}
+:where(.pgs-P13-Hubs) .hub .im .nm small{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+:where(.pgs-P13-Hubs) [dir=rtl] .hub .im .nm small{letter-spacing:0}
+:where(.pgs-P13-Hubs) .hub .im .nm h2{color:#fff;font-size:1.75rem}
+:where(.pgs-P13-Hubs) .hub .im .lv{position:absolute;top:16px;inset-inline-end:16px;z-index:1;background:rgba(255,255,255,.94);color:#1D1650;font-size:.75rem;font-weight:700;padding:5px 10px;border-radius:4px}
+:where(.pgs-P13-Hubs) .hub .acc{height:4px;background:var(--ac)}
+:where(.pgs-P13-Hubs) .hub .bx{padding:22px 26px 26px;display:flex;flex-direction:column;gap:16px;flex:1}
+:where(.pgs-P13-Hubs) .hub .sub{color:#4A525B;font-size:1rem}
+:where(.pgs-P13-Hubs) .feats{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+:where(.pgs-P13-Hubs) .feats li{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;color:#1D1650;background:#F7F5F2;border:1px solid #E7E2DB;padding:6px 10px;border-radius:4px}
+:where(.pgs-P13-Hubs) .feats li .dia{color:var(--ac)}
+:where(.pgs-P13-Hubs) .prog{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1px solid #F0ECE6}
+:where(.pgs-P13-Hubs) .prog .r{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+:where(.pgs-P13-Hubs) .prog .r b{font-family:var(--font);font-size:1.75rem;font-weight:800;color:#1D1650;line-height:1}
+:where(.pgs-P13-Hubs) .prog .r > span{font-size:.875rem;color:#4A525B}
+:where(.pgs-P13-Hubs) .hub .ft{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;flex-wrap:wrap}
+:where(.pgs-P13-Hubs) .hub .nx{display:flex;gap:10px;align-items:center;font-size:.875rem;color:#4A525B}
+:where(.pgs-P13-Hubs) .hub .nx b{color:#1D1650}
+:where(.pgs-P13-Hubs) .other{margin-top:44px;display:flex;flex-direction:column;gap:16px}
+:where(.pgs-P13-Hubs) .other .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+:where(.pgs-P13-Hubs) .other h2{font-size:1.25rem;color:#1D1650}
+:where(.pgs-P13-Hubs) .ostrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+:where(.pgs-P13-Hubs) .oc{display:flex;gap:14px;align-items:center;padding:14px;background:rgba(255,255,255,.6);border:1px solid #E7E2DB;border-radius:8px;text-decoration:none;color:inherit;transition:background .2s,border-color .2s}
+:where(.pgs-P13-Hubs) .oc:hover{background:#fff;border-color:#C9C2B8}
+:where(.pgs-P13-Hubs) .oc:focus-visible,:where(.pgs-P13-Hubs) .hub a:focus-visible{outline:3px solid #D63539;outline-offset:3px}
+:where(.pgs-P13-Hubs) .oc .th{width:64px;height:52px;flex:none;border-radius:4px;overflow:hidden;position:relative}
+:where(.pgs-P13-Hubs) .oc .th img{width:100%;height:100%;object-fit:cover;filter:saturate(.6)}
+:where(.pgs-P13-Hubs) .oc .th i{position:absolute;bottom:0;inset-inline-start:0;width:16px;height:16px;border-start-end-radius:100%}
+:where(.pgs-P13-Hubs) .oc .t{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+:where(.pgs-P13-Hubs) .oc .t b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P13-Hubs) .oc .go{font-size:.8125rem;font-weight:700;color:#BF2E32;white-space:nowrap}
+:where(.pgs-P13-Hubs) .help{margin-top:28px;font-size:.875rem;color:#4A525B;display:flex;gap:10px;align-items:center}
+@media (max-width:900px){:where(.pgs-P13-Hubs) .hubs,:where(.pgs-P13-Hubs) .ostrip{grid-template-columns:1fr}
+:where(.pgs-P13-Hubs) .hhero{padding:32px 20px 110px}
+:where(.pgs-P13-Hubs) .wrapc{padding:0 16px 40px}
+:where(.pgs-P13-Hubs) .hp .topb{padding:0 16px}
+:where(.pgs-P13-Hubs) .hp .topb .me .t{display:none}
+:where(.pgs-P13-Hubs) .shapes{display:none}
+}
+@media (max-width:900px){:where(.pgs-P13-Hubs) .wrapc{width:auto;max-width:none;margin-inline:0}
+:where(.pgs-P13-Hubs) .hhero h1{font-size:clamp(1.75rem,6vw,2.75rem)}
+}
+@media (max-width:700px){:where(.pgs-P13-Hubs) .hp .topb{gap:8px}
+:where(.pgs-P13-Hubs) .hp .brand{gap:10px;min-width:0}
+:where(.pgs-P13-Hubs) .hp .brand .div,:where(.pgs-P13-Hubs) .hp .brand .cap{display:none}
+:where(.pgs-P13-Hubs) .hp .topb .tools{gap:8px}
+:where(.pgs-P13-Hubs) .hp .topb .tools > a.tl[href="#/login"]{display:none}
+}
+@media (max-width:560px){:where(.pgs-P13-Hubs) .hhero{padding:28px 16px 100px}
+:where(.pgs-P13-Hubs) .hub .im{height:190px}
+:where(.pgs-P13-Hubs) .hub .bx{padding:18px 18px 20px}
+:where(.pgs-P13-Hubs) .hub .im .nm{inset-inline-start:84px}
+:where(.pgs-P13-Hubs) .hub .im .nm h2{font-size:1.5rem}
+:where(.pgs-P13-Hubs) .hub .ft .btn{width:100%;justify-content:center}
+:where(.pgs-P13-Hubs) .other .hd .ulink{min-height:44px;display:inline-flex;align-items:center}
+:where(.pgs-P13-Hubs) .oc{min-height:44px}
+}
+@media (max-width:900px){:where(.pgs-P13-Hubs) [dir=rtl] :is(p,.lead,.cap,.cap2,.stage > span){max-width:none!important}
+}
+

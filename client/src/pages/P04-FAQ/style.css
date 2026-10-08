@@ -1,0 +1,319 @@
+/* Page CSS from the Claude Design artboard P04-FAQ, scoped under .pgs-P04-FAQ. */
+.pgs-P04-FAQ{margin:0;background:#1D1650}
+:where(.pgs-P04-FAQ) .hm{--ink:#1D1650;--ink2:#2D2470;overflow:hidden}
+:where(.pgs-P04-FAQ) .hm .wrap{max-width:1280px;padding-inline:48px;position:relative}
+@media (max-width:720px){:where(.pgs-P04-FAQ) .hm .wrap{padding-inline:20px}
+}
+:where(.pgs-P04-FAQ) .hm .eyebrow{display:inline-flex;align-items:center;gap:12px}
+:where(.pgs-P04-FAQ) .hm .eyebrow::before{content:"";width:28px;height:2px;background:currentColor;flex:none}
+:where(.pgs-P04-FAQ) .sec{padding:120px 0;position:relative;overflow:hidden}
+@media (max-width:720px){:where(.pgs-P04-FAQ) .sec{padding:80px 0}
+}
+:where(.pgs-P04-FAQ) .sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+:where(.pgs-P04-FAQ) .sh .l{display:flex;flex-direction:column;gap:14px;max-width:660px}
+:where(.pgs-P04-FAQ) .sh h2,:where(.pgs-P04-FAQ) .big2{font-size:clamp(2.1rem,3.8vw,3.25rem)}
+:where(.pgs-P04-FAQ) .num-f{font-family:var(--font)!important;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+:where(.pgs-P04-FAQ) .motif{position:absolute;width:180px;height:180px;pointer-events:none;z-index:0}
+:where(.pgs-P04-FAQ) .motif .m{transform-box:fill-box;transform-origin:center}
+:where(.pgs-P04-FAQ) .motif .d{fill:#F7C337}
+:where(.pgs-P04-FAQ) .motif.sm{width:120px;height:120px}
+:where(.pgs-P04-FAQ) [dir=rtl] .motif{transform:scaleX(-1)}
+@media (max-width:720px){:where(.pgs-P04-FAQ) .motif{width:84px!important;height:84px!important;opacity:.55}
+:where(.pgs-P04-FAQ) .sh{margin-bottom:32px}
+:where(.pgs-P04-FAQ) .hfacts > div{padding-inline-end:18px;margin-inline-end:18px}
+}
+@keyframes dspin{to{rotate:360deg}}
+:where(.pgs-P04-FAQ) .grid-d,:where(.pgs-P04-FAQ) .grid-l{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:96px 96px}
+:where(.pgs-P04-FAQ) .grid-d{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FFFFFF%27%20stroke-opacity%3D%27.10%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse 75% 70% at 85% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 75% 70% at 85% 30%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .grid-d{-webkit-mask-image:radial-gradient(ellipse 75% 70% at 15% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 75% 70% at 15% 30%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) .grid-l{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%233B2F92%27%20stroke-opacity%3D%27.10%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse 60% 70% at 100% 0%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 100% 0%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .grid-l{-webkit-mask-image:radial-gradient(ellipse 60% 70% at 0% 0%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 0% 0%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) .grid-l.r{-webkit-mask-image:radial-gradient(ellipse 55% 80% at 100% 100%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 55% 80% at 100% 100%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .grid-l.r{-webkit-mask-image:radial-gradient(ellipse 55% 80% at 0% 100%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 55% 80% at 0% 100%,#000 10%,transparent 70%)}
+:where(.pgs-P04-FAQ) .sadu{height:20px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2748%27%20height%3D%2716%27%20viewBox%3D%270%200%2048%2016%27%3E%3Crect%20width%3D%2748%27%20height%3D%2716%27%20fill%3D%27%231D1650%27/%3E%3Crect%20y%3D%270%27%20width%3D%2748%27%20height%3D%272%27%20fill%3D%27%23F7C337%27/%3E%3Crect%20y%3D%2714%27%20width%3D%2748%27%20height%3D%272%27%20fill%3D%27%23F7C337%27/%3E%3Cpath%20d%3D%27M0%2014L8%204L16%2014Z%20M24%2014L32%204L40%2014Z%27%20fill%3D%27%23EE3E43%27/%3E%3Cpath%20d%3D%27M16%202L24%2012L32%202Z%20M40%202L48%2012L56%202Z%20M-8%202L0%2012L8%202Z%27%20fill%3D%27%23E3DCD3%27/%3E%3Crect%20x%3D%276.5%27%20y%3D%279%27%20width%3D%273%27%20height%3D%273%27%20transform%3D%27rotate%2845%208%2010.5%29%27%20fill%3D%27%23F7C337%27/%3E%3Crect%20x%3D%2730.5%27%20y%3D%279%27%20width%3D%273%27%20height%3D%273%27%20transform%3D%27rotate%2845%2032%2010.5%29%27%20fill%3D%27%23F7C337%27/%3E%3C/svg%3E");background-size:60px 20px;position:relative;z-index:2}
+:where(.pgs-P04-FAQ) .pat{position:relative;isolation:isolate}
+:where(.pgs-P04-FAQ) .pat::before,:where(.pgs-P04-FAQ) .pat::after{content:"";position:absolute;width:58%;height:300px;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%233B2F92%27%20stroke-opacity%3D%27.2%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");background-size:96px 96px}
+:where(.pgs-P04-FAQ) .pat.pd::before,:where(.pgs-P04-FAQ) .pat.pd::after{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FFFFFF%27%20stroke-opacity%3D%27.24%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E")}
+:where(.pgs-P04-FAQ) .pat::before{top:0}
+:where(.pgs-P04-FAQ) .pat::after{bottom:0}
+:where(.pgs-P04-FAQ) .pat.pa::before{inset-inline-end:0;-webkit-mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) .pat.pa::after{inset-inline-start:0;-webkit-mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) .pat.pb::before{inset-inline-start:0;-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) .pat.pb::after{inset-inline-end:0;-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pa::before,:where(.pgs-P04-FAQ) [dir=rtl] .pat.pb::after{-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pa::after,:where(.pgs-P04-FAQ) [dir=rtl] .pat.pb::before{-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) .pat > .wrap{z-index:1}
+@media (max-width:720px){:where(.pgs-P04-FAQ) .pat::before,:where(.pgs-P04-FAQ) .pat::after{width:90%;height:200px}
+}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pa::before{-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pa::after{-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pb::before{-webkit-mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .pat.pb::after{-webkit-mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%)}
+:where(.pgs-P04-FAQ) .dia{display:inline-block;width:7px;height:7px;transform:rotate(45deg);flex:none;background:currentColor}
+:where(.pgs-P04-FAQ) .ulink{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:inherit;padding-bottom:4px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 2px no-repeat;transition:gap .3s var(--ease),background-size .3s}
+:where(.pgs-P04-FAQ) [dir=rtl] .ulink{background-position:100% 100%}
+:where(.pgs-P04-FAQ) .ulink:hover{gap:16px}
+:where(.pgs-P04-FAQ) .ulink:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+:where(.pgs-P04-FAQ) .hx{position:relative;color:#fff;background:#1D1650;overflow:hidden;isolation:isolate;--px:0;--py:0}
+:where(.pgs-P04-FAQ) .hx .hbg{position:absolute;inset:0;z-index:-1}
+:where(.pgs-P04-FAQ) .hx .hbg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+:where(.pgs-P04-FAQ) .hx .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(29,22,80,.93) 0%,rgba(29,22,80,.78) 42%,rgba(29,22,80,.45) 100%),linear-gradient(180deg,rgba(29,22,80,.5) 0%,rgba(29,22,80,0) 30%,rgba(29,22,80,.0) 70%,rgba(29,22,80,.85) 100%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .hx .hbg::after{background:linear-gradient(270deg,rgba(29,22,80,.93) 0%,rgba(29,22,80,.78) 42%,rgba(29,22,80,.45) 100%),linear-gradient(180deg,rgba(29,22,80,.5) 0%,rgba(29,22,80,0) 30%,rgba(29,22,80,.0) 70%,rgba(29,22,80,.85) 100%)}
+@media (max-width:1020px){:where(.pgs-P04-FAQ) .hx .hbg::after{background:rgba(29,22,80,.86)}
+}
+:where(.pgs-P04-FAQ) .hx .hdr{position:relative;background:transparent;border:0;backdrop-filter:none;z-index:3}
+:where(.pgs-P04-FAQ) .hx .navl a{color:rgba(255,255,255,.88)}
+:where(.pgs-P04-FAQ) .hx .navl a::after{background:#fff}
+:where(.pgs-P04-FAQ) .hx .inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;padding-top:48px;padding-bottom:110px;z-index:1}
+@media (max-width:1020px){:where(.pgs-P04-FAQ) .hx .inner{grid-template-columns:1fr;padding-bottom:72px;gap:48px}
+}
+:where(.pgs-P04-FAQ) .hx .copy{display:flex;flex-direction:column;gap:28px;position:relative;z-index:2}
+:where(.pgs-P04-FAQ) .kick{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;color:#fff;text-decoration:none;font-size:.875rem;font-weight:600;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.3);transition:border-color .3s}
+:where(.pgs-P04-FAQ) .kick:hover{border-color:#fff}
+:where(.pgs-P04-FAQ) .kick b{color:#F7C337;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+:where(.pgs-P04-FAQ) [dir=rtl] .kick b{letter-spacing:0}
+:where(.pgs-P04-FAQ) .kick b::before{content:"";width:8px;height:8px;background:#F7C337;transform:rotate(45deg)}
+:where(.pgs-P04-FAQ) .kick:focus-visible{outline:3px solid #fff;outline-offset:4px}
+:where(.pgs-P04-FAQ) .hx h1{font-size:clamp(2.8rem,5.4vw,4.75rem);line-height:1.02;color:#fff;letter-spacing:-.02em;max-width:12ch}
+:where(.pgs-P04-FAQ) [dir=rtl] .hx h1{line-height:1.35;max-width:none;font-size:clamp(2.6rem,4.6vw,4.1rem)}
+:where(.pgs-P04-FAQ) [dir=rtl] .stats h2,:where(.pgs-P04-FAQ) [dir=rtl] .fcta h2{max-width:none}
+:where(.pgs-P04-FAQ) .hx h1 .w{display:inline-block;opacity:0;transform:translateY(.55em);animation:wordin .9s var(--ease) forwards;margin-inline-end:.22em}
+:where(.pgs-P04-FAQ) .hx h1 .w.hl{color:#FF7A70}
+@keyframes wordin{to{opacity:1;transform:none}}
+:where(.pgs-P04-FAQ) .hx .sub{color:rgba(255,255,255,.82);font-size:1.1875rem;max-width:48ch;text-wrap:pretty}
+:where(.pgs-P04-FAQ) .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P04-FAQ) .btn-hero{height:58px;padding:0 28px;border-radius:12px;font-size:1.0625rem;box-shadow:0 14px 30px -10px rgba(214,53,57,.8),inset 0 1px 0 rgba(255,255,255,.25)}
+:where(.pgs-P04-FAQ) .btn-hero:hover{box-shadow:0 22px 40px -12px rgba(214,53,57,.9);transform:translateY(-3px)}
+:where(.pgs-P04-FAQ) .btn-hero svg{transition:transform .3s var(--ease)}
+:where(.pgs-P04-FAQ) .btn-hero:hover svg{transform:translateX(4px)}
+:where(.pgs-P04-FAQ) [dir=rtl] .btn-hero:hover svg{transform:translateX(-4px) scaleX(-1)}
+:where(.pgs-P04-FAQ) .btn-line-w{height:58px;padding:0 26px;border-radius:12px;font-size:1.0625rem;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+:where(.pgs-P04-FAQ) .btn-line-w:hover{background:#fff;color:#1D1650;border-color:#fff}
+:where(.pgs-P04-FAQ) .btn-line-w:focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.pgs-P04-FAQ) .hfacts{display:flex;gap:0;margin-top:8px;border-top:1px solid rgba(255,255,255,.16);padding-top:24px}
+:where(.pgs-P04-FAQ) .hfacts > div{display:flex;flex-direction:column;gap:2px;padding-inline-end:32px;margin-inline-end:32px;border-inline-end:1px solid rgba(255,255,255,.16)}
+:where(.pgs-P04-FAQ) .hfacts > div:last-child{border:0;margin:0;padding:0}
+:where(.pgs-P04-FAQ) .hfacts b{font-family:var(--font);font-size:1.75rem;font-weight:800;line-height:1.1}
+:where(.pgs-P04-FAQ) .hfacts span{font-size:.8125rem;color:rgba(255,255,255,.7)}
+:where(.pgs-P04-FAQ) .faqs{background:#F1EDE8}
+:where(.pgs-P04-FAQ) .fq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:72px;align-items:start;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P04-FAQ) .fq-grid{grid-template-columns:1fr;gap:40px}
+}
+:where(.pgs-P04-FAQ) .fq-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:40px}
+:where(.pgs-P04-FAQ) .srch{display:flex;align-items:center;gap:12px;border-bottom:2px solid #1D1650;padding:10px 0;margin-top:8px}
+:where(.pgs-P04-FAQ) .srch input{all:unset;flex:1;font-size:1.0625rem;color:var(--text)}
+:where(.pgs-P04-FAQ) .srch input::placeholder{color:#6B7280}
+:where(.pgs-P04-FAQ) .srch:focus-within{border-color:#D63539}
+:where(.pgs-P04-FAQ) .tpills{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P04-FAQ) .tp{all:unset;cursor:pointer;padding:9px 16px;border:1.5px solid rgba(29,22,80,.25);font-size:.875rem;font-weight:600;transition:background .25s,color .25s,border-color .25s}
+:where(.pgs-P04-FAQ) .tp:hover{border-color:#1D1650}
+:where(.pgs-P04-FAQ) .tp.on{background:#1D1650;color:#fff;border-color:#1D1650}
+:where(.pgs-P04-FAQ) .tp:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P04-FAQ) .help{position:relative;overflow:hidden;background:#1D1650;color:#fff;padding:28px;display:flex;flex-direction:column;gap:10px;margin-top:12px;border-end-end-radius:80px}
+:where(.pgs-P04-FAQ) .help b{font-size:1.125rem}
+:where(.pgs-P04-FAQ) .help p{color:rgba(255,255,255,.8);font-size:.9375rem;max-width:30ch}
+:where(.pgs-P04-FAQ) .help .ulink{color:#fff;align-self:flex-start;margin-top:6px}
+:where(.pgs-P04-FAQ) .fql{border-top:2px solid #1D1650}
+:where(.pgs-P04-FAQ) .fi{border-bottom:1px solid rgba(29,22,80,.15);transition:background .3s}
+:where(.pgs-P04-FAQ) .fi > button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:52px 1fr 28px;gap:16px;align-items:center;width:100%;padding:26px 8px;cursor:pointer}
+:where(.pgs-P04-FAQ) .fi > button:focus-visible{outline:3px solid #D63539;outline-offset:-3px}
+:where(.pgs-P04-FAQ) .fi .no{font-family:var(--font);font-weight:800;font-size:.9375rem;color:#B0A79C;transition:color .3s}
+:where(.pgs-P04-FAQ) .fi .qq{font-weight:700;font-size:1.1875rem;transition:color .3s}
+:where(.pgs-P04-FAQ) .fi:hover .qq,:where(.pgs-P04-FAQ) .fi.on .qq{color:#BF2E32}
+:where(.pgs-P04-FAQ) .fi.on .no{color:#D63539}
+:where(.pgs-P04-FAQ) .pm{position:relative;width:20px;height:20px}
+:where(.pgs-P04-FAQ) .pm::before,:where(.pgs-P04-FAQ) .pm::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#1D1650;transition:transform .4s var(--ease),background .3s}
+:where(.pgs-P04-FAQ) .pm::after{transform:rotate(90deg)}
+:where(.pgs-P04-FAQ) .fi.on .pm::after{transform:rotate(0)}
+:where(.pgs-P04-FAQ) .fi.on .pm::before,:where(.pgs-P04-FAQ) .fi.on .pm::after{background:#D63539}
+:where(.pgs-P04-FAQ) .fi .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+:where(.pgs-P04-FAQ) .fi.on .ans{grid-template-rows:1fr}
+:where(.pgs-P04-FAQ) .fi .ans > div{overflow:hidden}
+:where(.pgs-P04-FAQ) .fi .ans p{margin:0 36px 28px 76px;color:#4A525B;font-size:1rem;max-width:62ch}
+:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans p{margin:0 76px 28px 36px}
+:where(.pgs-P04-FAQ) .fi .ans .tg{display:inline-flex;gap:8px;align-items:center;margin:0 0 26px 76px;font-size:.75rem;font-weight:700;color:#6B5E50;letter-spacing:.08em;text-transform:uppercase}
+:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans .tg{margin:0 76px 26px 0;letter-spacing:0}
+:where(.pgs-P04-FAQ) .fwrap{background:#F1EDE8;padding:0 0 120px}
+:where(.pgs-P04-FAQ) .fcta{position:relative;overflow:hidden;padding:88px 64px;color:#fff;isolation:isolate;background:#D63539;border-end-start-radius:160px}
+:where(.pgs-P04-FAQ) .fcta .lines{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(135deg,rgba(255,255,255,.09) 0 1px,transparent 1px 26px);-webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 75%);mask-image:linear-gradient(90deg,transparent 20%,#000 75%)}
+:where(.pgs-P04-FAQ) [dir=rtl] .fcta .lines{-webkit-mask-image:linear-gradient(270deg,transparent 20%,#000 75%);mask-image:linear-gradient(270deg,transparent 20%,#000 75%)}
+:where(.pgs-P04-FAQ) .fcta .word{position:absolute;bottom:-.24em;inset-inline-end:-.04em;z-index:-1;font-family:var(--font-display);font-weight:700;font-size:15rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.28);pointer-events:none;white-space:nowrap}
+:where(.pgs-P04-FAQ) [dir=rtl] .fcta .word{font-family:var(--font-ar);bottom:-.1em}
+:where(.pgs-P04-FAQ) .fcta h2{color:#fff;font-size:clamp(2.1rem,4vw,3.4rem);max-width:16ch}
+:where(.pgs-P04-FAQ) .fcta .eyebrow{color:#FFE3A0}
+:where(.pgs-P04-FAQ) .btn-white{background:#fff;color:#BF2E32;height:58px;padding:0 30px;border-radius:12px;font-size:1.0625rem;box-shadow:0 18px 34px -14px rgba(0,0,0,.5)}
+:where(.pgs-P04-FAQ) .btn-white:hover{background:#fff;transform:translateY(-3px)}
+:where(.pgs-P04-FAQ) .btn-white:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:720px){:where(.pgs-P04-FAQ) .fcta{padding:48px 24px;border-end-start-radius:60px}
+:where(.pgs-P04-FAQ) .fcta .word{font-size:8rem}
+}
+:where(.pgs-P04-FAQ) .hm .ftr{background:#1D1650;position:relative;overflow:hidden}
+:where(.pgs-P04-FAQ) .hm .ftr .deco{display:none}
+@media (prefers-reduced-motion:reduce){:where(.pgs-P04-FAQ) .hx h1 .w{opacity:1;transform:none;animation:none}
+:where(.pgs-P04-FAQ) .tile,:where(.pgs-P04-FAQ) .sc::before,:where(.pgs-P04-FAQ) .sc .ph,:where(.pgs-P04-FAQ) .bc,:where(.pgs-P04-FAQ) .bc img,:where(.pgs-P04-FAQ) .dpanel{animation:none!important;clip-path:none!important;transform:none}
+:where(.pgs-P04-FAQ) .sc::before{transform:scaleX(.28)}
+:where(.pgs-P04-FAQ) .motif .d,:where(.pgs-P04-FAQ) .s-d1 i,:where(.pgs-P04-FAQ) .caret,:where(.pgs-P04-FAQ) .evc .pill::before,:where(.pgs-P04-FAQ) .ph.p-prog img{animation:none!important;opacity:1}
+:where(.pgs-P04-FAQ) .tile img{transition:none}
+:where(.pgs-P04-FAQ) .tb .pbar i{animation:none;transform:scaleX(1)}
+
+}
+:where(.pgs-P04-FAQ) .hm{background:#fff}
+:where(.pgs-P04-FAQ) .hm .eyebrow{color:#BF2E32}
+:where(.pgs-P04-FAQ) .hm .dk .eyebrow{color:#FFB4AC}
+:where(.pgs-P04-FAQ) .hm .dk.red .eyebrow,:where(.pgs-P04-FAQ) .hm .dk.rasp .eyebrow{color:#FFE3A0}
+:where(.pgs-P04-FAQ) .hm .dk h2,:where(.pgs-P04-FAQ) .hm .dk h3{color:#fff}
+:where(.pgs-P04-FAQ) .hm .ulink{color:inherit;background-color:transparent}
+:where(.pgs-P04-FAQ) .hm .ulink.r{color:#BF2E32}
+:where(.pgs-P04-FAQ) .hm .navl a[aria-current=page]{color:#fff}
+:where(.pgs-P04-FAQ) .hm .navl a[aria-current=page]::after{transform:scaleX(1);background:#F7C337}
+:where(.pgs-P04-FAQ) .hact{display:flex;align-items:center;gap:8px}
+:where(.pgs-P04-FAQ) .hx.sub .inner{padding-top:40px;padding-bottom:100px}
+:where(.pgs-P04-FAQ) .hx.sub h1{font-size:clamp(2.6rem,4.8vw,4.25rem);max-width:14ch}
+:where(.pgs-P04-FAQ) [dir=rtl] .hx.sub h1{max-width:none;font-size:clamp(2.4rem,4.2vw,3.75rem)}
+:where(.pgs-P04-FAQ) .crumb{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.75)}
+:where(.pgs-P04-FAQ) .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+:where(.pgs-P04-FAQ) .crumb a:hover{border-color:#fff}
+:where(.pgs-P04-FAQ) .crumb a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.pgs-P04-FAQ) .sec.tight{padding:96px 0}
+:where(.pgs-P04-FAQ) .dk{color:#fff}
+:where(.pgs-P04-FAQ) .dk .lead,:where(.pgs-P04-FAQ) .dk p{color:rgba(255,255,255,.84)}
+:where(.pgs-P04-FAQ) .bg-ind{background:#1D1650}
+:where(.pgs-P04-FAQ) .bg-ind2{background:#2D2470}
+:where(.pgs-P04-FAQ) .bg-red{background:#D63539}
+:where(.pgs-P04-FAQ) .bg-rasp{background:#CD3151}
+:where(.pgs-P04-FAQ) .bg-sand{background:#F1EDE8}
+:where(.pgs-P04-FAQ) .bg-white{background:#fff}
+:where(.pgs-P04-FAQ) .hm .lead{color:#4A525B}
+:where(.pgs-P04-FAQ) .hm .dk .lead{color:rgba(255,255,255,.84)}
+:where(.pgs-P04-FAQ) .rule{height:1px;background:rgba(29,22,80,.15)}
+:where(.pgs-P04-FAQ) .ixl{font-family:var(--font);font-weight:800;font-size:.8125rem;letter-spacing:.12em;color:#8A7E70}
+:where(.pgs-P04-FAQ) [dir=rtl] .ixl{letter-spacing:0}
+:where(.pgs-P04-FAQ) .btn-ind{background:#1D1650;color:#fff;height:54px;padding:0 26px;border-radius:12px;font-size:1rem}
+:where(.pgs-P04-FAQ) .btn-ind:hover{background:#2D2470}
+:where(.pgs-P04-FAQ) .btn-ind:focus-visible{outline:3px solid #D63539;outline-offset:3px}
+:where(.pgs-P04-FAQ) .fqnone{padding:40px 8px;color:#4A525B;display:flex;gap:12px;align-items:center}
+:where(.pgs-P04-FAQ) .hm .ftr .soc2{display:flex;gap:14px;flex-wrap:wrap}
+:where(.pgs-P04-FAQ) [dir=rtl] .hm .hx h1 .w.hl{color:#FF7A70}
+@media (max-width:860px){:where(.pgs-P04-FAQ) .hact .btn-glass{padding:0 10px}
+}
+:where(.pgs-P04-FAQ) .hm.proto .specbar{display:none}
+:where(.pgs-P04-FAQ) .skip{border:0;cursor:pointer;font:inherit}
+:where(.pgs-P04-FAQ) .hm main:focus{outline:0}
+:where(.pgs-P04-FAQ) .onum{font-family:var(--font);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1.5px currentColor}
+:where(.pgs-P04-FAQ) .sh .r{display:flex;align-items:center;gap:18px}
+:where(.pgs-P04-FAQ) .chips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P04-FAQ) .tp .ct{font-family:var(--font);font-weight:700;opacity:.7;margin-inline-start:6px;font-variant-numeric:tabular-nums}
+:where(.pgs-P04-FAQ) .tp.on .ct{opacity:.85}
+:where(.pgs-P04-FAQ) .mtag{display:inline-flex;align-items:center;gap:6px;background:#F7C337;color:#1D1650;padding:4px 9px;font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
+:where(.pgs-P04-FAQ) [dir=rtl] .mtag{letter-spacing:0;font-size:.75rem}
+:where(.pgs-P04-FAQ) .stats{background:#D63539;color:#fff}
+:where(.pgs-P04-FAQ) .stats h2{color:#fff}
+:where(.pgs-P04-FAQ) .stats .eyebrow{color:#FFE3A0}
+:where(.pgs-P04-FAQ) .how{background:#2D2470;color:#fff}
+:where(.pgs-P04-FAQ) .how h2,:where(.pgs-P04-FAQ) .how h3{color:#fff}
+:where(.pgs-P04-FAQ) .how .eyebrow{color:#FFB4AC}
+@media (prefers-reduced-motion:reduce){:where(.pgs-P04-FAQ) .hm *,:where(.pgs-P04-FAQ) .hm *::before,:where(.pgs-P04-FAQ) .hm *::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+:where(.pgs-P04-FAQ) .hm .hx h1 .w{opacity:1;transform:none}
+}
+:where(.pgs-P04-FAQ) .hm .fcta .eyebrow,:where(.pgs-P04-FAQ) .hm .stats .eyebrow{color:#FFE3A0}
+:where(.pgs-P04-FAQ) .hm .how .eyebrow{color:#FFB4AC}
+:where(.pgs-P04-FAQ) .hm h2.big2,:where(.pgs-P04-FAQ) .hm .stats h2{font-size:clamp(2.1rem,3.8vw,3.25rem)}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}}
+:where(.pgs-P04-FAQ) .hx .hbg img{object-position:center 35%}
+:where(.pgs-P04-FAQ) .fhero{padding-top:36px;padding-bottom:96px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:end;position:relative;z-index:1}
+@media (max-width:1020px){:where(.pgs-P04-FAQ) .fhero{grid-template-columns:1fr;gap:36px}
+}
+:where(.pgs-P04-FAQ) .fhero h1{font-size:clamp(2.8rem,5vw,4.5rem);line-height:1.02;color:#fff;letter-spacing:-.02em}
+:where(.pgs-P04-FAQ) [dir=rtl] .fhero h1{line-height:1.35}
+:where(.pgs-P04-FAQ) .hsrch{display:flex;align-items:center;gap:14px;background:#fff;padding:0 10px 0 20px;height:68px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);border-end-end-radius:34px;animation:fadeup .7s .2s var(--ease) both}
+:where(.pgs-P04-FAQ) [dir=rtl] .hsrch{padding:0 20px 0 10px;border-end-end-radius:0;border-end-start-radius:34px}
+:where(.pgs-P04-FAQ) .hsrch input{all:unset;flex:1;min-width:0;font-size:1.125rem;color:#333;height:100%}
+:where(.pgs-P04-FAQ) .hsrch input::placeholder{color:#6B7280}
+:where(.pgs-P04-FAQ) .hsrch:focus-within{outline:3px solid #F7C337;outline-offset:3px}
+:where(.pgs-P04-FAQ) .hsrch .clr{all:unset;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;color:#4A525B}
+:where(.pgs-P04-FAQ) .hsrch .clr:hover{color:#BF2E32}
+:where(.pgs-P04-FAQ) .hsrch .clr:focus-visible{outline:3px solid #D63539}
+:where(.pgs-P04-FAQ) .pop{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:.875rem;color:rgba(255,255,255,.75);align-items:center}
+:where(.pgs-P04-FAQ) .pop button{all:unset;cursor:pointer;color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+:where(.pgs-P04-FAQ) .pop button:hover{border-color:#fff}
+:where(.pgs-P04-FAQ) .pop button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.pgs-P04-FAQ) .hstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.2)}
+:where(.pgs-P04-FAQ) .hstat > div{padding:20px 20px 0 0;display:flex;flex-direction:column;gap:2px;border-inline-end:1px solid rgba(255,255,255,.2)}
+:where(.pgs-P04-FAQ) [dir=rtl] .hstat > div{padding:20px 0 0 20px}
+:where(.pgs-P04-FAQ) .hstat > div + div{padding-inline-start:20px}
+:where(.pgs-P04-FAQ) .hstat > div:last-child{border:0}
+:where(.pgs-P04-FAQ) .hstat b{font-family:var(--font);font-size:2rem;font-weight:800;line-height:1.1;color:#fff}
+:where(.pgs-P04-FAQ) .hstat span{font-size:.8125rem;color:rgba(255,255,255,.72)}
+:where(.pgs-P04-FAQ) .fbody{display:grid;grid-template-columns:300px minmax(0,1fr);gap:64px;align-items:start;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P04-FAQ) .fbody{grid-template-columns:1fr;gap:32px}
+}
+:where(.pgs-P04-FAQ) .side{position:sticky;top:24px;display:flex;flex-direction:column;gap:24px}
+@media (max-width:980px){:where(.pgs-P04-FAQ) .side{position:static}
+}
+:where(.pgs-P04-FAQ) .tops{list-style:none;margin:0;padding:0;border-top:2px solid #1D1650}
+:where(.pgs-P04-FAQ) .tops button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:18px 1fr auto;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(29,22,80,.15);font-weight:600;color:#333;transition:color .25s,background .25s}
+:where(.pgs-P04-FAQ) .tops button:hover{color:#BF2E32}
+:where(.pgs-P04-FAQ) .tops button.on{color:#1D1650;font-weight:800}
+:where(.pgs-P04-FAQ) .tops button:focus-visible{outline:3px solid #D63539;outline-offset:-3px}
+:where(.pgs-P04-FAQ) .tops .dia{color:#C9C0B5;transition:color .25s,transform .3s var(--ease)}
+:where(.pgs-P04-FAQ) .tops button.on .dia{color:#D63539;transform:rotate(45deg) scale(1.3)}
+:where(.pgs-P04-FAQ) .tops .c{font-family:var(--font);font-weight:700;font-size:.8125rem;color:#6B5E50;font-variant-numeric:tabular-nums}
+:where(.pgs-P04-FAQ) .tops button.on .c{color:#1D1650}
+:where(.pgs-P04-FAQ) .help{position:relative;overflow:hidden;background:#1D1650;color:#fff;padding:28px;display:flex;flex-direction:column;gap:10px;border-end-end-radius:80px}
+:where(.pgs-P04-FAQ) .help b{font-size:1.125rem}
+:where(.pgs-P04-FAQ) [dir=rtl] .help p{max-width:none;padding-inline-end:40px}
+:where(.pgs-P04-FAQ) .fsub{color:rgba(255,255,255,.84);font-size:1.1875rem;max-width:46ch}
+:where(.pgs-P04-FAQ) [dir=rtl] .fsub{max-width:none}
+:where(.pgs-P04-FAQ) .help p{color:rgba(255,255,255,.8);font-size:.9375rem;max-width:30ch}
+:where(.pgs-P04-FAQ) .help .ulink{color:#fff;align-self:flex-start;margin-top:6px}
+:where(.pgs-P04-FAQ) .tbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+:where(.pgs-P04-FAQ) .tbar .cnt{font-size:.9375rem;color:#4A525B}
+:where(.pgs-P04-FAQ) .tbar .cnt b{color:#1D1650;font-family:var(--font);font-weight:800}
+:where(.pgs-P04-FAQ) .tbar .acts{display:flex;gap:18px;align-items:center}
+:where(.pgs-P04-FAQ) .lnkb{all:unset;cursor:pointer;font-weight:700;font-size:.9375rem;color:#BF2E32;padding-bottom:3px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 2px no-repeat}
+:where(.pgs-P04-FAQ) .lnkb:focus-visible{outline:3px solid #D63539;outline-offset:4px}
+:where(.pgs-P04-FAQ) .grp{margin-top:36px}
+:where(.pgs-P04-FAQ) .grp:first-of-type{margin-top:0}
+:where(.pgs-P04-FAQ) .grp h2{font-size:1.5rem!important;color:#1D1650;display:flex;align-items:center;gap:14px;margin-bottom:14px!important}
+:where(.pgs-P04-FAQ) .grp h2 .n{font-family:var(--font);font-size:.8125rem;font-weight:800;color:#6B5E50;font-variant:normal;letter-spacing:0}
+:where(.pgs-P04-FAQ) .fql{border-top:2px solid #1D1650}
+:where(.pgs-P04-FAQ) .fi .ans .more{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin:0 36px 26px 76px}
+:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans .more{margin:0 76px 26px 36px}
+:where(.pgs-P04-FAQ) .fi .ans .more .ulink{color:#BF2E32}
+:where(.pgs-P04-FAQ) .hlp{display:flex;align-items:center;gap:10px;font-size:.8125rem;color:#4A525B}
+:where(.pgs-P04-FAQ) .hlp button{all:unset;cursor:pointer;border:1.5px solid rgba(29,22,80,.25);padding:4px 12px;font-weight:700;color:#1D1650}
+:where(.pgs-P04-FAQ) .hlp button:hover{border-color:#1D1650}
+:where(.pgs-P04-FAQ) .hlp button:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P04-FAQ) .hlp .thx{color:#14621A;font-weight:700;display:inline-flex;gap:6px;align-items:center}
+:where(.pgs-P04-FAQ) .fqnone{flex-direction:column;align-items:flex-start;gap:14px;padding:44px 0;border-top:2px solid #1D1650}
+:where(.pgs-P04-FAQ) .fqnone b{font-size:1.25rem;color:#1D1650}
+:where(.pgs-P04-FAQ) .ct3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P04-FAQ) .ct3{grid-template-columns:1fr}
+}
+:where(.pgs-P04-FAQ) .cc3{position:relative;overflow:hidden;padding:34px 32px 30px;display:flex;flex-direction:column;gap:12px;min-height:280px}
+:where(.pgs-P04-FAQ) .cc3.a{background:#D63539;color:#fff;border-start-start-radius:110px}
+:where(.pgs-P04-FAQ) .cc3.b{background:#2D2470;color:#fff}
+:where(.pgs-P04-FAQ) .cc3.c{background:#E3DCD3;color:#1D1650;border-end-end-radius:110px}
+:where(.pgs-P04-FAQ) .cc3 h3{font-size:1.5rem;color:inherit}
+:where(.pgs-P04-FAQ) .cc3 p{opacity:.9;font-size:.9375rem;max-width:34ch}
+:where(.pgs-P04-FAQ) .cc3 .ulink{align-self:flex-start;margin-top:auto}
+:where(.pgs-P04-FAQ) .cc3 ul{list-style:none;margin:auto 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+:where(.pgs-P04-FAQ) .cc3 .ix{font-family:var(--font);font-weight:800;font-size:.8125rem;letter-spacing:.12em;opacity:.8}
+:where(.pgs-P04-FAQ) .cc3.a .q{position:absolute;bottom:0;inset-inline-end:0;width:84px;height:84px;background:#F7C337;border-start-start-radius:100%}
+@media (max-width:560px){:where(.pgs-P04-FAQ) .hdr .wrap{gap:8px}
+:where(.pgs-P04-FAQ) .hdr .logo-tile{flex:none;padding:6px 8px}
+:where(.pgs-P04-FAQ) .hdr .logo-tile img{height:26px!important}
+:where(.pgs-P04-FAQ) .hact{gap:6px;flex:none}
+:where(.pgs-P04-FAQ) .hact .btn-sm{height:44px;padding-inline:12px}
+:where(.pgs-P04-FAQ) .fcta{padding-top:88px}
+:where(.pgs-P04-FAQ) .fcta > div{position:relative;z-index:1}
+}
+@media (max-width:560px){:where(.pgs-P04-FAQ) .fi > button{grid-template-columns:30px minmax(0,1fr) 24px;gap:12px;padding:20px 6px}
+:where(.pgs-P04-FAQ) .fi .qq{font-size:1.0625rem}
+:where(.pgs-P04-FAQ) .fi .ans p,:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans p{margin:0;margin-inline:48px 6px;margin-bottom:22px}
+:where(.pgs-P04-FAQ) .fi .ans .tg,:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans .tg{margin:0;margin-inline-start:48px;margin-bottom:22px}
+:where(.pgs-P04-FAQ) .fi .ans .more,:where(.pgs-P04-FAQ) [dir=rtl] .fi .ans .more{margin:0;margin-inline:48px 6px;margin-bottom:22px;gap:14px}
+}
+@media (max-width:900px){:where(.pgs-P04-FAQ) [dir=rtl] :is(p,.lead,.cap,.cap2,.stage > span){max-width:none!important}
+}
+

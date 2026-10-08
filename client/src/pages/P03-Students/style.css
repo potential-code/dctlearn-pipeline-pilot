@@ -1,0 +1,363 @@
+/* Page CSS from the Claude Design artboard P03-Students, scoped under .pgs-P03-Students. */
+.pgs-P03-Students{margin:0;background:#1D1650}
+:where(.pgs-P03-Students) .hm{--ink:#1D1650;--ink2:#2D2470;overflow:hidden}
+:where(.pgs-P03-Students) .hm .wrap{max-width:1280px;padding-inline:48px;position:relative}
+@media (max-width:720px){:where(.pgs-P03-Students) .hm .wrap{padding-inline:20px}
+}
+:where(.pgs-P03-Students) .hm .eyebrow{display:inline-flex;align-items:center;gap:12px}
+:where(.pgs-P03-Students) .hm .eyebrow::before{content:"";width:28px;height:2px;background:currentColor;flex:none}
+:where(.pgs-P03-Students) .sec{padding:120px 0;position:relative;overflow:hidden}
+@media (max-width:720px){:where(.pgs-P03-Students) .sec{padding:80px 0}
+}
+:where(.pgs-P03-Students) .sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+:where(.pgs-P03-Students) .sh .l{display:flex;flex-direction:column;gap:14px;max-width:660px}
+:where(.pgs-P03-Students) .sh h2,:where(.pgs-P03-Students) .big2{font-size:clamp(2.1rem,3.8vw,3.25rem)}
+:where(.pgs-P03-Students) .num-f{font-family:var(--font)!important;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+:where(.pgs-P03-Students) .motif{position:absolute;width:180px;height:180px;pointer-events:none;z-index:0}
+:where(.pgs-P03-Students) .motif .m{transform-box:fill-box;transform-origin:center}
+:where(.pgs-P03-Students) .motif .d{fill:#F7C337}
+:where(.pgs-P03-Students) .motif.sm{width:120px;height:120px}
+:where(.pgs-P03-Students) [dir=rtl] .motif{transform:scaleX(-1)}
+@media (max-width:720px){:where(.pgs-P03-Students) .motif{width:84px!important;height:84px!important;opacity:.55}
+:where(.pgs-P03-Students) .sh{margin-bottom:32px}
+:where(.pgs-P03-Students) .hfacts > div{padding-inline-end:18px;margin-inline-end:18px}
+}
+@keyframes dspin{to{rotate:360deg}}
+:where(.pgs-P03-Students) .grid-d,:where(.pgs-P03-Students) .grid-l{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:96px 96px}
+:where(.pgs-P03-Students) .grid-d{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FFFFFF%27%20stroke-opacity%3D%27.10%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse 75% 70% at 85% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 75% 70% at 85% 30%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) [dir=rtl] .grid-d{-webkit-mask-image:radial-gradient(ellipse 75% 70% at 15% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 75% 70% at 15% 30%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) .grid-l{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%233B2F92%27%20stroke-opacity%3D%27.10%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");-webkit-mask-image:radial-gradient(ellipse 60% 70% at 100% 0%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 100% 0%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) [dir=rtl] .grid-l{-webkit-mask-image:radial-gradient(ellipse 60% 70% at 0% 0%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 60% 70% at 0% 0%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) .grid-l.r{-webkit-mask-image:radial-gradient(ellipse 55% 80% at 100% 100%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 55% 80% at 100% 100%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) [dir=rtl] .grid-l.r{-webkit-mask-image:radial-gradient(ellipse 55% 80% at 0% 100%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 55% 80% at 0% 100%,#000 10%,transparent 70%)}
+:where(.pgs-P03-Students) .sadu{height:20px;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2748%27%20height%3D%2716%27%20viewBox%3D%270%200%2048%2016%27%3E%3Crect%20width%3D%2748%27%20height%3D%2716%27%20fill%3D%27%231D1650%27/%3E%3Crect%20y%3D%270%27%20width%3D%2748%27%20height%3D%272%27%20fill%3D%27%23F7C337%27/%3E%3Crect%20y%3D%2714%27%20width%3D%2748%27%20height%3D%272%27%20fill%3D%27%23F7C337%27/%3E%3Cpath%20d%3D%27M0%2014L8%204L16%2014Z%20M24%2014L32%204L40%2014Z%27%20fill%3D%27%23EE3E43%27/%3E%3Cpath%20d%3D%27M16%202L24%2012L32%202Z%20M40%202L48%2012L56%202Z%20M-8%202L0%2012L8%202Z%27%20fill%3D%27%23E3DCD3%27/%3E%3Crect%20x%3D%276.5%27%20y%3D%279%27%20width%3D%273%27%20height%3D%273%27%20transform%3D%27rotate%2845%208%2010.5%29%27%20fill%3D%27%23F7C337%27/%3E%3Crect%20x%3D%2730.5%27%20y%3D%279%27%20width%3D%273%27%20height%3D%273%27%20transform%3D%27rotate%2845%2032%2010.5%29%27%20fill%3D%27%23F7C337%27/%3E%3C/svg%3E");background-size:60px 20px;position:relative;z-index:2}
+:where(.pgs-P03-Students) .pat{position:relative;isolation:isolate}
+:where(.pgs-P03-Students) .pat::before,:where(.pgs-P03-Students) .pat::after{content:"";position:absolute;width:58%;height:300px;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%233B2F92%27%20stroke-opacity%3D%27.2%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E");background-size:96px 96px}
+:where(.pgs-P03-Students) .pat.pd::before,:where(.pgs-P03-Students) .pat.pd::after{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2796%27%20height%3D%2796%27%20viewBox%3D%270%200%2096%2096%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FFFFFF%27%20stroke-opacity%3D%27.24%27%20stroke-width%3D%271%27%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27/%3E%3Crect%20x%3D%2730%27%20y%3D%2730%27%20width%3D%2736%27%20height%3D%2736%27%20transform%3D%27rotate%2845%2048%2048%29%27/%3E%3Cpath%20d%3D%27M48%2022.5V0M48%2073.5V96M22.5%2048H0M73.5%2048H96%27/%3E%3Cpath%20d%3D%27M0%2012L12%200M84%200L96%2012M96%2084L84%2096M12%2096L0%2084%27/%3E%3Cpath%20d%3D%27M12%200L30%2030M84%200L66%2030M96%2012L66%2030M96%2084L66%2066M84%2096L66%2066M12%2096L30%2066M0%2084L30%2066M0%2012L30%2030%27/%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%275%27/%3E%3C/g%3E%3C/svg%3E")}
+:where(.pgs-P03-Students) .pat::before{top:0}
+:where(.pgs-P03-Students) .pat::after{bottom:0}
+:where(.pgs-P03-Students) .pat.pa::before{inset-inline-end:0;-webkit-mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) .pat.pa::after{inset-inline-start:0;-webkit-mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) .pat.pb::before{inset-inline-start:0;-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) .pat.pb::after{inset-inline-end:0;-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pa::before,:where(.pgs-P03-Students) [dir=rtl] .pat.pb::after{-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pa::after,:where(.pgs-P03-Students) [dir=rtl] .pat.pb::before{-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) .pat > .wrap{z-index:1}
+@media (max-width:720px){:where(.pgs-P03-Students) .pat::before,:where(.pgs-P03-Students) .pat::after{width:90%;height:200px}
+}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pa::before{-webkit-mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 0,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pa::after{-webkit-mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 100%,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pb::before{-webkit-mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 100% 0,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .pat.pb::after{-webkit-mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%);mask-image:radial-gradient(farthest-side at 0 100%,#000 15%,transparent 100%)}
+:where(.pgs-P03-Students) .dia{display:inline-block;width:7px;height:7px;transform:rotate(45deg);flex:none;background:currentColor}
+:where(.pgs-P03-Students) .ulink{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:inherit;padding-bottom:4px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 2px no-repeat;transition:gap .3s var(--ease),background-size .3s}
+:where(.pgs-P03-Students) [dir=rtl] .ulink{background-position:100% 100%}
+:where(.pgs-P03-Students) .ulink:hover{gap:16px}
+:where(.pgs-P03-Students) .ulink:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+:where(.pgs-P03-Students) .hx{position:relative;color:#fff;background:#1D1650;overflow:hidden;isolation:isolate;--px:0;--py:0}
+:where(.pgs-P03-Students) .hx .hbg{position:absolute;inset:0;z-index:-1}
+:where(.pgs-P03-Students) .hx .hbg img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+:where(.pgs-P03-Students) .hx .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(29,22,80,.93) 0%,rgba(29,22,80,.78) 42%,rgba(29,22,80,.45) 100%),linear-gradient(180deg,rgba(29,22,80,.5) 0%,rgba(29,22,80,0) 30%,rgba(29,22,80,.0) 70%,rgba(29,22,80,.85) 100%)}
+:where(.pgs-P03-Students) [dir=rtl] .hx .hbg::after{background:linear-gradient(270deg,rgba(29,22,80,.93) 0%,rgba(29,22,80,.78) 42%,rgba(29,22,80,.45) 100%),linear-gradient(180deg,rgba(29,22,80,.5) 0%,rgba(29,22,80,0) 30%,rgba(29,22,80,.0) 70%,rgba(29,22,80,.85) 100%)}
+@media (max-width:1020px){:where(.pgs-P03-Students) .hx .hbg::after{background:rgba(29,22,80,.86)}
+}
+:where(.pgs-P03-Students) .hx .hdr{position:relative;background:transparent;border:0;backdrop-filter:none;z-index:3}
+:where(.pgs-P03-Students) .hx .navl a{color:rgba(255,255,255,.88)}
+:where(.pgs-P03-Students) .hx .navl a::after{background:#fff}
+:where(.pgs-P03-Students) .hx .inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;padding-top:48px;padding-bottom:110px;z-index:1}
+@media (max-width:1020px){:where(.pgs-P03-Students) .hx .inner{grid-template-columns:1fr;padding-bottom:72px;gap:48px}
+}
+:where(.pgs-P03-Students) .hx .copy{display:flex;flex-direction:column;gap:28px;position:relative;z-index:2}
+:where(.pgs-P03-Students) .kick{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;color:#fff;text-decoration:none;font-size:.875rem;font-weight:600;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.3);transition:border-color .3s}
+:where(.pgs-P03-Students) .kick:hover{border-color:#fff}
+:where(.pgs-P03-Students) .kick b{color:#F7C337;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+:where(.pgs-P03-Students) [dir=rtl] .kick b{letter-spacing:0}
+:where(.pgs-P03-Students) .kick b::before{content:"";width:8px;height:8px;background:#F7C337;transform:rotate(45deg)}
+:where(.pgs-P03-Students) .kick:focus-visible{outline:3px solid #fff;outline-offset:4px}
+:where(.pgs-P03-Students) .hx h1{font-size:clamp(2.8rem,5.4vw,4.75rem);line-height:1.02;color:#fff;letter-spacing:-.02em;max-width:12ch}
+:where(.pgs-P03-Students) [dir=rtl] .hx h1{line-height:1.35;max-width:none;font-size:clamp(2.6rem,4.6vw,4.1rem)}
+:where(.pgs-P03-Students) [dir=rtl] .stats h2,:where(.pgs-P03-Students) [dir=rtl] .fcta h2{max-width:none}
+:where(.pgs-P03-Students) .hx h1 .w{display:inline-block;opacity:0;transform:translateY(.55em);animation:wordin .9s var(--ease) forwards;margin-inline-end:.22em}
+:where(.pgs-P03-Students) .hx h1 .w.hl{color:#FF7A70}
+@keyframes wordin{to{opacity:1;transform:none}}
+:where(.pgs-P03-Students) .hx .sub{color:rgba(255,255,255,.82);font-size:1.1875rem;max-width:48ch;text-wrap:pretty}
+:where(.pgs-P03-Students) .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P03-Students) .btn-hero{height:58px;padding:0 28px;border-radius:12px;font-size:1.0625rem;box-shadow:0 14px 30px -10px rgba(214,53,57,.8),inset 0 1px 0 rgba(255,255,255,.25)}
+:where(.pgs-P03-Students) .btn-hero:hover{box-shadow:0 22px 40px -12px rgba(214,53,57,.9);transform:translateY(-3px)}
+:where(.pgs-P03-Students) .btn-hero svg{transition:transform .3s var(--ease)}
+:where(.pgs-P03-Students) .btn-hero:hover svg{transform:translateX(4px)}
+:where(.pgs-P03-Students) [dir=rtl] .btn-hero:hover svg{transform:translateX(-4px) scaleX(-1)}
+:where(.pgs-P03-Students) .btn-line-w{height:58px;padding:0 26px;border-radius:12px;font-size:1.0625rem;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+:where(.pgs-P03-Students) .btn-line-w:hover{background:#fff;color:#1D1650;border-color:#fff}
+:where(.pgs-P03-Students) .btn-line-w:focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.pgs-P03-Students) .hfacts{display:flex;gap:0;margin-top:8px;border-top:1px solid rgba(255,255,255,.16);padding-top:24px}
+:where(.pgs-P03-Students) .hfacts > div{display:flex;flex-direction:column;gap:2px;padding-inline-end:32px;margin-inline-end:32px;border-inline-end:1px solid rgba(255,255,255,.16)}
+:where(.pgs-P03-Students) .hfacts > div:last-child{border:0;margin:0;padding:0}
+:where(.pgs-P03-Students) .hfacts b{font-family:var(--font);font-size:1.75rem;font-weight:800;line-height:1.1}
+:where(.pgs-P03-Students) .hfacts span{font-size:.8125rem;color:rgba(255,255,255,.7)}
+:where(.pgs-P03-Students) .faqs{background:#F1EDE8}
+:where(.pgs-P03-Students) .fq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:72px;align-items:start;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P03-Students) .fq-grid{grid-template-columns:1fr;gap:40px}
+}
+:where(.pgs-P03-Students) .fq-side{display:flex;flex-direction:column;gap:20px;position:sticky;top:40px}
+:where(.pgs-P03-Students) .srch{display:flex;align-items:center;gap:12px;border-bottom:2px solid #1D1650;padding:10px 0;margin-top:8px}
+:where(.pgs-P03-Students) .srch input{all:unset;flex:1;font-size:1.0625rem;color:var(--text)}
+:where(.pgs-P03-Students) .srch input::placeholder{color:#6B7280}
+:where(.pgs-P03-Students) .srch:focus-within{border-color:#D63539}
+:where(.pgs-P03-Students) .tpills{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P03-Students) .tp{all:unset;cursor:pointer;padding:9px 16px;border:1.5px solid rgba(29,22,80,.25);font-size:.875rem;font-weight:600;transition:background .25s,color .25s,border-color .25s}
+:where(.pgs-P03-Students) .tp:hover{border-color:#1D1650}
+:where(.pgs-P03-Students) .tp.on{background:#1D1650;color:#fff;border-color:#1D1650}
+:where(.pgs-P03-Students) .tp:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P03-Students) .help{position:relative;overflow:hidden;background:#1D1650;color:#fff;padding:28px;display:flex;flex-direction:column;gap:10px;margin-top:12px;border-end-end-radius:80px}
+:where(.pgs-P03-Students) .help b{font-size:1.125rem}
+:where(.pgs-P03-Students) .help p{color:rgba(255,255,255,.8);font-size:.9375rem;max-width:30ch}
+:where(.pgs-P03-Students) .help .ulink{color:#fff;align-self:flex-start;margin-top:6px}
+:where(.pgs-P03-Students) .fql{border-top:2px solid #1D1650}
+:where(.pgs-P03-Students) .fi{border-bottom:1px solid rgba(29,22,80,.15);transition:background .3s}
+:where(.pgs-P03-Students) .fi > button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:52px 1fr 28px;gap:16px;align-items:center;width:100%;padding:26px 8px;cursor:pointer}
+:where(.pgs-P03-Students) .fi > button:focus-visible{outline:3px solid #D63539;outline-offset:-3px}
+:where(.pgs-P03-Students) .fi .no{font-family:var(--font);font-weight:800;font-size:.9375rem;color:#B0A79C;transition:color .3s}
+:where(.pgs-P03-Students) .fi .qq{font-weight:700;font-size:1.1875rem;transition:color .3s}
+:where(.pgs-P03-Students) .fi:hover .qq,:where(.pgs-P03-Students) .fi.on .qq{color:#BF2E32}
+:where(.pgs-P03-Students) .fi.on .no{color:#D63539}
+:where(.pgs-P03-Students) .pm{position:relative;width:20px;height:20px}
+:where(.pgs-P03-Students) .pm::before,:where(.pgs-P03-Students) .pm::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#1D1650;transition:transform .4s var(--ease),background .3s}
+:where(.pgs-P03-Students) .pm::after{transform:rotate(90deg)}
+:where(.pgs-P03-Students) .fi.on .pm::after{transform:rotate(0)}
+:where(.pgs-P03-Students) .fi.on .pm::before,:where(.pgs-P03-Students) .fi.on .pm::after{background:#D63539}
+:where(.pgs-P03-Students) .fi .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+:where(.pgs-P03-Students) .fi.on .ans{grid-template-rows:1fr}
+:where(.pgs-P03-Students) .fi .ans > div{overflow:hidden}
+:where(.pgs-P03-Students) .fi .ans p{margin:0 36px 28px 76px;color:#4A525B;font-size:1rem;max-width:62ch}
+:where(.pgs-P03-Students) [dir=rtl] .fi .ans p{margin:0 76px 28px 36px}
+:where(.pgs-P03-Students) .fi .ans .tg{display:inline-flex;gap:8px;align-items:center;margin:0 0 26px 76px;font-size:.75rem;font-weight:700;color:#6B5E50;letter-spacing:.08em;text-transform:uppercase}
+:where(.pgs-P03-Students) [dir=rtl] .fi .ans .tg{margin:0 76px 26px 0;letter-spacing:0}
+:where(.pgs-P03-Students) .fwrap{background:#F1EDE8;padding:0 0 120px}
+:where(.pgs-P03-Students) .fcta{position:relative;overflow:hidden;padding:88px 64px;color:#fff;isolation:isolate;background:#D63539;border-end-start-radius:160px}
+:where(.pgs-P03-Students) .fcta .lines{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(135deg,rgba(255,255,255,.09) 0 1px,transparent 1px 26px);-webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 75%);mask-image:linear-gradient(90deg,transparent 20%,#000 75%)}
+:where(.pgs-P03-Students) [dir=rtl] .fcta .lines{-webkit-mask-image:linear-gradient(270deg,transparent 20%,#000 75%);mask-image:linear-gradient(270deg,transparent 20%,#000 75%)}
+:where(.pgs-P03-Students) .fcta .word{position:absolute;bottom:-.24em;inset-inline-end:-.04em;z-index:-1;font-family:var(--font-display);font-weight:700;font-size:15rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.28);pointer-events:none;white-space:nowrap}
+:where(.pgs-P03-Students) [dir=rtl] .fcta .word{font-family:var(--font-ar);bottom:-.1em}
+:where(.pgs-P03-Students) .fcta h2{color:#fff;font-size:clamp(2.1rem,4vw,3.4rem);max-width:16ch}
+:where(.pgs-P03-Students) .fcta .eyebrow{color:#FFE3A0}
+:where(.pgs-P03-Students) .btn-white{background:#fff;color:#BF2E32;height:58px;padding:0 30px;border-radius:12px;font-size:1.0625rem;box-shadow:0 18px 34px -14px rgba(0,0,0,.5)}
+:where(.pgs-P03-Students) .btn-white:hover{background:#fff;transform:translateY(-3px)}
+:where(.pgs-P03-Students) .btn-white:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:720px){:where(.pgs-P03-Students) .fcta{padding:48px 24px;border-end-start-radius:60px}
+:where(.pgs-P03-Students) .fcta .word{font-size:8rem}
+}
+:where(.pgs-P03-Students) .hm .ftr{background:#1D1650;position:relative;overflow:hidden}
+:where(.pgs-P03-Students) .hm .ftr .deco{display:none}
+@media (prefers-reduced-motion:reduce){:where(.pgs-P03-Students) .hx h1 .w{opacity:1;transform:none;animation:none}
+:where(.pgs-P03-Students) .tile,:where(.pgs-P03-Students) .sc::before,:where(.pgs-P03-Students) .sc .ph,:where(.pgs-P03-Students) .bc,:where(.pgs-P03-Students) .bc img,:where(.pgs-P03-Students) .dpanel{animation:none!important;clip-path:none!important;transform:none}
+:where(.pgs-P03-Students) .sc::before{transform:scaleX(.28)}
+:where(.pgs-P03-Students) .motif .d,:where(.pgs-P03-Students) .s-d1 i,:where(.pgs-P03-Students) .caret,:where(.pgs-P03-Students) .evc .pill::before,:where(.pgs-P03-Students) .ph.p-prog img{animation:none!important;opacity:1}
+:where(.pgs-P03-Students) .tile img{transition:none}
+:where(.pgs-P03-Students) .tb .pbar i{animation:none;transform:scaleX(1)}
+
+}
+:where(.pgs-P03-Students) .hm{background:#fff}
+:where(.pgs-P03-Students) .hm .eyebrow{color:#BF2E32}
+:where(.pgs-P03-Students) .hm .dk .eyebrow{color:#FFB4AC}
+:where(.pgs-P03-Students) .hm .dk.red .eyebrow,:where(.pgs-P03-Students) .hm .dk.rasp .eyebrow{color:#FFE3A0}
+:where(.pgs-P03-Students) .hm .dk h2,:where(.pgs-P03-Students) .hm .dk h3{color:#fff}
+:where(.pgs-P03-Students) .hm .ulink{color:inherit;background-color:transparent}
+:where(.pgs-P03-Students) .hm .ulink.r{color:#BF2E32}
+:where(.pgs-P03-Students) .hm .navl a[aria-current=page]{color:#fff}
+:where(.pgs-P03-Students) .hm .navl a[aria-current=page]::after{transform:scaleX(1);background:#F7C337}
+:where(.pgs-P03-Students) .hact{display:flex;align-items:center;gap:8px}
+:where(.pgs-P03-Students) .hx.sub .inner{padding-top:40px;padding-bottom:100px}
+:where(.pgs-P03-Students) .hx.sub h1{font-size:clamp(2.6rem,4.8vw,4.25rem);max-width:14ch}
+:where(.pgs-P03-Students) [dir=rtl] .hx.sub h1{max-width:none;font-size:clamp(2.4rem,4.2vw,3.75rem)}
+:where(.pgs-P03-Students) .crumb{display:flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.75)}
+:where(.pgs-P03-Students) .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+:where(.pgs-P03-Students) .crumb a:hover{border-color:#fff}
+:where(.pgs-P03-Students) .crumb a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+:where(.pgs-P03-Students) .sec.tight{padding:96px 0}
+:where(.pgs-P03-Students) .dk{color:#fff}
+:where(.pgs-P03-Students) .dk .lead,:where(.pgs-P03-Students) .dk p{color:rgba(255,255,255,.84)}
+:where(.pgs-P03-Students) .bg-ind{background:#1D1650}
+:where(.pgs-P03-Students) .bg-ind2{background:#2D2470}
+:where(.pgs-P03-Students) .bg-red{background:#D63539}
+:where(.pgs-P03-Students) .bg-rasp{background:#CD3151}
+:where(.pgs-P03-Students) .bg-sand{background:#F1EDE8}
+:where(.pgs-P03-Students) .bg-white{background:#fff}
+:where(.pgs-P03-Students) .hm .lead{color:#4A525B}
+:where(.pgs-P03-Students) .hm .dk .lead{color:rgba(255,255,255,.84)}
+:where(.pgs-P03-Students) .rule{height:1px;background:rgba(29,22,80,.15)}
+:where(.pgs-P03-Students) .ixl{font-family:var(--font);font-weight:800;font-size:.8125rem;letter-spacing:.12em;color:#8A7E70}
+:where(.pgs-P03-Students) [dir=rtl] .ixl{letter-spacing:0}
+:where(.pgs-P03-Students) .btn-ind{background:#1D1650;color:#fff;height:54px;padding:0 26px;border-radius:12px;font-size:1rem}
+:where(.pgs-P03-Students) .btn-ind:hover{background:#2D2470}
+:where(.pgs-P03-Students) .btn-ind:focus-visible{outline:3px solid #D63539;outline-offset:3px}
+:where(.pgs-P03-Students) .fqnone{padding:40px 8px;color:#4A525B;display:flex;gap:12px;align-items:center}
+:where(.pgs-P03-Students) .hm .ftr .soc2{display:flex;gap:14px;flex-wrap:wrap}
+:where(.pgs-P03-Students) [dir=rtl] .hm .hx h1 .w.hl{color:#FF7A70}
+@media (max-width:860px){:where(.pgs-P03-Students) .hact .btn-glass{padding:0 10px}
+}
+:where(.pgs-P03-Students) .hm.proto .specbar{display:none}
+:where(.pgs-P03-Students) .skip{border:0;cursor:pointer;font:inherit}
+:where(.pgs-P03-Students) .hm main:focus{outline:0}
+:where(.pgs-P03-Students) .onum{font-family:var(--font);font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:1.5px currentColor}
+:where(.pgs-P03-Students) .sh .r{display:flex;align-items:center;gap:18px}
+:where(.pgs-P03-Students) .chips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P03-Students) .tp .ct{font-family:var(--font);font-weight:700;opacity:.7;margin-inline-start:6px;font-variant-numeric:tabular-nums}
+:where(.pgs-P03-Students) .tp.on .ct{opacity:.85}
+:where(.pgs-P03-Students) .mtag{display:inline-flex;align-items:center;gap:6px;background:#F7C337;color:#1D1650;padding:4px 9px;font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
+:where(.pgs-P03-Students) [dir=rtl] .mtag{letter-spacing:0;font-size:.75rem}
+:where(.pgs-P03-Students) .stats{background:#D63539;color:#fff}
+:where(.pgs-P03-Students) .stats h2{color:#fff}
+:where(.pgs-P03-Students) .stats .eyebrow{color:#FFE3A0}
+:where(.pgs-P03-Students) .how{background:#2D2470;color:#fff}
+:where(.pgs-P03-Students) .how h2,:where(.pgs-P03-Students) .how h3{color:#fff}
+:where(.pgs-P03-Students) .how .eyebrow{color:#FFB4AC}
+@media (prefers-reduced-motion:reduce){:where(.pgs-P03-Students) .hm *,:where(.pgs-P03-Students) .hm *::before,:where(.pgs-P03-Students) .hm *::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+:where(.pgs-P03-Students) .hm .hx h1 .w{opacity:1;transform:none}
+}
+:where(.pgs-P03-Students) .hm .fcta .eyebrow,:where(.pgs-P03-Students) .hm .stats .eyebrow{color:#FFE3A0}
+:where(.pgs-P03-Students) .hm .how .eyebrow{color:#FFB4AC}
+:where(.pgs-P03-Students) .hm h2.big2,:where(.pgs-P03-Students) .hm .stats h2{font-size:clamp(2.1rem,3.8vw,3.25rem)}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}}
+:where(.pgs-P03-Students) .hx .hbg img{object-position:center 40%}
+:where(.pgs-P03-Students) [dir=rtl] .hx .sub{max-width:56ch}
+:where(.pgs-P03-Students) .rcard{position:relative;z-index:2;justify-self:end;width:100%;max-width:470px;background:#fff;color:#333;box-shadow:0 60px 100px -40px rgba(0,0,0,.75);border-start-start-radius:120px;overflow:hidden;animation:fadeup .8s .3s var(--ease) both}
+@media (max-width:1020px){:where(.pgs-P03-Students) .rcard{justify-self:stretch;max-width:none}
+}
+:where(.pgs-P03-Students) .rcard .top{background:#F7C337;color:#1D1650;padding:30px 34px 26px 34px;padding-inline-start:110px;position:relative;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
+:where(.pgs-P03-Students) .rcard .top .q{position:absolute;top:0;inset-inline-start:0;width:96px;height:96px;background:#1D1650;border-end-end-radius:100%}
+:where(.pgs-P03-Students) [dir=rtl] .rcard .top .q{border-end-end-radius:0;border-end-start-radius:100%}
+:where(.pgs-P03-Students) .rcard .top small{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+:where(.pgs-P03-Students) [dir=rtl] .rcard .top small{letter-spacing:0;font-size:.8125rem}
+:where(.pgs-P03-Students) .rcard .top b{font-family:var(--font-display);font-size:1.625rem;line-height:1.15;font-variant:small-caps}
+:where(.pgs-P03-Students) [dir=rtl] .rcard .top b{font-family:var(--font-ar);font-variant:normal}
+:where(.pgs-P03-Students) .rcard .bd{padding:26px 34px 30px;display:flex;flex-direction:column;gap:18px}
+:where(.pgs-P03-Students) .cd{display:flex;align-items:flex-end;gap:14px}
+:where(.pgs-P03-Students) .cd .v{font-family:var(--font);font-weight:900;font-size:4.25rem;line-height:.85;color:#D63539;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+:where(.pgs-P03-Students) .cd .l{display:flex;flex-direction:column;font-size:.9375rem;color:#4A525B;padding-bottom:4px}
+:where(.pgs-P03-Students) .cd .l b{color:#1D1650;font-size:1.0625rem}
+:where(.pgs-P03-Students) .tl{position:relative;height:6px;background:#EEE8E1;margin:8px 0 4px}
+:where(.pgs-P03-Students) .tl i{position:absolute;inset-block:0;inset-inline-start:0;background:#D63539;animation:grow 1.2s .6s var(--ease) both;transform-origin:left}
+:where(.pgs-P03-Students) [dir=rtl] .tl i{transform-origin:right}
+@keyframes grow{from{transform:scaleX(0)}}
+:where(.pgs-P03-Students) .tl .mk{position:absolute;top:50%;width:14px;height:14px;background:#1D1650;transform:translate(-50%,-50%) rotate(45deg);border:2px solid #fff}
+:where(.pgs-P03-Students) [dir=rtl] .tl .mk{transform:translate(50%,-50%) rotate(45deg)}
+:where(.pgs-P03-Students) .tlx{display:flex;justify-content:space-between;font-size:.75rem;color:#5B636C;font-weight:600}
+:where(.pgs-P03-Students) .facts{list-style:none;margin:0;padding:0;border-top:1px solid #EEE8E1}
+:where(.pgs-P03-Students) .facts li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid #EEE8E1;font-size:.9375rem}
+:where(.pgs-P03-Students) .facts li > span{color:#5B636C;font-size:.8125rem;font-weight:600;padding-top:2px}
+:where(.pgs-P03-Students) .facts li > b{color:#1D1650;font-weight:700}
+:where(.pgs-P03-Students) .st3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid #1D1650;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P03-Students) .st3{grid-template-columns:1fr}
+}
+:where(.pgs-P03-Students) .st3 > li{list-style:none;padding:36px 36px 8px 0;display:flex;flex-direction:column;gap:14px;border-inline-end:1px solid rgba(29,22,80,.15);position:relative}
+:where(.pgs-P03-Students) [dir=rtl] .st3 > li{padding:36px 0 8px 36px}
+:where(.pgs-P03-Students) .st3 > li + li{padding-inline-start:36px}
+:where(.pgs-P03-Students) .st3 > li:last-child{border-inline-end:0}
+@media (max-width:980px){:where(.pgs-P03-Students) .st3 > li{border-inline-end:0;border-bottom:1px solid rgba(29,22,80,.15);padding:28px 0!important}
+}
+:where(.pgs-P03-Students) .st3 .onum{font-size:4.5rem;color:#1D1650}
+:where(.pgs-P03-Students) .st3 > li:first-child .onum{color:#D63539}
+:where(.pgs-P03-Students) .st3 > li::before{content:"";position:absolute;top:-2px;inset-inline-start:0;width:64px;height:4px;background:#F7C337}
+:where(.pgs-P03-Students) .st3 > li + li::before{inset-inline-start:36px}
+:where(.pgs-P03-Students) .st3 h3{font-size:1.5rem;color:#1D1650}
+:where(.pgs-P03-Students) .st3 p{color:#4A525B}
+:where(.pgs-P03-Students) .st3 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+:where(.pgs-P03-Students) .st3 ul li{display:flex;gap:10px;align-items:baseline;font-size:.9375rem}
+:where(.pgs-P03-Students) .st3 ul li .dia{color:#D63539;transform:rotate(45deg) translateY(-1px)}
+:where(.pgs-P03-Students) .st3 .key{margin-top:6px;font-weight:700;color:#BF2E32;font-size:.9375rem;display:flex;gap:10px;align-items:center}
+:where(.pgs-P03-Students) .course{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;position:relative;z-index:1}
+@media (max-width:1020px){:where(.pgs-P03-Students) .course{grid-template-columns:1fr;gap:40px}
+}
+:where(.pgs-P03-Students) .cimg{position:relative;aspect-ratio:4/4.3;max-height:620px}
+:where(.pgs-P03-Students) .cimg .ph{position:absolute;inset:0 48px 48px 0;overflow:hidden;border-end-start-radius:200px}
+:where(.pgs-P03-Students) [dir=rtl] .cimg .ph{inset:0 0 48px 48px;border-end-start-radius:0;border-end-end-radius:200px}
+:where(.pgs-P03-Students) .cimg .ph img{width:100%;height:100%;object-fit:cover}
+:where(.pgs-P03-Students) .cimg .s1{position:absolute;bottom:0;inset-inline-end:0;width:150px;height:150px;background:#D63539;border-start-end-radius:100%}
+:where(.pgs-P03-Students) .cimg .s2{position:absolute;top:28px;inset-inline-end:14px;width:46px;height:46px;background:#F7C337;transform:rotate(45deg)}
+:where(.pgs-P03-Students) .cimg .lab{position:absolute;top:24px;inset-inline-start:24px;background:#fff;color:#1D1650;padding:8px 12px;font-family:var(--font);font-weight:800;font-size:.8125rem;display:flex;gap:10px;align-items:center}
+:where(.pgs-P03-Students) .ul4{list-style:none;margin:0;padding:0;border-top:2px solid #1D1650}
+:where(.pgs-P03-Students) .ul4 li{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(29,22,80,.15)}
+:where(.pgs-P03-Students) .ul4 .n{font-family:var(--font);font-weight:800;color:#B0A79C}
+:where(.pgs-P03-Students) .ul4 b{color:#1D1650;font-weight:700}
+:where(.pgs-P03-Students) .ul4 small{font-size:.8125rem;color:#5B636C}
+:where(.pgs-P03-Students) .ul4 li.pit .n{color:#D63539}
+:where(.pgs-P03-Students) .ul4 li.pit b{color:#BF2E32}
+:where(.pgs-P03-Students) .demo{background:#fff;padding:24px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 2px 4px rgba(29,22,80,.04),0 24px 44px -26px rgba(29,22,80,.4);border-end-end-radius:60px}
+:where(.pgs-P03-Students) .demo .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+:where(.pgs-P03-Students) .demo .hd label{font-weight:700;color:#1D1650}
+:where(.pgs-P03-Students) .demo .hd output{font-family:var(--font);font-weight:900;font-size:1.75rem;color:#1D1650;font-variant-numeric:tabular-nums}
+:where(.pgs-P03-Students) .rng{position:relative;height:28px}
+:where(.pgs-P03-Students) .rng .trk{position:absolute;inset-inline:0;top:11px;height:6px;background:#EEE8E1}
+:where(.pgs-P03-Students) .rng .fill{position:absolute;inset-inline-start:0;top:11px;height:6px;background:#1D1650;transition:width .2s}
+:where(.pgs-P03-Students) .rng .fill.ok{background:#15801A}
+:where(.pgs-P03-Students) .rng .th{position:absolute;top:2px;width:2px;height:24px;background:#D63539}
+:where(.pgs-P03-Students) .rng .thl{position:absolute;top:-20px;font-size:.6875rem;font-weight:800;color:#BF2E32;transform:translateX(-50%)}
+:where(.pgs-P03-Students) [dir=rtl] .rng .thl{transform:translateX(50%)}
+:where(.pgs-P03-Students) .rng input{position:absolute;inset:0;width:100%;margin:0;opacity:0;cursor:pointer}
+:where(.pgs-P03-Students) .rng input:focus-visible + .ring{outline:3px solid #D63539;outline-offset:4px}
+:where(.pgs-P03-Students) .rng .ring{position:absolute;inset:0;pointer-events:none}
+:where(.pgs-P03-Students) .rng .knob{position:absolute;top:5px;width:18px;height:18px;background:#fff;border:3px solid #1D1650;transform:translateX(-50%) rotate(45deg);pointer-events:none}
+:where(.pgs-P03-Students) [dir=rtl] .rng .knob{transform:translateX(50%) rotate(45deg)}
+:where(.pgs-P03-Students) .stat{display:flex;gap:12px;align-items:center;padding:12px 14px;font-weight:600;font-size:.9375rem}
+:where(.pgs-P03-Students) .stat.lock{background:#F7F5F2;color:#4A525B}
+:where(.pgs-P03-Students) .stat.open{background:#E9F6EA;color:#14621A}
+:where(.pgs-P03-Students) .rub{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:start;position:relative;z-index:1}
+@media (max-width:1020px){:where(.pgs-P03-Students) .rub{grid-template-columns:1fr;gap:40px}
+}
+:where(.pgs-P03-Students) .sbar{display:flex;height:64px;gap:3px;margin-bottom:8px}
+:where(.pgs-P03-Students) .sbar > span{position:relative;display:flex;align-items:flex-end;padding:8px 10px;font-family:var(--font);font-weight:900;font-size:1.25rem;color:#1D1650;transition:opacity .3s,transform .3s var(--ease);transform-origin:bottom}
+:where(.pgs-P03-Students) .sbar > span.dim{opacity:1}
+:where(.pgs-P03-Students) .sbar > span.hi{transform:scaleY(1.14);box-shadow:inset 0 0 0 3px #fff}
+:where(.pgs-P03-Students) .sbar > span:first-child{border-start-start-radius:32px}
+:where(.pgs-P03-Students) .sbar > span:last-child{border-end-end-radius:32px}
+:where(.pgs-P03-Students) .sbx{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.65);font-weight:700;margin-bottom:28px}
+:where(.pgs-P03-Students) .crit{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.2)}
+:where(.pgs-P03-Students) .crit li{border-bottom:1px solid rgba(255,255,255,.2)}
+:where(.pgs-P03-Students) .crit button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:76px 1fr auto;gap:16px;align-items:center;padding:20px 8px;transition:background .3s}
+:where(.pgs-P03-Students) .crit button:hover,:where(.pgs-P03-Students) .crit button.on{background:rgba(255,255,255,.06)}
+:where(.pgs-P03-Students) .crit button:focus-visible{outline:3px solid #FFB4AC;outline-offset:-3px}
+:where(.pgs-P03-Students) .crit .w{font-family:var(--font);font-weight:900;font-size:2.25rem;line-height:1;color:var(--c)}
+:where(.pgs-P03-Students) .crit .w small{font-size:.9375rem;margin-inline-start:2px;color:rgba(255,255,255,.7)}
+:where(.pgs-P03-Students) .crit b{display:block;color:#fff;font-size:1.0625rem}
+:where(.pgs-P03-Students) .crit .m{display:block;color:rgba(255,255,255,.72);font-size:.875rem;margin-top:2px}
+:where(.pgs-P03-Students) .crit .sw{width:14px;height:14px;background:var(--c);transform:rotate(45deg)}
+:where(.pgs-P03-Students) .pitch{background:#fff;color:#333;padding:30px 30px 26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 50px 90px -40px rgba(0,0,0,.7);border-start-end-radius:90px}
+:where(.pgs-P03-Students) [dir=rtl] .pitch{border-start-end-radius:0;border-start-start-radius:90px}
+:where(.pgs-P03-Students) .pitch h3{font-size:1.375rem;color:#1D1650!important}
+:where(.pgs-P03-Students) .hm .pitch .eyebrow{color:#BF2E32}
+:where(.pgs-P03-Students) .pq{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid #EEE8E1;transition:background .3s}
+:where(.pgs-P03-Students) .pq.hi{background:#FFF7F5;margin-inline:-12px;padding-inline:12px}
+:where(.pgs-P03-Students) .pq .h{display:flex;justify-content:space-between;gap:10px;align-items:center}
+:where(.pgs-P03-Students) .pq b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P03-Students) .pq .tagw{font-family:var(--font);font-size:.75rem;font-weight:800;padding:3px 8px;color:#1D1650;white-space:nowrap}
+:where(.pgs-P03-Students) .pq .box{height:38px;border:2px dashed #E3DCD3;display:flex;align-items:center;padding:0 12px;font-size:.8125rem;color:#6B7280}
+:where(.pgs-P03-Students) .pq .box.tall{height:58px;align-items:flex-start;padding-top:8px}
+:where(.pgs-P03-Students) .dates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;position:relative;z-index:1}
+@media (max-width:980px){:where(.pgs-P03-Students) .dates{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+:where(.pgs-P03-Students) .dt{background:#fff;padding:26px 24px 24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 4px rgba(29,22,80,.04),0 18px 36px -24px rgba(29,22,80,.35);position:relative}
+:where(.pgs-P03-Students) .dt.now{background:#1D1650;color:#fff}
+:where(.pgs-P03-Students) .dt .d{display:flex;align-items:flex-end;gap:10px;line-height:1}
+:where(.pgs-P03-Students) .dt .d b{font-family:var(--font);font-weight:900;font-size:3.25rem;letter-spacing:-.04em;color:#1D1650}
+:where(.pgs-P03-Students) .dt.now .d b{color:#fff}
+:where(.pgs-P03-Students) .dt .d > span{font-size:.8125rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#BF2E32;padding-bottom:6px}
+:where(.pgs-P03-Students) [dir=rtl] .dt .d > span{letter-spacing:0}
+:where(.pgs-P03-Students) .dt.now .d > span{color:#FFB4AC}
+:where(.pgs-P03-Students) .dt h3{font-size:1.125rem;color:#1D1650}
+:where(.pgs-P03-Students) .dt.now h3{color:#fff}
+:where(.pgs-P03-Students) .dt p{font-size:.875rem;color:#4A525B}
+:where(.pgs-P03-Students) .dt.now p{color:rgba(255,255,255,.8)}
+:where(.pgs-P03-Students) .hm .fcta h2{max-width:20ch}
+:where(.pgs-P03-Students) .dt .pin{position:absolute;top:16px;inset-inline-end:16px}
+@media (max-width:560px){:where(.pgs-P03-Students) .hdr .wrap{gap:8px}
+:where(.pgs-P03-Students) .hdr .logo-tile{flex:none;padding:6px 8px}
+:where(.pgs-P03-Students) .hdr .logo-tile img{height:26px!important}
+:where(.pgs-P03-Students) .hact{gap:6px;flex:none}
+:where(.pgs-P03-Students) .hact .btn-sm{height:44px;padding-inline:12px}
+:where(.pgs-P03-Students) .fcta{padding-top:88px}
+:where(.pgs-P03-Students) .fcta > div{position:relative;z-index:1}
+}
+@media (max-width:900px){:where(.pgs-P03-Students) [dir=rtl] :is(p,.lead,.cap,.cap2,.stage > span){max-width:none!important}
+}
+

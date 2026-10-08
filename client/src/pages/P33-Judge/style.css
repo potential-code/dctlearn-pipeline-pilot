@@ -1,0 +1,54 @@
+/* Page CSS from the Claude Design artboard P33-Judge, scoped under .pgs-P33-Judge. */
+.pgs-P33-Judge{margin:0;background:#F7F5F2}
+:where(.pgs-P33-Judge) .col{display:flex;flex-direction:column;gap:24px;min-width:0}
+:where(.pgs-P33-Judge) .rnd{padding:22px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;border-bottom:1px solid #F0ECE6}
+:where(.pgs-P33-Judge) .rnd:last-child{border-bottom:0}
+:where(.pgs-P33-Judge) .rnd .sw{width:64px;height:64px;border-start-start-radius:100%;background:#F7C337;display:grid;place-items:end;padding:0 10px 8px 0;font-family:var(--font);font-weight:800;color:#1D1650;font-size:1.0625rem}
+:where(.pgs-P33-Judge) [dir=rtl] .rnd .sw{padding:0 0 8px 10px}
+:where(.pgs-P33-Judge) .rnd .t{display:flex;flex-direction:column;gap:6px;min-width:0}
+:where(.pgs-P33-Judge) .rnd .t > strong{color:#1D1650;font-size:1.125rem}
+:where(.pgs-P33-Judge) .rnd .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.875rem;color:#4A525B}
+:where(.pgs-P33-Judge) .rnd .meta > span{display:inline-flex;gap:6px;align-items:center}
+:where(.pgs-P33-Judge) .rnd .pg{display:flex;align-items:center;gap:12px;margin-top:4px}
+:where(.pgs-P33-Judge) .rnd .pg .pbar{flex:1;max-width:320px;height:8px}
+:where(.pgs-P33-Judge) .rnd .pg b{font-family:var(--font);color:#1D1650;font-size:.875rem;white-space:nowrap}
+:where(.pgs-P33-Judge) .crit{display:flex;flex-direction:column;gap:16px}
+:where(.pgs-P33-Judge) .cr{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:6px 14px;align-items:center}
+:where(.pgs-P33-Judge) .cr .cq{font-size:.9375rem;color:#333}
+:where(.pgs-P33-Judge) .cr .w{font-family:var(--font);font-weight:800;color:#1D1650;text-align:end;font-size:1.125rem;grid-row:span 2}
+:where(.pgs-P33-Judge) .cr .bar{height:10px;background:#EEEAE4;border-radius:2px;overflow:hidden}
+:where(.pgs-P33-Judge) .cr .bar i{display:block;height:100%;background:var(--c)}
+:where(.pgs-P33-Judge) .formula{margin-top:6px;padding:14px 16px;background:#F7F5F2;border-radius:6px;font-size:.875rem;color:#4A525B;display:flex;flex-direction:column;gap:4px}
+:where(.pgs-P33-Judge) .formula b{font-family:var(--font);color:#1D1650}
+:where(.pgs-P33-Judge) .gd{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
+:where(.pgs-P33-Judge) .gd li{display:flex;gap:12px;align-items:flex-start;font-size:.9375rem;color:#333}
+:where(.pgs-P33-Judge) .gd li .dia{margin-top:8px;color:#CD3151}
+:where(.pgs-P33-Judge) .act{display:flex;gap:14px;align-items:center;padding:14px 22px;border-bottom:1px solid #F0ECE6}
+:where(.pgs-P33-Judge) .act:last-child{border-bottom:0}
+:where(.pgs-P33-Judge) .act .t{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+:where(.pgs-P33-Judge) .act .t > strong{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P33-Judge) .act .sc{font-family:var(--font);font-weight:800;color:#1D1650;font-size:1.125rem}
+:where(.pgs-P33-Judge) .ph-sh{width:40px;height:40px;flex:none;border-start-start-radius:100%;display:grid;place-items:center;color:#fff;font-family:var(--font);font-weight:800;font-size:.8125rem;background:var(--c,#CD3151)}
+:where(.pgs-P33-Judge) .note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:#EEEBF8;border-radius:6px;color:#2D2470;font-size:.875rem}
+:where(.pgs-P33-Judge) .note svg{flex:none;margin-top:2px}
+@media (max-width:1100px){:where(.pgs-P33-Judge) .rnd{grid-template-columns:auto 1fr}
+:where(.pgs-P33-Judge) .rnd > .btn{grid-column:1/-1;justify-self:start}
+}
+@media (max-width:560px){:where(.pgs-P33-Judge) .pcard .hd{flex-wrap:wrap;row-gap:6px}
+:where(.pgs-P33-Judge) .pcard .hd > :first-child{flex:1 1 auto;min-width:0}
+:where(.pgs-P33-Judge) .ovl{padding:16px}
+:where(.pgs-P33-Judge) .dlg{max-height:calc(100dvh - 32px);border-start-end-radius:32px}
+:where(.pgs-P33-Judge) .dlg .dh{padding:18px 18px 14px}
+:where(.pgs-P33-Judge) .dlg .dh h2{font-size:1.1875rem}
+:where(.pgs-P33-Judge) .dlg .db{padding:18px}
+:where(.pgs-P33-Judge) .dlg .df{padding:14px 18px;flex-wrap:wrap}
+:where(.pgs-P33-Judge) .dlg .df > .btn{flex:1 1 auto}
+:where(.pgs-P33-Judge) .ibtn{width:44px;height:44px}
+:where(.pgs-P33-Judge) .rnd{grid-template-columns:minmax(0,1fr);gap:14px;padding:20px}
+:where(.pgs-P33-Judge) .rnd .sw{width:48px;height:48px;font-size:.9375rem;padding:0 7px 6px 0}
+:where(.pgs-P33-Judge) .act{flex-wrap:wrap;row-gap:10px;padding:14px 18px}
+:where(.pgs-P33-Judge) .act .t{flex:1 1 calc(100% - 60px)}
+:where(.pgs-P33-Judge) .act > .tag{margin-inline-start:54px}
+:where(.pgs-P33-Judge) .act > .btn{margin-inline-start:auto}
+}
+

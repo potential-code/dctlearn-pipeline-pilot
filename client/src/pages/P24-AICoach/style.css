@@ -1,0 +1,116 @@
+/* Page CSS from the Claude Design artboard P24-AICoach, scoped under .pgs-P24-AICoach. */
+.pgs-P24-AICoach{margin:0;background:#F7F5F2}
+:where(.pgs-P24-AICoach) .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(.pgs-P24-AICoach) .avq{--c:#CD3151;width:56px;height:56px;background:var(--c);color:#fff;display:grid;place-items:center;font-family:var(--font);font-weight:800;font-size:1.0625rem;border-start-start-radius:100%;flex:none;position:relative}
+:where(.pgs-P24-AICoach) .avq.lg{width:96px;height:96px;font-size:1.75rem}
+:where(.pgs-P24-AICoach) .avq.xl{width:128px;height:128px;font-size:2.25rem}
+:where(.pgs-P24-AICoach) .avq.sm{width:40px;height:40px;font-size:.8125rem}
+:where(.pgs-P24-AICoach) .avq > i{position:absolute;width:14px;height:14px;background:#F7C337;transform:rotate(45deg);inset-inline-end:-5px;bottom:-5px;border:2px solid #fff}
+:where(.pgs-P24-AICoach) .stars{display:inline-flex;gap:2px;align-items:center;color:#E0A800}
+:where(.pgs-P24-AICoach) .stars svg{display:block}
+:where(.pgs-P24-AICoach) .mk{display:flex;flex-direction:column;gap:3px;min-width:0}
+:where(.pgs-P24-AICoach) .mk > small{font-size:.6875rem;font-weight:800;color:#5B636C;text-transform:uppercase;letter-spacing:.08em}
+:where(.pgs-P24-AICoach) [dir=rtl] .mk > small{letter-spacing:0}
+:where(.pgs-P24-AICoach) .mk > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P24-AICoach) .brow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P24-AICoach) .muted{color:#5B636C}
+:where(.pgs-P24-AICoach) .req{color:#BF2E32;margin-inline-start:2px}
+:where(.pgs-P24-AICoach) .cnt-ch{font-size:.75rem;color:#5B636C;margin-inline-start:auto;font-family:var(--font)}
+:where(.pgs-P24-AICoach) .toast{position:fixed;bottom:24px;inset-inline-end:24px;background:#1D1650;color:#fff;padding:14px 18px;border-radius:8px;box-shadow:0 24px 40px -18px rgba(0,0,0,.55);z-index:70;display:flex;gap:12px;align-items:center;font-weight:600;font-size:.9375rem;animation:pop .35s var(--ease) both;max-width:420px}
+:where(.pgs-P24-AICoach) .toast svg{color:#7EE08A;flex:none}
+:where(.pgs-P24-AICoach) .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(29,22,80,.18);border-top-color:#D63539;animation:spin .8s linear infinite;flex:none;display:inline-block}
+:where(.pgs-P24-AICoach) .spin.w{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+:where(.pgs-P24-AICoach) .optchips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P24-AICoach) .optc{position:relative;display:inline-flex}
+:where(.pgs-P24-AICoach) .optc input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P24-AICoach) .optc > span{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:6px;font-size:.875rem;font-weight:600;color:#333;cursor:pointer;transition:all .2s;line-height:1.3}
+:where(.pgs-P24-AICoach) .optc > span::before{content:"";width:8px;height:8px;transform:rotate(45deg);border:1.5px solid #9A9188;flex:none;transition:all .2s}
+:where(.pgs-P24-AICoach) .optc:hover > span{border-color:#1D1650}
+:where(.pgs-P24-AICoach) .optc input:checked + span{background:#1D1650;border-color:#1D1650;color:#fff}
+:where(.pgs-P24-AICoach) .optc input:checked + span::before{background:#F7C337;border-color:#F7C337}
+:where(.pgs-P24-AICoach) .optc input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P24-AICoach) .optchips.bad .optc > span{border-color:#E7A3A5}
+:where(.pgs-P24-AICoach) .rcard{position:relative;display:flex}
+:where(.pgs-P24-AICoach) .rcard input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P24-AICoach) .rcard > span{flex:1;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.875rem}
+:where(.pgs-P24-AICoach) .rcard > span > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P24-AICoach) .rcard:hover > span{border-color:#1D1650}
+:where(.pgs-P24-AICoach) .rcard input:checked + span{border-color:#D63539;background:#FFF7F5;box-shadow:inset 3px 0 0 #D63539}
+:where(.pgs-P24-AICoach) [dir=rtl] .rcard input:checked + span{box-shadow:inset -3px 0 0 #D63539}
+:where(.pgs-P24-AICoach) .rcard input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P24-AICoach) .rgrid{display:grid;gap:10px}
+:where(.pgs-P24-AICoach) .sel-w{position:relative}
+:where(.pgs-P24-AICoach) .sel-w select{appearance:none;padding-inline-end:42px;cursor:pointer}
+:where(.pgs-P24-AICoach) .sel-w > svg{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:#5B636C}
+:where(.pgs-P24-AICoach) .pt .inp:focus-visible{outline:0}
+:where(.pgs-P24-AICoach) .dlg .dh .ey{font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#BF2E32;display:block;margin-bottom:6px}
+:where(.pgs-P24-AICoach) [dir=rtl] .dlg .dh .ey{letter-spacing:0}
+:where(.pgs-P24-AICoach) .dlg .db p{color:#4A525B}
+:where(.pgs-P24-AICoach) .okband{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:#EAF7EA;border:1px solid #CDEBCF;border-radius:8px;color:#15801A}
+:where(.pgs-P24-AICoach) .okband b{color:#0F5E13;font-size:1.0625rem;display:block}
+:where(.pgs-P24-AICoach) .okband p{color:#2F4A31}
+:where(.pgs-P24-AICoach) .empty .mot{display:flex;gap:6px;margin-bottom:6px}
+:where(.pgs-P24-AICoach) .empty .mot i{width:18px;height:18px;display:block}
+:where(.pgs-P24-AICoach) .empty .mot i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P24-AICoach) .empty .mot i:nth-child(2){background:#F7C337;transform:rotate(45deg) scale(.7)}
+:where(.pgs-P24-AICoach) .empty .mot i:nth-child(3){background:#E3DCD3;border-radius:50%}
+:where(.pgs-P24-AICoach) .empty b{color:#1D1650;font-size:1.0625rem}
+:where(.pgs-P24-AICoach) .chatw{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+:where(.pgs-P24-AICoach) .chat{display:flex;flex-direction:column;height:760px}
+:where(.pgs-P24-AICoach) .chat .ch{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--bd)}
+:where(.pgs-P24-AICoach) .chat .sym{width:48px;height:48px;background:var(--c);border-start-start-radius:100%;display:grid;place-items:end;padding:7px;color:#fff;flex:none}
+:where(.pgs-P24-AICoach) .chat .ch b{color:#1D1650;font-size:1.0625rem;display:block}
+:where(.pgs-P24-AICoach) .chat .on{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;color:#15801A;font-weight:600}
+:where(.pgs-P24-AICoach) .chat .on::before{content:"";width:8px;height:8px;background:#1A9F1F;transform:rotate(45deg)}
+:where(.pgs-P24-AICoach) .chat .lst{flex:1;overflow:auto;padding:24px 22px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(#FBFAF8,#FBFAF8)}
+:where(.pgs-P24-AICoach) .msg{display:flex;gap:12px;max-width:82%;align-items:flex-start}
+:where(.pgs-P24-AICoach) .msg .mav{width:32px;height:32px;flex:none;background:var(--c);border-start-start-radius:100%;margin-top:2px}
+:where(.pgs-P24-AICoach) .msg .bb{background:#fff;border:1px solid #ECE7E0;padding:14px 16px;border-radius:2px 14px 14px 14px;font-size:.9375rem;line-height:1.6;color:#333;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 14px -12px rgba(29,22,80,.4)}
+:where(.pgs-P24-AICoach) [dir=rtl] .msg .bb{border-radius:14px 2px 14px 14px}
+:where(.pgs-P24-AICoach) .msg .bb ul{margin:0;padding-inline-start:4px;list-style:none;display:flex;flex-direction:column;gap:6px}
+:where(.pgs-P24-AICoach) .msg .bb li{display:flex;gap:10px;align-items:baseline}
+:where(.pgs-P24-AICoach) .msg .bb li::before{content:"";width:7px;height:7px;background:#D63539;transform:rotate(45deg);flex:none;position:relative;top:-1px}
+:where(.pgs-P24-AICoach) .msg.me{align-self:flex-end;flex-direction:row-reverse}
+:where(.pgs-P24-AICoach) .msg.me .bb{background:#1D1650;color:#fff;border-color:#1D1650;border-radius:14px 2px 14px 14px}
+:where(.pgs-P24-AICoach) [dir=rtl] .msg.me .bb{border-radius:2px 14px 14px 14px}
+:where(.pgs-P24-AICoach) .msg.me .mav{display:none}
+:where(.pgs-P24-AICoach) .msg .tm{font-size:.6875rem;color:#5B636C;margin-top:4px}
+:where(.pgs-P24-AICoach) .typ{display:flex;gap:12px;align-items:center;font-size:.8125rem;color:#5B636C}
+:where(.pgs-P24-AICoach) .typ .dots{display:flex;gap:5px;padding:12px 14px;background:#fff;border:1px solid #ECE7E0;border-radius:2px 14px 14px 14px}
+:where(.pgs-P24-AICoach) .typ .dots i{width:8px;height:8px;display:block;animation:pulse 1.1s ease-in-out infinite}
+:where(.pgs-P24-AICoach) .typ .dots i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P24-AICoach) .typ .dots i:nth-child(2){background:#F7C337;transform:rotate(45deg) scale(.8);animation-delay:.18s}
+:where(.pgs-P24-AICoach) .typ .dots i:nth-child(3){background:#3B2F92;border-radius:50%;animation-delay:.36s}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+:where(.pgs-P24-AICoach) .sugg{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;padding:12px 22px 4px;scrollbar-width:thin}
+:where(.pgs-P24-AICoach) .sugg button{all:unset;white-space:nowrap;flex:none;cursor:pointer;font-size:.8125rem;font-weight:600;color:#1D1650;padding:8px 12px;border:1.5px solid #D6CFC6;border-radius:6px;background:#fff;transition:all .2s}
+:where(.pgs-P24-AICoach) .sugg button:hover{border-color:#1D1650;background:#F7F5F2}
+:where(.pgs-P24-AICoach) .sugg button:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P24-AICoach) .cin{display:flex;gap:10px;padding:14px 22px 18px;align-items:flex-end}
+:where(.pgs-P24-AICoach) .cin .inp{height:auto;min-height:52px;max-height:140px;resize:none;padding:14px}
+:where(.pgs-P24-AICoach) .cin .btn{height:52px}
+:where(.pgs-P24-AICoach) .hello{margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;max-width:420px;padding:24px}
+:where(.pgs-P24-AICoach) .hello .sym{width:72px;height:72px;background:var(--c);border-start-start-radius:100%;display:grid;place-items:end;padding:10px;color:#fff}
+:where(.pgs-P24-AICoach) .hello h2{font-size:1.5rem;color:#1D1650}
+:where(.pgs-P24-AICoach) .side3 li{list-style:none;display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #F0ECE6;font-size:.9375rem;align-items:baseline}
+:where(.pgs-P24-AICoach) .side3 li:last-child{border-bottom:0}
+:where(.pgs-P24-AICoach) .side3 li::before{content:"";width:7px;height:7px;background:#D63539;transform:rotate(45deg);flex:none;position:relative;top:-2px}
+:where(.pgs-P24-AICoach) .prov{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;background:#F1EDE8;border-radius:6px;font-size:.875rem;color:#4A525B}
+:where(.pgs-P24-AICoach) .prov code{font-size:.8125rem;background:#fff;padding:1px 6px;border-radius:3px;color:#1D1650}
+@media (max-width:1100px){:where(.pgs-P24-AICoach) .chatw{grid-template-columns:1fr}
+}
+@media (max-width:560px){:where(.pgs-P24-AICoach) .pcard .hd:has(> .cap){flex-wrap:wrap;row-gap:4px}
+}
+@media (max-width:560px){:where(.pgs-P24-AICoach) .chat{height:min(640px,calc(100vh - 120px));height:min(640px,calc(100dvh - 120px))}
+:where(.pgs-P24-AICoach) .chat .ch{flex-wrap:wrap;padding:14px 16px;row-gap:8px}
+:where(.pgs-P24-AICoach) .chat .ch > div{flex:1 1 150px!important}
+:where(.pgs-P24-AICoach) .chat .lst{padding:18px 14px}
+:where(.pgs-P24-AICoach) .msg{max-width:94%}
+:where(.pgs-P24-AICoach) .sugg{padding:10px 16px 4px}
+:where(.pgs-P24-AICoach) .sugg button{min-height:36px;box-sizing:border-box}
+:where(.pgs-P24-AICoach) .cin{padding:12px 16px 16px}
+:where(.pgs-P24-AICoach) .cin .btn{padding-inline:16px}
+
+}
+
+

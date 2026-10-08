@@ -1,0 +1,31 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "preview": {
+    "editor": "enum",
+    "options": [
+      "none",
+      "programme",
+      "mentorship",
+      "onboarding",
+      "competition",
+      "forum",
+      "interest"
+    ],
+    "default": "none",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1590
+  }
+}

@@ -1,0 +1,100 @@
+/* Page CSS from the Claude Design artboard P23-AICoaches, scoped under .pgs-P23-AICoaches. */
+.pgs-P23-AICoaches{margin:0;background:#F7F5F2}
+:where(.pgs-P23-AICoaches) .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(.pgs-P23-AICoaches) .avq{--c:#CD3151;width:56px;height:56px;background:var(--c);color:#fff;display:grid;place-items:center;font-family:var(--font);font-weight:800;font-size:1.0625rem;border-start-start-radius:100%;flex:none;position:relative}
+:where(.pgs-P23-AICoaches) .avq.lg{width:96px;height:96px;font-size:1.75rem}
+:where(.pgs-P23-AICoaches) .avq.xl{width:128px;height:128px;font-size:2.25rem}
+:where(.pgs-P23-AICoaches) .avq.sm{width:40px;height:40px;font-size:.8125rem}
+:where(.pgs-P23-AICoaches) .avq > i{position:absolute;width:14px;height:14px;background:#F7C337;transform:rotate(45deg);inset-inline-end:-5px;bottom:-5px;border:2px solid #fff}
+:where(.pgs-P23-AICoaches) .stars{display:inline-flex;gap:2px;align-items:center;color:#E0A800}
+:where(.pgs-P23-AICoaches) .stars svg{display:block}
+:where(.pgs-P23-AICoaches) .mk{display:flex;flex-direction:column;gap:3px;min-width:0}
+:where(.pgs-P23-AICoaches) .mk > small{font-size:.6875rem;font-weight:800;color:#5B636C;text-transform:uppercase;letter-spacing:.08em}
+:where(.pgs-P23-AICoaches) [dir=rtl] .mk > small{letter-spacing:0}
+:where(.pgs-P23-AICoaches) .mk > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P23-AICoaches) .brow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+:where(.pgs-P23-AICoaches) .muted{color:#5B636C}
+:where(.pgs-P23-AICoaches) .req{color:#BF2E32;margin-inline-start:2px}
+:where(.pgs-P23-AICoaches) .cnt-ch{font-size:.75rem;color:#5B636C;margin-inline-start:auto;font-family:var(--font)}
+:where(.pgs-P23-AICoaches) .toast{position:fixed;bottom:24px;inset-inline-end:24px;background:#1D1650;color:#fff;padding:14px 18px;border-radius:8px;box-shadow:0 24px 40px -18px rgba(0,0,0,.55);z-index:70;display:flex;gap:12px;align-items:center;font-weight:600;font-size:.9375rem;animation:pop .35s var(--ease) both;max-width:420px}
+:where(.pgs-P23-AICoaches) .toast svg{color:#7EE08A;flex:none}
+:where(.pgs-P23-AICoaches) .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(29,22,80,.18);border-top-color:#D63539;animation:spin .8s linear infinite;flex:none;display:inline-block}
+:where(.pgs-P23-AICoaches) .spin.w{border-color:rgba(255,255,255,.3);border-top-color:#fff}
+:where(.pgs-P23-AICoaches) .optchips{display:flex;flex-wrap:wrap;gap:8px}
+:where(.pgs-P23-AICoaches) .optc{position:relative;display:inline-flex}
+:where(.pgs-P23-AICoaches) .optc input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P23-AICoaches) .optc > span{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:8px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:6px;font-size:.875rem;font-weight:600;color:#333;cursor:pointer;transition:all .2s;line-height:1.3}
+:where(.pgs-P23-AICoaches) .optc > span::before{content:"";width:8px;height:8px;transform:rotate(45deg);border:1.5px solid #9A9188;flex:none;transition:all .2s}
+:where(.pgs-P23-AICoaches) .optc:hover > span{border-color:#1D1650}
+:where(.pgs-P23-AICoaches) .optc input:checked + span{background:#1D1650;border-color:#1D1650;color:#fff}
+:where(.pgs-P23-AICoaches) .optc input:checked + span::before{background:#F7C337;border-color:#F7C337}
+:where(.pgs-P23-AICoaches) .optc input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P23-AICoaches) .optchips.bad .optc > span{border-color:#E7A3A5}
+:where(.pgs-P23-AICoaches) .rcard{position:relative;display:flex}
+:where(.pgs-P23-AICoaches) .rcard input{position:absolute;opacity:0;width:1px;height:1px}
+:where(.pgs-P23-AICoaches) .rcard > span{flex:1;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1.5px solid var(--bd);background:#fff;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.875rem}
+:where(.pgs-P23-AICoaches) .rcard > span > b{color:#1D1650;font-size:.9375rem}
+:where(.pgs-P23-AICoaches) .rcard:hover > span{border-color:#1D1650}
+:where(.pgs-P23-AICoaches) .rcard input:checked + span{border-color:#D63539;background:#FFF7F5;box-shadow:inset 3px 0 0 #D63539}
+:where(.pgs-P23-AICoaches) [dir=rtl] .rcard input:checked + span{box-shadow:inset -3px 0 0 #D63539}
+:where(.pgs-P23-AICoaches) .rcard input:focus-visible + span{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-P23-AICoaches) .rgrid{display:grid;gap:10px}
+:where(.pgs-P23-AICoaches) .sel-w{position:relative}
+:where(.pgs-P23-AICoaches) .sel-w select{appearance:none;padding-inline-end:42px;cursor:pointer}
+:where(.pgs-P23-AICoaches) .sel-w > svg{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:#5B636C}
+:where(.pgs-P23-AICoaches) .pt .inp:focus-visible{outline:0}
+:where(.pgs-P23-AICoaches) .dlg .dh .ey{font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#BF2E32;display:block;margin-bottom:6px}
+:where(.pgs-P23-AICoaches) [dir=rtl] .dlg .dh .ey{letter-spacing:0}
+:where(.pgs-P23-AICoaches) .dlg .db p{color:#4A525B}
+:where(.pgs-P23-AICoaches) .okband{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:#EAF7EA;border:1px solid #CDEBCF;border-radius:8px;color:#15801A}
+:where(.pgs-P23-AICoaches) .okband b{color:#0F5E13;font-size:1.0625rem;display:block}
+:where(.pgs-P23-AICoaches) .okband p{color:#2F4A31}
+:where(.pgs-P23-AICoaches) .empty .mot{display:flex;gap:6px;margin-bottom:6px}
+:where(.pgs-P23-AICoaches) .empty .mot i{width:18px;height:18px;display:block}
+:where(.pgs-P23-AICoaches) .empty .mot i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P23-AICoaches) .empty .mot i:nth-child(2){background:#F7C337;transform:rotate(45deg) scale(.7)}
+:where(.pgs-P23-AICoaches) .empty .mot i:nth-child(3){background:#E3DCD3;border-radius:50%}
+:where(.pgs-P23-AICoaches) .empty b{color:#1D1650;font-size:1.0625rem}
+:where(.pgs-P23-AICoaches) .aiband{position:relative;overflow:hidden;background:#1D1650;color:#fff;border-radius:8px 8px 96px 8px;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);min-height:220px;box-shadow:0 26px 50px -26px rgba(29,22,80,.7)}
+:where(.pgs-P23-AICoaches) [dir=rtl] .aiband{border-radius:8px 8px 8px 96px}
+:where(.pgs-P23-AICoaches) .aiband > .patD{inset:0;width:100%;height:100%;-webkit-mask-image:linear-gradient(90deg,#000,transparent 75%);mask-image:linear-gradient(90deg,#000,transparent 75%)}
+:where(.pgs-P23-AICoaches) [dir=rtl] .aiband > .patD{-webkit-mask-image:linear-gradient(270deg,#000,transparent 75%);mask-image:linear-gradient(270deg,#000,transparent 75%)}
+:where(.pgs-P23-AICoaches) .aiband .tx{padding:30px 34px;display:flex;flex-direction:column;gap:10px;justify-content:center;position:relative;z-index:1}
+:where(.pgs-P23-AICoaches) .aiband h2{color:#fff;font-size:1.75rem}
+:where(.pgs-P23-AICoaches) .aiband p{color:rgba(255,255,255,.84)}
+:where(.pgs-P23-AICoaches) .aiband .art{position:relative;display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,64px);gap:10px;align-content:center;justify-content:center;z-index:1}
+:where(.pgs-P23-AICoaches) .aiband .art i{display:block}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(1){background:#EE3E43;border-start-start-radius:100%}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(2){display:grid;place-items:center}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(2)::before{content:"";width:60%;height:60%;background:#F7C337;transform:rotate(45deg)}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(3){background:#A39089;border-radius:50%}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(4){background:#E3DCD3;border-end-start-radius:100%}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(5){background:#CD3151;border-radius:50% 50% 0 50%}
+:where(.pgs-P23-AICoaches) .aiband .art i:nth-child(6){background:#F77860;border-end-end-radius:100%}
+:where(.pgs-P23-AICoaches) .coach{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+:where(.pgs-P23-AICoaches) .coach .top{position:relative;padding:24px 24px 20px;display:flex;gap:18px;align-items:flex-end;background:#F1EDE8;overflow:hidden;isolation:isolate}
+:where(.pgs-P23-AICoaches) .coach .top .patL{inset:0;width:100%;height:100%}
+:where(.pgs-P23-AICoaches) .coach .sym{width:72px;height:72px;background:var(--c);border-start-start-radius:100%;display:grid;place-items:end;padding:10px;color:#fff;flex:none;position:relative}
+:where(.pgs-P23-AICoaches) .coach .top h3{font-size:1.375rem;color:#1D1650}
+:where(.pgs-P23-AICoaches) .coach .bx{padding:18px 24px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+:where(.pgs-P23-AICoaches) .coach .asks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+:where(.pgs-P23-AICoaches) .coach .asks li{display:flex;gap:10px;align-items:center;font-size:.9375rem;color:#333}
+:where(.pgs-P23-AICoaches) .coach .asks li .dia{color:#D63539}
+:where(.pgs-P23-AICoaches) .coach .ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:6px;border-top:1px solid #F0ECE6}
+:where(.pgs-P23-AICoaches) .tool{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 20px;align-items:start;padding:22px 24px}
+:where(.pgs-P23-AICoaches) .tool > .brow{grid-column:2}
+:where(.pgs-P23-AICoaches) .tool .sym{width:56px;height:56px;background:var(--c);border-start-start-radius:100%;flex:none;display:grid;place-items:end;padding:8px;color:#fff}
+:where(.pgs-P23-AICoaches) .tool h3{font-size:1.1875rem;color:#1D1650}
+:where(.pgs-P23-AICoaches) .privl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+:where(.pgs-P23-AICoaches) .privl li{display:flex;gap:12px;padding:12px 22px;border-bottom:1px solid #F0ECE6;font-size:.9375rem;align-items:flex-start}
+:where(.pgs-P23-AICoaches) .privl li:last-child{border-bottom:0}
+:where(.pgs-P23-AICoaches) .privl li svg{flex:none;color:#3B2F92;margin-top:3px}
+@media (max-width:900px){:where(.pgs-P23-AICoaches) .aiband{grid-template-columns:1fr}
+:where(.pgs-P23-AICoaches) .aiband .art{display:none}
+}
+@media (max-width:560px){:where(.pgs-P23-AICoaches) .pcard .hd:has(> .cap){flex-wrap:wrap;row-gap:4px}
+}
+@media (max-width:560px){:where(.pgs-P23-AICoaches) .tool{grid-template-columns:1fr;padding:20px}
+}
+
+

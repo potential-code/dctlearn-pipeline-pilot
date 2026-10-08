@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["zu"],
+    "default": "zu",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["manual", "invite", "edited", "auto", "autoResult", "autoError"],
+    "default": "manual",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1445
+  }
+}

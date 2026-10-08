@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "tool": {
+    "editor": "enum",
+    "options": ["lesson-planner"],
+    "default": "lesson-planner",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["loaded", "loading", "unavailable"],
+    "default": "loaded",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1140
+  }
+}

@@ -1,0 +1,36 @@
+/* Page CSS from the Claude Design artboard PX-Notifications, scoped under .pgs-PX-Notifications. */
+.pgs-PX-Notifications{margin:0;background:#F7F5F2}
+:where(.pgs-PX-Notifications) .ds.pt{position:relative}
+:where(.pgs-PX-Notifications) .tb{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+:where(.pgs-PX-Notifications) .tb .l{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+:where(.pgs-PX-Notifications) .grp{padding:10px 22px;background:#FBFAF8;border-bottom:1px solid #F0ECE6;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#5B636C}
+:where(.pgs-PX-Notifications) [dir=rtl] .grp{letter-spacing:0}
+:where(.pgs-PX-Notifications) .nt{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;border-bottom:1px solid #F0ECE6;position:relative;transition:background .2s}
+:where(.pgs-PX-Notifications) .nt:last-child{border-bottom:0}
+:where(.pgs-PX-Notifications) .nt.unread{background:#FFFAF8}
+:where(.pgs-PX-Notifications) .nt.unread::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:4px;background:#D63539}
+:where(.pgs-PX-Notifications) .nt:hover{background:#FBFAF8}
+:where(.pgs-PX-Notifications) .nt .ic{width:46px;height:46px;flex:none;display:grid;place-items:center;color:#fff;border-start-start-radius:100%}
+:where(.pgs-PX-Notifications) .nt .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+:where(.pgs-PX-Notifications) .nt .tx a{color:#1D1650;font-weight:700;text-decoration:none;font-size:1rem}
+:where(.pgs-PX-Notifications) .nt .tx a:hover{text-decoration:underline;text-underline-offset:3px}
+:where(.pgs-PX-Notifications) .nt .tx a:focus-visible{outline:3px solid #D63539;outline-offset:3px}
+:where(.pgs-PX-Notifications) .nt .tx p{color:#4A525B;font-size:.9375rem}
+:where(.pgs-PX-Notifications) .nt .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.8125rem;color:#5B636C}
+:where(.pgs-PX-Notifications) .nt .side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+:where(.pgs-PX-Notifications) .nt .dot{width:10px;height:10px;border-radius:50%;background:#D63539}
+:where(.pgs-PX-Notifications) .mr{all:unset;cursor:pointer;font-size:.8125rem;font-weight:700;color:#BF2E32;padding:4px 2px}
+:where(.pgs-PX-Notifications) .mr:hover{text-decoration:underline}
+:where(.pgs-PX-Notifications) .mr:focus-visible{outline:3px solid #D63539;outline-offset:2px}
+:where(.pgs-PX-Notifications) .empty .mo{width:64px;height:64px;position:relative;margin-bottom:6px}
+:where(.pgs-PX-Notifications) .empty .mo i{position:absolute;display:block}
+:where(.pgs-PX-Notifications) .empty .mo i:nth-child(1){inset:0 50% 50% 0;background:#E3DCD3;border-start-start-radius:100%}
+:where(.pgs-PX-Notifications) .empty .mo i:nth-child(2){inset:50% 0 0 50%;background:#F7C337;border-end-end-radius:100%}
+:where(.pgs-PX-Notifications) .empty .mo i:nth-child(3){width:16px;height:16px;inset-inline-end:6px;top:8px;background:#15801A;transform:rotate(45deg)}
+:where(.pgs-PX-Notifications) .empty h3{font-size:1.25rem;color:#1D1650}
+:where(.pgs-PX-Notifications) .toast{position:fixed;bottom:24px;inset-inline-start:50%;transform:translateX(-50%);background:#1D1650;color:#fff;padding:14px 20px;border-radius:8px;display:flex;gap:12px;align-items:center;z-index:90;box-shadow:0 20px 40px -16px rgba(0,0,0,.5);font-weight:600;animation:pop .4s var(--ease)}
+:where(.pgs-PX-Notifications) [dir=rtl] .toast{transform:translateX(50%)}
+:where(.pgs-PX-Notifications) .legend{display:flex;flex-direction:column;gap:12px;font-size:.9375rem}
+:where(.pgs-PX-Notifications) .legend > div{display:flex;gap:12px;align-items:center}
+:where(.pgs-PX-Notifications) .legend i{width:22px;height:22px;border-start-start-radius:100%;flex:none;display:block}
+

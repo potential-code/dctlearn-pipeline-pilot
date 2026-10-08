@@ -1,0 +1,17 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Language"
+  },
+  "sheetOpen": {
+    "editor": "boolean",
+    "default": true,
+    "section": "Shell"
+  },
+  "$preview": {
+    "width": 390,
+    "height": 844
+  }
+}

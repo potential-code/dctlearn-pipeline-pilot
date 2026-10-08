@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "site": {
+    "editor": "enum",
+    "options": ["znm", "employees"],
+    "default": "znm",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["list", "add", "addError", "rejected", "fix", "resubmitted", "remove"],
+    "default": "list",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 1035
+  }
+}

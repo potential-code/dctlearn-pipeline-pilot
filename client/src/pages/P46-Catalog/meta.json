@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "editor": "enum",
+    "options": ["en", "ar"],
+    "default": "en",
+    "section": "Page"
+  },
+  "screen": {
+    "editor": "enum",
+    "options": ["list", "create", "empty"],
+    "default": "list",
+    "section": "Page"
+  },
+  "view": {
+    "editor": "enum",
+    "options": ["table", "cards"],
+    "default": "table",
+    "section": "Page"
+  },
+  "proto": {
+    "editor": "boolean",
+    "default": false,
+    "section": "Page"
+  },
+  "$preview": {
+    "width": 1280,
+    "height": 3740
+  }
+}
