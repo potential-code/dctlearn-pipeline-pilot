@@ -15,6 +15,10 @@ for (const entry of PAGES) {
   for (const lang of ['en', 'ar'] as const) {
     test(`${entry.artboard} ${lang}`, async ({ page }, info) => {
       test.skip(info.project.name === 'mobile', 'content parity is viewport independent')
+      test.skip(
+        !!entry.rebuilt,
+        'rebuilt by hand; covered by its own spec (e2e/course-editor.e2e.ts)',
+      )
       const fx = JSON.parse(readFileSync(`e2e/fixtures/${entry.artboard}.expected.json`, 'utf8'))[
         lang
       ] as Fixture

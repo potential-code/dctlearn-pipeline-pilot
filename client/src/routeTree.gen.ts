@@ -80,7 +80,7 @@ import { Route as AdminCatalogEditorIdRouteImport } from './routes/admin/catalog
 import { Route as PPortalAiCoachKeyRouteImport } from './routes/$p/_portal/ai/coach.$key'
 import { Route as PPortalAiToolKeyRouteImport } from './routes/$p/_portal/ai/tool.$key'
 import { Route as PPortalLearnCourseIndexRouteImport } from './routes/$p/_portal/learn.$course.index'
-import { Route as PPortalLearnCourseUnitRouteImport } from './routes/$p/_portal/learn.$course.$unit'
+import { Route as PPortalLearnCourseSplatRouteImport } from './routes/$p/_portal/learn.$course.$'
 import { Route as PPortalMentoringMentorIdRouteImport } from './routes/$p/_portal/mentoring/mentor.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -440,9 +440,9 @@ const PPortalLearnCourseIndexRoute = PPortalLearnCourseIndexRouteImport.update({
   path: '/learn/$course/',
   getParentRoute: () => PPortalRoute,
 } as any)
-const PPortalLearnCourseUnitRoute = PPortalLearnCourseUnitRouteImport.update({
-  id: '/learn/$course/$unit',
-  path: '/learn/$course/$unit',
+const PPortalLearnCourseSplatRoute = PPortalLearnCourseSplatRouteImport.update({
+  id: '/learn/$course/$',
+  path: '/learn/$course/$',
   getParentRoute: () => PPortalRoute,
 } as any)
 const PPortalMentoringMentorIdRoute =
@@ -522,7 +522,7 @@ export interface FileRoutesByFullPath {
   '/admin/catalog/editor/': typeof AdminCatalogEditorIndexRoute
   '/$p/ai/coach/$key': typeof PPortalAiCoachKeyRoute
   '/$p/ai/tool/$key': typeof PPortalAiToolKeyRoute
-  '/$p/learn/$course/$unit': typeof PPortalLearnCourseUnitRoute
+  '/$p/learn/$course/$': typeof PPortalLearnCourseSplatRoute
   '/$p/mentoring/mentor/$id': typeof PPortalMentoringMentorIdRoute
   '/$p/learn/$course/': typeof PPortalLearnCourseIndexRoute
 }
@@ -591,7 +591,7 @@ export interface FileRoutesByTo {
   '/admin/catalog/editor': typeof AdminCatalogEditorIndexRoute
   '/$p/ai/coach/$key': typeof PPortalAiCoachKeyRoute
   '/$p/ai/tool/$key': typeof PPortalAiToolKeyRoute
-  '/$p/learn/$course/$unit': typeof PPortalLearnCourseUnitRoute
+  '/$p/learn/$course/$': typeof PPortalLearnCourseSplatRoute
   '/$p/mentoring/mentor/$id': typeof PPortalMentoringMentorIdRoute
   '/$p/learn/$course': typeof PPortalLearnCourseIndexRoute
 }
@@ -667,7 +667,7 @@ export interface FileRoutesById {
   '/admin/catalog/editor/': typeof AdminCatalogEditorIndexRoute
   '/$p/_portal/ai/coach/$key': typeof PPortalAiCoachKeyRoute
   '/$p/_portal/ai/tool/$key': typeof PPortalAiToolKeyRoute
-  '/$p/_portal/learn/$course/$unit': typeof PPortalLearnCourseUnitRoute
+  '/$p/_portal/learn/$course/$': typeof PPortalLearnCourseSplatRoute
   '/$p/_portal/mentoring/mentor/$id': typeof PPortalMentoringMentorIdRoute
   '/$p/_portal/learn/$course/': typeof PPortalLearnCourseIndexRoute
 }
@@ -743,7 +743,7 @@ export interface FileRouteTypes {
     | '/admin/catalog/editor/'
     | '/$p/ai/coach/$key'
     | '/$p/ai/tool/$key'
-    | '/$p/learn/$course/$unit'
+    | '/$p/learn/$course/$'
     | '/$p/mentoring/mentor/$id'
     | '/$p/learn/$course/'
   fileRoutesByTo: FileRoutesByTo
@@ -812,7 +812,7 @@ export interface FileRouteTypes {
     | '/admin/catalog/editor'
     | '/$p/ai/coach/$key'
     | '/$p/ai/tool/$key'
-    | '/$p/learn/$course/$unit'
+    | '/$p/learn/$course/$'
     | '/$p/mentoring/mentor/$id'
     | '/$p/learn/$course'
   id:
@@ -887,7 +887,7 @@ export interface FileRouteTypes {
     | '/admin/catalog/editor/'
     | '/$p/_portal/ai/coach/$key'
     | '/$p/_portal/ai/tool/$key'
-    | '/$p/_portal/learn/$course/$unit'
+    | '/$p/_portal/learn/$course/$'
     | '/$p/_portal/mentoring/mentor/$id'
     | '/$p/_portal/learn/$course/'
   fileRoutesById: FileRoutesById
@@ -1412,11 +1412,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PPortalLearnCourseIndexRouteImport
       parentRoute: typeof PPortalRoute
     }
-    '/$p/_portal/learn/$course/$unit': {
-      id: '/$p/_portal/learn/$course/$unit'
-      path: '/learn/$course/$unit'
-      fullPath: '/$p/learn/$course/$unit'
-      preLoaderRoute: typeof PPortalLearnCourseUnitRouteImport
+    '/$p/_portal/learn/$course/$': {
+      id: '/$p/_portal/learn/$course/$'
+      path: '/learn/$course/$'
+      fullPath: '/$p/learn/$course/$'
+      preLoaderRoute: typeof PPortalLearnCourseSplatRouteImport
       parentRoute: typeof PPortalRoute
     }
     '/$p/_portal/mentoring/mentor/$id': {
@@ -1468,7 +1468,7 @@ interface PPortalRouteChildren {
   PPortalMentoringIndexRoute: typeof PPortalMentoringIndexRoute
   PPortalAiCoachKeyRoute: typeof PPortalAiCoachKeyRoute
   PPortalAiToolKeyRoute: typeof PPortalAiToolKeyRoute
-  PPortalLearnCourseUnitRoute: typeof PPortalLearnCourseUnitRoute
+  PPortalLearnCourseSplatRoute: typeof PPortalLearnCourseSplatRoute
   PPortalMentoringMentorIdRoute: typeof PPortalMentoringMentorIdRoute
   PPortalLearnCourseIndexRoute: typeof PPortalLearnCourseIndexRoute
 }
@@ -1488,7 +1488,7 @@ const PPortalRouteChildren: PPortalRouteChildren = {
   PPortalMentoringIndexRoute: PPortalMentoringIndexRoute,
   PPortalAiCoachKeyRoute: PPortalAiCoachKeyRoute,
   PPortalAiToolKeyRoute: PPortalAiToolKeyRoute,
-  PPortalLearnCourseUnitRoute: PPortalLearnCourseUnitRoute,
+  PPortalLearnCourseSplatRoute: PPortalLearnCourseSplatRoute,
   PPortalMentoringMentorIdRoute: PPortalMentoringMentorIdRoute,
   PPortalLearnCourseIndexRoute: PPortalLearnCourseIndexRoute,
 }

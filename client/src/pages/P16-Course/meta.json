@@ -17,15 +17,10 @@
     "default": "dct-world",
     "section": "Page"
   },
-  "screen": {
+  "state": {
     "editor": "enum",
-    "options": ["outline", "unit1", "unit2", "unit3", "unit4", "quiz", "pass", "fail", "complete"],
-    "default": "outline",
-    "section": "Page"
-  },
-  "proto": {
-    "editor": "boolean",
-    "default": false,
+    "options": ["fresh", "u2", "u3", "u4", "final", "failed", "complete"],
+    "default": "fresh",
     "section": "Page"
   },
   "$preview": {

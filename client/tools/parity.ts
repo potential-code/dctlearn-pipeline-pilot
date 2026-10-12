@@ -162,6 +162,7 @@ const outDir = join(import.meta.dirname, '../e2e/fixtures')
 mkdirSync(outDir, { recursive: true })
 let n = 0
 for (const p of PAGES) {
+  if (p.rebuilt) continue
   const source = p.source ?? p.artboard
   const file = join(srcDir, `${source}.dc.html`)
   const en = fixture(file, p.props ?? {}, 'en')

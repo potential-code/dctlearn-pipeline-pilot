@@ -164,12 +164,14 @@ test.describe('page interactions', () => {
     await expect(page.getByRole('dialog').first()).toBeVisible()
   })
 
-  test('P59 course editor: switch tabs', async ({ page }, info) => {
+  test('P59 course editor: opens from the catalog and publishes / unpublishes', async ({
+    page,
+  }, info) => {
     test.skip(info.project.name === 'mobile', 'desktop flow')
     await prepare(page, { account: 'admin' })
     await page.goto('/admin/catalog/editor/C01')
-    const tab = page.locator('.ptabs .ptab', { hasText: 'Certificate' })
-    await tab.click()
-    await expect(tab).toHaveAttribute('aria-current', 'page')
+    await expect(page.getByRole('heading', { level: 1, name: 'DCT World' })).toBeVisible()
+    await page.getByRole('button', { name: 'Unpublish' }).click()
+    await expect(page.getByRole('button', { name: 'Publish', exact: true })).toBeVisible()
   })
 })

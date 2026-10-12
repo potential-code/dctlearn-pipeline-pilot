@@ -16,7 +16,6 @@ P05-NotFound
 P13-Hubs
 P14-Dashboard
 P15-Profile
-P16-Course
 P17-Mentors
 P18-MentorProfile
 P19-MenteeRegister
@@ -55,7 +54,6 @@ P55-Reports
 P56-Forms
 P57-Events
 P58-AchievementsAdmin
-P59-CourseEditor
 P60-Translations
 P61-AIEmbeds
 PX-Notifications

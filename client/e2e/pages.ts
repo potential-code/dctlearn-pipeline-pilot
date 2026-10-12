@@ -11,6 +11,8 @@ export type Entry = {
   source?: string
   /** Props the route passes to the page; parity fixtures render the artboard with the same. */
   props?: Record<string, unknown>
+  /** Hand-built page that replaced the generated artboard port: no parity fixture (see its own spec). */
+  rebuilt?: true
 }
 
 export const EMAILS: Record<Who, string> = {
@@ -83,6 +85,7 @@ export const PAGES: Entry[] = [
     path: '/employees/learn/dct-world',
     account: 'learner',
     props: { site: 'employees', course: 'dct-world' },
+    rebuilt: true,
   },
   {
     artboard: 'P51-Achievements',
@@ -236,6 +239,7 @@ export const PAGES: Entry[] = [
     path: '/admin/catalog/editor/C01',
     account: 'admin',
     props: { course: 'C01' },
+    rebuilt: true,
   },
   { artboard: 'P57-Events', path: '/admin/events', account: 'admin' },
   { artboard: 'P56-Forms', path: '/admin/surveys', account: 'admin' },
