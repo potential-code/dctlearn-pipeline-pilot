@@ -14,7 +14,9 @@
 .app{min-height:100vh;min-height:100dvh;align-items:stretch}
 .app > .mainc{min-height:100vh;min-height:100dvh}
 /* Open dialog or mobile nav sheet: the page behind stays put, the prototype pill steps aside. */
-html.dlg-open,html.dlg-open body,html.nav-open,html.nav-open body{overflow:hidden}
+/* Lock the root scroller only: overflow:hidden on body too makes body a scroll container, so the
+   sticky sidebar (.sb) re-anchors to it and slides out of view when the page was scrolled. */
+html.dlg-open,html.nav-open{overflow:hidden}
 html.dlg-open .proto-sw,html.nav-open .proto-sw{display:none}
 /* Leave room for the floating prototype pill so it never covers the last controls. */
 .proto-root.has-sw .mainc{padding-bottom:84px}
@@ -35,3 +37,6 @@ button.navbtn:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 [dir=rtl] .ptabs.ovf,.ptabs.ovf:where([dir=rtl] *){-webkit-mask-image:linear-gradient(270deg,#000 88%,transparent);mask-image:linear-gradient(270deg,#000 88%,transparent)}
 /* The full-screen meeting view has its own controls; the pill would cover Leave. */
 .proto-root:has(.mtg) .proto-sw{display:none}
+/* Popups and side panels have square corners (Oct 2026): the portal kit's rounded top corner is
+   dropped everywhere, including the per-page copies of the rule and .dlg.wide. */
+.dlg{border-radius:0!important}
