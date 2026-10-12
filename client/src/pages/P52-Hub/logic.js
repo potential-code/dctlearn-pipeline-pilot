@@ -1,4 +1,5 @@
-// client: hand-edited (workshops default to Past when nothing is upcoming)
+// client: hand-edited (workshops default to Past when nothing is upcoming; the section tabs are
+// dropped because the sidebar already lists every hub section, so filters reset on route change)
 // Ported verbatim from the Claude Design artboard P52-Hub (DCLogic class).
 // Runs on the DCLogic shim in src/dc/runtime.ts.
 import { DCLogic } from '@/dc/runtime'
@@ -17,6 +18,7 @@ export default class Component extends DCLogic {
   /* ===== END SHELL HELPER ===== */
 
   flash(msg){ this.setState({ toast: msg }); clearTimeout(this._tt); this._tt = setTimeout(() => this.setState({ toast:'' }), 2600); }
+  componentDidUpdate(prev){ if (prev.tab !== this.props.tab || prev.site !== this.props.site) this.setState(this.reset()); }
   reset(){ return { q:'', cat:'all', st:'all', sort:'mand', mand:null, when:null, mcat:'all', type:'all' }; }
 
   renderVals(){
@@ -178,10 +180,8 @@ export default class Component extends DCLogic {
     const resources = RS.filter(r => type === 'all' || r.type === type);
     const typeBtns = [['all',L('All','الكل')],['link',L('Links','روابط')],['pdf',L('PDFs','ملفات PDF')]].map(x => ({ label:x[1], cls: type === x[0] ? 'is-on' : '', on: type === x[0] ? 'true' : 'false', pick: () => this.setState({ type:x[0] }) }));
 
-    const counts = { courses:list.length, workshops:EV.length, mentors:MT.length, ai_coaches:2, ai_tools:1, resources:RS.length };
-    const ptabs = TABS.map(k => ({ label:tl(k), n: counts[k] ? fmt(counts[k]) : false, cls: k === tab ? 'on' : '', cur: k === tab ? 'page' : 'false', pick: () => this.setState(Object.assign(this.reset(), { tab:k })) }));
     return {
-      lang, dir: ar?'rtl':'ltr', t, sh, siteName, accent:SN[2], tabLabel: off ? L(LBL[tab][0], LBL[tab][1]) : tl(tab), tabSub: SUB[tab], ptabs, off, dashHref:'/'+site+'/dashboard',
+      lang, dir: ar?'rtl':'ltr', t, sh, siteName, accent:SN[2], tabLabel: off ? L(LBL[tab][0], LBL[tab][1]) : tl(tab), tabSub: SUB[tab], off, dashHref:'/'+site+'/dashboard',
       protoCls: this.props.proto ? 'proto' : '', route:'/'+site+'/hub/'+tab,
       isCourses: !off && tab === 'courses', isWorkshops: !off && tab === 'workshops', isMentors: !off && tab === 'mentors', isAi: !off && (tab === 'ai_coaches' || tab === 'ai_tools'), isRes: !off && tab === 'resources',
       q:this.state.q, onQ:(e) => this.setState({ q:e.target.value }), stateBtns, catBtns, sortOpts, sort:srt, onSort:(e) => this.setState({ sort:e.target.value }),

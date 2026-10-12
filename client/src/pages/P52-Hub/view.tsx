@@ -21,26 +21,7 @@ export default function View({ v }: { v: V }) {
                 <h1>{v.tabLabel}</h1>
                 <p>{v.tabSub}</p>
               </div>
-            </div>{' '}
-            <nav className="ptabs" aria-label={v.t?.hubTabs}>
-              {$arr(v.ptabs).map((p, p$i) => (
-                <Fragment key={p$i}>
-                  <button
-                    type="button"
-                    className={`ptab ${$s(p?.cls)}`}
-                    aria-current={p?.cur}
-                    onClick={p?.pick}
-                  >
-                    {p?.label}
-                    {p?.n ? (
-                      <>
-                        <span className="cnt">{p?.n}</span>
-                      </>
-                    ) : null}
-                  </button>
-                </Fragment>
-              ))}
-            </nav>
+            </div>
           </section>{' '}
           <main className="pc" id="main">
             {v.off ? (
